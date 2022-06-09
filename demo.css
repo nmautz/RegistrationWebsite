@@ -1,0 +1,96 @@
+
+
+body {
+
+  font-family: Arial;
+
+}
+
+
+
+.content {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+  padding-top: 20px;
+  height: 100%;
+}
+
+.class-display{
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: center;
+  max-width: 100px;
+  /*NoSelect*/
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.class-list-display{
+  flex: 1;
+  transition: flex 200ms ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+
+
+}
+
+.class-info-display {
+  flex: 0;
+  display:flex;
+  min-width: none;
+  flex-direction: row;
+  transition: flex 200ms ease-in-out;
+  border-style: solid;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  column-gap: 7px;
+  opacity: 0;
+  overflow: hidden;
+
+
+}
+
+.class-name-info-display{
+
+  font-weight: 700;
+
+
+}
+
+.class-attributes-info-display{
+
+
+
+}
+
+.menu-icons {
+
+}
+
+.close-class-info-display-button {
+  border-style: solid;
+  border-width: 2px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-right: 3px;
+  padding-left: 3px;
+  margin-left: 4px;
+  cursor: pointer;
+}
