@@ -1,18 +1,6 @@
 
 
-class HTMLElementCreator {
 
-  constructor(){
-
-  }
-  createClassListing() {
-    
-  }
-
-
-
-
-}
 
 
 
@@ -39,6 +27,47 @@ document.addEventListener('DOMContentLoaded', function() {
     classInfoDisplay.style.opacity = "0";
   }
 
+
+  class HTMLElementCreator {
+
+    classListDisplay = null;
+  
+    constructor(){
+      this.classListDisplay = document.getElementById("class-list-display");
+    }
+    createClassListing() {
+      const divElement = document.createElement("div");
+      const textNode = document.createTextNode("ENGL 201");
+      divElement.classList.add("class-display")
+      divElement.appendChild(textNode);
+      
+      divElement.addEventListener("click", function(){
+        openClassInfoBox();
+  
+  
+      })
+  
+  
+      this.classListDisplay.appendChild(divElement);
+  
+    }
+  
+  
+  
+  
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   /*Used to assign open box to temp class objects*/
   for(var i = 0; i < classList.length; ++i){
   
@@ -52,7 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 
 
-
+  var htmlElementCreator = new HTMLElementCreator();
+  htmlElementCreator.createClassListing();
 
 
 
