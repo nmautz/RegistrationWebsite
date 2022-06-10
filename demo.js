@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
   
   
-      this.classListDisplay.appendChild(divElement);
+      this.classListDisplay.insertBefore(divElement, document.getElementById("add-class-button"))
   
     }
   
