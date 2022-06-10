@@ -46,10 +46,14 @@ body {
   user-select: none; /* Standard */
 }
 
+
+.close-class-info-display-button:hover,
 .class-display:hover {
 
   background-color: rgb(237, 237, 237);
-  border-width: 2px;
+  
+}
+.class-display:hover {border-width: 2px;
   padding-left: 4px;
   padding-right: 4px;
   padding-top: 1px;
@@ -85,12 +89,13 @@ body {
   border-right: 1px;
   border-style: solid;
   width: 30px;
-  padding-top: 10px;
 }
 
 .close-class-info-display-button {
   border: 0px;
   border-bottom: 1px;
+  height: 28px;
+  line-height: 28px;
   border-style: solid;
   cursor: pointer;
   text-align: center;
