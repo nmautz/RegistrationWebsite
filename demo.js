@@ -6,7 +6,6 @@ classesList = null
 
 fetch("classes.json").then(response => response.json()).then( function(jsonData){
   classesList = jsonData["data"]
-  console.log(classesList)
 })
 
 
@@ -16,7 +15,6 @@ function getClassById(id)
 
   for(i = 0; i < classesList.length; ++i){
     if(classesList[i].id == id){
-      console.log("FOUND IT");
       return classesList[i];
     }
   }
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     singleClass = getClassById(id);
 
-    console.log(singleClass)
 
     classInfoDisplayName.innerHTML = singleClass.courseTitle;
   }
