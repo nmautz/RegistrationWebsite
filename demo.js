@@ -10,6 +10,19 @@ fetch("classes.json").then(response => response.json()).then( function(jsonData)
 })
 
 
+function getClassById(id)
+{
+
+
+  for(i = 0; i < classesList.length; ++i){
+    if(classesList[i].id == id){
+      console.log("FOUND IT");
+      return classesList[i];
+    }
+  }
+
+}
+
 
 
 
@@ -21,12 +34,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const classInfoDisplay = document.getElementById("class-info-display");
   const closeClassInfoButton = document.getElementById("close-class-info-display-button");
   const addClassButton = document.getElementById("add-class-button")
+  const classInfoDisplayName = document.getElementById("class-name-info-display")
   
 
   /*Basic Functions*/
-  function openClassInfoBox(){
+  function openClassInfoBox(id){
     classInfoDisplay.setAttribute("style", "flex: 2;");
     classInfoDisplay.style.opacity = "1";
+
+    singleClass = getClassById(id);
+
+    console.log(singleClass)
+
+    classInfoDisplayName.innerHTML = singleClass.courseTitle;
   }
   
   function closeClassInfoBox(){
@@ -50,9 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const textNode = document.createTextNode(singleClass.subject + singleClass.courseNumber);
       divElement.classList.add("class-display")
       divElement.appendChild(textNode);
-      
+  
       divElement.addEventListener("click", function(){
-        openClassInfoBox();
+        openClassInfoBox(singleClass.id);
   
   
       })
