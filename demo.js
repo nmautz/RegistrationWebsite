@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const classList = document.getElementsByClassName("class-display");
   const classInfoDisplay = document.getElementById("class-info-display");
   const closeClassInfoButton = document.getElementById("close-class-info-display-button");
+  const addClassButton = document.getElementById("add-class-button")
   
 
   /*Basic Functions*/
@@ -68,21 +69,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  /*Used to assign open box to temp class objects*/
-  for(var i = 0; i < classList.length; ++i){
-  
-    classList[i].addEventListener("click", function() {
-      openClassInfoBox();
-    } )
-  }
-
   closeClassInfoButton.addEventListener("click", function(){
     closeClassInfoBox();
   })
 
-
   var htmlElementCreator = new HTMLElementCreator();
-  htmlElementCreator.createClassListing();
+  addClassButton.addEventListener("click", function(){
+    htmlElementCreator.createClassListing()
+
+
+
+  })
+
 
 
 
