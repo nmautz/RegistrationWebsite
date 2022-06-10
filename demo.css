@@ -1,5 +1,10 @@
 
 
+
+html,body {
+  height: 80%;
+}
+
 body {
 
   font-family: Arial;
@@ -13,8 +18,7 @@ body {
   flex-direction: row;
   column-gap: 10px;
   justify-content: center;
-  align-items: center;
-  vertical-align: top;
+  align-items: top;
   padding-top: 20px;
   height: 100%;
 }
@@ -32,7 +36,9 @@ body {
   margin-bottom: 10px;
   cursor: pointer;
   text-align: center;
+  vertical-align: middle;
   max-width: 100px;
+  height: 20px;
   /*NoSelect*/
   -webkit-user-select: none; /* Safari */        
   -moz-user-select: none; /* Firefox */
@@ -56,10 +62,8 @@ body {
   transition: flex 200ms ease-in-out;
   display: grid;
   grid-template-columns: 120px 120px;
-  row-gap: 5px;
-  justify-content: center;
-
-
+  justify-content: center; 
+  align-content: flex-start;
 }
 
 .class-info-display {
