@@ -2,6 +2,12 @@
 
 
 
+classesList = null
+
+fetch("classes.json").then(response => response.json()).then( function(jsonData){
+  classesList = jsonData["data"]
+  console.log(classesList)
+})
 
 
 
@@ -37,8 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classListDisplay = document.getElementById("class-list-display");
     }
     createClassListing() {
+
+      var singleClass = classesList[Math.floor(Math.random()*classesList.length)];
+
       const divElement = document.createElement("div");
-      const textNode = document.createTextNode("ENGL 201");
+      const textNode = document.createTextNode(singleClass.subject + singleClass.courseNumber);
       divElement.classList.add("class-display")
       divElement.appendChild(textNode);
       
