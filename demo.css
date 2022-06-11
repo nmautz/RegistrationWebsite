@@ -130,8 +130,22 @@ body {
 
 }
 
+.class-attributes-info-container{
+
+  display: flex;
+
+
+
+}
+
 .class-attributes-info-display{
 
+  flex:2;
+  
 
 
+}
+
+.alt-class-list-display {
+  flex: 1;
 }
