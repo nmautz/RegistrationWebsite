@@ -1,7 +1,7 @@
 
 
 
-
+//Fetches the json file with classlist. when the data is ready the inside code will execute, while waiting it will continue
 classesList = null
 
 fetch("classes.json").then(response => response.json()).then( function(jsonData){
@@ -23,7 +23,7 @@ function getClassById(id)
 
 
 
-
+//everything in here runs after the html website has been loaded
 document.addEventListener('DOMContentLoaded', function() {
 
 
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     classInfoDisplay.style.opacity = "0";
   }
 
-
+  //Class for creating template html elements like new class listings
   class HTMLElementCreator {
 
     classListDisplay = null;
@@ -84,16 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   }
 
-
-
-
-
-
-
-
-
-
-
+  
 
   closeClassInfoButton.addEventListener("click", function(){
     closeClassInfoBox();
