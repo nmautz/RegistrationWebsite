@@ -66,7 +66,6 @@
   
   
   
-  
   }
 
 
@@ -85,6 +84,33 @@ fetch("classes.json").then(response => response.json()).then( function(jsonData)
 
 //everything in here runs after the html website has been loaded
 document.addEventListener('DOMContentLoaded', function() {
+
+//for dropdown
+  fetch("listOfMajors.txt").then(response => response.text()).then(function(listOfMajorsData){
+    
+    var major = ""
+    for (var i = 0; i < listOfMajorsData.length; ++i)
+    { 
+      if(listOfMajorsData[i] == "\n")
+      {
+        const dropdownUI = document.getElementById("dropDown")
+        const aElement = document.createElement("a")
+        const text = document.createTextNode(major)
+        aElement.appendChild(text)
+        dropdownUI.insertAdjacentElement("beforeend",aElement)
+        major = ""
+      }else
+      {
+        major += listOfMajorsData[i]
+      }
+      
+    }
+  })
+
+
+
+
+
 
   /*Get references for UI objects*/
   const closeClassInfoButton = document.getElementById("close-class-info-display-button");
