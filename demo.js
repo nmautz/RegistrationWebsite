@@ -1,42 +1,25 @@
 
 
-
-//Fetches the json file with classlist. when the data is ready the inside code will execute, while waiting it will continue
-classesList = null
-
-fetch("classes.json").then(response => response.json()).then( function(jsonData){
-  classesList = jsonData["data"]
-})
-
-
-function getClassById(id)
-{
-
-
-  for(i = 0; i < classesList.length; ++i){
-    if(classesList[i].id == id){
-      return classesList[i];
-    }
-  }
-
-}
-
-
-
-//everything in here runs after the html website has been loaded
-document.addEventListener('DOMContentLoaded', function() {
-
-
-  /*Get references for UI objects*/
-  const classList = document.getElementsByClassName("class-display");
-  const classInfoDisplay = document.getElementById("class-info-display");
-  const closeClassInfoButton = document.getElementById("close-class-info-display-button");
-  const addClassButton = document.getElementById("add-class-button")
-  const classInfoDisplayName = document.getElementById("class-name-info-display")
-  
-
   /*Basic Functions*/
+  
+  
+  function getClassById(id)
+  {
+
+
+    for(i = 0; i < classesList.length; ++i){
+      if(classesList[i].id == id){
+        return classesList[i];
+      }
+    }
+
+  }
+  
   function openClassInfoBox(id){
+
+    const classInfoDisplay = document.getElementById("class-info-display");
+    const classInfoDisplayName = document.getElementById("class-name-info-display") 
+
     classInfoDisplay.setAttribute("style", "flex: 2;");
     classInfoDisplay.style.opacity = "1";
 
@@ -47,9 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function closeClassInfoBox(){
+    const classInfoDisplay = document.getElementById("class-info-display");
     classInfoDisplay.setAttribute("style", "flex: 0;");
     classInfoDisplay.style.opacity = "0";
   }
+
 
   //Class for creating template html elements like new class listings
   class HTMLElementCreator {
@@ -84,7 +69,28 @@ document.addEventListener('DOMContentLoaded', function() {
   
   }
 
+
+
+
+//Fetches the json file with classlist. when the data is ready the inside code will execute, while waiting it will continue
+classesList = null
+
+fetch("classes.json").then(response => response.json()).then( function(jsonData){
+  classesList = jsonData["data"]
+})
+
+
+
+
+
+//everything in here runs after the html website has been loaded
+document.addEventListener('DOMContentLoaded', function() {
+
+  /*Get references for UI objects*/
+  const closeClassInfoButton = document.getElementById("close-class-info-display-button");
+  const addClassButton = document.getElementById("add-class-button")
   
+
 
   closeClassInfoButton.addEventListener("click", function(){
     closeClassInfoBox();
