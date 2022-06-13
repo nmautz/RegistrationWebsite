@@ -2,7 +2,61 @@
 
   /*Basic Functions*/
   
+
+
+  // for search bar
+
+  var majorsArr = []
+
+  window.onload=function(){
+    const input = document.getElementById("studyInput")
+    input.addEventListener('keyup',updateValue)
   
+    function updateValue()
+    {   
+      var targetNum = 0  
+      const getInput = document.getElementById("studyInput").value
+      targetNum = setDropdown(getInput)
+
+      const elements1 = document.querySelectorAll(`[id^="a"]`)
+      console.log(targetNum)
+      for (var i = 0; i < elements1.length - targetNum - 1; ++i)
+      {
+        const element = document.getElementById("a")
+        element.remove()
+      }
+    }  
+
+    function setDropdown(fieldOfStudy)
+    {
+      var count = 0
+      for(var i = 0; i < majorsArr.length; ++i)
+      {
+        if (majorsArr[i].includes(fieldOfStudy))
+        {
+          addDropDown(majorsArr[i])
+          count++
+        } 
+
+      }
+      return count
+    }
+  
+    function addDropDown(fieldOfStudy)
+    {
+      const dropdownUI = document.getElementById("dropDown")
+      const aElement = document.createElement("a")
+      aElement.id = "a"
+      const text = document.createTextNode(fieldOfStudy)
+      aElement.appendChild(text)
+      dropdownUI.insertAdjacentElement("beforeend",aElement)
+    }
+  }
+
+
+
+
+
   function getClassById(id)
   {
 
@@ -80,12 +134,11 @@ fetch("classes.json").then(response => response.json()).then( function(jsonData)
 
 
 
-
-
 //everything in here runs after the html website has been loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-//for dropdown
+
+  //stores text document with majors for dropdown in majorsArray[]
   fetch("listOfMajors.txt").then(response => response.text()).then(function(listOfMajorsData){
     
     var major = ""
@@ -93,17 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
     { 
       if(listOfMajorsData[i] == "\n")
       {
-        const dropdownUI = document.getElementById("dropDown")
-        const aElement = document.createElement("a")
-        const text = document.createTextNode(major)
-        aElement.appendChild(text)
-        dropdownUI.insertAdjacentElement("beforeend",aElement)
+        majorsArr.push(major)
         major = ""
       }else
       {
         major += listOfMajorsData[i]
       }
-      
     }
   })
 
