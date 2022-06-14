@@ -48,6 +48,9 @@ function search_class(class_search_query)
 }
 
 
-var sec = new class_search_query("NURS", 403)
+var sec = new class_search_query()
 
 search_class(sec)
+
+
+
