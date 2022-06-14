@@ -8,11 +8,11 @@ fetch("listOfMajors.txt").then(response => response.text()).then(function(listOf
     { 
         if(listOfMajorsData[i] == "\n")
         {
-        majorsArr.push(major)
-        major = ""
+          majorsArr.push(major)
+          major = ""
         }else
         {
-        major += listOfMajorsData[i]
+          major += listOfMajorsData[i]
         }
     }
 })
