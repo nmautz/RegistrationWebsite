@@ -4,8 +4,12 @@ document.addEventListener("DOMContentLoaded", function(){
   continue_btn.addEventListener("click", function(){
 
 
+    const subject_input = document.getElementById("subject_input")
+    const courseNumber_input = document.getElementById("courseNumber_input")
 
-    var sec = new class_search_query("ACCT","260")
+
+    console.log(courseNumber_input.value)
+    var sec = new class_search_query(subject_input.value,courseNumber_input.value)
     //TODO manage cookies somehow
     secJSON = JSON.stringify(sec)
 

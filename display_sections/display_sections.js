@@ -3,7 +3,7 @@
 function addClassSection(section, parent){
 
   const divElement = document.createElement("div")
-  const textNode = document.createTextNode(section.subject + section.courseNumber + " Prof:" + section.professorName)//
+  const textNode = document.createTextNode(section.subject + section.courseNumber + " " + section.courseTitle + " " +section.professorName)//
   divElement.appendChild(textNode)
   parent.insertAdjacentElement("beforeend",divElement)
 
@@ -12,9 +12,9 @@ function addClassSection(section, parent){
 }
 
 function checkClass(query, class_section){
-  if (class_section.subject != query.subject && query.subject != null)
+  if (class_section.subject != query.subject && query.subject != "")
     return false
-  if (class_section.courseNumber != query.courseNumber && query.courseNumber != null)
+  if (class_section.courseNumber != query.courseNumber && query.courseNumber != "")
     return false
   return true
 
