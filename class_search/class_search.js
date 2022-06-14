@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-    var sec = new class_search_query("ACCT")
+    var sec = new class_search_query("ACCT","260")
     //TODO manage cookies somehow
     secJSON = JSON.stringify(sec)
 
