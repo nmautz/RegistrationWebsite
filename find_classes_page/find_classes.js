@@ -175,7 +175,6 @@ function search_class(class_search_query)
 
 
   }
-  console.log(section_data)
   return section_data
 
 
