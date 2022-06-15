@@ -78,6 +78,7 @@ function addClassSection(section, parent){
   middle_display.appendChild(middle_week_display)
 
   //Weekday box
+  week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
   week_symbols = ['S','M','T','W','T','F','S']
   for(var i = 0; i < 7; ++i)
   {
@@ -87,6 +88,14 @@ function addClassSection(section, parent){
 
     const weekday_box_p = document.createElement("p")
     weekday_box_p.classList.add("weekday-box-text")
+    //Coloring
+    if(week_days[i] == "true")
+    {
+      weekday_box_div.classList.add("class_on_this_day_weekday_color")
+    }
+
+
+
     weekday_box_p.appendChild(document.createTextNode(week_symbols[i]))//TODO coloring
     weekday_box_div.appendChild(weekday_box_p)
   }

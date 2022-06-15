@@ -148,3 +148,8 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
+
+.class_on_this_day_weekday_color {
+
+  background-color: green;
+}
