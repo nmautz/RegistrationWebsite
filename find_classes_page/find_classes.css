@@ -43,6 +43,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  padding-left: 20px;
+  padding-right: 8px;
 }
 
 .section-middle-text-display {
@@ -133,4 +135,16 @@ body {
 .attributes-list-display{
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+
+.occupancy-display {
+
+  padding-bottom: 20px;
+}
+
+.occupancy-info-text{
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
