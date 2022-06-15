@@ -20,12 +20,29 @@
 }
 
 .section-display {
-  text-align: center;
-  border-width: 1px;
-  border-style: solid;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
 
+}
+
+.section-middle-display {
+  flex:2;
+}
+
+.section-middle-text-display {
+
+}
+
+
+.section-hours-text,
+.professor-name-text,
+.subject-courseNumber-text,
+.course-title-text {
+  text-align: center;
+}
+
+
+
+.section-right-display {
+  flex:1;
 }
