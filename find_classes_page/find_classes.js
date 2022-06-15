@@ -7,6 +7,23 @@ fetch("/classes.json").then(response => response.json()).then( function(jsonData
 })
 
 
+function parse_time(str){
+  var hours = str.substring(0,2)
+
+  if(parseInt(hours) < 12){
+
+
+    var am_pm = "AM"
+  }else{
+    var am_pm = "PM"
+    hours = String(parseInt(hours) - 12)
+  }
+  str = hours + ":" + str.substring(2,4) + am_pm
+  return str
+
+}
+
+
 function addClassSection(section, parent){
 
 
@@ -48,7 +65,10 @@ function addClassSection(section, parent){
 
   const section_hours_text = document.createElement("p")
   section_hours_text.classList.add("section-hours-text")
-  section_hours_text.appendChild(document.createTextNode("9:45AM-10:45AM"))//TODO unhardcode this
+  //Format time
+  var beginTime = parse_time(String(section.beginTime))
+  var endTime = parse_time(String(section.endTime))
+  section_hours_text.appendChild(document.createTextNode(beginTime + "-" + endTime))//TODO unhardcode this
   middle_text_display.appendChild(section_hours_text)
 
 
