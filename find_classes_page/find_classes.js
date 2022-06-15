@@ -112,7 +112,7 @@ function addClassSection(section, parent){
   //Occupancy info text
   const occupancy_info_text = document.createElement("p")
   occupancy_info_text.classList.add("occupancy-info-text")
-  occupancy_info_text.appendChild(document.createTextNode("27/36 Available")) //TODO fix filler
+  occupancy_info_text.appendChild(document.createTextNode(section.seatsAvailable + "/" + section.maximumEnrollment +" Available"))
   occupancy_dispay.appendChild(occupancy_info_text)
 
 
