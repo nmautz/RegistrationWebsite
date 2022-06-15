@@ -68,7 +68,7 @@ function addClassSection(section, parent){
   //Format time
   var beginTime = parse_time(String(section.beginTime))
   var endTime = parse_time(String(section.endTime))
-  section_hours_text.appendChild(document.createTextNode(beginTime + "-" + endTime))//TODO unhardcode this
+  section_hours_text.appendChild(document.createTextNode(beginTime + "-" + endTime))
   middle_text_display.appendChild(section_hours_text)
 
 
@@ -96,7 +96,7 @@ function addClassSection(section, parent){
 
 
 
-    weekday_box_p.appendChild(document.createTextNode(week_symbols[i]))//TODO coloring
+    weekday_box_p.appendChild(document.createTextNode(week_symbols[i]))
     weekday_box_div.appendChild(weekday_box_p)
   }
 
