@@ -1,0 +1,23 @@
+.content {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.search-parameters-container {
+  flex:1;
+}
+
+.classes-list-containter {
+  flex:1;
+
+}
+
+.text-input {
+  display: block;
+  margin: auto;
+}
+
+.section-display {
+  text-align: center;
+}
