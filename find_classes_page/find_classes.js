@@ -12,11 +12,18 @@ function parse_time(str){
 
   if(parseInt(hours) < 12){
 
-
     var am_pm = "AM"
   }else{
     var am_pm = "PM"
-    hours = String(parseInt(hours) - 12)
+
+    if(hours == "12")
+    {
+      hours = "1"
+    }else{
+      hours = String(parseInt(hours) - 12)
+    }
+
+    
   }
   str = hours + ":" + str.substring(2,4) + am_pm
   return str
