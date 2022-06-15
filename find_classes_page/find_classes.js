@@ -67,7 +67,7 @@ function addClassSection(section, parent){
 
     const weekday_box_p = document.createElement("p")
     weekday_box_p.classList.add("weekday-box-text")
-    weekday_box_p.appendChild(document.createTextNode(week_symbols[i]))
+    weekday_box_p.appendChild(document.createTextNode(week_symbols[i]))//TODO coloring
     weekday_box_div.appendChild(weekday_box_p)
   }
 
@@ -95,7 +95,7 @@ function addClassSection(section, parent){
   //Attributes list item text TODO DO FOR EACH ATTRIBUTE
   const attribute_list_item_p = document.createElement("p")
   attribute_list_item_p.classList.add("attribute-text")
-  attribute_list_item_p.appendChild(document.createTextNode("ELEC"))
+  attribute_list_item_p.appendChild(document.createTextNode("ELEC")) //TODO FILLER
   attributes_display.appendChild(attribute_list_item_p)
 
   //Occupancy display
@@ -112,7 +112,7 @@ function addClassSection(section, parent){
   //Occupancy info text
   const occupancy_info_text = document.createElement("p")
   occupancy_info_text.classList.add("occupancy-info-text")
-  occupancy_info_text.appendChild(document.createTextNode("27/36 Available"))
+  occupancy_info_text.appendChild(document.createTextNode("27/36 Available")) //TODO fix filler
   occupancy_dispay.appendChild(occupancy_info_text)
 
 
