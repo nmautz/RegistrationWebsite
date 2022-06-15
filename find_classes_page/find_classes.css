@@ -1,6 +1,12 @@
+body {
+  font-family: Arial;
+}
+
+
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  row-gap: 15px;
 
 }
 
@@ -10,6 +16,8 @@
 
 .classes-list-containter {
   flex:1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 
 }
 
@@ -19,5 +27,102 @@
 }
 
 .section-display {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+
+
 }
+
+.section-middle-display {
+  flex:2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section-middle-text-display {
+
+}
+
+
+.section-hours-text,
+.professor-name-text,
+.subject-courseNumber-text,
+.course-title-text {
+  text-align: center;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.course-title-text{
+  font-size: large;
+}
+
+.professor-name-text,
+.section-hours-text {
+  font-size: small;
+}
+
+.section-middle-week-display {
+  display:flex;
+  width: 30%; 
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  justify-content: center;
+}
+
+
+.weekday-box-display {
+  border-width: 1px;
+  border-style: solid;
+  padding-left: 5px;
+  padding-right: 5px;
+
+
+
+}
+.weekday-box-text {
+  text-align: center;
+  margin-bottom: 3px;
+  margin-top: 3px;
+
+}
+
+
+
+.section-right-display {
+  flex:1;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.attributes-display{
+
+}
+
+.occupancy-title-text,
+.attributes-title-text {
+  text-align: center;
+  border: 0px;
+  border-bottom: 1px;
+  border-style: solid;
+}
+
+.occupancy-info-text,
+.attribute-text {
+  text-align: center;
+  font-size: small;
+}
+

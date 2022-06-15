@@ -12,6 +12,7 @@ function addClassSection(section, parent){
     const divElement = document.createElement("div")
     const textNode = document.createTextNode(section.subject + section.courseNumber + " " + section.courseTitle + " " +section.professorName)//
     divElement.appendChild(textNode)
+    divElement.classList.add("section-display")
     parent.insertAdjacentElement("beforeend",divElement)
   
   

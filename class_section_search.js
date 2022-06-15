@@ -17,4 +17,3 @@ class class_search_query{
 
 
 
-
