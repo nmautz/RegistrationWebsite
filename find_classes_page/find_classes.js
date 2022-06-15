@@ -92,11 +92,25 @@ function addClassSection(section, parent){
   attributes_list_display.classList.add("attributes-list-display")
   attributes_display.appendChild(attributes_list_display)
 
-  //Attributes list item text TODO DO FOR EACH ATTRIBUTE
-  const attribute_list_item_p = document.createElement("p")
-  attribute_list_item_p.classList.add("attribute-text")
-  attribute_list_item_p.appendChild(document.createTextNode("ELEC")) //TODO FILLER
-  attributes_display.appendChild(attribute_list_item_p)
+
+
+  //Attributes list item text 
+  for(var i = 0; i < section.attributeCodes.length; ++i){
+
+    const attribute_list_item_p = document.createElement("p")
+    attribute_list_item_p.classList.add("attribute-text")
+  
+  
+    attribute_list_item_p.appendChild(document.createTextNode(section.attributeCodes[i]))
+  
+  
+    attributes_list_display.appendChild(attribute_list_item_p)
+
+  }
+
+
+
+  //-----------------
 
   //Occupancy display
   const occupancy_dispay = document.createElement("div")

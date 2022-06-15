@@ -42,7 +42,7 @@ body {
   flex:2;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .section-middle-text-display {
@@ -124,5 +124,11 @@ body {
 .attribute-text {
   text-align: center;
   font-size: small;
+  display: inline-block;
 }
 
+
+.attributes-list-display{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
