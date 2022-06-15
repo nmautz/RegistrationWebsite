@@ -98,6 +98,22 @@ function addClassSection(section, parent){
   attribute_list_item_p.appendChild(document.createTextNode("ELEC"))
   attributes_display.appendChild(attribute_list_item_p)
 
+  //Occupancy display
+  const occupancy_dispay = document.createElement("div")
+  occupancy_dispay.classList.add("occupancy-display")
+  right_display.appendChild(occupancy_dispay)
+
+  //Occupancy title text
+  const occupancy_title_text = document.createElement("p")
+  occupancy_title_text.classList.add("occupancy-title-text")
+  occupancy_title_text.appendChild(document.createTextNode("Occupancy"))
+  occupancy_dispay.appendChild(occupancy_title_text)
+
+  //Occupancy info text
+  const occupancy_info_text = document.createElement("p")
+  occupancy_info_text.classList.add("occupancy-info-text")
+  occupancy_info_text.appendChild(document.createTextNode("27/36 Available"))
+  occupancy_dispay.appendChild(occupancy_info_text)
 
 
   
