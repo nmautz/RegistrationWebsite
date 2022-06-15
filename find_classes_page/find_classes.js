@@ -78,10 +78,25 @@ function addClassSection(section, parent){
 
   //Attributes display
   const attributes_display = document.createElement("div")
-  right_display.classList.add("section-right-display")
-  section_display.appendChild(right_display)
+  attributes_display.classList.add("attributes-display")
+  right_display.appendChild(attributes_display)
   
+  //Attributes title text
+  const attributes_title_text = document.createElement("p")
+  attributes_title_text.classList.add("attributes-title-text")
+  attributes_title_text.appendChild(document.createTextNode("Attributes"))
+  attributes_display.appendChild(attributes_title_text)
 
+  //Attributes list display
+  const attributes_list_display = document.createElement("div")
+  attributes_list_display.classList.add("attributes-list-display")
+  attributes_display.appendChild(attributes_list_display)
+
+  //Attributes list item text TODO DO FOR EACH ATTRIBUTE
+  const attribute_list_item_p = document.createElement("p")
+  attribute_list_item_p.classList.add("attribute-text")
+  attribute_list_item_p.appendChild(document.createTextNode("ELEC"))
+  attributes_display.appendChild(attribute_list_item_p)
 
 
 
