@@ -7,9 +7,7 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
-  width: 30%;
-  margin-left: auto;
-  margin-right: auto;
+
 
 }
 
@@ -40,7 +38,18 @@ body {
   margin-left: 5px;
   margin-right: 5px;
   background-color: rgb(238, 238, 247);
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
 
+  transition: all 200ms ease-in-out;
+
+
+}
+
+
+.section-display:hover {
+  cursor: pointer;
 
 }
 

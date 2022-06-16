@@ -42,6 +42,14 @@ function addClassSection(section, parent){
   const section_display = document.createElement("div")
   section_display.classList.add("section-display")
   parent.appendChild(section_display)
+
+  section_display.addEventListener("click", function(){
+    section_display.style.width = "100%"
+
+
+
+  })
+
   
   //Middle display
   const middle_display = document.createElement("div")
