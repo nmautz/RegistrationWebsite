@@ -30,7 +30,7 @@ body {
 
 .section-display {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;
@@ -112,6 +112,10 @@ body {
   padding-right: 5px;
   margin-top: 5px;
   margin-right: 5px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .attributes-display{
