@@ -18,10 +18,10 @@ function parse_time(str){
   }else{
     var am_pm = "PM"
 
-    if(hours == "12")
-    {
-      hours = "1"
+    if(hours == "12"){
+      hours = String(parseInt(hours))
     }else{
+
       hours = String(parseInt(hours) - 12)
     }
 
