@@ -124,9 +124,10 @@ body {
 .occupancy-title-text,
 .attributes-title-text {
   text-align: center;
-  border: 0px;
-  border-bottom: 1px;
-  border-style: solid;
+
+  font-size: small;
+  margin-top: 15px;
+  margin-bottom: 7px;
 
 }
 
@@ -142,10 +143,10 @@ body {
 
 
 .attributes-list-display{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  justify-items: center;
-  align-items: center;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  justify-content: center;
 }
 
 

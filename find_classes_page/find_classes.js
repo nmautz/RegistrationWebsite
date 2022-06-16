@@ -118,13 +118,13 @@ function addClassSection(section, parent){
   const attributes_display = document.createElement("div")
   attributes_display.classList.add("attributes-display")
   right_display.appendChild(attributes_display)
-  /*
+  
   //Attributes title text
   const attributes_title_text = document.createElement("p")
   attributes_title_text.classList.add("attributes-title-text")
   attributes_title_text.appendChild(document.createTextNode("Attributes"))
   attributes_display.appendChild(attributes_title_text)
-*/
+
   //Attributes list display
   const attributes_list_display = document.createElement("div")
   attributes_list_display.classList.add("attributes-list-display")
