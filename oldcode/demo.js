@@ -57,9 +57,9 @@ function closeClassInfoBox(){
 
 //Fetches the json file with classlist. when the data is ready the inside code will execute, while waiting it will continue
 
-fetch("classes.json").then(response => response.json()).then( function(jsonData){
-  classesList = jsonData["data"]
-})
+// fetch("classes.json").then(response => response.json()).then( function(jsonData){
+//   classesList = jsonData["data"]
+// })
 
 
 //everything in here runs after the html website has been loaded
