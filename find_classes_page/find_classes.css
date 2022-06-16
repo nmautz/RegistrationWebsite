@@ -7,6 +7,9 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
@@ -18,8 +21,7 @@ body {
   flex:1;
   display: grid;
   grid-template-columns: 1fr;
-  margin-right: 300px;
-  margin-left: 300px;
+  width: 100%;
 
 }
 
@@ -49,7 +51,7 @@ body {
   justify-content: space-evenly;
   padding-left: 20px;
   padding-right: 8px;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 .section-middle-text-display {
@@ -67,9 +69,11 @@ body {
 }
 
 .course-title-text{
-  font-size: large;
+  font-size: x-large;
 }
-
+.subject-courseNumber-text {
+  font-size: medium;
+}
 .professor-name-text,
 .section-hours-text {
   font-size: small;
@@ -109,7 +113,6 @@ body {
   border-radius: 10px;
   padding-left: 5px;
   padding-right: 5px;
-  margin-top: 5px;
   margin-right: 5px;
   width: 50%;
   margin-left: auto;
@@ -126,8 +129,8 @@ body {
   text-align: center;
 
   font-size: small;
-  margin-top: 15px;
-  margin-bottom: 7px;
+  margin-top: 8px;
+  margin-bottom: 3px;
 
 }
 
