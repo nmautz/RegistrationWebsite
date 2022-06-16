@@ -33,26 +33,27 @@ function parse_time(str){
 }
 
 
+function createDivElement(parent, class_string){
+  const divElement = document.createElement("div")
+  divElement.classList.add(class_string)
+  parent.appendChild(divElement)
+  return divElement
+}
+
 function addClassSection(section, parent){
 
 
 
 
   //Create section
-  const section_display = document.createElement("div")
-  section_display.classList.add("section-display")
-  parent.appendChild(section_display)
+  const section_display = createDivElement(parent,"section-display")
   
   //Middle display
-  const middle_display = document.createElement("div")
-  middle_display.classList.add("section-middle-display")
-  section_display.appendChild(middle_display)
+  const middle_display = createDivElement(section_display, "section-middle-display")
 
   //Middle text display
 
-  const middle_text_display = document.createElement("div")
-  middle_text_display.classList.add("section-middle-text-display")
-  middle_display.appendChild(middle_text_display)
+  const middle_text_display = createDivElement(middle_display, "section-middle-text-display")
 
 
   //Text elements for middle display
@@ -82,10 +83,7 @@ function addClassSection(section, parent){
 
 
   //Middle week display
-  const middle_week_display = document.createElement("div")
-  middle_week_display.classList.add("section-middle-week-display")
-  middle_display.appendChild(middle_week_display)
-
+  const middle_week_display = createDivElement(middle_display, "section-middle-week-display")
   //Weekday box
   week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
   week_symbols = ['S','M','T','W','T','F','S']
@@ -110,14 +108,10 @@ function addClassSection(section, parent){
   }
 
   //Right display
-  const right_display = document.createElement("div")
-  right_display.classList.add("section-right-display")
-  section_display.appendChild(right_display)
+  const right_display = createDivElement(section_display, "section-right-display")
 
   //Attributes display
-  const attributes_display = document.createElement("div")
-  attributes_display.classList.add("attributes-display")
-  right_display.appendChild(attributes_display)
+  const attributes_display = createDivElement(right_display, "attributes-display")
   
   //Attributes title text
   const attributes_title_text = document.createElement("p")
@@ -126,11 +120,7 @@ function addClassSection(section, parent){
   attributes_display.appendChild(attributes_title_text)
 
   //Attributes list display
-  const attributes_list_display = document.createElement("div")
-  attributes_list_display.classList.add("attributes-list-display")
-  attributes_display.appendChild(attributes_list_display)
-
-
+  const attributes_list_display = createDivElement(attributes_display, "attributes-list-display")
 
   //Attributes list item text 
   for(var i = 0; i < section.attributeCodes.length; ++i){
@@ -151,9 +141,7 @@ function addClassSection(section, parent){
   //-----------------
 
   //Occupancy display
-  const occupancy_dispay = document.createElement("div")
-  occupancy_dispay.classList.add("occupancy-display")
-  right_display.appendChild(occupancy_dispay)
+  const occupancy_dispay = createDivElement(right_display, "occupancy-display")
 /*
   //Occupancy title text
   const occupancy_title_text = document.createElement("p")
