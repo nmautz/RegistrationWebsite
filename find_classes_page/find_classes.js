@@ -40,6 +40,16 @@ function createDivElement(parent, class_string){
   return divElement
 }
 
+function createPTextElement(parent, class_string, text_string){
+  const pElement = document.createElement("p")
+  pElement.classList.add(class_string)
+  pElement.appendChild(document.createTextNode(text_string))
+  parent.appendChild(pElement)
+  return pElement
+
+
+}
+
 function addClassSection(section, parent){
 
 
@@ -57,29 +67,18 @@ function addClassSection(section, parent){
 
 
   //Text elements for middle display
-  const course_title_text = document.createElement("p")
-  course_title_text.classList.add("course-title-text")
-  course_title_text.appendChild(document.createTextNode(section.courseTitle))
-  middle_text_display.appendChild(course_title_text)
+  const course_title_text = createPTextElement(middle_text_display, "course-title-text", section.courseTitle)
+
+  const subject_courseNumber_text = createPTextElement(middle_text_display, "subject-courseNumber-text", section.subject + section.courseNumber)
+
+  const professor_name_text = createPTextElement(middle_text_display, "professor-name-text", section.professorName)
 
 
-  const subject_courseNumber_text = document.createElement("p")
-  subject_courseNumber_text.classList.add("subject-courseNumber-text")
-  subject_courseNumber_text.appendChild(document.createTextNode(section.subject + section.courseNumber))
-  middle_text_display.appendChild(subject_courseNumber_text)
-
-  const professor_name_text = document.createElement("p")
-  professor_name_text.classList.add("professor-name-text")
-  professor_name_text.appendChild(document.createTextNode(section.professorName))
-  middle_text_display.appendChild(professor_name_text)
-
-  const section_hours_text = document.createElement("p")
-  section_hours_text.classList.add("section-hours-text")
-  //Format time
+  //Format time for section hours text
   var beginTime = parse_time(String(section.beginTime))
   var endTime = parse_time(String(section.endTime))
-  section_hours_text.appendChild(document.createTextNode(beginTime + "-" + endTime))
-  middle_text_display.appendChild(section_hours_text)
+
+  const section_hours_text = createPTextElement(middle_text_display, "section-hours-text", beginTime + "-" + endTime)
 
 
   //Middle week display
@@ -114,10 +113,8 @@ function addClassSection(section, parent){
   const attributes_display = createDivElement(right_display, "attributes-display")
   
   //Attributes title text
-  const attributes_title_text = document.createElement("p")
-  attributes_title_text.classList.add("attributes-title-text")
-  attributes_title_text.appendChild(document.createTextNode("Attributes"))
-  attributes_display.appendChild(attributes_title_text)
+  const attributes_title_text = createPTextElement(attributes_display, "attributes-title-text", "Attributes")
+
 
   //Attributes list display
   const attributes_list_display = createDivElement(attributes_display, "attributes-list-display")
@@ -125,14 +122,7 @@ function addClassSection(section, parent){
   //Attributes list item text 
   for(var i = 0; i < section.attributeCodes.length; ++i){
 
-    const attribute_list_item_p = document.createElement("p")
-    attribute_list_item_p.classList.add("attribute-text")
-  
-  
-    attribute_list_item_p.appendChild(document.createTextNode(section.attributeCodes[i]))
-  
-  
-    attributes_list_display.appendChild(attribute_list_item_p)
+    const attribute_list_item_p = createPTextElement(attributes_list_display, "attribute-text", section.attributeCodes[i])
 
   }
 
@@ -150,11 +140,7 @@ function addClassSection(section, parent){
   occupancy_dispay.appendChild(occupancy_title_text)
 */
   //Occupancy info text
-  const occupancy_info_text = document.createElement("p")
-  occupancy_info_text.classList.add("occupancy-info-text")
-  occupancy_info_text.appendChild(document.createTextNode(section.seatsAvailable + "/" + section.maximumEnrollment +" Available"))
-  occupancy_dispay.appendChild(occupancy_info_text)
-
+  const occupancy_info_text = createPTextElement(occupancy_dispay, "occupancy-info-text",section.seatsAvailable + "/" + section.maximumEnrollment +" Available" )
 
   
 }
