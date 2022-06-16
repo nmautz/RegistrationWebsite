@@ -44,7 +44,17 @@ function addClassSection(section, parent){
   parent.appendChild(section_display)
 
   section_display.addEventListener("click", function(){
-    section_display.style.width = "100%"
+
+    if(section_display.style.width != "100%")
+    {
+      section_display.style.width = "100%"
+
+
+    }else{
+      section_display.style.width = "30%"
+    }
+
+
 
 
 
