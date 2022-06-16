@@ -7,9 +7,10 @@ var majorsArr = []
 
 //stores text document with majors for dropdown in majorsArray[]
 fetch("listOfMajors.txt").then(response => response.text()).then(function(listOfMajorsData){
-
+    if(majorsArr.length == 0)
+    {
     var major = ""
-    for (var i = 0; i < listOfMajorsData.length; ++i)
+    for (var i = 0; i <= listOfMajorsData.length; ++i)
     { 
         if(listOfMajorsData[i] == "\n")
         {
@@ -20,9 +21,10 @@ fetch("listOfMajors.txt").then(response => response.text()).then(function(listOf
           major += listOfMajorsData[i]
         }
     }
+  }
 })
 
-
+var testKey = []
 //is called every time click is made (inefficient)
 var majorsArrKey = []
 function setMajorsKey()
@@ -34,7 +36,6 @@ function setMajorsKey()
     {
       majorsArrKey.push(classesList[i].subjectDescription)
     }  
-    
   }
 }
 
@@ -54,13 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownUI.style.display = "block"
         dropdown.style.display = "block"    
         updateValue()
-      
-
-
     })
-
-
-
 })
 
 
@@ -118,7 +113,7 @@ function setDropdown(fieldOfStudy)
     //if the entry is a substring and the input is not empty, an element is created
     if (majorsArr[i].includes(fieldOfStudy) && !isValEmpty('studyInput'))
     {
-      addDropDown(majorsArr[i])
+      addDropDown(majorsArr[i],majorsArrKey[i])
       count++
     } 
 
@@ -126,19 +121,27 @@ function setDropdown(fieldOfStudy)
   return count
 }
 
-function addDropDown(fieldOfStudy)
+function addDropDown(fieldOfStudy,key)
 {
   const dropdownUI = document.getElementById("dropDown")
   const aElement = document.createElement("a")
   aElement.id = "a"
-  aElement.data = "b"
+  aElement.data = key
   const text = document.createTextNode(fieldOfStudy)
   aElement.appendChild(text)
+  aElement.addEventListener("click", function(){
+    selection(aElement.data,aElement.text)
+
+
+  })
   dropdownUI.insertAdjacentElement("beforeend",aElement)
+
 }
 
 
-function replyClick(word)
+function selection(data,text)
 {
-  console.log("here")
+    console.log(data)
+    const element = document.getElementByData
+    document.getElementById("studyInput").value = text
 }
