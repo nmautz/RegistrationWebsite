@@ -53,6 +53,13 @@ body {
 
 }
 
+
+.section-card-content {
+  width:100%;
+  transition: all 200ms ease-in-out;
+}
+
+
 .section-middle-display {
   flex:2;
   display: flex;

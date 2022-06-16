@@ -48,10 +48,12 @@ function addClassSection(section, parent){
     if(section_display.style.width != "100%")
     {
       section_display.style.width = "100%"
+      sec_card_content.style.width = "30%"
 
 
     }else{
       section_display.style.width = "30%"
+      sec_card_content.style.width = "100%"
     }
 
 
@@ -60,11 +62,17 @@ function addClassSection(section, parent){
 
   })
 
-  
+
+  //Section Card Content
+  const sec_card_content = document.createElement("div")
+  sec_card_content.classList.add("section-card-content")
+  section_display.appendChild(sec_card_content)
+
+
   //Middle display
   const middle_display = document.createElement("div")
   middle_display.classList.add("section-middle-display")
-  section_display.appendChild(middle_display)
+  sec_card_content.appendChild(middle_display)
 
   //Middle text display
 
@@ -130,7 +138,7 @@ function addClassSection(section, parent){
   //Right display
   const right_display = document.createElement("div")
   right_display.classList.add("section-right-display")
-  section_display.appendChild(right_display)
+  sec_card_content.appendChild(right_display)
 
   //Attributes display
   const attributes_display = document.createElement("div")
