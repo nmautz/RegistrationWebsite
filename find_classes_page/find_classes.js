@@ -118,13 +118,13 @@ function addClassSection(section, parent){
   const attributes_display = document.createElement("div")
   attributes_display.classList.add("attributes-display")
   right_display.appendChild(attributes_display)
-  
+  /*
   //Attributes title text
   const attributes_title_text = document.createElement("p")
   attributes_title_text.classList.add("attributes-title-text")
   attributes_title_text.appendChild(document.createTextNode("Attributes"))
   attributes_display.appendChild(attributes_title_text)
-
+*/
   //Attributes list display
   const attributes_list_display = document.createElement("div")
   attributes_list_display.classList.add("attributes-list-display")
@@ -154,13 +154,13 @@ function addClassSection(section, parent){
   const occupancy_dispay = document.createElement("div")
   occupancy_dispay.classList.add("occupancy-display")
   right_display.appendChild(occupancy_dispay)
-
+/*
   //Occupancy title text
   const occupancy_title_text = document.createElement("p")
   occupancy_title_text.classList.add("occupancy-title-text")
   occupancy_title_text.appendChild(document.createTextNode("Occupancy"))
   occupancy_dispay.appendChild(occupancy_title_text)
-
+*/
   //Occupancy info text
   const occupancy_info_text = document.createElement("p")
   occupancy_info_text.classList.add("occupancy-info-text")
