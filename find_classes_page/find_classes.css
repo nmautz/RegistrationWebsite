@@ -49,6 +49,7 @@ body {
   justify-content: space-evenly;
   padding-left: 20px;
   padding-right: 8px;
+  padding-top: 30px;
 }
 
 .section-middle-text-display {
@@ -105,8 +106,6 @@ body {
 
 .section-right-display {
   flex:1;
-  border-style: solid;
-  border-width: 1px;
   border-radius: 10px;
   padding-left: 5px;
   padding-right: 5px;
@@ -128,6 +127,7 @@ body {
   border: 0px;
   border-bottom: 1px;
   border-style: solid;
+
 }
 
 .occupancy-info-text,
@@ -137,18 +137,21 @@ body {
   display: inline-block;
   margin-top: 5px;
   margin-bottom: 5px;
+  font-size: x-small;
 }
 
 
 .attributes-list-display{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
 }
 
 
 .occupancy-display {
 
-  padding-bottom: 20px;
+
 }
 
 .occupancy-info-text{
