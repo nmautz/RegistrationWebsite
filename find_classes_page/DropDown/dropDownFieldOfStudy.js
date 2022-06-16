@@ -45,24 +45,65 @@ document.addEventListener("DOMContentLoaded", function(){
     const element = document.getElementById("subject-input")
     element.addEventListener('keyup', function updateValue()
     { 
-        console.log("here")
         var targetNum = 0  
-        var getInput = document.getElementById("studyInput").value
+        var getInput = document.getElementById("subject-input").value
         getInput = String(getInput).toUpperCase()
+
         targetNum = setDropdown(getInput)
 
 
-        //removes the number of elements that do not have the substring
-        const elements1 = document.querySelectorAll(`[id^="a"]`)
-        for (var i = 0; i < elements1.length - targetNum - 1; ++i)
-        {
-            const element = document.getElementById("a")
-            element.remove()
-        }
+        // //removes the number of elements that do not have the substring
+        // const elements1 = document.querySelectorAll(`[id^="a"]`)
+        // for (var i = 0; i < elements1.length - targetNum - 1; ++i)
+        // {
+        //     const element = document.getElementById("a")
+        //     element.remove()
+        // }
+
     })  
 
 
 
 })
 
+function setDropdown(fieldOfStudy)
+{
+  var count = 0
+  for(var i = 0; i < majorsArr.length; ++i)
+  {
+    //if the entry is a substring and the input is not empty, an element is created
+    if (majorsArr[i].includes(fieldOfStudy) && !isValEmpty("subject-input"))
+    {
+      addDropDown(majorsArr[i],majorsArrKey[i])
+      count++
+    } 
 
+  }
+  return count
+}
+
+function addDropDown(fieldOfStudy,key)
+{
+  const dropdownUI = document.getElementById("dropDown")
+  const aElement = document.createElement("a")
+  aElement.id = "a"
+  aElement.data = key
+  const text = document.createTextNode(fieldOfStudy)
+  aElement.appendChild(text)
+  aElement.addEventListener("click", function(){
+    selection(aElement.data,aElement.text)
+
+
+  })
+  dropdownUI.insertAdjacentElement("beforeend",aElement)
+
+}
+
+
+function isValEmpty(id)
+{
+  if(document.getElementById(id).value == '')
+    return true
+  else
+    return false
+}
