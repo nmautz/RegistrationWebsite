@@ -43,7 +43,7 @@ function setMajorsKey()
 //actual dropdown code
 document.addEventListener("DOMContentLoaded", function(){
     const element = document.getElementById("subject-input")
-    element.addEventListener('keyup', function updateValue()
+    element.addEventListener('keyup', function()
     { 
         var targetNum = 0  
         var getInput = document.getElementById("subject-input").value
@@ -52,19 +52,38 @@ document.addEventListener("DOMContentLoaded", function(){
         targetNum = setDropdown(getInput)
 
 
-        // //removes the number of elements that do not have the substring
-        // const elements1 = document.querySelectorAll(`[id^="a"]`)
-        // for (var i = 0; i < elements1.length - targetNum - 1; ++i)
-        // {
-        //     const element = document.getElementById("a")
-        //     element.remove()
-        // }
+        //removes the number of elements that do not have the substring
+        const elements1 = document.querySelectorAll(`[id^="a"]`)
+        for (var i = 0; i < elements1.length - targetNum; ++i)
+        {
+            const element = document.getElementById("a")
+            element.remove()
+        }
 
     })  
-
-
-
 })
+
+
+function updateValue()
+{
+    var targetNum = 0  
+    var getInput = document.getElementById("subject-input").value
+    getInput = String(getInput).toUpperCase()
+
+    targetNum = setDropdown(getInput)
+
+
+    //removes the number of elements that do not have the substring
+    const elements1 = document.querySelectorAll(`[id^="a"]`)
+    for (var i = 0; i < elements1.length - targetNum; ++i)
+    {
+        const element = document.getElementById("a")
+        element.remove()
+    }
+   
+  const dropdownUI = document.getElementById("dropDownSubject")
+  dropdownUI.style.display = "block"
+}
 
 function setDropdown(fieldOfStudy)
 {
@@ -84,7 +103,7 @@ function setDropdown(fieldOfStudy)
 
 function addDropDown(fieldOfStudy,key)
 {
-  const dropdownUI = document.getElementById("dropDown")
+  const dropdownUI = document.getElementById("dropDownSubject")
   const aElement = document.createElement("a")
   aElement.id = "a"
   aElement.data = key
@@ -107,3 +126,10 @@ function isValEmpty(id)
   else
     return false
 }
+
+function selection(data,text)
+{
+    console.log(data)
+    document.getElementById("subject-input").value = text
+}
+
