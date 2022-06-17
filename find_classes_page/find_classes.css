@@ -31,6 +31,7 @@ body {
 }
 
 .section-display {
+  position: relative;
   display: flex;
   flex-direction: column;
   border-width: 1px;
@@ -168,4 +169,24 @@ body {
 .class_on_this_day_weekday_color {
 
   background-color: green;
+}
+
+.save-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+
+  /*Look like save ribbon*/
+  border-left: 15px solid rgb(202, 202, 251);
+  border-right: 15px solid rgb(202, 202, 251);
+  border-top: 15px solid rgb(202, 202, 251);
+  border-bottom: 15px solid transparent; /*Creates triangle cut out at bottom of ribbon*/
+  height: 15px;
+
+}
+
+.save-button:hover {
+  cursor: pointer;
+
 }
