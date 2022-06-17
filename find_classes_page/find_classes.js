@@ -63,15 +63,36 @@ function addClassSection(section, parent){
   const save_button = document.createElement("div")
   save_button.classList.add("save-button")
   save_button.appendChild(document.createTextNode(" "))
+
+  if(!is_class_saved(section)){
+    save_button.style.borderColor ="rgb(202, 202, 251)"
+    save_button.style.borderBottomColor = "transparent"
+
+
+
+  }else{
+    save_button.style.borderColor ="gold"
+    save_button.style.borderBottomColor = "transparent"
+  }
+
   save_button.addEventListener("click", function(){
     if(save_button.style.borderColor == "gold gold transparent"){
       save_button.style.borderColor ="rgb(202, 202, 251)"
       save_button.style.borderBottomColor = "transparent"
+      remove_class_by_ID(section.id)
+
+
 
     }else{
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
+      save_class(section)
     }
+
+    console.log(load_classes())
+
+
+
 
 
 
