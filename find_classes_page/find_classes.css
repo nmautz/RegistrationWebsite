@@ -11,15 +11,18 @@ body {
 
 }
 .content-main {
-  display: flex;
-  flex-direction:  row;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  
   transition: all 200ms ease-in-out;
 }
 
 .details-display {
+
+  visibility: hidden;
+  border: 1px;
+  border-style: solid;
   width: 0px;
-  visibility:hidden;
   transition: all 200ms ease-in-out;
   display: inline-block;
 
@@ -30,8 +33,10 @@ body {
 
 .classes-list-containter {
   display: grid;
-  grid-template-columns: 100%;
-  overflow:auto;
+  grid-template-columns: 500px;
+  
+  margin-right: auto;
+  margin-left: auto;
 
 }
 

@@ -42,6 +42,21 @@ function createPTextElement(parent, class_string, text_string){
 
 }
 
+function toggle_details_menu(){
+  const details_display = document.getElementById("details-display")
+
+  if(details_display.style.visibility == "visible"){
+    details_display.style.visibility = "hidden"
+    details_display.style.width = "0px"
+
+  }else{
+    details_display.style.visibility = "visible"
+    details_display.style.width = "50vw"
+
+  }
+}
+
+
 function addClassSection(section, parent){
 
 
@@ -51,17 +66,10 @@ function addClassSection(section, parent){
   const section_display = createDivElement(parent,"section-display")
 
   section_display.addEventListener("click", function(){
-    const details_display = document.getElementById("details-display")
 
-    if(details_display.style.visibility == "visible"){
-      details_display.style.visibility = "hidden"
-      details_display.style.flex = "0"
+    toggle_details_menu()
 
-    }else{
-      details_display.style.visibility = "visible"
-      details_display.style.flex = "3"
-    }
-
+    
     
 
 
