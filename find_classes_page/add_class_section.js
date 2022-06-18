@@ -93,7 +93,7 @@ function addClassSection(section, parent){
     save_button.style.borderBottomColor = "transparent"
   }
 
-  save_button.addEventListener("click", function(){
+  save_button.addEventListener("click", function(e){
     if(save_button.style.borderColor == "gold gold transparent"){
       save_button.style.borderColor ="rgb(202, 202, 251)"
       save_button.style.borderBottomColor = "transparent"
@@ -107,7 +107,7 @@ function addClassSection(section, parent){
       save_class(section)
     }
 
-    console.log(load_classes())
+    e.stopPropagation()
 
 
 
