@@ -51,7 +51,7 @@ function toggle_details_menu(){
 
   }else{
     details_display.style.visibility = "visible"
-    details_display.style.width = "50vw"
+    details_display.style.width = "70vw"
 
   }
 }
@@ -69,7 +69,7 @@ function addClassSection(section, parent){
 
     toggle_details_menu()
 
-    
+
     
 
 
