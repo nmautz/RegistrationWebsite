@@ -48,18 +48,18 @@ function toggle_details_menu(section){
   var current_id = sessionStorage.getItem("current-details-class-id")
   console.log(current_id)
 
-  if(current_id == section.id || current_id == null){
-    if(details_display.style.visibility == "visible" ){
-      details_display.style.visibility = "hidden"
-      details_display.style.width = "0px"
-  
-    }else{
-      details_display.style.visibility = "visible"
-      details_display.style.width = "70vw"
-  
-    }
-    sessionStorage.setItem("current-details-class-id", section.id)
+  if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
+    
+    details_display.style.visibility = "hidden"
+    details_display.style.width = "0px"
+
+  }else{
+    details_display.style.visibility = "visible"
+    details_display.style.width = "70vw"
+
   }
+  sessionStorage.setItem("current-details-class-id", section.id)
+
 
 }
 
