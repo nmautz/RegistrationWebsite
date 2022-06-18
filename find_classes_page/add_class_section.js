@@ -50,6 +50,24 @@ function addClassSection(section, parent){
   //Create section
   const section_display = createDivElement(parent,"section-display")
 
+  section_display.addEventListener("click", function(){
+    const details_display = document.getElementById("details-display")
+
+    if(details_display.style.visibility == "visible"){
+      details_display.style.visibility = "hidden"
+      details_display.style.flex = "0"
+
+    }else{
+      details_display.style.visibility = "visible"
+      details_display.style.flex = "3"
+    }
+
+    
+
+
+
+  })
+
   //Create save button
 
   const save_button = document.createElement("div")

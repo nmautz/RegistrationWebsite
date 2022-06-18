@@ -7,21 +7,31 @@ body {
   display: flex;
   flex-direction: column;
   row-gap: 15px;
-  width: 30%;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: space-between;
 
 }
+.content-main {
+  display: flex;
+  flex-direction:  row;
+  justify-content: space-evenly;
+  transition: all 200ms ease-in-out;
+}
 
+.details-display {
+  width: 0px;
+  visibility:hidden;
+  transition: all 200ms ease-in-out;
+  display: inline-block;
+
+}
 .search-parameters-container {
   flex:1;
 }
 
 .classes-list-containter {
-  flex:1;
   display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
+  grid-template-columns: 100%;
+  overflow:auto;
 
 }
 
@@ -43,6 +53,10 @@ body {
   background-color: rgb(238, 238, 247);
 
 
+}
+
+.section-display:hover{
+  cursor: pointer;
 }
 
 .section-middle-display {
@@ -190,3 +204,4 @@ body {
   cursor: pointer;
 
 }
+
