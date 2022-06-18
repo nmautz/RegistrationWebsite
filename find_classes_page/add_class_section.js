@@ -42,18 +42,25 @@ function createPTextElement(parent, class_string, text_string){
 
 }
 
-function toggle_details_menu(){
+function toggle_details_menu(section){
   const details_display = document.getElementById("details-display")
 
-  if(details_display.style.visibility == "visible"){
-    details_display.style.visibility = "hidden"
-    details_display.style.width = "0px"
+  var current_id = sessionStorage.getItem("current-details-class-id")
+  console.log(current_id)
 
-  }else{
-    details_display.style.visibility = "visible"
-    details_display.style.width = "70vw"
-
+  if(current_id == section.id || current_id == null){
+    if(details_display.style.visibility == "visible" ){
+      details_display.style.visibility = "hidden"
+      details_display.style.width = "0px"
+  
+    }else{
+      details_display.style.visibility = "visible"
+      details_display.style.width = "70vw"
+  
+    }
+    sessionStorage.setItem("current-details-class-id", section.id)
   }
+
 }
 
 
@@ -65,9 +72,12 @@ function addClassSection(section, parent){
   //Create section
   const section_display = createDivElement(parent,"section-display")
 
+  //Click listener on section
   section_display.addEventListener("click", function(){
 
-    toggle_details_menu()
+    toggle_details_menu(section)
+    const details_display = document.getElementById("details-display")
+    details_display.innerHTML = section.subject+section.courseNumber+"  ID:"+section.id
 
 
     
