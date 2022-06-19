@@ -40,30 +40,30 @@ function setKeys()
 
 
 class dropDown {
-    constructor(input,array,allArrays,elementName,divName)
+    constructor(input,array,elementName)
     {
         this.input = input
         this.array = array
-        this.allArrays = allArrays
         this.elementName = elementName
-        this.divName = divName
-        //this.addDropdownDiv()
-        this.setListener()
+        this.divName = String(elementName + "DropdownDiv")
+        this.addDropdownDiv()
+        this.setListeners()
     }
+
 
     addDropdownDiv()
     {
-        console.log("here")
         const dropdownUI = document.getElementById(this.input)
         const element = document.createElement("div")
         element.id = this.divName
-        //css class that the dropdown follows
+        //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
-        dropdownUI.insertAdjacentElement("beforeend",element)
+        dropdownUI.insertAdjacentElement("afterend",element)
         
     }
 
-    setListener() 
+
+    setListeners() 
     {
         self = this
         const inputElement = document.getElementById(this.input)
@@ -73,37 +73,53 @@ class dropDown {
             var userInput = document.getElementById(self.input).value
             userInput = String(userInput).toUpperCase()
             self.updateDropDown(userInput)
+            self.checkHideDropdown()
+        })
+
+        inputElement.addEventListener("click", function()
+        {
+            self.checkHideDropdown()
         })
     }
 
+
+    //decides if the dropdown should be hidden or not
+    checkHideDropdown()
+    {
+        const dropdownUI = document.getElementById(self.divName)
+        window.addEventListener('click', function(e){   
+            if (document.getElementById(self.input).contains(e.target)){
+            // Clicked in box
+                if (!document.getElementById(self.input).value == "")                     
+                    dropdownUI.style.display = "inline-block"
+            }else{
+                dropdownUI.style.display = "none"
+            }
+        });
+
+    }
+
+
     updateDropDown(userInput)
     {
-      
-
         this.clearChildren()
+        this.addChildren(userInput)
+        
+    }
 
+    addChildren(userInput)
+    {
         for(var i = 0; i < this.array.length; ++i)
         {
-            for(var j = 0; j < this.allArrays.length; ++j)
+            if (this.array[i].includes(userInput))
             {
-                var arrayText = String(this.allArrays[j][i])
-                if (arrayText.includes(userInput))
-                {
-                    this.addDropdown(this.array[i])
-                    break
-                    break
-                }
-                    
+                this.addDropdown(this.array[i])
             }
-          
         }
-        
-        
     }
 
     addDropdown(data)
     {
-        // console.log(data)
         const dropdownUI = document.getElementById(this.divName)
         const aElement = document.createElement("div")
         aElement.id = this.elementName
@@ -129,6 +145,6 @@ class dropDown {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-    const drop = new dropDown("courseNumber-input",courseNumber,keyArray,"courseNumber","dropDownSubject2")
+    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber")
 })
 
