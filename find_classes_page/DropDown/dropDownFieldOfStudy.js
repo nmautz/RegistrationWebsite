@@ -22,6 +22,7 @@ fetch("DropDown/listOfMajors.txt").then(response => response.text()).then(functi
         }
     }
   setMajorsKey()
+  setSubjectKey()
 })
 
 var testKey = []
@@ -38,6 +39,21 @@ function setMajorsKey()
     }  
   }
 }
+
+
+var subjectKey = []
+function setSubjectKey()
+{
+  for (var i = 0; i < classesList.length; ++i)
+  {
+    if (!subjectKey.includes(classesList[i].subject))
+    {
+      subjectKey.push(classesList[i].subject)
+    }  
+  }
+}
+
+
 
 
 //actual dropdown code
@@ -91,11 +107,11 @@ function setDropdown(fieldOfStudy)
   for(var i = 0; i < majorsArr.length; ++i)
   {
     //if the entry is a substring and the input is not empty, an element is created
-    if (majorsArr[i].includes(fieldOfStudy) && !isValEmpty("subject-input"))
+    if ((majorsArr[i].includes(fieldOfStudy) || subjectKey[i].includes(fieldOfStudy)) && !isValEmpty("subject-input"))
     {
       addDropDown(majorsArr[i],majorsArrKey[i])
       count++
-    } 
+    }
 
   }
   return count

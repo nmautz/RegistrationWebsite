@@ -18,20 +18,20 @@
 
 //Code for hiding dropdown
 
-window.addEventListener('click', function(e){   
-    if (document.getElementById("subject-input").contains(e.target)){
-        updateValue()
-      // Clicked in box
-    }else{
-       hideDropDown() 
+// window.addEventListener('click', function(e){   
+//     if (document.getElementById("subject-input").contains(e.target)){
+//         updateValue()
+//       // Clicked in box
+//     }else{
+//        hideDropDown() 
        
-    }
-  });
+//     }
+//   });
 
-function hideDropDown()
-{
-  const dropdown = document.getElementById("a")
-  const dropdownUI = document.getElementById("dropDownSubject")
-  dropdownUI.style.display = "none"
-  dropdown.style.display = "inline-block"
-}
+// function hideDropDown()
+// {
+//   const dropdown = document.getElementById("a")
+//   const dropdownUI = document.getElementById("dropDownSubject")
+//   dropdownUI.style.display = "none"
+//   dropdown.style.display = "inline-block"
+// }
