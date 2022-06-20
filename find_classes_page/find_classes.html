@@ -4,11 +4,16 @@
     <head>
         <title>Find Classes</title>
         <link rel="stylesheet" href="find_classes.css">
+        <link rel="stylesheet" href="DropDown/dropDown.css">
         <script src="add_class_section.js"></script>
         <script src="../saved_class_database.js"></script>
         <script src="../class_section_search.js"></script>
         <script src="find_classes.js"></script>
-        <script src="dropDown.js"></script>
+
+        <script src="DropDown/hideDropDown.js"></script>
+        <script src="DropDown/dropDown.js"></script>
+        <script src="DropDown/dropDownFieldOfStudy.js"></script>
+        <script src="DropDown/DropDownClass"></script>
 
     </head>
 
@@ -18,10 +23,13 @@
         <div class="content">
 
             <div class="search-parameters-container">
-                <input id="subject-input" class="text-input" type="text" placeholder="Subject">
-                <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
+                <input id="subject-input" class="text-input" data= "a" type="text" placeholder="Subject">
+                <div id="dropDownSubject" class="dropdown-content"></div>
+
+                
             </div>
-            <div id="classes-list-container" class="classes-list-containter">
+            <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
+            <input id="courseTitle-input" class="text-input" type="text" placeholder="Course Title">
                 
             </div>
 
