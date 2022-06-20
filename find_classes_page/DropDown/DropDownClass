@@ -67,8 +67,9 @@ class dropDown {
     {
         self = this
         const inputElement = document.getElementById(this.input)
-        inputElement.addEventListener('keyup', function()
+        inputElement.addEventListener('keyup', (e) =>
         {
+            console.log(this.divName)
             setKeys()
             var userInput = document.getElementById(self.input).value
             userInput = String(userInput).toUpperCase()
@@ -117,7 +118,8 @@ class dropDown {
     {
         for(var i = 0; i < this.array.length; ++i)
         {
-            if (this.array[i].includes(userInput))
+            var index = String(this.array[i]).toUpperCase()
+            if (index.includes(userInput))
             {
                 this.addDropdown(this.array[i])
             }
@@ -152,5 +154,6 @@ class dropDown {
 
 document.addEventListener("DOMContentLoaded", function(){
     const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber")
+    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle")
 })
 
