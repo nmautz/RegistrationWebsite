@@ -131,7 +131,6 @@ class dropDown {
         const aElement = document.createElement("a")
         aElement.id = this.elementName
         aElement.data = data
-        
         const text = document.createTextNode(data)
         aElement.appendChild(text)
         // aElement.addEventListener("click", function(){
