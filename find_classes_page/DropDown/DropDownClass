@@ -72,8 +72,8 @@ class dropDown {
             setKeys()
             var userInput = document.getElementById(self.input).value
             userInput = String(userInput).toUpperCase()
-            self.updateDropDown(userInput)
             self.checkHideDropdown()
+            self.updateDropDown(userInput)
         })
 
         inputElement.addEventListener("click", function()
@@ -87,11 +87,17 @@ class dropDown {
     checkHideDropdown()
     {
         const dropdownUI = document.getElementById(self.divName)
+        if (document.getElementById(self.input).value != "")                     
+            dropdownUI.style.display = "inline-block"
+        else
+            dropdownUI.style.display = "none"
         window.addEventListener('click', function(e){   
             if (document.getElementById(self.input).contains(e.target)){
             // Clicked in box
-                if (!document.getElementById(self.input).value == "")                     
+                if (document.getElementById(self.input).value != "")                     
                     dropdownUI.style.display = "inline-block"
+                else
+                    dropdownUI.style.display = "none"
             }else{
                 dropdownUI.style.display = "none"
             }
