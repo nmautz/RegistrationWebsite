@@ -35,6 +35,7 @@ class class_search_query{
   meetsRequirements(classList)
   {
     var meetsReq = true
+
     var temp = String(classList.subject).toUpperCase()
     if(temp.includes(String(this.subject)) && this.subject != undefined)
       meetsReq = false
@@ -44,14 +45,33 @@ class class_search_query{
       meetsReq = false
 
     temp = String(classList.courseNumber).toUpperCase()
-    if(!temp.includes(String(this.courseNumber)) && this.courseNumber != undefined)
+    if(!temp.includes(this.courseNumber) && temp != this.courseNumber  && this.courseNumber != undefined)
       meetsReq = false
-      
+
     temp = String(classList.courseTitle).toUpperCase()
-    if(!temp.includes(String(this.courseTitle)) && this.courseTitle != undefined)
+    if(!temp.includes(this.courseTitle) && temp != this.courseTitle && this.courseTitle != undefined)
       meetsReq = false
 
     return meetsReq
+  }
+
+  getClassesListString(classList, elementNum)
+  {
+      switch(elementNum)
+      {
+        case 0:
+          return String(classList.subject)
+          break
+        case 1:
+          return String(classList.subjectDescription)
+          break
+        case 2:
+          return String(classList.courseNumber)
+          break
+        case 3:
+          return String(classList.courseTitle)
+          break
+      }
   }
 
   print()

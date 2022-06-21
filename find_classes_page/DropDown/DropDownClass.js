@@ -117,30 +117,35 @@ class dropDown {
 
     addChildren(userInput)
     {
+        var dropDownArr = []
         this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
         for(var i = 0; i < classesList.length; ++i)
         {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
-            {
-               console.log(classesList[i].courseNumber)
+            {              
+               var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+               
+               if (!dropDownArr.includes(text))
+               {
+                    dropDownArr.push(text)
+                    this.addDropdown(text)
+               }
             }
 
             
         }
-        for(var i = 0; i < this.array.length; ++i)
-        {
-            var index = String(this.array[i]).toUpperCase()
-            if (index.includes(userInput))
-            {
-                this.addDropdown(this.array[i])
-            }
-        }
+        
+        // for(var i = 0; i < this.array.length; ++i)
+        // {
+        //     var index = String(this.array[i]).toUpperCase()
+        //     if (index.includes(userInput))
+        //     {
+        //         this.addDropdown(this.array[i])
+        //     }
+        // }
     }
 
-    getClassesListString()
-    {
-        
-    }
+    
 
     addDropdown(data)
     {
@@ -154,6 +159,7 @@ class dropDown {
         {
             document.getElementById(this.input).value = data
             this.requirementsObj.addQueryRequirement(data,this.requirementNum)
+            
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
