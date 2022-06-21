@@ -21,8 +21,8 @@ fetch("DropDown/listOfMajors.txt").then(response => response.text()).then(functi
             }
         }
     }
-  setMajorsKey()
-  setSubjectKey()
+    setMajorsKey()
+    setSubjectKey()
 })
 
 var testKey = []

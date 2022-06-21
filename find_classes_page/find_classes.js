@@ -66,11 +66,4 @@ document.addEventListener("DOMContentLoaded", function(){
     const subject_input = document.getElementById("subject-input")
     const courseNumber_input = document.getElementById("courseNumber-input")
 
-    subject_input.addEventListener("keyup", function(){
-        update_section_display()
-    })
-    courseNumber_input.addEventListener("keyup", function(){
-        update_section_display()
-    })
-
 })
