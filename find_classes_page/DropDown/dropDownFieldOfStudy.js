@@ -30,27 +30,37 @@ var testKey = []
 var majorsArrKey = []
 function setMajorsKey()
 {
-  for (var i = 0; i < classesList.length; ++i)
-  {
-    
-    if (!majorsArrKey.includes(classesList[i].subjectDescription))
+
+  Load_Queue.addToQueue("/classes.json", function(jsonData){
+    var classesList = jsonData["data"]
+
+    for (var i = 0; i < classesList.length; ++i)
     {
-      majorsArrKey.push(classesList[i].subjectDescription)
-    }  
-  }
+      
+      if (!majorsArrKey.includes(classesList[i].subjectDescription))
+      {
+        majorsArrKey.push(classesList[i].subjectDescription)
+      }  
+    }
+  })
 }
+
 
 
 var subjectKey = []
 function setSubjectKey()
 {
-  for (var i = 0; i < classesList.length; ++i)
-  {
-    if (!subjectKey.includes(classesList[i].subject))
+  Load_Queue.addToQueue("/classes.json", function(jsonData){
+    var classesList = jsonData["data"]
+
+    for (var i = 0; i < classesList.length; ++i)
     {
-      subjectKey.push(classesList[i].subject)
-    }  
-  }
+      if (!subjectKey.includes(classesList[i].subject))
+      {
+        subjectKey.push(classesList[i].subject)
+      }  
+    }
+  })
 }
 
 
