@@ -34,17 +34,14 @@ class dropDown {
         const inputElement = document.getElementById(this.input)
         inputElement.addEventListener('keyup', (e) =>
         {
-            var userInput = document.getElementById(this.input).value
-            userInput = String(userInput).toUpperCase()
             this.checkHideDropdown()
-            this.updateDropDown(userInput)
+            this.updateDropDown()
         })
 
         inputElement.addEventListener("click", (e) =>
         {
             this.checkHideDropdown()
-            var userInput = document.getElementById(this.input).value
-            this.updateDropDown(userInput)
+            this.updateDropDown()
         })
     }
 
@@ -74,16 +71,18 @@ class dropDown {
     }
 
 
-    updateDropDown(userInput)
+    updateDropDown()
     {
         this.clearChildren()
-        this.addChildren(userInput)
+        this.addChildren()
         
     }
 
-    addChildren(userInput)
+    addChildren()
     {
         var dropDownArr = []
+        var userInput = document.getElementById(this.input).value
+        userInput = String(userInput).toUpperCase()
         this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
         for(var i = 0; i < classesList.length; ++i)
         {
@@ -117,10 +116,8 @@ class dropDown {
 
             document.getElementById(this.input).value = data
             this.requirementsObj.addQueryRequirement(data,this.requirementNum)
-            var userInput = document.getElementById(this.input).value
             //makes dropdown update after it is clicked on
-            userInput = String(userInput).toUpperCase()
-            this.updateDropDown(userInput)
+            this.updateDropDown()
             
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
