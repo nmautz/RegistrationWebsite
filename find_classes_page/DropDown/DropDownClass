@@ -133,11 +133,11 @@ class dropDown {
         aElement.data = data
         const text = document.createTextNode(data)
         aElement.appendChild(text)
-        aElement.addEventListener("click", function(){
-            const element = document.getElementById(this.input).value
-            console.log("here")
+        // aElement.addEventListener("click", function(){
+        //     selection(aElement.data,aElement.text)
 
-        })
+
+        // })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
 
