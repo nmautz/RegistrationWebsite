@@ -40,13 +40,14 @@ function setKeys()
 
 
 class dropDown {
-    constructor(input,array,elementName,requirementsObj)
+    constructor(input,array,elementName,requirementsObj,requirementNum)
     {
         this.input = input
         this.array = array
         this.elementName = elementName
         this.divName = String(elementName + "DropdownDiv")
         this.requirementsObj = requirementsObj
+        this.requirementNum = requirementNum
         this.addDropdownDiv()
         this.setListeners()
     }
@@ -116,10 +117,14 @@ class dropDown {
 
     addChildren(userInput)
     {
-        // for(var i = 0; i < classList.length; ++i)
-        // {
-        //     console.log(classList[i].subject)
-        // }
+        this.requirementsObj.addQueryRequirement()
+        for(var i = 0; i < classesList.length; ++i)
+        {
+            var index = String(this.array[i]).toUpperCase()
+            if(this.requirementsObj.meetsRequirements(classesList[i]))
+                console.log(classesList[i].subject)
+            
+        }
         for(var i = 0; i < this.array.length; ++i)
         {
             var index = String(this.array[i]).toUpperCase()
@@ -141,7 +146,7 @@ class dropDown {
         aElement.addEventListener("click", (e) =>
         {
             document.getElementById(this.input).value = data
-            this.requirementsObj.addQueryRequirement(data,0)
+            this.requirementsObj.addQueryRequirement(data,this.requirementNum)
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
@@ -159,7 +164,7 @@ class dropDown {
 document.addEventListener("DOMContentLoaded", function()
 {
     const requirement = new class_search_query()
-    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber",requirement)
-    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle",requirement)
+    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber",requirement,3)
+    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle",requirement,2)
 })
 

@@ -32,6 +32,24 @@ class class_search_query{
     }
   }
 
+  meetsRequirements(classList)
+  {
+    var meetsReq = true
+    if(classList.subject != this.subject && this.subject != null)
+      meetsReq = false
+    if(classList.subjectDescription != this.subjectDescription && this.subjectDescription != null)
+      meetsReq = false
+    if(classList.courseNumber != this.courseNumber && this.courseNumber != null)
+      meetsReq = false
+    if(classList.courseTitle != this.courseTitle && this.courseTitle != null)
+      meetsReq = false
+
+
+
+    meetsReq = true
+    return meetsReq
+  }
+
   print()
   {
     console.log(this.subject)
