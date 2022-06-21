@@ -4,46 +4,10 @@ fetch("../classes.json").then(response => response.json()).then( function(jsonDa
 
 
 
-
-var subjectArr = []
-var subjectDescriptionArr = []
-var courseNumber = []
-var courseTitle = []
-
-var keyArray = [subjectArr,subjectDescriptionArr,courseNumber,courseTitle]
-//called in dropDown class setListener()
-function setKeys()
-{
-    if (subjectArr.length == 0)
-    {
-        for (var i = 0; i < classesList.length; ++i)
-        {
-            if (!subjectArr.includes(classesList[i].subject))
-                subjectArr.push(classesList[i].subject)
-                
-            if (!subjectDescriptionArr.includes(classesList[i].subjectDescription))
-                subjectDescriptionArr.push(classesList[i].subjectDescription)
-
-            if (!courseNumber.includes(classesList[i].courseNumber))
-                courseNumber.push(classesList[i].courseNumber)
-
-            if (!courseTitle.includes(classesList[i].courseTitle))
-                courseTitle.push(classesList[i].courseTitle)
-        }
-
-        for (var i = 0; i < keyArray.length; ++i)
-            keyArray[i].sort()
-    }
-    
-}
-
-
-
 class dropDown {
-    constructor(input,array,elementName,requirementsObj,requirementNum)
+    constructor(input,elementName,requirementsObj,requirementNum)
     {
         this.input = input
-        this.array = array
         this.elementName = elementName
         this.divName = String(elementName + "DropdownDiv")
         this.requirementsObj = requirementsObj
@@ -70,7 +34,6 @@ class dropDown {
         const inputElement = document.getElementById(this.input)
         inputElement.addEventListener('keyup', (e) =>
         {
-            setKeys()
             var userInput = document.getElementById(this.input).value
             userInput = String(userInput).toUpperCase()
             this.checkHideDropdown()
@@ -183,7 +146,7 @@ class dropDown {
 document.addEventListener("DOMContentLoaded", function()
 {
     const requirement = new class_search_query()
-    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber",requirement,2)
-    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle",requirement,3)
+    const drop = new dropDown("courseNumber-input","courseNumber",requirement,2)
+    const drop2 = new dropDown("courseTitle-input","courseTitle",requirement,3)
 })
 
