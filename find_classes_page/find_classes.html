@@ -5,16 +5,13 @@
         <title>Find Classes</title>
         <link rel="stylesheet" href="find_classes.css">
         <link rel="stylesheet" href="DropDown/dropDown.css">
+        <script src="../load_queue.js"></script>
         <script src="add_class_section.js"></script>
         <script src="../saved_class_database.js"></script>
         <script src="../class_section_search.js"></script>
         <script src="find_classes.js"></script>
-
-        
         <script src="DropDown/DropDownClass.js"></script>
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
-        
-        
 
     </head>
 
@@ -29,19 +26,35 @@
 
             <div class="search-parameters-container">
                 <input id="subject-input" class="text-input" data= "a" type="text" placeholder="Subject">
+                <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
+                <input id="courseTitle-input" class="text-input" type="text" placeholder="Course Title">
                 <div id="dropDownSubject" class="dropdown-content"></div>
 
                 
             </div>
-            
+
+
+            <div id="content-main" class="content-main">
+
+                <div id="classes-list-container" class="classes-list-containter">
                 
+                </div>
+
+                <div id="details-display" class="details-display">
+                    
+
+                </div>
+
             </div>
+
+
 
 
             
 
 
         </div>
+
 
 
 
