@@ -100,15 +100,6 @@ class dropDown {
 
             
         }
-        
-        // for(var i = 0; i < this.array.length; ++i)
-        // {
-        //     var index = String(this.array[i]).toUpperCase()
-        //     if (index.includes(userInput))
-        //     {
-        //         this.addDropdown(this.array[i])
-        //     }
-        // }
     }
 
     
@@ -126,8 +117,10 @@ class dropDown {
 
             document.getElementById(this.input).value = data
             this.requirementsObj.addQueryRequirement(data,this.requirementNum)
-            var input = document.getElementById(this.input).value
-            this.updateDropDown(input)
+            var userInput = document.getElementById(this.input).value
+            //makes dropdown update after it is clicked on
+            userInput = String(userInput).toUpperCase()
+            this.updateDropDown(userInput)
             
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
@@ -146,7 +139,9 @@ class dropDown {
 document.addEventListener("DOMContentLoaded", function()
 {
     const requirement = new class_search_query()
-    const drop = new dropDown("courseNumber-input","courseNumber",requirement,2)
-    const drop2 = new dropDown("courseTitle-input","courseTitle",requirement,3)
+    // const drop1 = new dropDown("subject-input2","courseSubject",requirement,0)
+    const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
+    const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
+    const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
 })
 
