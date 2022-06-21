@@ -116,6 +116,10 @@ class dropDown {
 
     addChildren(userInput)
     {
+        // for(var i = 0; i < classList.length; ++i)
+        // {
+        //     console.log(classList[i].subject)
+        // }
         for(var i = 0; i < this.array.length; ++i)
         {
             var index = String(this.array[i]).toUpperCase()
@@ -137,8 +141,7 @@ class dropDown {
         aElement.addEventListener("click", (e) =>
         {
             document.getElementById(this.input).value = data
-
-
+            this.requirementsObj.addQueryRequirement(data,0)
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
@@ -155,9 +158,8 @@ class dropDown {
 
 document.addEventListener("DOMContentLoaded", function()
 {
-    const text = new class_search_query()
-    text.printRequirements()
-    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber")
-    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle")
+    const requirement = new class_search_query()
+    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber",requirement)
+    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle",requirement)
 })
 

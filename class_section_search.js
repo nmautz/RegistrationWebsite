@@ -32,13 +32,9 @@ class class_search_query{
     }
   }
 
-  printRequirements()
+  print()
   {
-    for(var i = 0; i < this.requirementArr.length; ++i)
-    {
-      console.log(this.requirementArr[i])
-    }
-
+    console.log(this.subject)
   }
 
 }
