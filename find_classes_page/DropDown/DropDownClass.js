@@ -40,12 +40,13 @@ function setKeys()
 
 
 class dropDown {
-    constructor(input,array,elementName)
+    constructor(input,array,elementName,requirementsObj)
     {
         this.input = input
         this.array = array
         this.elementName = elementName
         this.divName = String(elementName + "DropdownDiv")
+        this.requirementsObj = requirementsObj
         this.addDropdownDiv()
         this.setListeners()
     }
@@ -133,11 +134,12 @@ class dropDown {
         aElement.data = data
         const text = document.createTextNode(data)
         aElement.appendChild(text)
-        // aElement.addEventListener("click", function(){
-        //     selection(aElement.data,aElement.text)
+        aElement.addEventListener("click", (e) =>
+        {
+            document.getElementById(this.input).value = data
 
 
-        // })
+        })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
 
@@ -151,7 +153,10 @@ class dropDown {
 
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function()
+{
+    const text = new class_search_query()
+    text.printRequirements()
     const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber")
     const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle")
 })
