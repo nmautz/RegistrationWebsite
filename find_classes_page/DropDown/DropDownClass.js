@@ -59,10 +59,7 @@ class dropDown {
             if (document.getElementById(this.input).contains(e.target))
             {
             // Clicked in box
-                if (document.getElementById(this.input).value != "")                     
-                    dropdownUI.style.display = "inline-block"
-                else
-                    dropdownUI.style.display = "none"
+                dropdownUI.style.display = "inline-block"
             }else{
                 dropdownUI.style.display = "none"
             }
