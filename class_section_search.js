@@ -27,7 +27,7 @@ class class_search_query{
         this.courseNumber = data
         break
       case 3:
-        this.courseNumber = data
+        this.courseTitle = data
         break
     }
   }
@@ -35,24 +35,29 @@ class class_search_query{
   meetsRequirements(classList)
   {
     var meetsReq = true
-    if(classList.subject != this.subject && this.subject != null)
-      meetsReq = false
-    if(classList.subjectDescription != this.subjectDescription && this.subjectDescription != null)
-      meetsReq = false
-    if(classList.courseNumber != this.courseNumber && this.courseNumber != null)
-      meetsReq = false
-    if(classList.courseTitle != this.courseTitle && this.courseTitle != null)
+    var temp = String(classList.subject).toUpperCase()
+    if(temp.includes(String(this.subject)) && this.subject != undefined)
       meetsReq = false
 
+    temp = String(classList.subjectDescription).toUpperCase()
+    if(!temp.includes(this.subjectDescription) && this.subjectDescription != undefined)
+      meetsReq = false
 
+    temp = String(classList.courseNumber).toUpperCase()
+    if(!temp.includes(String(this.courseNumber)) && this.courseNumber != undefined)
+      meetsReq = false
+      
+    temp = String(classList.courseTitle).toUpperCase()
+    if(!temp.includes(String(this.courseTitle)) && this.courseTitle != undefined)
+      meetsReq = false
 
-    meetsReq = true
     return meetsReq
   }
 
   print()
   {
-    console.log(this.subject)
+    console.log(this.courseNumber)
+    console.log(this.courseTitle)
   }
 
 }

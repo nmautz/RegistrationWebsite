@@ -117,12 +117,14 @@ class dropDown {
 
     addChildren(userInput)
     {
-        this.requirementsObj.addQueryRequirement()
+        this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
         for(var i = 0; i < classesList.length; ++i)
         {
-            var index = String(this.array[i]).toUpperCase()
             if(this.requirementsObj.meetsRequirements(classesList[i]))
-                console.log(classesList[i].subject)
+            {
+               console.log(classesList[i].courseNumber)
+            }
+
             
         }
         for(var i = 0; i < this.array.length; ++i)
@@ -133,6 +135,11 @@ class dropDown {
                 this.addDropdown(this.array[i])
             }
         }
+    }
+
+    getClassesListString()
+    {
+        
     }
 
     addDropdown(data)
@@ -164,7 +171,7 @@ class dropDown {
 document.addEventListener("DOMContentLoaded", function()
 {
     const requirement = new class_search_query()
-    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber",requirement,3)
-    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle",requirement,2)
+    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber",requirement,2)
+    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle",requirement,3)
 })
 
