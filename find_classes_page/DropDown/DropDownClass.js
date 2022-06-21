@@ -80,6 +80,8 @@ class dropDown {
         inputElement.addEventListener("click", (e) =>
         {
             this.checkHideDropdown()
+            var userInput = document.getElementById(this.input).value
+            this.updateDropDown(userInput)
         })
     }
 
@@ -94,7 +96,8 @@ class dropDown {
             dropdownUI.style.display = "none"
         window.addEventListener('click', (e) =>
         {   
-            if (document.getElementById(this.input).contains(e.target)){
+            if (document.getElementById(this.input).contains(e.target))
+            {
             // Clicked in box
                 if (document.getElementById(this.input).value != "")                     
                     dropdownUI.style.display = "inline-block"
@@ -157,8 +160,11 @@ class dropDown {
         aElement.appendChild(text)
         aElement.addEventListener("click", (e) =>
         {
+
             document.getElementById(this.input).value = data
             this.requirementsObj.addQueryRequirement(data,this.requirementNum)
+            var input = document.getElementById(this.input).value
+            this.updateDropDown(input)
             
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)

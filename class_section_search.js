@@ -48,9 +48,12 @@ class class_search_query{
     if(!temp.includes(this.courseNumber) && temp != this.courseNumber  && this.courseNumber != undefined)
       meetsReq = false
 
-    temp = String(classList.courseTitle).toUpperCase()
-    if(!temp.includes(this.courseTitle) && temp != this.courseTitle && this.courseTitle != undefined)
+
+
+    var temp2 = String(classList.courseTitle).toUpperCase()
+    if(!temp2.includes(this.courseTitle) && temp2 != this.courseTitle && this.courseTitle != undefined)
       meetsReq = false
+
 
     return meetsReq
   }
