@@ -13,9 +13,20 @@ class dropDown {
         this.requirementsObj = requirementsObj
         this.requirementNum = requirementNum
         this.addDropdownDiv()
+        this.addClearButton()
         this.setListeners()
     }
 
+    addClearButton()
+    {
+        const dropdownUI = document.getElementById(this.input)
+        const element = document.createElement("button")
+        element.id = String(this.elementName + "Button")
+        //css class that the dropdown follows**************************
+        element.classList.add("dropdown-content")
+        dropdownUI.insertAdjacentElement("afterend",element)
+        
+    }
 
     addDropdownDiv()
     {
