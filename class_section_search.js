@@ -37,7 +37,7 @@ class class_search_query{
     var meetsReq = true
 
     var temp = String(classList.subject).toUpperCase()
-    if(temp.includes(String(this.subject)) && this.subject != undefined)
+    if(!temp.includes(String(this.subject)) && this.subject != undefined)
       meetsReq = false
 
     temp = String(classList.subjectDescription).toUpperCase()

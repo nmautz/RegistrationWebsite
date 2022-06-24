@@ -45,8 +45,6 @@ function createPTextElement(parent, class_string, text_string){
 function addClassSection(section, parent){
 
 
-
-
   //Create section
   const section_display = createDivElement(parent,"section-display")
 

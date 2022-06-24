@@ -6,8 +6,13 @@
     .dropdown {
         position: relative;
         display: inline-block;
+        padding: 1.5%;
+        
     }
-    
+    .clearBtn {
+        margin-right: 1%;
+    }
+
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
         /* display: none; */
@@ -29,7 +34,4 @@
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {background-color: #ddd;}
     
-    
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
-    End of Dropdown CSS 
+

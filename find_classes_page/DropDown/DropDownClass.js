@@ -12,20 +12,35 @@ class dropDown {
         this.divName = String(elementName + "DropdownDiv")
         this.requirementsObj = requirementsObj
         this.requirementNum = requirementNum
+        this.setInputCSS()
         this.addDropdownDiv()
         this.addClearButton()
         this.setListeners()
     }
 
+    setInputCSS()
+    {
+        //css class that the input follows**************************
+        const dropdownUI = document.getElementById(this.input)
+        dropdownUI.classList.add("dropdown")
+    }
+    
     addClearButton()
     {
         const dropdownUI = document.getElementById(this.input)
-        const element = document.createElement("button")
+        const element = document.createElement("INPUT")
+        element.setAttribute("type", "button")
+        element.value = "x"
         element.id = String(this.elementName + "Button")
-        //css class that the dropdown follows**************************
-        element.classList.add("dropdown-content")
+        //css class that the button follows**************************
+        element.classList.add("dropdown")
+        element.classList.add("clearBtn")
+        element.addEventListener("click", (e) =>
+        {
+            dropdownUI.value = ""
+            this.updateDropDown()
+        })
         dropdownUI.insertAdjacentElement("afterend",element)
-        
     }
 
     addDropdownDiv()
@@ -91,11 +106,12 @@ class dropDown {
         var dropDownArr = []
         var userInput = document.getElementById(this.input).value
         userInput = String(userInput).toUpperCase()
+
         this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
         for(var i = 0; i < classesList.length; ++i)
         {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
-            {              
+            {            
                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
                
                if (!dropDownArr.includes(text))
@@ -126,6 +142,7 @@ class dropDown {
             this.requirementsObj.addQueryRequirement(data,this.requirementNum)
             //makes dropdown update after it is clicked on
             this.updateDropDown()
+            update_section_display()
             
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
@@ -141,12 +158,50 @@ class dropDown {
 
 }
 
+
+
+class dropDownDays extends dropDown {
+    constructor(input,elementName,requirementsObj,requirementNum)
+    {
+        super(input,elementName,requirementsObj,requirementNum)
+
+    }
+
+    addChildren()
+    {
+        var dropDownArr = []
+        var userInput = document.getElementById(this.input).value
+        userInput = String(userInput).toUpperCase()
+
+        this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
+        for(var i = 0; i < classesList.length; ++i)
+        {
+            if(this.requirementsObj.meetsRequirements(classesList[i]))
+            {            
+               var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+               
+               if (!dropDownArr.includes(text))
+               {
+                    dropDownArr.push(text)
+                    this.addDropdown(text)
+               }
+            }
+
+            
+        }
+    }
+}
+
+
+const requirement = new class_search_query()
+
 document.addEventListener("DOMContentLoaded", function()
 {
-    const requirement = new class_search_query()
-    // const drop1 = new dropDown("subject-input2","courseSubject",requirement,0)
+    
+  
     const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
     const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
+    const daysDropDown = new dropDownDays("courseDays-input","courseDays",requirement,0)
 })
 
