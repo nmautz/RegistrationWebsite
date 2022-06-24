@@ -7,6 +7,7 @@ fetch("/classes.json").then(response => response.json()).then( function(jsonData
 })
 
 
+
 function search_class()
 {
     if (!requirement.isEmpty())
@@ -25,6 +26,7 @@ function search_class()
         }
         return section_data
         } 
+
     }
         
     
@@ -50,6 +52,17 @@ function update_section_display(){
 
     
 
+
     add_sections_from_array(search_class())
 
+
 }
+  
+
+  
+document.addEventListener("DOMContentLoaded", function(){
+
+    const subject_input = document.getElementById("subject-input")
+    const courseNumber_input = document.getElementById("courseNumber-input")
+
+})

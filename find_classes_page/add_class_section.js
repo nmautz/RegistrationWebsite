@@ -42,11 +42,47 @@ function createPTextElement(parent, class_string, text_string){
 
 }
 
+function toggle_details_menu(section){
+  const details_display = document.getElementById("details-display")
+
+  var current_id = sessionStorage.getItem("current-details-class-id")
+  console.log(current_id)
+
+  if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
+    
+    details_display.style.visibility = "hidden"
+    details_display.style.width = "0px"
+
+  }else{
+    details_display.style.visibility = "visible"
+    details_display.style.width = "70vw"
+
+  }
+  sessionStorage.setItem("current-details-class-id", section.id)
+
+
+}
+
+
 function addClassSection(section, parent){
 
 
   //Create section
   const section_display = createDivElement(parent,"section-display")
+
+  //Click listener on section
+  section_display.addEventListener("click", function(){
+
+    toggle_details_menu(section)
+    const details_display = document.getElementById("details-display")
+    details_display.innerHTML = section.subject+section.courseNumber+"  ID:"+section.id
+
+
+    
+
+
+
+  })
 
   //Create save button
 
@@ -65,7 +101,7 @@ function addClassSection(section, parent){
     save_button.style.borderBottomColor = "transparent"
   }
 
-  save_button.addEventListener("click", function(){
+  save_button.addEventListener("click", function(e){
     if(save_button.style.borderColor == "gold gold transparent"){
       save_button.style.borderColor ="rgb(202, 202, 251)"
       save_button.style.borderBottomColor = "transparent"
@@ -79,7 +115,7 @@ function addClassSection(section, parent){
       save_class(section)
     }
 
-    console.log(load_classes())
+    e.stopPropagation()
 
 
 
