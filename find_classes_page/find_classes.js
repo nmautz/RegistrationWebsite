@@ -16,6 +16,7 @@ function checkClass(query, class_section){
   
 }
 
+
 function search_class()
 {
   var section_data = []
@@ -23,6 +24,7 @@ function search_class()
     if(requirement.meetsRequirements(classesList[i]))
     {
         console.log(classesList[i].courseTitle)
+
       section_data.push(classesList[i])
     }
 
@@ -45,9 +47,6 @@ function add_sections_from_array(sections){
 }
 
 function update_section_display(){
-    // const subject_input = document.getElementById("subject-input").value
-    // const courseNumber_input = document.getElementById("courseNumber-input").value
-    // var query = new class_search_query(subject_input, courseNumber_input)
 
     const classContainter = document.getElementById("classes-list-container")
     while(classContainter.firstChild){
@@ -56,22 +55,17 @@ function update_section_display(){
 
     
 
+
     add_sections_from_array(search_class())
+
 
 }
   
 
   
-// document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function(){
 
-//     const subject_input = document.getElementById("subject-input")
-//     const courseNumber_input = document.getElementById("courseNumber-input")
+    const subject_input = document.getElementById("subject-input")
+    const courseNumber_input = document.getElementById("courseNumber-input")
 
-//     subject_input.addEventListener("keyup", function(){
-//         update_section_display()
-//     })
-//     courseNumber_input.addEventListener("keyup", function(){
-//         update_section_display()
-//     })
-
-// })
+})
