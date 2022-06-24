@@ -13,8 +13,6 @@ function load_classes(){
   for(var i = 0; i < keys.length; ++i)
   {
     values.push(JSON.parse(localStorage.getItem(keys[i])))
-
-
   }
   return values
 

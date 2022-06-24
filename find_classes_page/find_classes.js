@@ -6,31 +6,28 @@ fetch("/classes.json").then(response => response.json()).then( function(jsonData
 
 })
 
-function checkClass(query, class_section){
-    if (!(class_section.subject.match(String(query.subject).toUpperCase())) && query.subject != "" && query.subject != null)
-      return false
-    if (!(class_section.courseNumber.match(String(query.courseNumber)))  && query.courseNumber != "" && query.courseNumber != null)
-      return false
-    return true
-  
-  
-}
 
 function search_class()
 {
-  var section_data = []
-  for(var i = 0; i < classesList.length; ++i){
-    if(requirement.meetsRequirements(classesList[i]))
+    if (!requirement.isEmpty())
     {
-        console.log(classesList[i].courseTitle)
-      section_data.push(classesList[i])
+       {
+        var limit = 50
+        var classCount = 0
+        var section_data = []
+        for(var i = 0; i < classesList.length && classCount < limit ; ++i){
+        if(requirement.meetsRequirements(classesList[i]))
+        {
+            section_data.push(classesList[i])
+            classCount++
+        }
+
+        }
+        return section_data
+        } 
     }
-
-
-
-  }
-  return section_data
-
+        
+    
 
 
 }
@@ -45,9 +42,6 @@ function add_sections_from_array(sections){
 }
 
 function update_section_display(){
-    // const subject_input = document.getElementById("subject-input").value
-    // const courseNumber_input = document.getElementById("courseNumber-input").value
-    // var query = new class_search_query(subject_input, courseNumber_input)
 
     const classContainter = document.getElementById("classes-list-container")
     while(classContainter.firstChild){
@@ -59,19 +53,3 @@ function update_section_display(){
     add_sections_from_array(search_class())
 
 }
-  
-
-  
-// document.addEventListener("DOMContentLoaded", function(){
-
-//     const subject_input = document.getElementById("subject-input")
-//     const courseNumber_input = document.getElementById("courseNumber-input")
-
-//     subject_input.addEventListener("keyup", function(){
-//         update_section_display()
-//     })
-//     courseNumber_input.addEventListener("keyup", function(){
-//         update_section_display()
-//     })
-
-// })
