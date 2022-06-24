@@ -16,6 +16,9 @@ body {
   grid-template-columns: 1fr min-content;
   
   transition: all 200ms ease-in-out;
+
+
+
 }
 
 .details-display {
@@ -39,6 +42,10 @@ body {
   margin-right: auto;
   margin-left: auto;
 
+  overflow-y: scroll;
+  max-height: 50vw;
+
+
 }
 
 .text-input {
@@ -58,6 +65,7 @@ body {
   margin-right: 5px;
   background-color: rgb(238, 238, 247);
   max-width: 500px;
+  min-width: none;
 
 
 }

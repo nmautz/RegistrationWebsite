@@ -55,7 +55,7 @@ function toggle_details_menu(section){
 
   }else{
     details_display.style.visibility = "visible"
-    details_display.style.width = "70vw"
+    details_display.style.width = "max-content"
 
   }
   sessionStorage.setItem("current-details-class-id", section.id)
