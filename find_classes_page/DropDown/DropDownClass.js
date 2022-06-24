@@ -39,6 +39,7 @@ class dropDown {
         {
             dropdownUI.value = ""
             this.updateDropDown()
+            update_section_display()
         })
         dropdownUI.insertAdjacentElement("afterend",element)
     }
@@ -67,7 +68,7 @@ class dropDown {
         inputElement.addEventListener("click", (e) =>
         {
             this.checkHideDropdown()
-            this.updateDropDown()
+            this.updateDropDown()  
         })
     }
 
@@ -143,7 +144,6 @@ class dropDown {
             //makes dropdown update after it is clicked on
             this.updateDropDown()
             update_section_display()
-            
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }

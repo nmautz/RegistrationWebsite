@@ -1,15 +1,15 @@
 
 class class_search_query{
 
-  constructor(subject, subjectDescription, courseNumber, courseTitle){
+  constructor(){
 
-    this.subject = subject
-    this.subjectDescription = subjectDescription
-    this.courseNumber = courseNumber
-    this.courseTitle = courseTitle
+    this.subject
+    this.subjectDescription 
+    this.courseNumber 
+    this.courseTitle
     
     //should we use array instead?
-    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
+    // this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
   }
 
 
@@ -30,6 +30,7 @@ class class_search_query{
         this.courseTitle = data
         break
     }
+    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
   }
 
   meetsRequirements(classList)
@@ -75,10 +76,15 @@ class class_search_query{
       }
   }
 
-  print()
+  isEmpty()
   {
-    console.log(this.courseNumber)
-    console.log(this.courseTitle)
+    var isEmpty = true
+    for (var i = 0; i < this.requirementArr.length; ++i)
+    {
+      if(this.requirementArr[i] != undefined && this.requirementArr[i] != '')
+        isEmpty = false
+    }
+    return isEmpty
   }
 
 }

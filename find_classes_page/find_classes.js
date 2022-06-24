@@ -6,33 +6,30 @@ fetch("/classes.json").then(response => response.json()).then( function(jsonData
 
 })
 
-function checkClass(query, class_section){
-    if (!(class_section.subject.match(String(query.subject).toUpperCase())) && query.subject != "" && query.subject != null)
-      return false
-    if (!(class_section.courseNumber.match(String(query.courseNumber)))  && query.courseNumber != "" && query.courseNumber != null)
-      return false
-    return true
-  
-  
-}
 
 
 function search_class()
 {
-  var section_data = []
-  for(var i = 0; i < classesList.length; ++i){
-    if(requirement.meetsRequirements(classesList[i]))
+    if (!requirement.isEmpty())
     {
-        console.log(classesList[i].courseTitle)
+       {
+        var limit = 50
+        var classCount = 0
+        var section_data = []
+        for(var i = 0; i < classesList.length && classCount < limit ; ++i){
+        if(requirement.meetsRequirements(classesList[i]))
+        {
+            section_data.push(classesList[i])
+            classCount++
+        }
 
-      section_data.push(classesList[i])
+        }
+        return section_data
+        } 
+
     }
-
-
-
-  }
-  return section_data
-
+        
+    
 
 
 }
