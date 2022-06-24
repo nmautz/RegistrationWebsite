@@ -108,6 +108,7 @@ class dropDown {
         var userInput = document.getElementById(this.input).value
         userInput = String(userInput).toUpperCase()
 
+        //checks the json
         this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
         for(var i = 0; i < classesList.length; ++i)
         {
@@ -118,12 +119,15 @@ class dropDown {
                if (!dropDownArr.includes(text))
                {
                     dropDownArr.push(text)
-                    this.addDropdown(text)
+                    // this.addDropdown(text)
                }
-            }
-
-            
+            }            
         }
+
+        //adds the drop downs
+        dropDownArr.sort()
+        for (var i = 0; i < dropDownArr.length; ++i)
+            this.addDropdown(dropDownArr[i])
     }
 
     
