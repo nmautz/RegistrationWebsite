@@ -52,7 +52,6 @@ class dropDown {
         //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
         dropdownUI.insertAdjacentElement("afterend",element)
-        
     }
 
 

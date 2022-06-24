@@ -25,8 +25,6 @@ function search_class()
             }
 
         }
-        //section_data.sort()
-
         return section_data
         } 
         
