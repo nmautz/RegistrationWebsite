@@ -67,8 +67,6 @@ function toggle_details_menu(section){
 function addClassSection(section, parent){
 
 
-
-
   //Create section
   const section_display = createDivElement(parent,"section-display")
 
