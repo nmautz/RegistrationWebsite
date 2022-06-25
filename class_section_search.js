@@ -7,54 +7,45 @@ class class_search_query{
     this.subjectDescription 
     this.courseNumber 
     this.courseTitle
-    
-    //should we use array instead?
-    // this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
+    //weekDays holds the week array
+    this.setWeekDays()
+    // this.requirementArr = []
+    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
   }
 
+  setWeekDays()
+  {
+    for (var i = 0; i < 7; ++i)
+      this.weekDays.push(false)
+  }
 
   addQueryRequirement(data,elementNum)
   {
-    switch(elementNum)
+    for (var i = 0; i < this.requirementArr.length; ++i)
     {
-      case 0:
-        this.subject = data
-        break
-      case 1:
-        this.subjectDescription = data
-        break
-      case 2:
-        this.courseNumber = data
-        break
-      case 3:
-        this.courseTitle = data
-        break
+      if (i == elementNum)
+        this.requirementArr[i] = data
     }
-    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
   }
 
   meetsRequirements(classList)
   {
-    var meetsReq = true
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle]
+    
+    for(var i = 0; i < this.requirementArr.length; ++i)
+    {
+      if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
+        return false;
+    }
+    return true
+  }
 
-    var temp = String(classList.subject).toUpperCase()
-    if(!temp.includes(String(this.subject)) && this.subject != undefined)
-      meetsReq = false
-
-    temp = String(classList.subjectDescription).toUpperCase()
-    if(!temp.includes(this.subjectDescription) && this.subjectDescription != undefined)
-      meetsReq = false
-
-    temp = String(classList.courseNumber).toUpperCase()
-    if(!temp.includes(this.courseNumber) && temp != this.courseNumber  && this.courseNumber != undefined)
-      meetsReq = false
-
-    temp = String(classList.courseTitle).toUpperCase()
-    if(!temp.includes(this.courseTitle) && temp != this.courseTitle && this.courseTitle != undefined)
-      meetsReq = false
-
-
-    return meetsReq
+  checkRequirement(req,base)
+  {
+    var temp = String(base).toUpperCase()
+    if(!temp.includes(String(req)) && req != undefined)
+      return false
+    return true
   }
 
   getClassesListString(classList, elementNum)
@@ -72,7 +63,7 @@ class class_search_query{
           break
         case 3:
           return String(classList.courseTitle)
-          break
+          break          
       }
   }
 
@@ -83,7 +74,7 @@ class class_search_query{
     {
       if(this.requirementArr[i] != undefined && this.requirementArr[i] != '')
         isEmpty = false
-    }
+    } 
     return isEmpty
   }
 
