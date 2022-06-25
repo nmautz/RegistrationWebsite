@@ -32,7 +32,7 @@ function search_class_by_query(query)
 function search_class()
 {
 
-  search_class_by_query(requirement)
+  return search_class_by_query(requirement)
     
 }
 
@@ -55,13 +55,6 @@ function update_section_display(){
     
 
     close_details_menu()
-
-    result_class_arr = search_class() 
-
-    if(requirement.isEmpty()){
-
-
-    }
 
     add_sections_from_array(search_class())
 
