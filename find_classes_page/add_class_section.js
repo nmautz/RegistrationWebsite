@@ -42,20 +42,51 @@ function createPTextElement(parent, class_string, text_string){
 
 }
 
+
+function open_details_menu(){
+  const details_display = document.getElementById("details-display")
+
+  var classDisplayArray = document.getElementsByClassName("section-display")
+
+  details_display.style.visibility = "visible"
+  details_display.style.width = "35vw"
+  for(var i = 0; i < classDisplayArray.length; ++i)
+  {
+    classDisplayArray[i].style.maxWidth = "60vw"
+  }
+
+}
+
+function close_details_menu(){
+  const details_display = document.getElementById("details-display")
+
+  var classDisplayArray = document.getElementsByClassName("section-display")
+
+  details_display.style.visibility = "hidden"
+  details_display.style.width = "0vw"
+  for(var i = 0; i < classDisplayArray.length; ++i)
+  {
+    classDisplayArray[i].style.maxWidth = "100vw"
+  }
+}
+
 function toggle_details_menu(section){
   const details_display = document.getElementById("details-display")
+
+  var classDisplayArray = document.getElementsByClassName("section-display")
+
+
+
 
   var current_id = sessionStorage.getItem("current-details-class-id")
   console.log(current_id)
 
   if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
-    
-    details_display.style.visibility = "hidden"
-    details_display.style.width = "0px"
+    close_details_menu()
+
 
   }else{
-    details_display.style.visibility = "visible"
-    details_display.style.width = "70vw"
+    open_details_menu()
 
   }
   sessionStorage.setItem("current-details-class-id", section.id)
