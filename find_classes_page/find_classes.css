@@ -43,7 +43,7 @@ body {
   margin-left: auto;
 
   overflow-y: scroll;
-  max-height: 100vh;
+  max-height: 85vh;
 
 
 }
@@ -59,7 +59,7 @@ body {
   flex-direction: column;
   border-width: 1px;
   border-style: solid;
-  margin-top: 25px;
+  margin-bottom: 25px;
   padding-bottom: 10px;
   margin-left: 5px;
   margin-right: 5px;
