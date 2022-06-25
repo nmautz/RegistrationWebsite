@@ -44,7 +44,11 @@ function createPTextElement(parent, class_string, text_string){
 
 function toggle_details_menu(section){
   const details_display = document.getElementById("details-display")
-  const classes_list_containter = document.getElementById("classes-list-container")
+
+  var classDisplayArray = document.getElementsByClassName("section-display")
+
+
+
 
   var current_id = sessionStorage.getItem("current-details-class-id")
   console.log(current_id)
@@ -52,11 +56,19 @@ function toggle_details_menu(section){
   if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
     
     details_display.style.visibility = "hidden"
-    classes_list_containter.style.maxWidth = "100vw"
+    details_display.style.width = "0vw"
+    for(var i = 0; i < classDisplayArray.length; ++i)
+    {
+      classDisplayArray[i].style.maxWidth = "100vw"
+    }
 
   }else{
     details_display.style.visibility = "visible"
-    classes_list_containter.style.maxWidth = "50vw"
+    details_display.style.width = "35vw"
+    for(var i = 0; i < classDisplayArray.length; ++i)
+    {
+      classDisplayArray[i].style.maxWidth = "60vw"
+    }
 
   }
   sessionStorage.setItem("current-details-class-id", section.id)
