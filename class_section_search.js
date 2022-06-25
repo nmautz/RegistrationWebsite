@@ -7,12 +7,16 @@ class class_search_query{
     this.subjectDescription 
     this.courseNumber 
     this.courseTitle
+    this.isSaved
     
     //should we use array instead?
     // this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
   }
 
 
+  /** 
+   * @deprecated TODO replacement
+  */
   addQueryRequirement(data,elementNum)
   {
     switch(elementNum)
