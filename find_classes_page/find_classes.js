@@ -7,17 +7,16 @@ fetch("/classes.json").then(response => response.json()).then( function(jsonData
 })
 
 
-
-function search_class()
+function search_class_by_query(query)
 {
-    if (!requirement.isEmpty())
+    if (!query.isEmpty())
     {
        {
         var limit = 50
         var classCount = 0
         var section_data = []
         for(var i = 0; i < classesList.length && classCount < limit ; ++i){
-        if(requirement.meetsRequirements(classesList[i]))
+        if(query.meetsRequirements(classesList[i]))
         {
             section_data.push(classesList[i])
             classCount++
@@ -28,10 +27,13 @@ function search_class()
         } 
 
     }
-        
+}
+
+function search_class()
+{
+
+  search_class_by_query(requirement)
     
-
-
 }
 
 function add_sections_from_array(sections){
@@ -53,6 +55,14 @@ function update_section_display(){
     
 
     close_details_menu()
+
+    result_class_arr = search_class() 
+
+    if(requirement.isEmpty()){
+
+
+    }
+
     add_sections_from_array(search_class())
 
 
