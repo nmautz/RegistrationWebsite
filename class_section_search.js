@@ -7,70 +7,86 @@ class class_search_query{
     this.subjectDescription 
     this.courseNumber 
     this.courseTitle
-    this.attribute
+    this.attributeDesc
     //weekDays holds the week array
-    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.attribute]
+    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.attributeDesc]
   }
 
 
   addQueryRequirement(data,elementNum)
   {
-    for (var i = 0; i < this.requirementArr.length; ++i)
-    {
-      if (i == elementNum)
-        this.requirementArr[i] = data
-    }
+    this.requirementArr[elementNum] = data
   }
 
 
   meetsRequirements(classList)
   {
-    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle]
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc]
     for(var i = 0; i < this.requirementArr.length; ++i)
     {
       if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
         return false;
     }
-    console.log(classList.courseTitle)
-    console.log(classList.attributeDesc)
-    for (var i = 0; i < classList.attributeDesc.length; ++i)
-    {
-      console.log(i)
-    }
     return true
   }
 
 
-  checkRequirement(req,base)
+  checkRequirement(req,classItem)
   {
-    // for (var i = 0; i < base.length; ++i)
-    // {
-    //   console.log(i)
-    //   console.log(base[i])
-    // }
-    var temp = String(base).toUpperCase()
-    if(!temp.includes(String(req)) && req != undefined)
+
+    if(Array.isArray(classItem) && classItem.length > 1)
+    {
+      for(var i = 0; i < classItem.length; ++i)
+      {
+        var temp = String(classItem[i]).toUpperCase()
+        if(temp.includes(req))
+        {
+          return true
+        }
+      }
       return false
-    return true
+    }else{
+      var temp = String(classItem).toUpperCase()
+      if(!temp.includes(String(req)) && req != undefined)
+        return false
+      return true
+  
+    }
+    
+
+ 
   }
 
   getClassesListString(classList, elementNum)
   {
-      switch(elementNum)
-      {
-        case 0:
-          return String(classList.subject)
-          break
-        case 1:
-          return String(classList.subjectDescription)
-          break
-        case 2:
-          return String(classList.courseNumber)
-          break
-        case 3:
-          return String(classList.courseTitle)
-          break          
-      }
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc]
+    // if (Array.isArray(classItem) && classItem.length > 1)
+    // {
+    //   for(var i = 0; i < classList.length; ++i)
+    //   {
+    //     var temp = String(classList[i]).toUpperCase()
+    //     if(temp.includes(req))
+    //     {
+    //       return temp
+    //     }
+    //   }
+    // }
+    return String(classListArr[elementNum])
+    switch(elementNum)
+    {
+      case 0:
+        return String(classList.subject)
+        break
+      case 1:
+        return String(classList.subjectDescription)
+        break
+      case 2:
+        return String(classList.courseNumber)
+        break
+      case 3:
+        return String(classList.courseTitle)
+        break          
+    }
   }
 
   isEmpty()
