@@ -163,7 +163,7 @@ class dropDown {
 
 
 
-class dropDownDays extends dropDown {
+class dropDownForAttr extends dropDown {
     constructor(input,elementName,requirementsObj,requirementNum)
     {
         super(input,elementName,requirementsObj,requirementNum)
@@ -205,6 +205,6 @@ document.addEventListener("DOMContentLoaded", function()
     const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
     const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
-    const daysDropDown = new dropDownDays("courseDays-input","courseDays",requirement,0)
+    const daysDropDown = new dropDownForAttr("courseDays-input","courseDays",requirement,0)
 })
 

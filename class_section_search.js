@@ -7,17 +7,11 @@ class class_search_query{
     this.subjectDescription 
     this.courseNumber 
     this.courseTitle
+    this.attribute
     //weekDays holds the week array
-    this.setWeekDays()
-    // this.requirementArr = []
-    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle]
+    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.attribute]
   }
 
-  setWeekDays()
-  {
-    for (var i = 0; i < 7; ++i)
-      this.weekDays.push(false)
-  }
 
   addQueryRequirement(data,elementNum)
   {
@@ -28,20 +22,32 @@ class class_search_query{
     }
   }
 
+
   meetsRequirements(classList)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle]
-    
     for(var i = 0; i < this.requirementArr.length; ++i)
     {
       if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
         return false;
     }
+    console.log(classList.courseTitle)
+    console.log(classList.attributeDesc)
+    for (var i = 0; i < classList.attributeDesc.length; ++i)
+    {
+      console.log(i)
+    }
     return true
   }
 
+
   checkRequirement(req,base)
   {
+    // for (var i = 0; i < base.length; ++i)
+    // {
+    //   console.log(i)
+    //   console.log(base[i])
+    // }
     var temp = String(base).toUpperCase()
     if(!temp.includes(String(req)) && req != undefined)
       return false
@@ -77,6 +83,7 @@ class class_search_query{
     } 
     return isEmpty
   }
+
 
 }
 
