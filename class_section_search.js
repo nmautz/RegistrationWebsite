@@ -39,7 +39,7 @@ class class_search_query{
       for(var i = 0; i < classItem.length; ++i)
       {
         var temp = String(classItem[i]).toUpperCase()
-        if(temp.includes(req))
+        if(temp.includes(req) && req != undefined)
         {
           return true
         }
@@ -60,18 +60,24 @@ class class_search_query{
   getClassesListString(classList, elementNum)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc]
-    // if (Array.isArray(classItem) && classItem.length > 1)
-    // {
-    //   for(var i = 0; i < classList.length; ++i)
-    //   {
-    //     var temp = String(classList[i]).toUpperCase()
-    //     if(temp.includes(req))
-    //     {
-    //       return temp
-    //     }
-    //   }
-    // }
-    return String(classListArr[elementNum])
+  
+    var textArr = []
+    var val = classListArr[elementNum]
+    if (Array.isArray(val) && val.length > 1)
+    { 
+      for(var i = 0; i < val.length; ++i)
+      {
+        textArr.push(val[i])
+        // var temp = String(val[i]).toUpperCase()   
+      }
+      return textArr
+    }else
+    {
+      textArr.push(classListArr[elementNum])
+      return textArr
+    }
+
+     
     switch(elementNum)
     {
       case 0:

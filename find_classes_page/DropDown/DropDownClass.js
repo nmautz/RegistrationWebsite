@@ -103,18 +103,26 @@ class dropDown {
 
     addChildren()
     {
-        var dropDownArr = []
         var userInput = document.getElementById(this.input).value
         userInput = String(userInput).toUpperCase()
 
         //checks the json
         this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
+        var dropDownArr = []
         for(var i = 0; i < classesList.length; ++i)
         {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
             {            
-               var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
-               
+                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+                // for (var i = 0; i < text.length; ++i)
+                // {
+                //     if (!dropDownArr.includes(text[i]))
+                //     {
+                //             dropDownArr.push(text[i])
+                //             this.addDropdown(text[i])
+                //     }
+                // }
+                console.log(text.length)
                if (!dropDownArr.includes(text))
                {
                     dropDownArr.push(text)
@@ -181,13 +189,12 @@ class dropDownForAttr extends dropDown {
         {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
             {            
-               var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
-               
-               if (!dropDownArr.includes(text))
-               {
+                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+                if (!dropDownArr.includes(text))
+                {
                     dropDownArr.push(text)
                     this.addDropdown(text)
-               }
+                }
             }
 
             
@@ -205,6 +212,6 @@ document.addEventListener("DOMContentLoaded", function()
     const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
     const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
-    const daysDropDown = new dropDownForAttr("courseDays-input","courseDays",requirement,4)
+    const daysDropDown = new dropDown("courseDays-input","courseDays",requirement,4)
 })
 
