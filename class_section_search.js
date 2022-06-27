@@ -7,10 +7,10 @@ class class_search_query{
     this.subjectDescription
     this.courseNumber
     this.courseTitle
-    this.attributeDesc
     this.professorName
+    this.attributeDesc
     //weekDays holds the week array
-    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.attributeDesc,this.professorName]
+    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.professorName,this.attributeDesc]
     this.setVars()
   }
 
@@ -31,7 +31,7 @@ class class_search_query{
 
   meetsRequirements(classList)
   {
-    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc,classList.professorName]
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
     for(var i = 0; i < this.requirementArr.length; ++i)
     {
       if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
@@ -70,7 +70,7 @@ class class_search_query{
   getClassesListString(classList, elementNum)
   {
 
-    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc,classList.professorName]
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
   
     var validArray = []
     var val = classListArr[elementNum]
