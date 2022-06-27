@@ -8,8 +8,9 @@ class class_search_query{
     this.courseNumber
     this.courseTitle
     this.attributeDesc
+    this.professorName
     //weekDays holds the week array
-    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.attributeDesc]
+    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.attributeDesc,this.professorName]
     this.setVars()
   }
 
@@ -30,7 +31,7 @@ class class_search_query{
 
   meetsRequirements(classList)
   {
-    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc]
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc,classList.professorName]
     for(var i = 0; i < this.requirementArr.length; ++i)
     {
       if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
@@ -48,7 +49,7 @@ class class_search_query{
       for(var i = 0; i < classItem.length; ++i)
       {
         var temp = String(classItem[i]).toUpperCase()
-        if(temp.includes(String(req)) || req == undefined || req == '')
+        if(temp.includes(String(req)) || req == '')
         {
           return true
         }
@@ -56,7 +57,7 @@ class class_search_query{
       return false
     }else{
       var temp = String(classItem).toUpperCase()
-      if(!temp.includes(String(req)) && req != undefined && req != '')
+      if(!temp.includes(String(req)) && req != '')
         return false
       return true
   
@@ -68,44 +69,27 @@ class class_search_query{
 
   getClassesListString(classList, elementNum)
   {
-    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc]
+
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc,classList.professorName]
   
     var validArray = []
     var val = classListArr[elementNum]
-    if (Array.isArray(val) && val.length > 1)
+    if (Array.isArray(val) )
     { 
       for(var i = 0; i < val.length; ++i)
       {
-        if(val[i].includes(this.requirementArr[elementNum]) || this.requirementArr[elementNum] == undefined || this.requirementArr[elementNum] == '')  
+        var temp = String(val[i]).toUpperCase()
+        if(temp.includes(this.requirementArr[elementNum]) || this.requirementArr[elementNum] == '')  
         {
           validArray.push(val[i])
-          //return val[i]  
         }
       }
-      return validArray
     }else
     {
        validArray.push(classListArr[elementNum])
-       return validArray
       //  return classListArr[elementNum]
     }
     return validArray
-     
-    switch(elementNum)
-    {
-      // case 0:
-      //   return String(classList.subject)
-      //   break
-      // case 1:
-      //   return String(classList.subjectDescription)
-      //   break
-      // case 2:
-      //   return String(classList.courseNumber)
-      //   break
-      // case 3:
-      //   return String(classList.courseTitle)
-      //   break          
-    }
   }
 
   isEmpty()
