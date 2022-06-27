@@ -114,20 +114,11 @@ class dropDown {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
             {            
                 var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
-                // for (var i = 0; i < text.length; ++i)
-                // {
-                //     if (!dropDownArr.includes(text[i]))
-                //     {
-                //             dropDownArr.push(text[i])
-                //             this.addDropdown(text[i])
-                //     }
-                // }
-                console.log(text.length)
-               if (!dropDownArr.includes(text))
-               {
-                    dropDownArr.push(text)
+                if (!dropDownArr.includes(String(text)) && text != '')
+                {
+                    dropDownArr.push(String(text))
                     // this.addDropdown(text)
-               }
+                }
             }            
         }
 
@@ -212,6 +203,6 @@ document.addEventListener("DOMContentLoaded", function()
     const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
     const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
-    const daysDropDown = new dropDown("courseDays-input","courseDays",requirement,4)
+    const daysDropDown = new dropDown("courseAttributes-input","courseAttributes",requirement,4)
 })
 

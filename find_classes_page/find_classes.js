@@ -47,7 +47,6 @@ function add_sections_from_array(sections){
 
 function update_section_display(){
 
-    console.log("works")
     const classContainter = document.getElementById("classes-list-container")
     while(classContainter.firstChild){
         classContainter.removeChild(classContainter.firstChild)

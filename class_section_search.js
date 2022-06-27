@@ -39,7 +39,7 @@ class class_search_query{
       for(var i = 0; i < classItem.length; ++i)
       {
         var temp = String(classItem[i]).toUpperCase()
-        if(temp.includes(req) && req != undefined)
+        if(temp.includes(String(req)) && req != undefined)
         {
           return true
         }
@@ -61,37 +61,34 @@ class class_search_query{
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.attributeDesc]
   
-    var textArr = []
     var val = classListArr[elementNum]
     if (Array.isArray(val) && val.length > 1)
     { 
       for(var i = 0; i < val.length; ++i)
       {
-        textArr.push(val[i])
-        // var temp = String(val[i]).toUpperCase()   
+        if(val[i].includes(this.requirementArr[i]))
+          return val[i]
       }
-      return textArr
     }else
     {
-      textArr.push(classListArr[elementNum])
-      return textArr
+      return classListArr[elementNum]
     }
 
      
     switch(elementNum)
     {
-      case 0:
-        return String(classList.subject)
-        break
-      case 1:
-        return String(classList.subjectDescription)
-        break
-      case 2:
-        return String(classList.courseNumber)
-        break
-      case 3:
-        return String(classList.courseTitle)
-        break          
+      // case 0:
+      //   return String(classList.subject)
+      //   break
+      // case 1:
+      //   return String(classList.subjectDescription)
+      //   break
+      // case 2:
+      //   return String(classList.courseNumber)
+      //   break
+      // case 3:
+      //   return String(classList.courseTitle)
+      //   break          
     }
   }
 
