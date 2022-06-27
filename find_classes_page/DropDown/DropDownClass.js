@@ -114,11 +114,22 @@ class dropDown {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
             {            
                 var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
-                if (!dropDownArr.includes(String(text)) && text != '')
+                for (var j = 0; j < text.length; ++j)
                 {
-                    dropDownArr.push(String(text))
-                    // this.addDropdown(text)
+
+                    // if (!dropDownArr.includes(String(text[j])) && text[j] != '' && text[j] != undefined)
+                    if (!dropDownArr.includes(String(text[j])) && text[j] != '')
+                    {
+                        dropDownArr.push(String(text[j]))
+                        // this.addDropdown(text)
+                    }
+
                 }
+                // if (!dropDownArr.includes(String(text[0])) && text[0] != '')
+                // {
+                //     dropDownArr.push(String(text[0]))
+                //     // this.addDropdown(text)
+                // }
             }            
         }
 
