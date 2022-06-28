@@ -37,9 +37,12 @@ class dropDown {
         element.classList.add("clearBtn")
         element.addEventListener("click", (e) =>
         {
-            dropdownUI.value = ""
-            this.updateDropDown()
-            update_section_display()
+            if(!requirement.isEmpty())
+            {
+                dropdownUI.value = ""
+                this.updateDropDown()
+                update_section_display()
+            }
         })
         dropdownUI.insertAdjacentElement("afterend",element)
     }
@@ -117,9 +120,8 @@ class dropDown {
                 for (var j = 0; j < text.length; ++j)
                 {
                     if (!dropDownArr.includes(String(text[j])) && text[j] != '')
-                    {
                         dropDownArr.push(String(text[j]))
-                    }
+                
 
                 }
             }            
@@ -164,37 +166,6 @@ class dropDown {
 }
 
 
-
-class dropDownForAttr extends dropDown {
-    constructor(input,elementName,requirementsObj,requirementNum)
-    {
-        super(input,elementName,requirementsObj,requirementNum)
-
-    }
-
-    addChildren()
-    {
-        var dropDownArr = []
-        var userInput = document.getElementById(this.input).value
-        userInput = String(userInput).toUpperCase()
-
-        this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
-        for(var i = 0; i < classesList.length; ++i)
-        {
-            if(this.requirementsObj.meetsRequirements(classesList[i]))
-            {            
-                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
-                if (!dropDownArr.includes(text))
-                {
-                    dropDownArr.push(text)
-                    this.addDropdown(text)
-                }
-            }
-
-            
-        }
-    }
-}
 
 
 const requirement = new class_search_query()
