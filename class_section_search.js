@@ -12,6 +12,8 @@ class class_search_query{
     //weekDays holds the week array
     this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.professorName,this.attributeDesc]
     this.setVars()
+    //  week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
+
   }
 
   setVars()

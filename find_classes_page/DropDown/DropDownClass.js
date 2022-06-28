@@ -167,7 +167,6 @@ class dropDown {
 
 
 
-
 const requirement = new class_search_query()
 
 document.addEventListener("DOMContentLoaded", function()
@@ -179,6 +178,10 @@ document.addEventListener("DOMContentLoaded", function()
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
     const drop5 = new dropDown("professorName-input","professorName",requirement,4)
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
+    var weekArr = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+    var weekCB = []
+    for(var i = 0; i < weekArr.length; ++i)
+        weekCB.push(new dayForm(weekArr[i],i,"daysForm"))
 
 })
 
