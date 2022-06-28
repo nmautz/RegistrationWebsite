@@ -15,17 +15,19 @@ function search_class_by_query(query)
         var limit = 50
         var classCount = 0
         var section_data = []
-        for(var i = 0; i < classesList.length && classCount < limit ; ++i){
-        if(query.meetsRequirements(classesList[i]))
+        for(var i = 0; i < classesList.length && classCount < limit ; ++i)
         {
-            section_data.push(classesList[i])
-            classCount++
-        }
+            if(requirement.meetsRequirements(classesList[i]))
+            {
+                section_data.push(classesList[i])
+                classCount++
+            }
 
         }
         return section_data
         } 
-
+        
+        
     }
 }
 

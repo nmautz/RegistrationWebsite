@@ -52,7 +52,6 @@ class dropDown {
         //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
         dropdownUI.insertAdjacentElement("afterend",element)
-        
     }
 
 
@@ -104,26 +103,32 @@ class dropDown {
 
     addChildren()
     {
-        var dropDownArr = []
         var userInput = document.getElementById(this.input).value
         userInput = String(userInput).toUpperCase()
 
+        //checks the json
         this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
+        var dropDownArr = []
         for(var i = 0; i < classesList.length; ++i)
         {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
             {            
-               var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
-               
-               if (!dropDownArr.includes(text))
-               {
-                    dropDownArr.push(text)
-                    this.addDropdown(text)
-               }
-            }
+                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+                for (var j = 0; j < text.length; ++j)
+                {
+                    if (!dropDownArr.includes(String(text[j])) && text[j] != '')
+                    {
+                        dropDownArr.push(String(text[j]))
+                    }
 
-            
+                }
+            }            
         }
+
+        //adds the drop downs
+        dropDownArr.sort()
+        for (var i = 0; i < dropDownArr.length; ++i)
+            this.addDropdown(dropDownArr[i])
     }
 
     
@@ -160,7 +165,7 @@ class dropDown {
 
 
 
-class dropDownDays extends dropDown {
+class dropDownForAttr extends dropDown {
     constructor(input,elementName,requirementsObj,requirementNum)
     {
         super(input,elementName,requirementsObj,requirementNum)
@@ -178,13 +183,12 @@ class dropDownDays extends dropDown {
         {
             if(this.requirementsObj.meetsRequirements(classesList[i]))
             {            
-               var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
-               
-               if (!dropDownArr.includes(text))
-               {
+                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+                if (!dropDownArr.includes(text))
+                {
                     dropDownArr.push(text)
                     this.addDropdown(text)
-               }
+                }
             }
 
             
@@ -202,6 +206,8 @@ document.addEventListener("DOMContentLoaded", function()
     const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
     const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
-    const daysDropDown = new dropDownDays("courseDays-input","courseDays",requirement,0)
+    const drop5 = new dropDown("professorName-input","professorName",requirement,4)
+    const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
+
 })
 
