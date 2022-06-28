@@ -50,9 +50,7 @@ class class_search_query{
       {
         var temp = String(classItem[i]).toUpperCase()
         if(temp.includes(String(req)) || req == '')
-        {
           return true
-        }
       }
       return false
     }else{
@@ -62,14 +60,10 @@ class class_search_query{
       return true
   
     }
-    
-
- 
   }
 
   getClassesListString(classList, elementNum)
   {
-
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
   
     var validArray = []
@@ -79,15 +73,12 @@ class class_search_query{
       for(var i = 0; i < val.length; ++i)
       {
         var temp = String(val[i]).toUpperCase()
-        if(temp.includes(this.requirementArr[elementNum]) || this.requirementArr[elementNum] == '')  
-        {
-          validArray.push(val[i])
-        }
+        if(temp.includes(this.requirementArr[elementNum]) || this.requirementArr[elementNum] == '')          
+          validArray.push(val[i])        
       }
     }else
     {
        validArray.push(classListArr[elementNum])
-      //  return classListArr[elementNum]
     }
     return validArray
   }
@@ -102,8 +93,6 @@ class class_search_query{
     } 
     return isEmpty
   }
-
-
 }
 
 
