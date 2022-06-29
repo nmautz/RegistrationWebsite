@@ -1,9 +1,10 @@
 class dayForm{
-    constructor(text,dayNum,container)
+    constructor(text,dayNum,container,requirementObj)
     {
         this.text = text
         this.dayNum = dayNum
         this.container = container
+        this.requirementObj = requirementObj
         this.createCheckBox()
     }
 
@@ -33,7 +34,8 @@ class dayForm{
     {
         element.addEventListener("click", (e) =>
         {
-            console.log(this.dayNum)
+            this.requirementObj.addQueryRequirementDays(this.dayNum)
+            update_section_display()
         })
     }
 }

@@ -79,7 +79,7 @@ function toggle_details_menu(section){
 
 
   var current_id = sessionStorage.getItem("current-details-class-id")
-  console.log(current_id)
+
 
   if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
     close_details_menu()

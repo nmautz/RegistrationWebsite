@@ -10,18 +10,21 @@ class class_search_query{
     this.professorName
     this.attributeDesc
     //weekDays holds the week array
+    this.weekDays = []
     this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.professorName,this.attributeDesc]
     this.setVars()
-    //  week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
+    
 
   }
 
   setVars()
   {
     for (var i = 0; i < this.requirementArr.length; ++i)
-    {
       this.requirementArr[i] = ""
-    }
+    
+    //weekdays is an array and needs to be set separate
+    for (var i = 0; i < 7; ++i)
+      this.weekDays.push(false)
   }
   
 
@@ -30,10 +33,19 @@ class class_search_query{
     this.requirementArr[elementNum] = data
   }
 
+  //specifically called by the checkboxes onClick
+  addQueryRequirementDays(dayNum)
+  {
+    this.weekDays[dayNum] = !this.weekDays[dayNum]
+  }
+
 
   meetsRequirements(classList)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
+    if(!this.meetsWeekReq(classList))
+      return false
+
     for(var i = 0; i < this.requirementArr.length; ++i)
     {
       if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
@@ -42,6 +54,16 @@ class class_search_query{
     return true
   }
 
+  meetsWeekReq(section)
+  {
+    var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
+    for (var i = 0; i < week_days.length; ++i)
+    {
+      if (this.weekDays[i] != week_days[i][0])
+        return false
+    }
+    return true
+  }
 
   checkRequirement(req,classItem)
   {
@@ -55,6 +77,7 @@ class class_search_query{
           return true
       }
       return false
+      
     }else{
       var temp = String(classItem).toUpperCase()
       if(!temp.includes(String(req)) && req != '')
