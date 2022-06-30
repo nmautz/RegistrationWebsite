@@ -115,6 +115,8 @@ class class_search_query{
       if(this.requirementArr[i] != undefined && this.requirementArr[i] != '')
         return false
     } 
+    if (!this.isWeekEmpty())
+      return false
     return true
   }
 

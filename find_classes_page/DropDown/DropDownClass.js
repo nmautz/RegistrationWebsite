@@ -180,10 +180,8 @@ document.addEventListener("DOMContentLoaded", function()
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
  
     //creating the check boxes for days
-    var weekArr = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-    var weekCB = []
-    for(var i = 0; i < weekArr.length; ++i)
-        weekCB.push(new dayForm(weekArr[i],i,"daysForm",requirement))
+    addWeekForm("daysForm",requirement)
+    const slider = new timeSlider("timeSlider",requirement)
 
 })
 

@@ -41,3 +41,11 @@ class dayForm{
         })
     }
 }
+
+function addWeekForm(insertElement,requirement)
+{
+    var weekArr = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+    var weekCB = []
+    for(var i = 0; i < weekArr.length; ++i)
+        weekCB.push(new dayForm(weekArr[i],i,insertElement,requirement))
+}
