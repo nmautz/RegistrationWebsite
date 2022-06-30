@@ -43,7 +43,7 @@ class class_search_query{
   meetsRequirements(classList)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
-    if(!this.meetsWeekReq(classList))
+    if(!this.meetsWeekReq(classList) && !this.isWeekEmpty())
       return false
 
     for(var i = 0; i < this.requirementArr.length; ++i)
@@ -110,13 +110,22 @@ class class_search_query{
 
   isEmpty()
   {
-    var isEmpty = true
     for (var i = 0; i < this.requirementArr.length; ++i)
     {
       if(this.requirementArr[i] != undefined && this.requirementArr[i] != '')
-        isEmpty = false
+        return false
     } 
-    return isEmpty
+    return true
+  }
+
+  isWeekEmpty()
+  {
+    for (var i = 0; i < this.weekDays.length; ++i)
+    {
+      if (this.weekDays[i] == true)
+        return false
+    }
+    return true
   }
 }
 

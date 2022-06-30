@@ -1,4 +1,5 @@
 class dayForm{
+
     constructor(text,dayNum,container,requirementObj)
     {
         this.text = text
@@ -7,6 +8,7 @@ class dayForm{
         this.requirementObj = requirementObj
         this.createCheckBox()
     }
+
 
     createCheckBox()
     {
