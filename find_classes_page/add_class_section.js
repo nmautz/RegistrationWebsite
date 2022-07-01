@@ -49,7 +49,7 @@ function open_details_menu(){
   var classDisplayArray = document.getElementsByClassName("section-display")
 
   details_display.style.visibility = "visible"
-  details_display.style.width = "35vw"
+  details_display.style.flex = "1"
   for(var i = 0; i < classDisplayArray.length; ++i)
   {
     classDisplayArray[i].style.maxWidth = "60vw"
@@ -63,7 +63,7 @@ function close_details_menu(){
   var classDisplayArray = document.getElementsByClassName("section-display")
 
   details_display.style.visibility = "hidden"
-  details_display.style.width = "0vw"
+  details_display.style.flex = "0"
   for(var i = 0; i < classDisplayArray.length; ++i)
   {
     classDisplayArray[i].style.maxWidth = "100vw"

@@ -12,8 +12,7 @@ body {
 }
 .content-main {
   margin-top: 25px;
-  display: grid;
-  grid-template-columns: 1fr min-content;
+  display: flex;
   
   transition: all 200ms ease-in-out;
 
