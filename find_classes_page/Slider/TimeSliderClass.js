@@ -5,19 +5,19 @@ class timeSlider{
         this.requirementObj = requirementObj
         this.leftSliderId = "leftSlider"
         this.rightSliderId = "RightSlider"
-        this.createSliders(this.leftSliderId,25)
-        this.createSliders(this.rightSliderId,75) 
+        this.createSliders(this.leftSliderId,25,0,100)
+        this.createSliders(this.rightSliderId,75,0,100) 
         
     }
 
-    createSliders(id,startValue)
+    createSliders(id,startValue,min,max)
     {
         const sliderInsert = document.getElementById(this.insertElement)
         const rangeElement = document.createElement("input")
         rangeElement.type = "range"
         rangeElement.id = id
-        rangeElement.min = 1
-        rangeElement.max = 100
+        rangeElement.min = min
+        rangeElement.max = max
         rangeElement.value = startValue
         rangeElement.addEventListener("input", (e) =>
         {
@@ -25,17 +25,27 @@ class timeSlider{
             if(e.currentTarget.id == this.leftSliderId)
             {
                 var otherSlider = document.getElementById(this.rightSliderId)
-                if(e.currentTarget.value >= otherSlider.value)        
+                if(e.currentTarget.value >= otherSlider.value)
+                {
+                    // otherSlider.value = e.currentTarget.value
                     e.currentTarget.value = otherSlider.value
+                    // e.currentTarget.value = otherSlider.value
+                }        
+                console.log(e.currentTarget.value,otherSlider.value)
                 
-            }
-            else
+            }else
             {
                 var otherSlider = document.getElementById(this.leftSliderId)
-                if(e.currentTarget.value <= otherSlider.value)        
+                if(e.currentTarget.value <= otherSlider.value) 
+                {
+                    // otherSlider.value = e.currentTarget.value
                     e.currentTarget.value = otherSlider.value
+                    // e.currentTarget.value = otherSlider.value
+                }        
+                console.log(e.currentTarget.value,otherSlider.value)
+                    
             }
-            console.log(e.currentTarget.value)
+            // console.log(e.currentTarget.value)
         })
         sliderInsert.appendChild(rangeElement)
     }
