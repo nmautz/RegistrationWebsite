@@ -5,6 +5,7 @@
         <title>Find Classes</title>
         <link rel="stylesheet" href="find_classes.css">
         <link rel="stylesheet" href="DropDown/dropDown.css">
+        <link rel="stylesheet" href="Slider/TimeSlider.css">
         <script src="../load_queue.js"></script>
         <script src="add_class_section.js"></script>
         <script src="../saved_class_database.js"></script>
@@ -14,7 +15,7 @@
         <script src="Slider/TimeSliderClass.js"></script>
         <script src="DropDown/DropDownClass.js"></script>
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
-        <script src="install ng-range-slider"></script>
+   
 
     </head>
 
@@ -34,8 +35,14 @@
                 <div>Meeting days and times:</div>
                 <div id="daysForm"></div>
                 <div id="timeSlider"></div>
-                <!-- <input id = "slider" type="range" min="1" max="100" value="50" oninput=console.log(slider.value)> -->
-                <!-- <input id = "slider" type="range" min="1" max="100" value="50" oninput=console.log(slider.value)> -->
+
+                <section class="range-slider">
+                    <span class="rangeValues"></span>
+                    <input value="0" min="0" max="72" step="0.5" type="range">
+                    <input value="72" min="0" max="72" step="0.5" type="range">
+                  </section>
+
+                
             </div>
 
 

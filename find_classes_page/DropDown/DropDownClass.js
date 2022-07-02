@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function()
  
     //creating the check boxes for days
     addWeekForm("daysForm",requirement)
-    const slider = new timeSlider("timeSlider",requirement)
+    // const slider = new timeSlider("timeSlider",requirement,"timeOutput")
 
 })
 
