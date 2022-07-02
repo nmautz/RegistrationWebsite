@@ -3,9 +3,12 @@
 
     <head>
         <title>Find Classes</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="find_classes.css">
         <link rel="stylesheet" href="DropDown/dropDown.css">
         <link rel="stylesheet" href="Slider/TimeSlider.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="../load_queue.js"></script>
         <script src="add_class_section.js"></script>
         <script src="../saved_class_database.js"></script>
@@ -36,11 +39,7 @@
                 <div id="daysForm"></div>
                 <div id="timeSlider"></div>
 
-                <section class="range-slider">
-                    <span class="rangeValues"></span>
-                    <input value="0" min="0" max="72" step="0.5" type="range">
-                    <input value="72" min="0" max="72" step="0.5" type="range">
-                  </section>
+                <div id="slider-range"></div>
 
                 
             </div>
