@@ -19,18 +19,9 @@ $( function() {
     var lower_knob_val = $('#slider-range').slider("values")[0];
     var upper_knob_val = $('#slider-range').slider("values")[1];
 
-    var lower_knob_time = document.getElementById("lower_knob");
-    var upper_knob_time = document.getElementById("upper_knob");
-
-    lower_knob_time.textContent = minToTime(lower_knob_val, TIME_INTERVAL)
-    upper_knob_time.textContent = minToTime(upper_knob_val, TIME_INTERVAL)
+    $("#lower_knob_element").text = minToTime(lower_knob_val,TIME_INTERVAL);
 
     console.log($( "#slider-range:first" ).offset())
-
-    lower_knob_time.style.left = String((lower_knob_val+2)/(TIME_INTERVAL/100)
-     - 5) + "vw";
-
-    upper_knob_time.style.left = String((upper_knob_val+2)/(TIME_INTERVAL/100) - 5) + "vw";
 
 
 
