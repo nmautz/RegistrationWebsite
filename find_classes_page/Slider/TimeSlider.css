@@ -1,4 +1,26 @@
-Ssection.range-slider {
+.time-slider {
+
+    
+}
+
+
+.slider-time-display {
+    position: relative;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+.slider-time {
+
+    position: absolute;
+    left: 5vw;
+    bottom: 1vh;
+
+}
+section.range-slider {
     position: relative;
     width: 200px;
     height: 35px;
