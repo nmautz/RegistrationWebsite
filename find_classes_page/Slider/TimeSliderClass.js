@@ -3,29 +3,29 @@ $( function() {
 
   const TIME_INTERVAL = 48
 
+    var handle = $("#lower_knob_element")
+    var handle2 = $("#upper_knob_element")
+
   $( "#slider-range" ).slider({
+
+    create: function() {
+        handle.text( minToTime($( this ).slider( "value" )[0], TIME_INTERVAL) );
+        handle2.text( minToTime($( this ).slider( "value" )[1], TIME_INTERVAL) );
+    },
     range: true,
     min: 0,
     max: TIME_INTERVAL,
     values: [ 500, 1000 ],
+    slide: function( event, ui ) {
+      handle.text( minToTime(ui.values[0], TIME_INTERVAL) );
+      handle2.text( minToTime(ui.values[1], TIME_INTERVAL));
+    },
   });
 
   $( "#slider-range" ).css("width", "25vw")
   $( "#slider-range" ).css("margin-left", "auto")
   $( "#slider-range" ).css("margin-right", "auto")
 
-
-  $("#slider-range").on("slide", function(event, ui) {
-    var lower_knob_val = $('#slider-range').slider("values")[0];
-    var upper_knob_val = $('#slider-range').slider("values")[1];
-
-    $("#lower_knob_element").text = minToTime(lower_knob_val,TIME_INTERVAL);
-
-    console.log($( "#slider-range:first" ).offset())
-
-
-
-});
 
 
 })

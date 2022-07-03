@@ -3,7 +3,13 @@
     
 }
 
-.handle {
+#lower_knob_element, #upper_knob_element {
+    width: 6vw;
+    text-align: center;
+}
+
+.ui-slider-handle {
+ 
     
 }
 
