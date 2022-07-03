@@ -16,11 +16,13 @@ $( function() {
     min: 0,
     max: TIME_INTERVAL,
     values: [ 500, 1000 ],
-    slide: function( event, ui ) {
-      handle.text( minToTime(ui.values[0], TIME_INTERVAL) );
-      handle2.text( minToTime(ui.values[1], TIME_INTERVAL));
-    },
   });
+
+  $("#slider-range").on("slide", function(event, ui) {
+    handle.text( minToTime(ui.values[0], TIME_INTERVAL) );
+    handle2.text( minToTime(ui.values[1], TIME_INTERVAL));
+
+  })
 
   $( "#slider-range" ).css("width", "25vw")
   $( "#slider-range" ).css("margin-left", "auto")
