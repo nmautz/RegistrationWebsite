@@ -23,6 +23,13 @@ $( function() {
     handle2.text( minToTime(ui.values[1], TIME_INTERVAL));
 
   })
+  $("#slider-range").on("slidechange", function(event, ui) {
+    console.log("hello")
+
+  })
+
+
+
 
   $( "#slider-range" ).css("width", "25vw")
   $( "#slider-range" ).css("margin-left", "auto")
