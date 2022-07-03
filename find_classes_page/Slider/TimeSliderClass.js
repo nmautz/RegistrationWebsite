@@ -9,13 +9,13 @@ $( function() {
   $( "#slider-range" ).slider({
 
     create: function() {
-        handle.text( minToTime($( this ).slider( "value" )[0], TIME_INTERVAL) );
-        handle2.text( minToTime($( this ).slider( "value" )[1], TIME_INTERVAL) );
+        handle.text( minToTime($( this ).slider( "values" )[0], TIME_INTERVAL) );
+        handle2.text( minToTime($( this ).slider( "values" )[1], TIME_INTERVAL) );
     },
     range: true,
     min: 0,
     max: TIME_INTERVAL,
-    values: [ 500, 1000 ],
+    values: [ 16, 36 ],
   });
 
   $("#slider-range").on("slide", function(event, ui) {
