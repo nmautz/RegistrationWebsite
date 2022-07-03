@@ -3,8 +3,8 @@ $( function() {
 
   const TIME_INTERVAL = 48
 
-    var handle = $("#lower_knob_element")
-    var handle2 = $("#upper_knob_element")
+    var handle = $("#lower_text")
+    var handle2 = $("#upper_text")
 
   $( "#slider-range" ).slider({
 

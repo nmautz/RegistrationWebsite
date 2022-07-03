@@ -1,20 +1,25 @@
 .time-slider {
 
-    
+    margin-top: 6vh;
 }
 
-#lower_knob_element, #upper_knob_element {
-    width: 6vw;
+.handle-text {
+    position: absolute;
+
+    top: -5vh;
+    left: -2vw;
     text-align: center;
+    width: 6vw;
+
 }
+
 
 .ui-slider-handle {
- 
+ position: relative;
     
 }
 
 .slider-time-display {
-    position: relative;
     overflow-x: hidden;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -22,13 +27,6 @@
     margin-right: 10vw;
 }
 
-.slider-time {
-
-    position: absolute;
-    left: 5vw;
-    bottom: 1vh;
-
-}
 section.range-slider {
     position: relative;
     width: 200px;
