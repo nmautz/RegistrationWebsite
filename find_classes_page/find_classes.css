@@ -57,7 +57,16 @@ body {
   background-color: rgb(238, 238, 247);
   width: 60vw;
   transition: all 200ms ease-in-out;
+  height: 25vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  
 
+}
+
+.section-display::-webkit-scrollbar {
+  display: none;
 }
 
 .section-display:hover{
@@ -84,8 +93,8 @@ body {
 .subject-courseNumber-text,
 .course-title-text {
   text-align: center;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .course-title-text{
@@ -101,7 +110,7 @@ body {
 
 .section-middle-week-display {
   display:flex;
-  width: 30%; 
+  width: 30vw; 
   margin-left: auto;
   margin-right: auto;
   margin-top: 0px;
@@ -113,8 +122,8 @@ body {
 .weekday-box-display {
   border-width: 1px;
   border-style: solid;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
   background-color: white;
 
 
@@ -122,8 +131,8 @@ body {
 }
 .weekday-box-text {
   text-align: center;
-  margin-bottom: 3px;
-  margin-top: 3px;
+  margin-bottom: 0.5vh;
+  margin-top: 0.5vh;
 
 }
 
