@@ -29,6 +29,7 @@ function search_class_by_query(query)
         
         
     }
+
 }
 
 function search_class()
