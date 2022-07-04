@@ -46,20 +46,20 @@ function createPTextElement(parent, class_string, text_string){
 
 
 function openSectionDisplay(display){
-  display.parentElement.style.gridTemplateColumns = "90vw"
+  display.style.height = "50vh"
 
 
 }
 
 function closeSectionDisplay(display){
-  display.parentElement.style.gridTemplateColumns = "60vw"
+  display.style.height = "25vh"
 
 
 }
 
 
 function toggleSectionDisplay(display){
-  if(  display.parentElement.style.gridTemplateColumns == "60vw" || display.parentElement.style.gridTemplateColumns == ""){
+  if( display.style.height == "25vh" || display.style.height == ""){
     openSectionDisplay(display)
   }else{
     closeSectionDisplay(display)
