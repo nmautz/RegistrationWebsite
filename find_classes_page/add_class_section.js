@@ -59,7 +59,7 @@ function closeSectionDisplay(display){
 
 
 function toggleSectionDisplay(display){
-  if(  display.parentElement.style.gridTemplateColumns == "60vw"){
+  if(  display.parentElement.style.gridTemplateColumns == "60vw" || display.parentElement.style.gridTemplateColumns == ""){
     openSectionDisplay(display)
   }else{
     closeSectionDisplay(display)
