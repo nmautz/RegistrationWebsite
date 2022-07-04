@@ -20,24 +20,14 @@ body {
 
 }
 
-.details-display {
 
-  visibility: hidden;
-  border: 1px;
-  border-style: solid;
-  width: 0px;
-  transition: all 200ms ease-in-out;
-  display: inline-block;
-  margin-bottom: 25px;
-
-}
 .search-parameters-container {
   flex:1;
 }
 
 .classes-list-containter {
   display: grid;
-  grid-template-columns: 500px;
+  grid-template-columns: 60vw;
   
   margin-right: auto;
   margin-left: auto;
@@ -45,6 +35,7 @@ body {
   overflow-y: scroll;
   max-height: 85vh;
 
+  transition: all 200ms ease-in-out;
 
 }
 
@@ -66,7 +57,7 @@ body {
   background-color: rgb(238, 238, 247);
   max-width: 100vw;
   min-width: none;
-
+  transition: all 200ms ease-in-out;
 
 }
 

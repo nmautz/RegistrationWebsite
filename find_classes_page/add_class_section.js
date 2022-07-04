@@ -43,56 +43,31 @@ function createPTextElement(parent, class_string, text_string){
 }
 
 
-function open_details_menu(){
-  const details_display = document.getElementById("details-display")
 
-  var classDisplayArray = document.getElementsByClassName("section-display")
 
-  details_display.style.visibility = "visible"
-  details_display.style.flex = "1"
-  for(var i = 0; i < classDisplayArray.length; ++i)
-  {
-    classDisplayArray[i].style.maxWidth = "60vw"
-  }
+function openSectionDisplay(display){
+  display.parentElement.style.gridTemplateColumns = "90vw"
+
 
 }
 
-function close_details_menu(){
-  const details_display = document.getElementById("details-display")
+function closeSectionDisplay(display){
+  display.parentElement.style.gridTemplateColumns = "60vw"
 
-  var classDisplayArray = document.getElementsByClassName("section-display")
 
-  details_display.style.visibility = "hidden"
-  details_display.style.flex = "0"
-  for(var i = 0; i < classDisplayArray.length; ++i)
-  {
-    classDisplayArray[i].style.maxWidth = "100vw"
-  }
 }
 
-function toggle_details_menu(section){
-  const details_display = document.getElementById("details-display")
 
-  var classDisplayArray = document.getElementsByClassName("section-display")
-
-
-
-
-  var current_id = sessionStorage.getItem("current-details-class-id")
-  console.log(current_id)
-
-  if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
-    close_details_menu()
-
-
+function toggleSectionDisplay(display){
+  if(  display.parentElement.style.gridTemplateColumns == "60vw"){
+    openSectionDisplay(display)
   }else{
-    open_details_menu()
-
+    closeSectionDisplay(display)
   }
-  sessionStorage.setItem("current-details-class-id", section.id)
 
 
 }
+
 
 
 function addClassSection(section, parent){
@@ -104,10 +79,8 @@ function addClassSection(section, parent){
   //Click listener on section
   section_display.addEventListener("click", function(){
 
-    toggle_details_menu(section)
-    const details_display = document.getElementById("details-display")
-    details_display.innerHTML = section.subject+section.courseNumber+"  ID:"+section.id
 
+    toggleSectionDisplay(section_display)
 
     
 
