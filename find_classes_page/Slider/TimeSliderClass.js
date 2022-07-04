@@ -64,3 +64,10 @@ function minToTime(min, time_interval)
       remainderMin = String("0" + remainderMin)
   return String(hours + ":" + remainderMin + " " + timePeriod)
 }
+
+//Converts time formated at "0930" to "9:30"
+function dbTimeToNiceTime(dbTime){
+  console.log(dbTime.substring(0,3))
+
+
+}
