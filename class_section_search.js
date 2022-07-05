@@ -3,47 +3,36 @@ class class_search_query{
 
   constructor(){
 
-    this.subject
+    
     this.subjectDescription
     this.courseNumber
     this.courseTitle
     this.professorName
     this.attributeDesc
-    //weekDays holds the week array
-    this.weekDays = []
-    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.professorName,this.attributeDesc]
-    this.setVars()
-    
-
-  }
-
-  setVars()
-  {
+    this.subject
+    //special case for days, as there is no json 'days' element in data
+    this.days = ""
+    this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.professorName,this.attributeDesc,this.subject]
+    //sets vars
     for (var i = 0; i < this.requirementArr.length; ++i)
       this.requirementArr[i] = ""
-    
-    //weekdays is an array and needs to be set separate
-    for (var i = 0; i < 7; ++i)
-      this.weekDays.push(false)
   }
+
   
 
   addQueryRequirement(data,elementNum)
   {
-    this.requirementArr[elementNum] = data
-  }
-
-  //specifically called by the checkboxes onClick
-  addQueryRequirementDays(dayNum)
-  {
-    this.weekDays[dayNum] = !this.weekDays[dayNum]
+    if(elementNum == -1)
+      this.days = data
+    else
+      this.requirementArr[elementNum] = data
   }
 
 
   meetsRequirements(classList)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
-    if(!this.meetsWeekReq(classList) && !this.isWeekEmpty())
+    if(!this.meetsWeekReq(classList))
       return false
 
     for(var i = 0; i < this.requirementArr.length; ++i)
@@ -56,13 +45,11 @@ class class_search_query{
 
   meetsWeekReq(section)
   {
-    var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
-    for (var i = 0; i < week_days.length; ++i)
-    {
-      if (this.weekDays[i] != week_days[i][0])
-        return false
-    }
-    return true
+    var meetDays = this.getWeekString(section)
+    var temp = meetDays.toUpperCase()
+    if(temp.includes(String(this.days).toUpperCase()) || this.days == undefined)
+      return true
+    return false
   }
 
   checkRequirement(req,classItem)
@@ -89,9 +76,13 @@ class class_search_query{
 
   getClassesListString(classList, elementNum)
   {
-    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
-  
     var validArray = []
+    if(elementNum == -1)
+    {
+      validArray.push(this.getWeekString(classList))
+      return validArray
+    }
+    var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
     var val = classListArr[elementNum]
     if (Array.isArray(val) )
     { 
@@ -107,7 +98,59 @@ class class_search_query{
     }
     return validArray
   }
+  
+  getWeekString(section)
+  {
+    var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
+    var weekDayTitles = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    var sWeekDayTitles = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+    var meetDays = ""
+    var multiple = false
+    var key = []
+    for (var i = 0; i < week_days.length; ++i)
+    {
+      if(week_days[i][0])
+      {
+        key.push(i)
+      }else
+      {
+        
+        if(key.length > 2)
+        {
+          //reversing stack
+          var last = sWeekDayTitles[key.pop()]
+          while(key.length > 1)
+            key.pop()
+          var first = sWeekDayTitles[key.pop()]
+          if(meetDays != "")
+            meetDays += ","
+          meetDays = String(meetDays + " " + first + "-" + last)
+        }else if(key.length > 0)
+        {
+          key.reverse()
+          while(key.length > 0)
+          {
+            if(meetDays != "")
+              meetDays += ","
+            meetDays = String(meetDays + " " + weekDayTitles[key.pop()])
+          }
+            
+        }
+      }
+    }
 
+
+    key.reverse()
+    while (key.length > 0)
+      meetDays = String(meetDays + " " + key.pop())
+        
+    return meetDays
+  }
+
+  clearStack()
+  {
+    
+  }
   isEmpty()
   {
     for (var i = 0; i < this.requirementArr.length; ++i)
@@ -115,18 +158,8 @@ class class_search_query{
       if(this.requirementArr[i] != undefined && this.requirementArr[i] != '')
         return false
     } 
-    if (!this.isWeekEmpty())
+    if (this.days != "")
       return false
-    return true
-  }
-
-  isWeekEmpty()
-  {
-    for (var i = 0; i < this.weekDays.length; ++i)
-    {
-      if (this.weekDays[i] == true)
-        return false
-    }
     return true
   }
 }

@@ -178,9 +178,9 @@ document.addEventListener("DOMContentLoaded", function()
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
     const drop5 = new dropDown("professorName-input","professorName",requirement,4)
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
- 
+    const drop7 = new dropDown("meetingDays-input","meetingDays",requirement,-1)
     //creating the check boxes for days
-    addWeekForm("daysForm",requirement)
+    //addWeekForm("daysForm",requirement)
     // const slider = new timeSlider("timeSlider",requirement,"timeOutput")
 
 })
