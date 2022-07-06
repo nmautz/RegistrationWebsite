@@ -47,10 +47,21 @@ class class_search_query{
   {
     var meetDays = this.getWeekString(section)
     var temp = meetDays.toUpperCase()
+    if(temp == String(this.days).toUpperCase() || this.days == "")
+      return true
+    return false
+  }
+
+  //for special inherited week dropdown
+  containsWeek(section,userInput)
+  {
+    var meetDays = this.getWeekString(section)
+    var temp = meetDays.toUpperCase()
     if(temp.includes(String(this.days).toUpperCase()) || this.days == undefined)
       return true
     return false
   }
+
 
   checkRequirement(req,classItem)
   {
@@ -102,20 +113,25 @@ class class_search_query{
   getWeekString(section)
   {
     var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
-    var weekDayTitles = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-    var sWeekDayTitles = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
     var meetDays = ""
-    var multiple = false
     var key = []
     for (var i = 0; i < week_days.length; ++i)
     {
       if(week_days[i][0])
-      {
         key.push(i)
-      }else
-      {
+      else
+        meetDays = this.clearStack(key,meetDays)
+    }
+    meetDays = this.clearStack(key,meetDays)
         
-        if(key.length > 2)
+    return meetDays
+  }
+
+  clearStack(key,meetDays)
+  {
+    var weekDayTitles = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    var sWeekDayTitles = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+    if(key.length > 2)
         {
           //reversing stack
           var last = sWeekDayTitles[key.pop()]
@@ -136,21 +152,9 @@ class class_search_query{
           }
             
         }
-      }
-    }
-
-
-    key.reverse()
-    while (key.length > 0)
-      meetDays = String(meetDays + " " + key.pop())
-        
     return meetDays
   }
 
-  clearStack()
-  {
-    
-  }
   isEmpty()
   {
     for (var i = 0; i < this.requirementArr.length; ++i)

@@ -165,7 +165,41 @@ class dropDown {
 
 }
 
+class daysDropDown extends dropDown {
+    constructor(input,elementName,requirementsObj,requirementNum)
+    {
+        super(input,elementName,requirementsObj,requirementNum)
+    }
 
+    addChildren()
+    {
+        var userInput = document.getElementById(this.input).value
+        userInput = String(userInput).toUpperCase()
+
+        //checks the json
+        this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
+        var dropDownArr = []
+        for(var i = 0; i < classesList.length; ++i)
+        {
+            if(this.requirementsObj.meetsRequirements(classesList[i]))
+            {            
+                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+                for (var j = 0; j < text.length; ++j)
+                {
+                    if (!dropDownArr.includes(String(text[j])) && text[j] != '')
+                        dropDownArr.push(String(text[j]))
+                
+
+                }
+            }            
+        }
+
+        //adds the drop downs
+        dropDownArr.sort()
+        for (var i = 0; i < dropDownArr.length; ++i)
+            this.addDropdown(dropDownArr[i])
+    }
+}
 
 const requirement = new class_search_query()
 
@@ -178,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function()
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
     const drop5 = new dropDown("professorName-input","professorName",requirement,4)
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
-    const drop7 = new dropDown("meetingDays-input","meetingDays",requirement,-1)
+    const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
     //creating the check boxes for days
     //addWeekForm("daysForm",requirement)
     // const slider = new timeSlider("timeSlider",requirement,"timeOutput")
