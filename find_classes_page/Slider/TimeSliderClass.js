@@ -21,6 +21,7 @@ $( function() {
   $("#slider-range").on("slide", function(event, ui) {
     handle.text( minToTime(ui.values[0], TIME_INTERVAL) );
     handle2.text( minToTime(ui.values[1], TIME_INTERVAL));
+    checkTimeTextDistance();
 
   })
   $("#slider-range").on("slidechange", function(event, ui) {
@@ -71,3 +72,29 @@ function dbTimeToNiceTime(dbTime){
 
 
 }
+
+
+function checkTimeTextDistance(){
+
+  const lower_text = document.getElementById("lower_text");
+  const upper_text = document.getElementById("upper_text");
+
+
+  var lower_rect = lower_text.getBoundingClientRect();
+  var upper_rect = upper_text.getBoundingClientRect();
+  
+  console.log("Upper: " + upper_rect.right + "\nLower: " + lower_rect.right)
+
+  if(upper_rect.right - lower_rect.right < 60){
+    console.log("AHHHHH")
+    upper_text.style.top = "2vh"
+  }else{
+    console.log("CHILLING")
+    upper_text.style.top = "-5vh"
+  }
+}
+
+document.addEventListener("DOMContentLoaded",function() {
+  window.addEventListener('resize', function(){checkTimeTextDistance()})
+});
+
