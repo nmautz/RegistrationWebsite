@@ -79,7 +79,6 @@ function toggle_details_menu(section){
 
 
   var current_id = sessionStorage.getItem("current-details-class-id")
-  console.log(current_id)
 
   if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
     close_details_menu()
@@ -136,14 +135,16 @@ function addClassSection(section, parent){
     if(save_button.style.borderColor == "gold gold transparent"){
       save_button.style.borderColor ="rgb(202, 202, 251)"
       save_button.style.borderBottomColor = "transparent"
-      remove_class_by_ID(section.id)
+      const planID_input = document.getElementById("planID-input");
+      remove_class_by_ID(planID_input.value,section.id)
 
 
 
     }else{
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
-      save_class(section)
+      const planID_input = document.getElementById("planID-input");
+      save_class(planID_input.value,section)
     }
 
     e.stopPropagation()
