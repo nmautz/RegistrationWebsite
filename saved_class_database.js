@@ -1,7 +1,5 @@
 function save_class(planID, section){
   section.planID = planID;
-  console.log(section)
-  console.log(planID)
   localStorage.setItem(section.id, JSON.stringify(section))
 }
 
