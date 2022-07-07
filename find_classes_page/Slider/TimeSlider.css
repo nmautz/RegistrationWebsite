@@ -11,6 +11,8 @@
     text-align: center;
     color: black;
     width: 6vw;
+    min-width: fit-content;
+    white-space: nowrap;
 
 }
 
