@@ -19,7 +19,7 @@ function load_classes(planID){
     try{
 
       const section = JSON.parse(localStorage.getItem(keys[i]));
-      if(section.planID == planID){
+      if(section.planID == planID || planID == "" || planID == undefined){
         values.push(section)
       }
       
@@ -48,3 +48,31 @@ function is_class_saved(section){
   return false
 }
 
+function load_planIDs(){
+  var planIDs = [];
+  var saved_classes = load_classes();
+  for(var i = 0; i < saved_classes.length; ++i){
+    if( !planIDs.includes( saved_classes[i].planID )){
+      planIDs.push(saved_classes[i].planID);
+    }
+
+
+  }
+  return planIDs;
+
+}
+
+
+document.addEventListener("DOMContentLoaded", function(){
+  const ids = load_planIDs()
+
+  console.log("---------")
+  console.log("Plan IDS")
+  for ( var i = 0; i < ids.length; ++i ){
+    console.log(ids[i])
+  }
+  console.log("---------")
+
+
+
+})
