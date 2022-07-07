@@ -169,11 +169,36 @@ class daysDropDown extends dropDown {
     constructor(input,elementName,requirementsObj,requirementNum)
     {
         super(input,elementName,requirementsObj,requirementNum)
+        this.inputVal = ""
+        // this.requirementsObj.addQueryRequirement(this.inputVal,this.requirementNum)
+    }
+    //clicking on button will clear the restrictions on the dropdown
+    //restrictions are only added when dropdown is clicked
+    setListeners() 
+    {
+        const inputElement = document.getElementById(this.input)
+        inputElement.addEventListener('keyup', (e) =>
+        {
+            this.checkHideDropdown()
+            this.updateDropDown()
+        })
+
+        inputElement.addEventListener("click", (e) =>
+        {
+            this.inputVal = ""
+            this.checkHideDropdown()
+            this.updateDropDown()  
+        })
+    }
+
+    addClearButton()
+    {
     }
 
     addChildren()
     {
-        var userInput = document.getElementById(this.input).value
+        //var userInput = document.getElementById(this.input).value
+        var userInput = this.inputVal
         userInput = String(userInput).toUpperCase()
 
         //checks the json
@@ -195,9 +220,37 @@ class daysDropDown extends dropDown {
         }
 
         //adds the drop downs
+        this.addDropdown("(None)")
         dropDownArr.sort()
         for (var i = 0; i < dropDownArr.length; ++i)
             this.addDropdown(dropDownArr[i])
+    }
+
+    addDropdown(data)
+    {
+        const dropdownUI = document.getElementById(this.divName)
+        const aElement = document.createElement("a")
+        aElement.id = this.elementName
+        aElement.data = data
+        const text = document.createTextNode(data)
+        aElement.appendChild(text)
+        aElement.addEventListener("click", (e) =>
+        {
+            
+            this.inputVal = data
+            if (data == "(None)")
+            {
+                console.log("none")
+                this.inputVal = ""
+            //    this.requirementsObj.addQueryRequirement("",this.requirementNum) 
+            }   
+            else
+                // this.requirementsObj.addQueryRequirement(data,this.requirementNum)
+            //makes dropdown update after it is clicked on
+            this.updateDropDown()
+            update_section_display()
+        })
+        dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
 }
 
