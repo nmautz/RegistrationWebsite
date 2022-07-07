@@ -46,20 +46,20 @@ function createPTextElement(parent, class_string, text_string){
 
 
 function openSectionDisplay(display){
-  display.style.height = "50vh"
+  display.style.height = "80vh"
 
 
 }
 
 function closeSectionDisplay(display){
-  display.style.height = "25vh"
+  display.style.height = "30vh"
 
 
 }
 
 
 function toggleSectionDisplay(display){
-  if( display.style.height == "25vh" || display.style.height == ""){
+  if( display.style.height == "30vh" || display.style.height == ""){
     openSectionDisplay(display)
   }else{
     closeSectionDisplay(display)
