@@ -1,12 +1,15 @@
-function save_class(section){
+function save_class(planID, section){
+  section.planID = planID;
+  console.log(section)
+  console.log(planID)
   localStorage.setItem(section.id, JSON.stringify(section))
 }
 
-function remove_class_by_ID(id){
-  localStorage.removeItem(id)
+function remove_class_by_ID(planID, id){
+  localStorage.removeItem(planID, id)
 }
 
-function load_classes(){
+function load_classes(planID){
   keys = Object.keys(localStorage)
   values = []
 
@@ -14,7 +17,12 @@ function load_classes(){
   {
     //Item at key might not be a class
     try{
-      values.push(JSON.parse(localStorage.getItem(keys[i])))
+
+      const section = JSON.parse(localStorage.getItem(keys[i]));
+      if(section.planID == planID){
+        values.push(section)
+      }
+      
     }catch{
       //Delete unwanted key
       localStorage.removeItem(keys[i])
@@ -28,7 +36,8 @@ function load_classes(){
 }
 
 function is_class_saved(section){
-  classes = load_classes()
+  const planID_input = document.getElementById("planID-input");
+  classes = load_classes(planID_input.value)
   for(var i = 0; i < classes.length; ++i){
     if(classes[i].id == section.id)
     {
@@ -38,3 +47,4 @@ function is_class_saved(section){
   }
   return false
 }
+
