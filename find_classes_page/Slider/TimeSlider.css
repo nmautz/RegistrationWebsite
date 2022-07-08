@@ -1,3 +1,35 @@
+.time-slider {
+
+    margin-top: 6vh;
+}
+
+.handle-text {
+    position: absolute;
+
+    top: -5vh;
+    left: -2vw;
+    text-align: center;
+    color: black;
+    width: 6vw;
+    min-width: fit-content;
+    white-space: nowrap;
+
+}
+
+
+.ui-slider-handle {
+ position: relative;
+    
+}
+
+.slider-time-display {
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
 section.range-slider {
     position: relative;
     width: 200px;
