@@ -17,6 +17,7 @@
     .dropdown-content {
         /* display: none; */
         position: absolute;
+        /* needs to adapt rather than just translate */
         transform: translate(-31.5vh,7.5vh);
         background-color: #f1f1f1;
         min-width: 160px;
@@ -24,6 +25,10 @@
         z-index: 12;
         overflow-y: scroll;
         max-height: 50vh;
+    }
+
+    .button {
+        /* transform: translate(31.5vh,-7.5vh); */
     }
     
     /* Links inside the dropdown */
