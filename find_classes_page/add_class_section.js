@@ -45,24 +45,44 @@ function createPTextElement(parent, class_string, text_string){
 
 
 
-function openSectionDisplay(display){
+function openSectionDisplay(display, section){
+
+
+    //Get element refs
+  const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
+  
+  
+  //Make changes (try to keep some order)
   display.style.height = "80vh"
+  subject_courseNumber_text.innerHTML = section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours";
+
+
 
 
 }
 
-function closeSectionDisplay(display){
+function closeSectionDisplay(display, section){
+
+
+  //Get element refs
+  const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
+  
+  
+    //Make changes (try to keep some order)
   display.style.height = "30vh"
+  subject_courseNumber_text.innerHTML = section.subject + section.courseNumber;
+
+
 
 
 }
 
 
-function toggleSectionDisplay(display){
+function toggleSectionDisplay(display, section){
   if( display.style.height == "30vh" || display.style.height == ""){
-    openSectionDisplay(display)
+    openSectionDisplay(display, section)
   }else{
-    closeSectionDisplay(display)
+    closeSectionDisplay(display, section)
   }
 
 
@@ -75,12 +95,13 @@ function addClassSection(section, parent){
 
   //Create section
   const section_display = createDivElement(parent,"section-display")
+  section_display.setAttribute("id", section.id);
 
   //Click listener on section
   section_display.addEventListener("click", function(){
 
 
-    toggleSectionDisplay(section_display)
+    toggleSectionDisplay(section_display, section)
 
     
 
