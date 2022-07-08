@@ -32,13 +32,25 @@ function createDivElement(parent, class_string){
   return divElement
 }
 
-function createPTextElement(parent, class_string, text_string){
-  const pElement = document.createElement("p")
-  pElement.classList.add(class_string)
-  pElement.appendChild(document.createTextNode(text_string))
-  parent.appendChild(pElement)
-  return pElement
 
+
+function createPTextElement(parent, class_string, text_string){
+  const pElement = document.createElement("p");
+  pElement.classList.add(class_string);
+  pElement.appendChild(document.createTextNode(text_string));
+  parent.appendChild(pElement);
+  return pElement;
+
+
+}
+
+function createPTextElementBefore(ref_elem, class_string, text_string){
+
+  const pElement = document.createElement("p");
+  pElement.classList.add(class_string);
+  pElement.appendChild(document.createTextNode(text_string));
+  pElement.insertBefore(ref_elem, pElement);
+  return pElement;
 
 }
 
@@ -56,6 +68,12 @@ function openSectionDisplay(display, section){
   display.style.height = "80vh"
   subject_courseNumber_text.innerHTML = section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours";
 
+  //create course desc and populate
+  //create
+  const middle_display = display.getElementsByClassName("section-middle-text-display")[0]
+  const course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content")
+  course_desc_text.setAttribute("id", section.id + "descText");
+
 
 
 
@@ -72,7 +90,9 @@ function closeSectionDisplay(display, section){
   display.style.height = "30vh"
   subject_courseNumber_text.innerHTML = section.subject + section.courseNumber;
 
-
+  //Delete course desc par
+  const course_desc_text = document.getElementById(section.id + "descText");
+  course_desc_text.parentNode.removeChild(course_desc_text);
 
 
 }
