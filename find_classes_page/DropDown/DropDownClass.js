@@ -170,8 +170,10 @@ class daysDropDown extends dropDown {
     {
         super(input,elementName,requirementsObj,requirementNum)
         this.inputVal = ""
-        // this.requirementsObj.addQueryRequirement(this.inputVal,this.requirementNum)
+        //used for hiding the dropdown
+        this.isClicked = false
     }
+
     //clicking on button will clear the restrictions on the dropdown
     //restrictions are only added when dropdown is clicked
     setListeners() 
@@ -189,6 +191,16 @@ class daysDropDown extends dropDown {
             this.checkHideDropdown()
             this.updateDropDown()  
         })
+    }
+
+    addDropdownDiv()
+    {
+        const dropdownUI = document.getElementById(this.input)
+        const element = document.createElement("div")
+        element.id = this.divName
+        //css class that the dropdown follows**************************
+        element.classList.add("dropdown-content")
+        dropdownUI.insertAdjacentElement("afterend",element)
     }
 
     addClearButton()
@@ -236,21 +248,67 @@ class daysDropDown extends dropDown {
         aElement.appendChild(text)
         aElement.addEventListener("click", (e) =>
         {
-            
+            document.getElementById(this.input).value = "Meeting Day(s) :" + data
+            // this.isClicked = !this.isClicked
             this.inputVal = data
             if (data == "(None)")
             {
-                console.log("none")
-                this.inputVal = ""
-            //    this.requirementsObj.addQueryRequirement("",this.requirementNum) 
-            }   
-            else
-                // this.requirementsObj.addQueryRequirement(data,this.requirementNum)
+                 this.inputVal = ""  
+                 document.getElementById(this.input).value = "Meeting Day(s)"
+            }else
+                document.getElementById(this.input).value = "Meeting Day(s) :" + data
+                
+
             //makes dropdown update after it is clicked on
             this.updateDropDown()
             update_section_display()
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
+    }
+
+    setListeners() 
+    {
+        const inputElement = document.getElementById(this.input)
+        inputElement.addEventListener('keyup', (e) =>
+        {
+            this.checkHideDropdown()
+            this.updateDropDown()
+        })
+
+        const dropdownUI = document.getElementById(this.divName)
+        inputElement.addEventListener("click", (e) =>
+        {
+
+            this.inputVal = ""
+            this.checkHideDropdown()
+            this.updateDropDown()  
+           
+        })
+
+        window.addEventListener('click', (e) =>
+        {   
+            if (document.getElementById(this.input).contains(e.target))
+            {
+                this.isClicked = !this.isClicked
+                if(this.isClicked)
+                    dropdownUI.style.display = "inline-block"
+                else
+                    dropdownUI.style.display = "none"
+            }else
+            {
+                this.isClicked = false
+                dropdownUI.style.display = "none"
+            }
+        });
+    }
+
+    checkHideDropdown()
+    {
+        const dropdownUI = document.getElementById(this.divName)
+        if (this.inputVal != "")                     
+            dropdownUI.style.display = "inline-block"
+        else
+            dropdownUI.style.display = "none"
     }
 }
 
