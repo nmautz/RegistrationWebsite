@@ -133,11 +133,10 @@ function addClassSection(section, parent){
   section_display.appendChild(save_button)
 
 
-  const card_section_div = createDivElement(section_display, "card-section-div")
 
   
   //Middle display
-  const middle_display = createDivElement(card_section_div, "section-middle-display")
+  const middle_display = createDivElement(section_display, "section-middle-display")
 
   //Middle text display
 
@@ -185,7 +184,7 @@ function addClassSection(section, parent){
   }
 
   //Right display
-  const right_display = createDivElement(card_section_div, "section-right-display")
+  const right_display = createDivElement(section_display, "section-right-display")
 
   //Attributes display
   const attributes_display = createDivElement(right_display, "attributes-display")
