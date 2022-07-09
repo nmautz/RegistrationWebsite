@@ -12,6 +12,8 @@ class class_search_query{
     this.subject
     //special case for days, as there is no json 'days' element in data
     this.days = ""
+    this.startTime = ""
+    this.endTime = ""
     this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.professorName,this.attributeDesc,this.subject]
     //sets vars
     for (var i = 0; i < this.requirementArr.length; ++i)
@@ -28,10 +30,21 @@ class class_search_query{
       this.requirementArr[elementNum] = data
   }
 
-
+  addTimeRequirement(startTime,endTime)
+  {
+    this.startTime = startTime
+    // if (endTime == "12:00 AM")
+    //   this.endTime = "11:59 PM"
+    // else
+    
+    this.endTime = endTime
+  }
   meetsRequirements(classList)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
+    if(!this.meetsTimeReq(classList))
+      return false
+
     if(!this.meetsWeekReq(classList))
       return false
 
@@ -40,8 +53,26 @@ class class_search_query{
       if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
         return false;
     }
+    // console.log(classList)
     return true
   }
+
+  meetsTimeReq(section)
+  {
+    var beginTime = parse_time(String(section.beginTime))
+    var finishTime = parse_time(String(section.endTime))
+      // console.log(this.startTime,this.endTime,beginTime,finishTime)
+    if(this.startTime == "" && this.endTime == "")
+      return true
+    if(time_to_min(this.startTime) <= time_to_min(beginTime) && time_to_min(this.endTime) >= time_to_min(finishTime))
+    {
+      // console.log(this.startTime,this.endTime,beginTime,finishTime)
+      return true
+    }
+    return false
+  }
+
+
 
   meetsWeekReq(section)
   {
@@ -164,6 +195,9 @@ class class_search_query{
     } 
     if (this.days != "")
       return false
+    if(this.startTime != '')
+      return false
+      console.log(this.startTime)
     return true
   }
 }

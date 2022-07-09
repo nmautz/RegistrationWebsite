@@ -4,11 +4,11 @@ function parse_time(str){
 
   if(parseInt(hours) < 12){
 
-    var am_pm = "AM"
+    var am_pm = " AM"
     hours = String(parseInt(hours))
 
   }else{
-    var am_pm = "PM"
+    var am_pm = " PM"
 
     if(hours == "12"){
       hours = String(parseInt(hours))
@@ -23,6 +23,7 @@ function parse_time(str){
   return str
 
 }
+
 
 
 function createDivElement(parent, class_string){

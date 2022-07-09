@@ -25,8 +25,11 @@ $( function() {
 
   })
   $("#slider-range").on("slidechange", function(event, ui) {
-    console.log("hello")
 
+    var lower_time =  minToTime(ui.values[0], TIME_INTERVAL) 
+    var upper_time =  minToTime(ui.values[1], TIME_INTERVAL)
+    requirement.addTimeRequirement(lower_time,upper_time)
+    update_section_display()
   })
 
 
@@ -66,6 +69,23 @@ function minToTime(min, time_interval)
   return String(hours + ":" + remainderMin + " " + timePeriod)
 }
 
+function time_to_min(time)
+{
+  var totalMin = 0
+  var hours = parseInt(time)
+  totalMin += hours * 60
+  var timeLessHours = time.replace(hours,"")
+  var minutes = parseInt(timeLessHours.replace(":",""))
+  totalMin += minutes
+  if (time.includes("PM"))
+    totalMin += 60 * 12
+  else if(hours == 12)
+  {
+    totalMin -= 60 * 12
+  }
+  return totalMin
+}
+
 //Converts time formated at "0930" to "9:30"
 function dbTimeToNiceTime(dbTime){
   console.log(dbTime.substring(0,3))
@@ -83,13 +103,13 @@ function checkTimeTextDistance(){
   var lower_rect = lower_text.getBoundingClientRect();
   var upper_rect = upper_text.getBoundingClientRect();
   
-  console.log("Upper: " + upper_rect.right + "\nLower: " + lower_rect.right)
+  // console.log("Upper: " + upper_rect.right + "\nLower: " + lower_rect.right)
 
   if(upper_rect.right - lower_rect.right < 60){
-    console.log("AHHHHH")
+    // console.log("AHHHHH")
     upper_text.style.top = "2vh"
   }else{
-    console.log("CHILLING")
+    // console.log("CHILLING")
     upper_text.style.top = "-5vh"
   }
 }
