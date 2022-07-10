@@ -49,7 +49,7 @@ function createPTextElementBefore(ref_elem, class_string, text_string){
   const pElement = document.createElement("p");
   pElement.classList.add(class_string);
   pElement.appendChild(document.createTextNode(text_string));
-  pElement.insertBefore(ref_elem, pElement);
+  ref_elem.parentNode.insertBefore(pElement, ref_elem);
   return pElement;
 
 }
@@ -68,17 +68,18 @@ function openSectionDisplay(display, section){
   display.style.height = "80vh"
   subject_courseNumber_text.innerHTML = section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours";
 
-  //create course desc and populate
-  const middle_display = display.getElementsByClassName("section-middle-text-display")[0]
-  const course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content")
-  course_desc_text.setAttribute("id", section.id + "descText");
+
+  //get middle display
+  const middle_display = display.getElementsByClassName("section-middle-display")[0]
+
+
 
   //delete prof name
   const prof_name_text = display.getElementsByClassName("professor-name-text")[0];
   prof_name_text.parentNode.removeChild(prof_name_text);
 
   //delete time
-  const section_hours_text = display.getElementsByClassName("section-hours-text")[0];
+  var section_hours_text = display.getElementsByClassName("section-hours-text")[0];
   section_hours_text.parentNode.removeChild(section_hours_text);
 
   //remove attributes text
@@ -88,6 +89,30 @@ function openSectionDisplay(display, section){
   const occupancy_display = display.getElementsByClassName("occupancy-display")[0];
   occupancy_display.parentNode.removeChild(occupancy_display)
 
+
+  //put new time element in
+  //Format time for section hours text
+  var beginTime = parse_time(String(section.beginTime))
+  var endTime = parse_time(String(section.endTime))
+
+  section_hours_text = createPTextElement(middle_display, "section-hours-text", beginTime + "-" + endTime)
+
+  //get week display 
+  const middle_week_display = display.getElementsByClassName("section-middle-week-display")[0];
+  console.log(middle_week_display.parentNode)
+
+
+  //Create and insert room text
+  const room_text = createPTextElementBefore(middle_week_display, "room-text", "Room" + section.room)
+  
+  //Create and insert campus buidling text
+  const campus_building_text = createPTextElementBefore(room_text, "campus-building-text", section.buildingDescription)
+
+
+
+  //create course desc and populate
+  //const course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content")
+  //course_desc_text.setAttribute("id", section.id + "descText");
   
 
 
@@ -110,8 +135,6 @@ function closeSectionDisplay(display, section){
   const course_desc_text = document.getElementById(section.id + "descText");
   course_desc_text.parentNode.removeChild(course_desc_text);
 
-  //Put back prof name
-  const prof_name_text = createPTextElement()
 
 
 }
