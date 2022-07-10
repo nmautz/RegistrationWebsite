@@ -84,6 +84,9 @@ function openSectionDisplay(display, section){
   //remove attributes text
   const attributes_display = display.getElementsByClassName("attributes-display")[0];
   attributes_display.parentNode.removeChild(attributes_display);
+  //remove occupacy display
+  const occupancy_display = display.getElementsByClassName("occupancy-display")[0];
+  occupancy_display.parentNode.removeChild(occupancy_display)
 
   
 
