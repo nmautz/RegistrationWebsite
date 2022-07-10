@@ -47,7 +47,7 @@ body {
 .section-display {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border-width: 1px;
   border-style: solid;
   margin-bottom: 25px;
@@ -137,9 +137,12 @@ body {
 }
 
 
-
+.section-left-display,
 .section-right-display {
   flex:1;
+
+  
+
   border-radius: 10px;
   padding-left: 5px;
   padding-right: 5px;

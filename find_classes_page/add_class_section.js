@@ -73,7 +73,7 @@ function openSectionDisplay(display, section){
   const course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content")
   course_desc_text.setAttribute("id", section.id + "descText");
 
-  
+  //
   
 
 
@@ -175,7 +175,8 @@ function addClassSection(section, parent){
 
   section_display.appendChild(save_button)
 
-
+  //Left display
+  const left_display = createDivElement(section_display, "section-left-display")
 
   
   //Middle display
@@ -226,11 +227,11 @@ function addClassSection(section, parent){
     weekday_box_div.appendChild(weekday_box_p)
   }
 
-  //Right display
-  const right_display = createDivElement(section_display, "section-right-display")
+
+
 
   //Attributes display
-  const attributes_display = createDivElement(right_display, "attributes-display")
+  const attributes_display = createDivElement(middle_display, "attributes-display")
   
   //Attributes title text
   const attributes_title_text = createPTextElement(attributes_display, "attributes-title-text", "Attributes")
@@ -251,7 +252,7 @@ function addClassSection(section, parent){
   //-----------------
 
   //Occupancy display
-  const occupancy_dispay = createDivElement(right_display, "occupancy-display")
+  const occupancy_dispay = createDivElement(middle_display, "occupancy-display")
 /*
   //Occupancy title text
   const occupancy_title_text = document.createElement("p")
@@ -262,5 +263,11 @@ function addClassSection(section, parent){
   //Occupancy info text
   const occupancy_info_text = createPTextElement(occupancy_dispay, "occupancy-info-text",section.seatsAvailable + "/" + section.maximumEnrollment +" Available" )
 
-  
+
+
+  //Right display
+  const right_display = createDivElement(section_display, "section-right-display")
+
+    
+
 }
