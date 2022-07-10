@@ -50,7 +50,7 @@ function open_details_menu(){
   var classDisplayArray = document.getElementsByClassName("section-display")
 
   details_display.style.visibility = "visible"
-  details_display.style.width = "35vw"
+  details_display.style.flex = "1"
   for(var i = 0; i < classDisplayArray.length; ++i)
   {
     classDisplayArray[i].style.maxWidth = "60vw"
@@ -64,7 +64,7 @@ function close_details_menu(){
   var classDisplayArray = document.getElementsByClassName("section-display")
 
   details_display.style.visibility = "hidden"
-  details_display.style.width = "0vw"
+  details_display.style.flex = "0"
   for(var i = 0; i < classDisplayArray.length; ++i)
   {
     classDisplayArray[i].style.maxWidth = "100vw"
@@ -137,14 +137,16 @@ function addClassSection(section, parent){
     if(save_button.style.borderColor == "gold gold transparent"){
       save_button.style.borderColor ="rgb(202, 202, 251)"
       save_button.style.borderBottomColor = "transparent"
-      remove_class_by_ID(section.id)
+      const planID_input = document.getElementById("planID-input");
+      remove_class_by_ID(planID_input.value,section.id)
 
 
 
     }else{
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
-      save_class(section)
+      const planID_input = document.getElementById("planID-input");
+      save_class(planID_input.value,section)
     }
 
     e.stopPropagation()
