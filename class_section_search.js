@@ -33,42 +33,40 @@ class class_search_query{
   addTimeRequirement(startTime,endTime)
   {
     this.startTime = startTime
-    // if (endTime == "12:00 AM")
-    //   this.endTime = "11:59 PM"
-    // else
-    
-    this.endTime = endTime
+    if (endTime == "12:00 AM")
+      this.endTime = "11:59 PM"
+    else
+      this.endTime = endTime
   }
   meetsRequirements(classList)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
     if(!this.meetsTimeReq(classList))
       return false
+      
 
     if(!this.meetsWeekReq(classList))
       return false
+
 
     for(var i = 0; i < this.requirementArr.length; ++i)
     {
       if(!this.checkRequirement(this.requirementArr[i],classListArr[i]))
         return false;
     }
-    // console.log(classList)
+
     return true
   }
 
   meetsTimeReq(section)
   {
-    var beginTime = parse_time(String(section.beginTime))
-    var finishTime = parse_time(String(section.endTime))
+    var beginTime = parse_time(String(section.beginTime[0]))
+    var finishTime = parse_time(String(section.endTime[0]))
       // console.log(this.startTime,this.endTime,beginTime,finishTime)
     if(this.startTime == "" && this.endTime == "")
       return true
     if(time_to_min(this.startTime) <= time_to_min(beginTime) && time_to_min(this.endTime) >= time_to_min(finishTime))
-    {
-      // console.log(this.startTime,this.endTime,beginTime,finishTime)
       return true
-    }
     return false
   }
 

@@ -77,12 +77,8 @@ function time_to_min(time)
   var timeLessHours = time.replace(hours,"")
   var minutes = parseInt(timeLessHours.replace(":",""))
   totalMin += minutes
-  if (time.includes("PM"))
+  if (time.includes("PM") && hours != 12)
     totalMin += 60 * 12
-  else if(hours == 12)
-  {
-    totalMin -= 60 * 12
-  }
   return totalMin
 }
 
