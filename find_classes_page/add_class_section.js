@@ -73,7 +73,18 @@ function openSectionDisplay(display, section){
   const course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content")
   course_desc_text.setAttribute("id", section.id + "descText");
 
-  //
+  //delete prof name
+  const prof_name_text = display.getElementsByClassName("professor-name-text")[0];
+  prof_name_text.parentNode.removeChild(prof_name_text);
+
+  //delete time
+  const section_hours_text = display.getElementsByClassName("section-hours-text")[0];
+  section_hours_text.parentNode.removeChild(section_hours_text);
+
+  //remove attributes text
+  const attributes_display = display.getElementsByClassName("attributes-display")[0];
+  attributes_display.parentNode.removeChild(attributes_display);
+
   
 
 
@@ -95,6 +106,9 @@ function closeSectionDisplay(display, section){
   //Delete course desc par
   const course_desc_text = document.getElementById(section.id + "descText");
   course_desc_text.parentNode.removeChild(course_desc_text);
+
+  //Put back prof name
+  const prof_name_text = createPTextElement()
 
 
 }
