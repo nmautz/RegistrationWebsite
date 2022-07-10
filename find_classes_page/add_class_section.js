@@ -60,7 +60,7 @@ function createPTextElementBefore(ref_elem, class_string, text_string){
 function openSectionDisplay(display, section){
 
 
-    //Get element refs
+  //Get element refs
   const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
   
   
@@ -75,7 +75,7 @@ function openSectionDisplay(display, section){
 
 
   //delete prof name
-  const prof_name_text = display.getElementsByClassName("professor-name-text")[0];
+  var prof_name_text = display.getElementsByClassName("professor-name-text")[0];
   prof_name_text.parentNode.removeChild(prof_name_text);
 
   //delete time
@@ -106,13 +106,19 @@ function openSectionDisplay(display, section){
   const room_text = createPTextElementBefore(middle_week_display, "room-text", "Room" + section.room)
   
   //Create and insert campus buidling text
-  const campus_building_text = createPTextElementBefore(room_text, "campus-building-text", section.buildingDescription)
+  const campus_building_text = createPTextElementBefore(room_text, "campus-building-text", section.buildingDescription);
 
+
+  //create and insert prof email
+  const prof_email_text = createPTextElementBefore(campus_building_text, "prof-email-text", section.professorEmail);
+
+  //create and insert prof name
+  prof_name_text = createPTextElementBefore(prof_email_text, "prof-name-text", section.professorName);
 
 
   //create course desc and populate
-  //const course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content")
-  //course_desc_text.setAttribute("id", section.id + "descText");
+  const course_desc_text = createPTextElementBefore(prof_name_text, "course-desc-text", "TODO Pull content")
+  course_desc_text.setAttribute("id", section.id + "descText");
   
 
 
