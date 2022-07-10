@@ -1,10 +1,12 @@
 function save_class(planID, section){
   section.planID = planID;
-  localStorage.setItem(section.id, JSON.stringify(section))
+  section.uniqueID = planID+section.id;
+  localStorage.setItem(section.uniqueID, JSON.stringify(section))
 }
 
 function remove_class_by_ID(planID, id){
-  localStorage.removeItem(planID, id)
+  const uniqueID = planID + id;
+  localStorage.removeItem(uniqueID)
 }
 
 function load_classes(planID){
