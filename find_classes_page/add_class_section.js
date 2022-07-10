@@ -69,10 +69,12 @@ function openSectionDisplay(display, section){
   subject_courseNumber_text.innerHTML = section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours";
 
   //create course desc and populate
-  //create
   const middle_display = display.getElementsByClassName("section-middle-text-display")[0]
   const course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content")
   course_desc_text.setAttribute("id", section.id + "descText");
+
+  
+  
 
 
 
