@@ -72,6 +72,15 @@ class dropDown {
             this.checkHideDropdown()
             this.updateDropDown()  
         })
+        
+        const dropdownUI = document.getElementById(this.divName)
+        window.addEventListener('click', (e) =>
+        {   
+            if (document.getElementById(this.input).contains(e.target))
+                dropdownUI.style.display = "inline-block"
+            else
+                dropdownUI.style.display = "none"
+        });
     }
 
 
@@ -83,17 +92,6 @@ class dropDown {
             dropdownUI.style.display = "inline-block"
         else
             dropdownUI.style.display = "none"
-        window.addEventListener('click', (e) =>
-        {   
-            if (document.getElementById(this.input).contains(e.target))
-            {
-            // Clicked in box
-                dropdownUI.style.display = "inline-block"
-            }else{
-                dropdownUI.style.display = "none"
-            }
-        });
-
     }
 
 
@@ -101,7 +99,6 @@ class dropDown {
     {
         this.clearChildren()
         this.addChildren()
-        
     }
 
     addChildren()
@@ -200,6 +197,7 @@ class daysDropDown extends dropDown {
         element.id = this.divName
         //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
+        element.classList.add("button-dropdown")
         dropdownUI.insertAdjacentElement("afterend",element)
     }
 

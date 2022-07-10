@@ -62,7 +62,7 @@ class class_search_query{
   {
     var beginTime = parse_time(String(section.beginTime[0]))
     var finishTime = parse_time(String(section.endTime[0]))
-      // console.log(this.startTime,this.endTime,beginTime,finishTime)
+
     if(this.startTime == "" && this.endTime == "")
       return true
     if(time_to_min(this.startTime) <= time_to_min(beginTime) && time_to_min(this.endTime) >= time_to_min(finishTime))
@@ -82,13 +82,13 @@ class class_search_query{
   }
 
   //for special inherited week dropdown
-  containsWeek(section,userInput)
+  containsWeek(section)
   {
-    var meetDays = this.getWeekString(section)
-    var temp = meetDays.toUpperCase()
-    if(temp.includes(String(this.days).toUpperCase()) || this.days == undefined)
-      return true
-    return false
+    // var meetDays = this.getWeekString(section)
+    // var temp = meetDays.toUpperCase()
+    // if(temp.includes(String(this.days).toUpperCase()) || this.days == "")
+    //   return true
+    // return false
   }
 
 
