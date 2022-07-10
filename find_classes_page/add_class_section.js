@@ -55,172 +55,7 @@ function createPTextElementBefore(ref_elem, class_string, text_string){
 }
 
 
-
-
-function openSectionDisplay(display, section){
-
-
-  //Get element refs
-  const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
-  
-  
-  //Make changes (try to keep some order)
-  display.style.height = "80vh"
-  subject_courseNumber_text.innerHTML = section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours";
-
-
-  //get middle display
-  const middle_display = display.getElementsByClassName("section-middle-display")[0]
-
-
-
-  //delete prof name
-  var prof_name_text = display.getElementsByClassName("professor-name-text")[0];
-  prof_name_text.parentNode.removeChild(prof_name_text);
-
-  //delete time
-  var section_hours_text = display.getElementsByClassName("section-hours-text")[0];
-  section_hours_text.parentNode.removeChild(section_hours_text);
-
-  //remove attributes text
-  const attributes_display = display.getElementsByClassName("attributes-display")[0];
-  attributes_display.parentNode.removeChild(attributes_display);
-  //remove occupacy display
-  const occupancy_display = display.getElementsByClassName("occupancy-display")[0];
-  occupancy_display.parentNode.removeChild(occupancy_display)
-
-
-  //put new time element in
-  //Format time for section hours text
-  var beginTime = parse_time(String(section.beginTime))
-  var endTime = parse_time(String(section.endTime))
-
-  section_hours_text = createPTextElement(middle_display, "section-hours-text", beginTime + "-" + endTime)
-
-  //get week display 
-  const middle_week_display = display.getElementsByClassName("section-middle-week-display")[0];
-  console.log(middle_week_display.parentNode)
-
-
-  //Create and insert room text
-  const room_text = createPTextElementBefore(middle_week_display, "room-text", "Room" + section.room)
-  
-  //Create and insert campus buidling text
-  const campus_building_text = createPTextElementBefore(room_text, "campus-building-text", section.buildingDescription);
-
-
-  //create and insert prof email
-  const prof_email_text = createPTextElementBefore(campus_building_text, "prof-email-text", section.professorEmail);
-
-  //create and insert prof name
-  prof_name_text = createPTextElementBefore(prof_email_text, "prof-name-text", section.professorName);
-
-
-  //create course desc and populate
-  const course_desc_text = createPTextElementBefore(prof_name_text, "course-desc-text", "TODO Pull content")
-  course_desc_text.setAttribute("id", section.id + "descText");
-  
-
-
-
-
-}
-
-function closeSectionDisplay(display, section){
-
-
-  //Get element refs
-  const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
-  
-  
-    //Make changes (try to keep some order)
-  display.style.height = "30vh"
-  subject_courseNumber_text.innerHTML = section.subject + section.courseNumber;
-
-  //Delete course desc par
-  const course_desc_text = document.getElementById(section.id + "descText");
-  course_desc_text.parentNode.removeChild(course_desc_text);
-
-
-
-}
-
-
-function toggleSectionDisplay(display, section){
-  if( display.style.height == "30vh" || display.style.height == ""){
-    openSectionDisplay(display, section)
-  }else{
-    closeSectionDisplay(display, section)
-  }
-
-
-}
-
-
-
-function addClassSection(section, parent){
-
-
-  //Create section
-  const section_display = createDivElement(parent,"section-display")
-  section_display.setAttribute("id", section.id);
-
-  //Click listener on section
-  section_display.addEventListener("click", function(){
-
-
-    toggleSectionDisplay(section_display, section)
-
-    
-
-
-
-  })
-
-  //Create save button
-
-  const save_button = document.createElement("div")
-  save_button.classList.add("save-button")
-  save_button.appendChild(document.createTextNode(" "))
-
-  if(!is_class_saved(section)){
-    save_button.style.borderColor ="rgb(202, 202, 251)"
-    save_button.style.borderBottomColor = "transparent"
-
-
-
-  }else{
-    save_button.style.borderColor ="gold"
-    save_button.style.borderBottomColor = "transparent"
-  }
-
-  save_button.addEventListener("click", function(e){
-    if(save_button.style.borderColor == "gold gold transparent"){
-      save_button.style.borderColor ="rgb(202, 202, 251)"
-      save_button.style.borderBottomColor = "transparent"
-      remove_class_by_ID(section.id)
-
-
-
-    }else{
-      save_button.style.borderColor ="gold"
-      save_button.style.borderBottomColor = "transparent"
-      save_class(section)
-    }
-
-    e.stopPropagation()
-
-
-
-
-
-
-
-  })
-
-
-  section_display.appendChild(save_button)
-
+function createDisplayContentBasic(section_display, section){
   //Left display
   const left_display = createDivElement(section_display, "section-left-display")
 
@@ -314,6 +149,181 @@ function addClassSection(section, parent){
   //Right display
   const right_display = createDivElement(section_display, "section-right-display")
 
+}
+
+
+
+function openSectionDisplay(display, section){
+
+
+  //Get element refs
+  const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
+  
+  
+  //Make changes (try to keep some order)
+  display.style.height = "80vh"
+  subject_courseNumber_text.innerHTML = section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours";
+
+
+  //get middle display
+  const middle_display = display.getElementsByClassName("section-middle-display")[0]
+
+
+
+  //delete prof name
+  var prof_name_text = display.getElementsByClassName("professor-name-text")[0];
+  prof_name_text.parentNode.removeChild(prof_name_text);
+
+  //delete time
+  var section_hours_text = display.getElementsByClassName("section-hours-text")[0];
+  section_hours_text.parentNode.removeChild(section_hours_text);
+
+  //remove attributes text
+  const attributes_display = display.getElementsByClassName("attributes-display")[0];
+  attributes_display.parentNode.removeChild(attributes_display);
+  //remove occupacy display
+  const occupancy_display = display.getElementsByClassName("occupancy-display")[0];
+  occupancy_display.parentNode.removeChild(occupancy_display)
+
+
+  //put new time element in
+  //Format time for section hours text
+  var beginTime = parse_time(String(section.beginTime))
+  var endTime = parse_time(String(section.endTime))
+
+  section_hours_text = createPTextElement(middle_display, "section-hours-text", beginTime + "-" + endTime)
+
+  //get week display 
+  const middle_week_display = display.getElementsByClassName("section-middle-week-display")[0];
+  console.log(middle_week_display.parentNode)
+
+
+  //Create and insert room text
+  const room_text = createPTextElementBefore(middle_week_display, "room-text", "Room" + section.room)
+  
+  //Create and insert campus buidling text
+  const campus_building_text = createPTextElementBefore(room_text, "campus-building-text", section.buildingDescription);
+
+
+  //create and insert prof email
+  const prof_email_text = createPTextElementBefore(campus_building_text, "prof-email-text", section.professorEmail);
+
+  //create and insert prof name
+  prof_name_text = createPTextElementBefore(prof_email_text, "prof-name-text", section.professorName);
+
+
+  //create course desc and populate
+  const course_desc_text = createPTextElementBefore(prof_name_text, "course-desc-text", "TODO Pull content")
+  course_desc_text.setAttribute("id", section.id + "descText");
+  
+
+
+
+
+}
+
+function closeSectionDisplay(display, section){
+
+
+  //Get element refs
+  const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
+  
+  
+    //Make changes (try to keep some order)
+  display.style.height = "30vh"
+  subject_courseNumber_text.innerHTML = section.subject + section.courseNumber;
+
+  //Delete existing content
+  var children = display.childNodes;
+
+  while(display.hasChildNodes()){
+    display.removeChild(children[0]);
+  }
+
+  createDisplayContentBasic(display,section);
+
+
+  
+
+}
+
+
+function toggleSectionDisplay(display, section){
+  if( display.style.height == "30vh" || display.style.height == ""){
+    openSectionDisplay(display, section)
+  }else{
+    closeSectionDisplay(display, section)
+  }
+
+
+}
+
+
+
+function addClassSection(section, parent){
+
+
+  //Create section
+  const section_display = createDivElement(parent,"section-display")
+  section_display.setAttribute("id", section.id);
+
+  //Click listener on section
+  section_display.addEventListener("click", function(){
+
+
+    toggleSectionDisplay(section_display, section)
+
+    
+
+
+
+  })
+
+  //Create save button
+
+  const save_button = document.createElement("div")
+  save_button.classList.add("save-button")
+  save_button.appendChild(document.createTextNode(" "))
+
+  if(!is_class_saved(section)){
+    save_button.style.borderColor ="rgb(202, 202, 251)"
+    save_button.style.borderBottomColor = "transparent"
+
+
+
+  }else{
+    save_button.style.borderColor ="gold"
+    save_button.style.borderBottomColor = "transparent"
+  }
+
+  save_button.addEventListener("click", function(e){
+    if(save_button.style.borderColor == "gold gold transparent"){
+      save_button.style.borderColor ="rgb(202, 202, 251)"
+      save_button.style.borderBottomColor = "transparent"
+      remove_class_by_ID(section.id)
+
+
+
+    }else{
+      save_button.style.borderColor ="gold"
+      save_button.style.borderBottomColor = "transparent"
+      save_class(section)
+    }
+
+    e.stopPropagation()
+
+
+
+
+
+
+
+  })
+
+
+  section_display.appendChild(save_button)
+
+  createDisplayContentBasic(section_display,section);
     
 
 }
