@@ -202,7 +202,8 @@ function openSectionDisplay(display, section){
   const room_text = createPTextElementBefore(middle_week_display, "room-text", "Room" + section.room)
   
   //Create and insert campus buidling text
-  const campus_building_text = createPTextElementBefore(room_text, "campus-building-text", section.buildingDescription);
+  const campus_building_text = createPTextElementBefore(room_text, "campus-building-text", section.campusDescription + 
+  " Campus | " + section.buildingDescription);
 
 
   //create and insert prof email
