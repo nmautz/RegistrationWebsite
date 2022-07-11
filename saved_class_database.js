@@ -74,3 +74,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 })
+
+
+//code for the class schedule

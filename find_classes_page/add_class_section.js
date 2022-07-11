@@ -139,7 +139,7 @@ function addClassSection(section, parent){
       save_button.style.borderBottomColor = "transparent"
       const planID_input = document.getElementById("planID-input");
       remove_class_by_ID(planID_input.value,section.id)
-
+      schedule.loadSchedule(planID_input.value)
 
 
     }else{
@@ -147,6 +147,7 @@ function addClassSection(section, parent){
       save_button.style.borderBottomColor = "transparent"
       const planID_input = document.getElementById("planID-input");
       save_class(planID_input.value,section)
+      schedule.loadSchedule(planID_input.value)
     }
 
     e.stopPropagation()
