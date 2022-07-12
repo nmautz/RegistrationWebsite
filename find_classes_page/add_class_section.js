@@ -132,12 +132,20 @@ function createDisplayContentBasic(section_display, section){
 
 function createDisplayContentExtended(section_display, section){
 
+  const left_display = createDivElement(section_display, "section-left-display");
+  const middle_display = createDivElement(section_display, "section-middle-display");
+  const right_display = createDivElement(section_display, "section-right-display");
+  
+  createExtendedMiddleContent(middle_display,section);
 }
+
+
+
 
 function createExtendedMiddleContent(middle_display, section){
 
   var top_elements_div = createDivElement(middle_display, "section-middle-text-display");
-  var course_title_text = createPTextElement(top_elements_div, "course-title-text", section.course_title_text);
+  var course_title_text = createPTextElement(top_elements_div, "course-title-text", section.courseTitle);
   var subject_courseNumber_text = createPTextElement(top_elements_div, "subject-courseNumber-text", section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours");
   var course_desc_text = createPTextElement(top_elements_div, "course-desc-text", "TODO Pull content");
 
@@ -198,6 +206,13 @@ function openSectionDisplay(display, section){
   
   //Make changes (try to keep some order)
   display.style.height = "80vh"
+
+  //Delete existing content
+  var children = display.childNodes;
+
+  while(display.hasChildNodes()){
+    display.removeChild(children[0]);
+  }
 
   createDisplayContentExtended(display, section);
 
