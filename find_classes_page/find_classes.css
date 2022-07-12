@@ -73,6 +73,9 @@ body {
   cursor: pointer;
 }
 
+.section-left-display{
+}
+
 .section-middle-display {
   flex:2;
   display: flex;
@@ -81,6 +84,10 @@ body {
   padding-left: 20px;
   padding-right: 8px;
   padding-top: 10px;
+}
+
+.section-right-display {
+
 }
 
 .section-middle-text-display {
