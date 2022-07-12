@@ -4,11 +4,11 @@ function parse_time(str){
 
   if(parseInt(hours) < 12){
 
-    var am_pm = "AM"
+    var am_pm = " AM"
     hours = String(parseInt(hours))
 
   }else{
-    var am_pm = "PM"
+    var am_pm = " PM"
 
     if(hours == "12"){
       hours = String(parseInt(hours))
@@ -23,6 +23,7 @@ function parse_time(str){
   return str
 
 }
+
 
 
 function createDivElement(parent, class_string){
@@ -53,6 +54,8 @@ function createPTextElementBefore(ref_elem, class_string, text_string){
   return pElement;
 
 }
+
+
 
 
 function createDisplayContentBasic(section_display, section){
@@ -104,10 +107,26 @@ function createDisplayContentBasic(section_display, section){
     const attribute_list_item_p = createPTextElement(attributes_list_display, "attribute-text", section.attributeCodes[i])
 
   }
+  
+  
+  save_button.addEventListener("click", function(e){
+    if(save_button.style.borderColor == "gold gold transparent"){
+      save_button.style.borderColor ="rgb(202, 202, 251)"
+      save_button.style.borderBottomColor = "transparent"
+      const planID_input = document.getElementById("planID-input");
+      remove_class_by_ID(planID_input.value,section.id)
 
 
 
-  //-----------------
+    }else{
+      save_button.style.borderColor ="gold"
+      save_button.style.borderBottomColor = "transparent"
+      const planID_input = document.getElementById("planID-input");
+      save_class(planID_input.value,section)
+    }
+
+    e.stopPropagation()
+
 
   //Occupancy display
   const occupancy_dispay = createDivElement(middle_display, "occupancy-display")
