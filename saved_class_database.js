@@ -1,15 +1,12 @@
-function save_class(planID, section){
-  section.planID = planID;
-  section.uniqueID = planID+section.id;
-  localStorage.setItem(section.uniqueID, JSON.stringify(section))
+function save_class(section){
+  localStorage.setItem(section.id, JSON.stringify(section))
 }
 
-function remove_class_by_ID(planID, id){
-  const uniqueID = planID + id;
-  localStorage.removeItem(uniqueID)
+function remove_class_by_ID(id){
+  localStorage.removeItem(id)
 }
 
-function load_classes(planID){
+function load_classes(){
   keys = Object.keys(localStorage)
   values = []
 
@@ -17,12 +14,7 @@ function load_classes(planID){
   {
     //Item at key might not be a class
     try{
-
-      const section = JSON.parse(localStorage.getItem(keys[i]));
-      if(section.planID == planID || planID == "" || planID == undefined){
-        values.push(section)
-      }
-      
+      values.push(JSON.parse(localStorage.getItem(keys[i])))
     }catch{
       //Delete unwanted key
       localStorage.removeItem(keys[i])
@@ -36,8 +28,7 @@ function load_classes(planID){
 }
 
 function is_class_saved(section){
-  const planID_input = document.getElementById("planID-input");
-  classes = load_classes(planID_input.value)
+  classes = load_classes()
   for(var i = 0; i < classes.length; ++i){
     if(classes[i].id == section.id)
     {
@@ -47,32 +38,3 @@ function is_class_saved(section){
   }
   return false
 }
-
-function load_planIDs(){
-  var planIDs = [];
-  var saved_classes = load_classes();
-  for(var i = 0; i < saved_classes.length; ++i){
-    if( !planIDs.includes( saved_classes[i].planID )){
-      planIDs.push(saved_classes[i].planID);
-    }
-
-
-  }
-  return planIDs;
-
-}
-
-
-document.addEventListener("DOMContentLoaded", function(){
-  const ids = load_planIDs()
-
-  console.log("---------")
-  console.log("Plan IDS")
-  for ( var i = 0; i < ids.length; ++i ){
-    console.log(ids[i])
-  }
-  console.log("---------")
-
-
-
-})
