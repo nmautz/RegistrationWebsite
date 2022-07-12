@@ -4,11 +4,11 @@ function parse_time(str){
 
   if(parseInt(hours) < 12){
 
-    var am_pm = "AM"
+    var am_pm = " AM"
     hours = String(parseInt(hours))
 
   }else{
-    var am_pm = "PM"
+    var am_pm = " PM"
 
     if(hours == "12"){
       hours = String(parseInt(hours))
@@ -23,6 +23,7 @@ function parse_time(str){
   return str
 
 }
+
 
 
 function createDivElement(parent, class_string){
@@ -55,11 +56,11 @@ function createPTextElementBefore(ref_elem, class_string, text_string){
 }
 
 
+
 function createDisplayContentBasic(section_display, section){
   //Left display
   const left_display = createDivElement(section_display, "section-left-display")
 
-  
   //Middle display
   const middle_display = createDivElement(section_display, "section-middle-display")
 
@@ -105,9 +106,6 @@ function createDisplayContentBasic(section_display, section){
 
   }
 
-
-
-  //-----------------
 
   //Occupancy display
   const occupancy_dispay = createDivElement(middle_display, "occupancy-display")
