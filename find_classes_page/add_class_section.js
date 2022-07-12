@@ -147,7 +147,7 @@ function createExtendedMiddleContent(middle_display, section){
   var top_elements_div = createDivElement(middle_display, "section-middle-text-display");
   var course_title_text = createPTextElement(top_elements_div, "course-title-text", section.courseTitle);
   var subject_courseNumber_text = createPTextElement(top_elements_div, "subject-courseNumber-text", section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours");
-  var course_desc_text = createPTextElement(top_elements_div, "course-desc-text", "TODO Pull content");
+  var course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content");
 
   var prof_info_div = createDivElement(middle_display, "prof-info-display");
   var prof_name = createPTextElement(prof_info_div, "professor-name-text", section.professorName);
