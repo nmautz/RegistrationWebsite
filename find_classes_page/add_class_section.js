@@ -249,31 +249,13 @@ function toggleSectionDisplay(display, section){
   }else{
     closeSectionDisplay(display, section)
   }
-
+  createSaveButton(display, section);
 
 }
 
 
-
-function addClassSection(section, parent){
-
-
-  //Create section
-  const section_display = createDivElement(parent,"section-display")
-  section_display.setAttribute("id", section.id);
-
-  //Click listener on section
-  section_display.addEventListener("click", function(){
-
-
-    toggleSectionDisplay(section_display, section)
-
-    
-
-
-
-  })
-
+function createSaveButton(section_display, section){
+  
   //Create save button
 
   const save_button = document.createElement("div")
@@ -302,8 +284,11 @@ function addClassSection(section, parent){
     }else{
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
-      save_class(section)
+
+      const planID = document.getElementById("planID-input").value;
+      save_class(planID,section);
     }
+
 
     e.stopPropagation()
 
@@ -317,7 +302,33 @@ function addClassSection(section, parent){
 
 
   section_display.appendChild(save_button)
+}
 
+
+
+function addClassSection(section, parent){
+
+
+  //Create section
+  const section_display = createDivElement(parent,"section-display")
+  section_display.setAttribute("id", section.id);
+
+  //Click listener on section
+  section_display.addEventListener("click", function(){
+
+
+    toggleSectionDisplay(section_display, section)
+
+    
+
+
+
+  })
+
+
+
+
+  createSaveButton(section_display, section);
   createDisplayContentBasic(section_display,section);
     
 

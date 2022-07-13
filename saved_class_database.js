@@ -1,4 +1,5 @@
 function save_class(planID, section){
+
   section.planID = planID;
   section.uniqueID = planID+section.id;
   localStorage.setItem(section.uniqueID, JSON.stringify(section))
@@ -65,14 +66,6 @@ function load_planIDs(){
 
 document.addEventListener("DOMContentLoaded", function(){
   const ids = load_planIDs()
-
-  console.log("---------")
-  console.log("Plan IDS")
-  for ( var i = 0; i < ids.length; ++i ){
-    console.log(ids[i])
-  }
-  console.log("---------")
-
 
 
 })
