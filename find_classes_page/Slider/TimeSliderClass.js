@@ -99,13 +99,13 @@ function checkTimeTextDistance(){
   var lower_rect = lower_text.getBoundingClientRect();
   var upper_rect = upper_text.getBoundingClientRect();
   
-  // console.log("Upper: " + upper_rect.right + "\nLower: " + lower_rect.right)
+
 
   if(upper_rect.right - lower_rect.right < 60){
-    // console.log("AHHHHH")
+
     upper_text.style.top = "2vh"
   }else{
-    // console.log("CHILLING")
+
     upper_text.style.top = "-5vh"
   }
 }
