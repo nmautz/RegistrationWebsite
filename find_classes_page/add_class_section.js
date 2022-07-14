@@ -135,6 +135,7 @@ function createDisplayContentExtended(section_display, section){
   const right_display = createDivElement(section_display, "section-right-display");
   createExtendedLeftContent(left_display, section);
   createExtendedMiddleContent(middle_display,section);
+  createExtendedRightContent(right_display, section);
 }
 
 
@@ -181,6 +182,25 @@ function createExtendedMiddleContent(middle_display, section){
 
 
 
+}
+
+function createExtendedRightContent(right_display,section){
+  const feesDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(feesDiv, "section-display-side-title", "Fees");
+  createPTextElement(feesDiv, "section-display-side-text", "TODO PULL FEES");
+
+  const bookstoreDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(bookstoreDiv, "section-display-side-title", "Bookstore Link");
+  createPTextElement(bookstoreDiv, "section-display-side-text", "TODO PULL Bookstore Link");
+
+
+  const attributesDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(attributesDiv, "section-display-side-title", "Attributes")
+  createPTextElement(attributesDiv, "section-display-side-text", "TODO SET TEXT")
+
+  const seatingDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(seatingDiv, "section-display-side-title", "Seating")
+  createPTextElement(seatingDiv, "section-display-side-text", "TODO SET TEXT")
 }
 
 function createWeekDisplay(parent, section){

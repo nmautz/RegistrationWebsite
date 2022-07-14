@@ -99,14 +99,22 @@ margin-bottom: auto;
 margin-left: 4vw;
 
 
+
 }
 
 .section-right-display{
   flex:1;
-}
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 4vw;
+  
+  
+  
+  }
+
 
 .section-middle-display {
-  flex:2;
+  flex:1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
