@@ -133,12 +133,27 @@ function createDisplayContentExtended(section_display, section){
   const left_display = createDivElement(section_display, "section-left-display");
   const middle_display = createDivElement(section_display, "section-middle-display");
   const right_display = createDivElement(section_display, "section-right-display");
-  
+  createExtendedLeftContent(left_display, section);
   createExtendedMiddleContent(middle_display,section);
 }
 
 
+function createExtendedLeftContent(left_display, section){
+  const restrictionsDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(restrictionsDiv, "section-display-side-title", "Restrictions")
+  createPTextElement(restrictionsDiv, "section-display-side-text", "TODO PULL RESTRICTIONS");
 
+  const prereqDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(prereqDiv, "section-display-side-title", "Prerequisites");
+  createPTextElement(prereqDiv, "section-display-side-text", "TODO PULL PREREQS");
+
+  const coreqDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(coreqDiv, "section-display-side-title", "Corequisites");
+  createPTextElement(coreqDiv, "section-display-side-text", "TODO PULL COREQS");
+
+
+
+}
 
 function createExtendedMiddleContent(middle_display, section){
 
