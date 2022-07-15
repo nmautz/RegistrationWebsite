@@ -31,9 +31,11 @@
         transform: translate(-15.73vh,7.5vh);
     }
     
-.button-div{
-    padding-left: 100vh;
-}
+    .plan{
+         transform: translate(-11vh,5.5vh);
+    }
+    
+
     /* Links inside the dropdown */
     .dropdown-content a {
         color: black;

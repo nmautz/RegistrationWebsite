@@ -195,7 +195,6 @@ class class_search_query{
       return false
     if(this.startTime != '')
       return false
-      console.log(this.startTime)
     return true
   }
 }
