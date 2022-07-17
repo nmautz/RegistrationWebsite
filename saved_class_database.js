@@ -1,3 +1,33 @@
+function create_plan(planID){
+
+  plans = get_plan_IDs()
+  
+  if(plans == null){
+    plans = []
+  }
+
+  if(!Array.isArray(plans))
+  {
+    plans = [plans]
+  }
+
+  plans.push(planID)
+  localStorage.setItem("planIDs", plans)
+
+
+}
+
+function delete_plan(planID){
+  
+}
+
+function get_plan_IDs(){
+  return localStorage.getItem("planIDs")
+}
+
+
+
+
 function save_class(planID, section){
 
   section.planID = planID;
