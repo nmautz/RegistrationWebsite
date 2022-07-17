@@ -133,12 +133,28 @@ function createDisplayContentExtended(section_display, section){
   const left_display = createDivElement(section_display, "section-left-display");
   const middle_display = createDivElement(section_display, "section-middle-display");
   const right_display = createDivElement(section_display, "section-right-display");
-  
+  createExtendedLeftContent(left_display, section);
   createExtendedMiddleContent(middle_display,section);
+  createExtendedRightContent(right_display, section);
 }
 
 
+function createExtendedLeftContent(left_display, section){
+  const restrictionsDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(restrictionsDiv, "section-display-side-title", "Restrictions")
+  createPTextElement(restrictionsDiv, "section-display-side-text", "TODO PULL RESTRICTIONS");
 
+  const prereqDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(prereqDiv, "section-display-side-title", "Prerequisites");
+  createPTextElement(prereqDiv, "section-display-side-text", "TODO PULL PREREQS");
+
+  const coreqDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(coreqDiv, "section-display-side-title", "Corequisites");
+  createPTextElement(coreqDiv, "section-display-side-text", "TODO PULL COREQS");
+
+
+
+}
 
 function createExtendedMiddleContent(middle_display, section){
 
@@ -166,6 +182,25 @@ function createExtendedMiddleContent(middle_display, section){
 
 
 
+}
+
+function createExtendedRightContent(right_display,section){
+  const feesDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(feesDiv, "section-display-side-title", "Fees");
+  createPTextElement(feesDiv, "section-display-side-text", "TODO PULL FEES");
+
+  const bookstoreDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(bookstoreDiv, "section-display-side-title", "Bookstore Link");
+  createPTextElement(bookstoreDiv, "section-display-side-text", "TODO PULL Bookstore Link");
+
+
+  const attributesDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(attributesDiv, "section-display-side-title", "Attributes")
+  createPTextElement(attributesDiv, "section-display-side-text", "TODO SET TEXT")
+
+  const seatingDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(seatingDiv, "section-display-side-title", "Seating")
+  createPTextElement(seatingDiv, "section-display-side-text", "TODO SET TEXT")
 }
 
 function createWeekDisplay(parent, section){
