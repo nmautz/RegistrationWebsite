@@ -1,3 +1,5 @@
+
+
 $( function() {
 
 
@@ -80,6 +82,7 @@ function time_to_min(time)
   if (time.includes("PM") && hours != 12)
     totalMin += 60 * 12
   return totalMin
+
 }
 
 //Converts time formated at "0930" to "9:30"
@@ -99,15 +102,16 @@ function checkTimeTextDistance(){
   var lower_rect = lower_text.getBoundingClientRect();
   var upper_rect = upper_text.getBoundingClientRect();
   
-  // console.log("Upper: " + upper_rect.right + "\nLower: " + lower_rect.right)
+
 
   if(upper_rect.right - lower_rect.right < 60){
-    // console.log("AHHHHH")
+
     upper_text.style.top = "2vh"
   }else{
-    // console.log("CHILLING")
+
     upper_text.style.top = "-5vh"
   }
+
 }
 
 document.addEventListener("DOMContentLoaded",function() {

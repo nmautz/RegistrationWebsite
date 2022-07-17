@@ -33,137 +33,34 @@ function createDivElement(parent, class_string){
   return divElement
 }
 
+
+
 function createPTextElement(parent, class_string, text_string){
-  const pElement = document.createElement("p")
-  pElement.classList.add(class_string)
-  pElement.appendChild(document.createTextNode(text_string))
-  parent.appendChild(pElement)
-  return pElement
+  const pElement = document.createElement("p");
+  pElement.classList.add(class_string);
+  pElement.appendChild(document.createTextNode(text_string));
+  parent.appendChild(pElement);
+  return pElement;
 
 
 }
 
+function createPTextElementBefore(ref_elem, class_string, text_string){
 
-function open_details_menu(){
-  const details_display = document.getElementById("details-display")
-
-  var classDisplayArray = document.getElementsByClassName("section-display")
-
-  details_display.style.visibility = "visible"
-  details_display.style.flex = "1"
-  for(var i = 0; i < classDisplayArray.length; ++i)
-  {
-    classDisplayArray[i].style.maxWidth = "60vw"
-  }
-
-}
-
-function close_details_menu(){
-  const details_display = document.getElementById("details-display")
-
-  var classDisplayArray = document.getElementsByClassName("section-display")
-
-  details_display.style.visibility = "hidden"
-  details_display.style.flex = "0"
-  for(var i = 0; i < classDisplayArray.length; ++i)
-  {
-    classDisplayArray[i].style.maxWidth = "100vw"
-  }
-}
-
-function toggle_details_menu(section){
-  const details_display = document.getElementById("details-display")
-
-  var classDisplayArray = document.getElementsByClassName("section-display")
-
-
-
-
-  var current_id = sessionStorage.getItem("current-details-class-id")
-
-
-  if((current_id == section.id || current_id == null) && details_display.style.visibility == "visible"){
-    close_details_menu()
-
-
-  }else{
-    open_details_menu()
-
-  }
-  sessionStorage.setItem("current-details-class-id", section.id)
-
+  const pElement = document.createElement("p");
+  pElement.classList.add(class_string);
+  pElement.appendChild(document.createTextNode(text_string));
+  ref_elem.parentNode.insertBefore(pElement, ref_elem);
+  return pElement;
 
 }
 
 
-function addClassSection(section, parent){
 
+function createDisplayContentBasic(section_display, section){
+  //Left display
+  const left_display = createDivElement(section_display, "section-left-display")
 
-  //Create section
-  const section_display = createDivElement(parent,"section-display")
-
-  //Click listener on section
-  section_display.addEventListener("click", function(){
-
-    toggle_details_menu(section)
-    const details_display = document.getElementById("details-display")
-    details_display.innerHTML = section.subject+section.courseNumber+"  ID:"+section.id
-
-
-    
-
-
-
-  })
-
-  //Create save button
-
-  const save_button = document.createElement("div")
-  save_button.classList.add("save-button")
-  save_button.appendChild(document.createTextNode(" "))
-
-  if(!is_class_saved(section)){
-    save_button.style.borderColor ="rgb(202, 202, 251)"
-    save_button.style.borderBottomColor = "transparent"
-
-
-
-  }else{
-    save_button.style.borderColor ="gold"
-    save_button.style.borderBottomColor = "transparent"
-  }
-
-  save_button.addEventListener("click", function(e){
-    if(save_button.style.borderColor == "gold gold transparent"){
-      save_button.style.borderColor ="rgb(202, 202, 251)"
-      save_button.style.borderBottomColor = "transparent"
-      const planID_input = document.getElementById("planID-input");
-      remove_class_by_ID(schedule.selectedPlan,section.id)
-      // schedule.loadSchedule(planID_input.value)
-
-
-    }else{
-      save_button.style.borderColor ="gold"
-      save_button.style.borderBottomColor = "transparent"
-      const planID_input = document.getElementById("planID-input");
-      save_class(schedule.selectedPlan,section)
-      // schedule.loadSchedule(planID_input.value)
-    }
-
-    e.stopPropagation()
-
-
-
-
-
-
-
-  })
-
-
-  section_display.appendChild(save_button)
-
-  
   //Middle display
   const middle_display = createDivElement(section_display, "section-middle-display")
 
@@ -187,8 +84,128 @@ function addClassSection(section, parent){
   const section_hours_text = createPTextElement(middle_text_display, "section-hours-text", beginTime + "-" + endTime)
 
 
+  const middle_week_display = createWeekDisplay(middle_display, section);
+
+
+
+
+  //Attributes display
+  const attributes_display = createDivElement(middle_display, "attributes-display")
+  
+  //Attributes title text
+  const attributes_title_text = createPTextElement(attributes_display, "attributes-title-text", "Attributes")
+
+
+  //Attributes list display
+  const attributes_list_display = createDivElement(attributes_display, "attributes-list-display")
+
+  //Attributes list item text 
+  for(var i = 0; i < section.attributeCodes.length; ++i){
+
+    const attribute_list_item_p = createPTextElement(attributes_list_display, "attribute-text", section.attributeCodes[i])
+
+  }
+
+
+  //Occupancy display
+  const occupancy_dispay = createDivElement(middle_display, "occupancy-display")
+/*
+  //Occupancy title text
+  const occupancy_title_text = document.createElement("p")
+  occupancy_title_text.classList.add("occupancy-title-text")
+  occupancy_title_text.appendChild(document.createTextNode("Occupancy"))
+  occupancy_dispay.appendChild(occupancy_title_text)
+*/
+  //Occupancy info text
+  const occupancy_info_text = createPTextElement(occupancy_dispay, "occupancy-info-text",section.seatsAvailable + "/" + section.maximumEnrollment +" Available" )
+
+
+
+  //Right display
+  const right_display = createDivElement(section_display, "section-right-display")
+
+}
+
+
+
+function createDisplayContentExtended(section_display, section){
+
+  const left_display = createDivElement(section_display, "section-left-display");
+  const middle_display = createDivElement(section_display, "section-middle-display");
+  const right_display = createDivElement(section_display, "section-right-display");
+  createExtendedLeftContent(left_display, section);
+  createExtendedMiddleContent(middle_display,section);
+  createExtendedRightContent(right_display, section);
+}
+
+
+function createExtendedLeftContent(left_display, section){
+  const restrictionsDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(restrictionsDiv, "section-display-side-title", "Restrictions")
+  createPTextElement(restrictionsDiv, "section-display-side-text", "TODO PULL RESTRICTIONS");
+
+  const prereqDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(prereqDiv, "section-display-side-title", "Prerequisites");
+  createPTextElement(prereqDiv, "section-display-side-text", "TODO PULL PREREQS");
+
+  const coreqDiv = createDivElement(left_display, "section-display-side-div");
+  createPTextElement(coreqDiv, "section-display-side-title", "Corequisites");
+  createPTextElement(coreqDiv, "section-display-side-text", "TODO PULL COREQS");
+
+
+
+}
+
+function createExtendedMiddleContent(middle_display, section){
+
+  var top_elements_div = createDivElement(middle_display, "section-middle-text-display");
+  var course_title_text = createPTextElement(top_elements_div, "course-title-text", section.courseTitle);
+  var subject_courseNumber_text = createPTextElement(top_elements_div, "subject-courseNumber-text", section.subject + section.courseNumber + " | " + section.creditHourSession + " credit hours");
+  var course_desc_text = createPTextElement(middle_display, "course-desc-text", "TODO Pull content");
+
+  var prof_info_div = createDivElement(middle_display, "prof-info-display");
+  var prof_name = createPTextElement(prof_info_div, "professor-name-text", section.professorName);
+  var prof_email = createPTextElement(prof_info_div, "prof-email-text", section.professorEmail);
+
+  var building_info_div = createDivElement(middle_display, "building-info-display");
+  var campus_building_text = createPTextElement(building_info_div, "campus-building-text", section.campusDescription + 
+  " Campus | " + section.buildingDescription);
+  var room_text = createPTextElement(building_info_div, "room-text", "Room " + section.room);
+
+  var week_display = createWeekDisplay(building_info_div, section)
+
+  //Format time for section hours text
+  var beginTime = parse_time(String(section.beginTime))
+  var endTime = parse_time(String(section.endTime))
+
+  const section_hours_text = createPTextElement(building_info_div, "section-hours-text", beginTime + "-" + endTime)
+
+
+
+}
+
+function createExtendedRightContent(right_display,section){
+  const feesDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(feesDiv, "section-display-side-title", "Fees");
+  createPTextElement(feesDiv, "section-display-side-text", "TODO PULL FEES");
+
+  const bookstoreDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(bookstoreDiv, "section-display-side-title", "Bookstore Link");
+  createPTextElement(bookstoreDiv, "section-display-side-text", "TODO PULL Bookstore Link");
+
+
+  const attributesDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(attributesDiv, "section-display-side-title", "Attributes")
+  createPTextElement(attributesDiv, "section-display-side-text", "TODO SET TEXT")
+
+  const seatingDiv = createDivElement(right_display, "section-display-side-div");
+  createPTextElement(seatingDiv, "section-display-side-title", "Seating")
+  createPTextElement(seatingDiv, "section-display-side-text", "TODO SET TEXT")
+}
+
+function createWeekDisplay(parent, section){
   //Middle week display
-  const middle_week_display = createDivElement(middle_display, "section-middle-week-display")
+  const middle_week_display = createDivElement(parent, "section-middle-week-display")
   //Weekday box
   week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
   week_symbols = ['S','M','T','W','T','F','S']
@@ -211,42 +228,148 @@ function addClassSection(section, parent){
     weekday_box_p.appendChild(document.createTextNode(week_symbols[i]))
     weekday_box_div.appendChild(weekday_box_p)
   }
+  return middle_week_display;
+}
 
-  //Right display
-  const right_display = createDivElement(section_display, "section-right-display")
 
-  //Attributes display
-  const attributes_display = createDivElement(right_display, "attributes-display")
+function openSectionDisplay(display, section){
+
+
+
   
-  //Attributes title text
-  const attributes_title_text = createPTextElement(attributes_display, "attributes-title-text", "Attributes")
+  //Make changes (try to keep some order)
+  display.style.height = "80vh"
 
+  //Delete existing content
+  var children = display.childNodes;
 
-  //Attributes list display
-  const attributes_list_display = createDivElement(attributes_display, "attributes-list-display")
-
-  //Attributes list item text 
-  for(var i = 0; i < section.attributeCodes.length; ++i){
-
-    const attribute_list_item_p = createPTextElement(attributes_list_display, "attribute-text", section.attributeCodes[i])
-
+  while(display.hasChildNodes()){
+    display.removeChild(children[0]);
   }
 
+  createDisplayContentExtended(display, section);
 
 
-  //-----------------
+}
 
-  //Occupancy display
-  const occupancy_dispay = createDivElement(right_display, "occupancy-display")
-/*
-  //Occupancy title text
-  const occupancy_title_text = document.createElement("p")
-  occupancy_title_text.classList.add("occupancy-title-text")
-  occupancy_title_text.appendChild(document.createTextNode("Occupancy"))
-  occupancy_dispay.appendChild(occupancy_title_text)
-*/
-  //Occupancy info text
-  const occupancy_info_text = createPTextElement(occupancy_dispay, "occupancy-info-text",section.seatsAvailable + "/" + section.maximumEnrollment +" Available" )
+function closeSectionDisplay(display, section){
+
+
+  //Get element refs
+  const subject_courseNumber_text = display.getElementsByClassName("subject-courseNumber-text")[0];
+  
+  
+    //Make changes (try to keep some order)
+  display.style.height = "30vh"
+  subject_courseNumber_text.innerHTML = section.subject + section.courseNumber;
+
+  //Delete existing content
+  var children = display.childNodes;
+
+  while(display.hasChildNodes()){
+    display.removeChild(children[0]);
+  }
+
+  createDisplayContentBasic(display,section);
+
 
   
+
+}
+
+
+function toggleSectionDisplay(display, section){
+  if( display.style.height == "30vh" || display.style.height == ""){
+    openSectionDisplay(display, section)
+  }else{
+    closeSectionDisplay(display, section)
+  }
+  createSaveButton(display, section);
+
+}
+
+
+function createSaveButton(section_display, section){
+  
+  //Create save button
+
+  const save_button = document.createElement("div")
+  save_button.classList.add("save-button")
+  save_button.appendChild(document.createTextNode(" "))
+
+  if(!is_class_saved(section)){
+    save_button.style.borderColor ="rgb(202, 202, 251)"
+    save_button.style.borderBottomColor = "transparent"
+
+
+
+  }else{
+    save_button.style.borderColor ="gold"
+    save_button.style.borderBottomColor = "transparent"
+  }
+
+  save_button.addEventListener("click", function(e){
+    if(save_button.style.borderColor == "gold gold transparent"){
+      save_button.style.borderColor ="rgb(202, 202, 251)"
+      save_button.style.borderBottomColor = "transparent"
+
+      const planID_input = document.getElementById("planID-input");
+      remove_class_by_ID(schedule.selectedPlan,section.id)
+      // schedule.loadSchedule(planID_input.value)
+
+
+
+    }else{
+      save_button.style.borderColor ="gold"
+      save_button.style.borderBottomColor = "transparent"
+
+      const planID_input = document.getElementById("planID-input");
+      save_class(schedule.selectedPlan,section)
+      // schedule.loadSchedule(planID_input.value)
+
+    }
+
+
+    e.stopPropagation()
+
+
+
+
+
+
+
+  })
+
+
+  section_display.appendChild(save_button)
+}
+
+
+
+function addClassSection(section, parent){
+
+
+  //Create section
+  const section_display = createDivElement(parent,"section-display")
+  section_display.setAttribute("id", section.id);
+
+  //Click listener on section
+  section_display.addEventListener("click", function(){
+
+
+    toggleSectionDisplay(section_display, section)
+
+    
+
+
+
+  })
+
+
+
+
+  createSaveButton(section_display, section);
+  createDisplayContentBasic(section_display,section);
+    
+
 }

@@ -39,10 +39,15 @@ function search_class()
 }
 
 function add_sections_from_array(sections){
-    const classContainter = document.getElementById("classes-list-container")
-    for(var i = 0; i < sections.length; ++i){
-        addClassSection(sections[i], classContainter)
+
+    if(sections != null){
+        const classContainter = document.getElementById("classes-list-container")
+        for(var i = 0; i < sections.length; ++i){
+            addClassSection(sections[i], classContainter)
+        }
+
     }
+
     
 
 }
@@ -56,7 +61,7 @@ function update_section_display(){
 
     
 
-    close_details_menu()
+
 
     add_sections_from_array(search_class())
 

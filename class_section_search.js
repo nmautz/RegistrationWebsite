@@ -195,6 +195,7 @@ class class_search_query{
       return false
     if(this.startTime != '')
       return false
+
     return true
   }
 }

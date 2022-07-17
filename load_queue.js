@@ -3,7 +3,11 @@ class Load_Queue {
   static source_list = {}
   static result_list = {}
 
-  static addToQueue(source, func){
+  static addToQueue(source, func, options){
+
+    if(options == undefined){
+      options = {}
+    }
 
 
     //Checks if result has been received
@@ -15,13 +19,12 @@ class Load_Queue {
         //Creates empty array for functions to be stored in
         this.source_list[source] = []
 
+
         //Create callback
-        fetch(source).then(response => response.json()).then( (jsonData) => {
+        fetch(source, options).then(response => response.json()).then( (jsonData) => {
           this.executeQueue(source, jsonData)
         })  
         
-
-
       }
       //Add function to source queue
       this.#queueFunctionKV(source, func)
