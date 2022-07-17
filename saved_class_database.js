@@ -93,6 +93,17 @@ function is_class_saved(section){
   return false
 }
 
+function is_plan_saved(planID)
+{
+  const ids = get_plan_IDs()
+  for (var i = 0; i < ids.length; ++i)
+  {
+      if (ids[i] == planID)
+        return true
+  }
+  return false
+}
+
 
 /** @deprecated */ 
 function load_planIDs(){

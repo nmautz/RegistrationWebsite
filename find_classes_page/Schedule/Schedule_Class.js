@@ -106,20 +106,19 @@ class ScheduleInput{
                     schedule.selectedPlan = "A"
                 }
                 else{
-                    for (var i = 0; i < ids.length; ++i)
+                    while(is_plan_saved(planName))
                     {
-                        if (ids[i] == planName)
-                        {
-                            charCode++
-                            planName = String.fromCharCode(charCode)
-                        }
+                        charCode++
+                        planName = String.fromCharCode(charCode)
                     }
-                create_plan(planName)
-                schedule.selectedPlan = planName
+                    create_plan(planName)
+                    schedule.selectedPlan = planName
                 }
                 
             }else
             {
+                if (is_plan_saved(plan.value))
+                    alert("Plan Already Created")
                 create_plan(plan.value)
                 schedule.selectedPlan = plan.value
             }
