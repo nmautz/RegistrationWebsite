@@ -4,6 +4,7 @@ class Schedule {
     {
         this.insertPoint = insertPoint
         this.timeContainer = "timeContainer"
+        this.selectedPlan = ""
     }
 
     createBlankSchedule()
@@ -55,7 +56,7 @@ class ScheduleInput{
         this.insertPoint = insertPoint
         this.submissionDiv = "submitPlanContainer"
         this.addPlanBtn = "addPlanBtn"
-        this.selectedVal = 
+        this.planIdInput = "planID-Input"
         this.createButton()
         this.createHidElements()
 
@@ -72,8 +73,8 @@ class ScheduleInput{
         {
             var subDiv = document.getElementById(this.submissionDiv)
             e.target.style.display = "none"
-            subDiv.style.display = "block"
-            console.log("PRESSED")
+            subDiv.style.display = "block"   
+        
         })
         const divElement = document.getElementById(this.insertPoint)
         divElement.appendChild(btnElement)
@@ -83,7 +84,9 @@ class ScheduleInput{
     {  
         //creating input
         const inputElement = document.createElement("input")
-        inputElement.id = "planID-input"
+        inputElement.id = this.planIdInput
+        // inputElement.id = "planID-input"
+        console.log(this.planIdInput)
         inputElement.placeholder = "Enter Plan Name"
 
         //creating button
@@ -93,11 +96,15 @@ class ScheduleInput{
         btnElement.id = "submitNewPlanBtn"
         btnElement.addEventListener("click", (e)=>
         {
+            
+            var plan = document.getElementById(this.planIdInput)
+            schedule.selectedPlan = plan.value
+            plan.value = ""
+            console.log(schedule.selectedPlan)
             var subDiv = document.getElementById(this.submissionDiv)
             subDiv.style.display = "none"
             var addBtn = document.getElementById(this.addPlanBtn)
             addBtn.style.display = "block"
-            console.log("PRESSED")
         })
 
         const divElement = document.createElement("div")
@@ -121,13 +128,8 @@ class planDropDown extends daysDropDown{
     constructor(input)
     {
         super(input,"PlanDropDown")
-        this.selectedPlan = ""
     }
 
-    getSelectedPlan()
-    {
-        return this.selectedPlan
-    }
 
     addDropdownDiv()
     {
@@ -171,7 +173,7 @@ class planDropDown extends daysDropDown{
         aElement.appendChild(text)
         aElement.addEventListener("click", (e) =>
         {
-            this.selectedPlan = data
+            schedule.selectedPlan = data
             document.getElementById(this.input).value = "Meeting Day(s) :" + data
             // this.isClicked = !this.isClicked
             this.inputVal = data

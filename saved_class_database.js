@@ -1,12 +1,10 @@
 function save_class(planID, section){
   section.planID = planID;
-  section.uniqueID = planID+section.id;
-  localStorage.setItem(section.uniqueID, JSON.stringify(section))
+  localStorage.setItem(section.id, JSON.stringify(section))
 }
 
 function remove_class_by_ID(planID, id){
-  const uniqueID = planID + id;
-  localStorage.removeItem(uniqueID)
+  localStorage.removeItem(planID, id)
 }
 
 function load_classes(planID){
@@ -37,7 +35,7 @@ function load_classes(planID){
 
 function is_class_saved(section){
   const planID_input = document.getElementById("planID-input");
-  classes = load_classes(planID_input.value)
+  classes = load_classes(schedule.selectedPlan)
   for(var i = 0; i < classes.length; ++i){
     if(classes[i].id == section.id)
     {
@@ -77,5 +75,3 @@ document.addEventListener("DOMContentLoaded", function(){
 
 })
 
-
-//code for the class schedule

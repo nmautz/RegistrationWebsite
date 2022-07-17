@@ -138,16 +138,16 @@ function addClassSection(section, parent){
       save_button.style.borderColor ="rgb(202, 202, 251)"
       save_button.style.borderBottomColor = "transparent"
       const planID_input = document.getElementById("planID-input");
-      remove_class_by_ID(planID_input.value,section.id)
-      schedule.loadSchedule(planID_input.value)
+      remove_class_by_ID(schedule.selectedPlan,section.id)
+      // schedule.loadSchedule(planID_input.value)
 
 
     }else{
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
       const planID_input = document.getElementById("planID-input");
-      save_class(planID_input.value,section)
-      schedule.loadSchedule(planID_input.value)
+      save_class(schedule.selectedPlan,section)
+      // schedule.loadSchedule(planID_input.value)
     }
 
     e.stopPropagation()
