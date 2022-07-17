@@ -18,7 +18,22 @@ function create_plan(planID){
 }
 
 function delete_plan(planID){
-  
+  //remove plan from plans list
+  planIDs = get_plan_IDs()
+  if(Array.isArray(planIDs)){
+    planIDs.removeItem(planID)
+  }
+
+
+  //remove all classes with matching planID
+  saved_classes = load_classes()
+
+  for (var i = 0;  i < saved_classes.length; ++i){
+    if(saved_classes[i].planID == planID){
+      localStorage.removeItem(saved_classes[i].uniqueID)
+    }
+  }
+
 }
 
 function get_plan_IDs(){
@@ -79,6 +94,8 @@ function is_class_saved(section){
   return false
 }
 
+
+/** @deprecated */ 
 function load_planIDs(){
   var planIDs = [];
   var saved_classes = load_classes();
