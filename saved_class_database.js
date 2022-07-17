@@ -1,19 +1,19 @@
 function create_plan(planID){
 
-  plans = get_plan_IDs()
+  plans = localStorage.getItem("planIDs")
   
   if(plans == null){
-    plans = []
+    plans = JSON.parse('{}')
+    plans["ids"] = []
+    plans = JSON.stringify(plans)
   }
 
-  if(!Array.isArray(plans))
-  {
-    plans = [plans]
-  }
+  plans = JSON.parse(plans)
+  plans["ids"].push(planID)
 
-  plans.push(planID)
+  plans = JSON.stringify(plans)
   localStorage.setItem("planIDs", plans)
-
+ 
 
 }
 
@@ -37,7 +37,12 @@ function delete_plan(planID){
 }
 
 function get_plan_IDs(){
-  return localStorage.getItem("planIDs")
+  planIDs = localStorage.getItem("planIDs")
+  if(planIDs != null){
+    planIDs = JSON.parse(planIDs)
+    return planIDs["ids"]
+  }
+  return null
 }
 
 
@@ -96,6 +101,9 @@ function is_class_saved(section){
 function is_plan_saved(planID)
 {
   const ids = get_plan_IDs()
+  if(ids == null){
+    return false
+  }
   for (var i = 0; i < ids.length; ++i)
   {
       if (ids[i] == planID)
