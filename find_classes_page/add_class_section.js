@@ -277,7 +277,10 @@ function createSaveButton(section_display, section){
     if(save_button.style.borderColor == "gold gold transparent"){
       save_button.style.borderColor ="rgb(202, 202, 251)"
       save_button.style.borderBottomColor = "transparent"
-      remove_class_by_ID(section.id)
+
+      const planID_input = document.getElementById("planID-input");
+      remove_class_by_ID(schedule.selectedPlan,section.id)
+      // schedule.loadSchedule(planID_input.value)
 
 
 
@@ -285,8 +288,10 @@ function createSaveButton(section_display, section){
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
 
-      const planID = document.getElementById("planID-input").value;
-      save_class(planID,section);
+      const planID_input = document.getElementById("planID-input");
+      save_class(schedule.selectedPlan,section)
+      // schedule.loadSchedule(planID_input.value)
+
     }
 
 
