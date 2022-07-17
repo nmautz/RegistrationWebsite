@@ -85,8 +85,6 @@ class ScheduleInput{
         //creating input
         const inputElement = document.createElement("input")
         inputElement.id = this.planIdInput
-        // inputElement.id = "planID-input"
-        console.log(this.planIdInput)
         inputElement.placeholder = "Enter Plan Name"
 
         //creating button
@@ -96,15 +94,33 @@ class ScheduleInput{
         btnElement.id = "submitNewPlanBtn"
         btnElement.addEventListener("click", (e)=>
         {
-            
             var plan = document.getElementById(this.planIdInput)
-            schedule.selectedPlan = plan.value
-            plan.value = ""
-            console.log(schedule.selectedPlan)
-            var subDiv = document.getElementById(this.submissionDiv)
-            subDiv.style.display = "none"
-            var addBtn = document.getElementById(this.addPlanBtn)
-            addBtn.style.display = "block"
+            if(plan.value == "")
+            {
+                var charCode = 65
+                var planName = "A"
+                const ids = load_planIDs()
+                for (var i = 0; i < ids.length; ++i)
+                {
+                    if (ids[i] == planName)
+                    {
+                        charCode++
+                        planName = planName.fromCharCode(charCode)
+                    }
+                    console.log(planName)
+                }
+                schedule.selectedPlan = planName
+            }else
+            {
+                schedule.selectedPlan = plan.value
+                plan.value = ""
+                console.log(schedule.selectedPlan)
+                var subDiv = document.getElementById(this.submissionDiv)
+                subDiv.style.display = "none"
+                var addBtn = document.getElementById(this.addPlanBtn)
+                addBtn.style.display = "block"  
+            }
+
         })
 
         const divElement = document.createElement("div")

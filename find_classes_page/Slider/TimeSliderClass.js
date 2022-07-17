@@ -1,3 +1,5 @@
+
+
 $( function() {
 
 
@@ -80,6 +82,7 @@ function time_to_min(time)
   if (time.includes("PM") && hours != 12)
     totalMin += 60 * 12
   return totalMin
+
 }
 
 //Converts time formated at "0930" to "9:30"
@@ -108,6 +111,7 @@ function checkTimeTextDistance(){
 
     upper_text.style.top = "-5vh"
   }
+
 }
 
 document.addEventListener("DOMContentLoaded",function() {
