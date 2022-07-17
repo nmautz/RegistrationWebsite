@@ -1,3 +1,4 @@
+
 $( function() {
 
 
@@ -108,6 +109,7 @@ function checkTimeTextDistance(){
 
     upper_text.style.top = "-5vh"
   }
+
 }
 
 document.addEventListener("DOMContentLoaded",function() {
