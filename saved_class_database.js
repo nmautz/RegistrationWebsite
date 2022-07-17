@@ -111,7 +111,10 @@ function load_planIDs(){
 
 
 document.addEventListener("DOMContentLoaded", function(){
-  const ids = load_planIDs()
+  
 
+
+
+  
 
 })

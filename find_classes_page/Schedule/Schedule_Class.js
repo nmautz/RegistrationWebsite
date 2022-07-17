@@ -99,28 +99,41 @@ class ScheduleInput{
             {
                 var charCode = 65
                 var planName = "A"
-                const ids = load_planIDs()
-                for (var i = 0; i < ids.length; ++i)
+                const ids = get_plan_IDs()
+                if(ids == null)
                 {
-                    if (ids[i] == planName)
-                    {
-                        charCode++
-                        planName = planName.fromCharCode(charCode)
-                    }
-                    console.log(planName)
+                    create_plan("A")
+                    schedule.selectedPlan = "A"
                 }
+                else{
+                    for (var i = 0; i < ids.length; ++i)
+                    {
+                        if (ids[i] == planName)
+                        {
+                            charCode++
+                            planName = String.fromCharCode(charCode)
+                        }
+                    }
+                create_plan(planName)
                 schedule.selectedPlan = planName
+                }
+                
             }else
             {
+                create_plan(plan.value)
                 schedule.selectedPlan = plan.value
-                plan.value = ""
-                console.log(schedule.selectedPlan)
-                var subDiv = document.getElementById(this.submissionDiv)
-                subDiv.style.display = "none"
-                var addBtn = document.getElementById(this.addPlanBtn)
-                addBtn.style.display = "block"  
             }
 
+            plan.value = ""
+            var subDiv = document.getElementById(this.submissionDiv)
+            subDiv.style.display = "none"
+            var addBtn = document.getElementById(this.addPlanBtn)
+            addBtn.style.display = "block"  
+            
+            var saved_classes = get_plan_IDs();
+            for(var i = 0; i < saved_classes.length; ++i){
+                console.log(saved_classes[i])
+    }
         })
 
         const divElement = document.createElement("div")
