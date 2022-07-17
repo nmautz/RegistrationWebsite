@@ -95,6 +95,7 @@ class ScheduleInput{
         btnElement.addEventListener("click", (e)=>
         {
             var plan = document.getElementById(this.planIdInput)
+            var hide = true
             if(plan.value == "")
             {
                 var charCode = 65
@@ -118,16 +119,25 @@ class ScheduleInput{
             }else
             {
                 if (is_plan_saved(plan.value))
+                {
                     alert("Plan Already Created")
-                create_plan(plan.value)
-                schedule.selectedPlan = plan.value
+                    hide = false
+                }else
+                {  
+                    create_plan(plan.value)
+                    schedule.selectedPlan = plan.value
+                }                
             }
-
-            plan.value = ""
-            var subDiv = document.getElementById(this.submissionDiv)
-            subDiv.style.display = "none"
-            var addBtn = document.getElementById(this.addPlanBtn)
-            addBtn.style.display = "block"  
+            
+            if(hide)
+            {
+                plan.value = ""
+                var subDiv = document.getElementById(this.submissionDiv)
+                subDiv.style.display = "none"
+                var addBtn = document.getElementById(this.addPlanBtn)
+                addBtn.style.display = "block"   
+            }
+            
             
             var saved_classes = get_plan_IDs();
             for(var i = 0; i < saved_classes.length; ++i){
@@ -177,7 +187,13 @@ class planDropDown extends daysDropDown{
         //var userInput = document.getElementById(this.input).value
         var userInput = this.inputVal
         userInput = String(userInput).toUpperCase()
-        var planIDs = load_planIDs()
+        var planIDs = get_plan_IDs()
+        if (planIDs == null)
+        {
+            this.addDropdown("(None)")
+            return
+        }
+         
         var dropDownArr = []
         for(var i = 0; i < planIDs.length; ++i)
         {
