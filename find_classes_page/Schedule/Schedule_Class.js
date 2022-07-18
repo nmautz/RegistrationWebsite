@@ -131,6 +131,7 @@ class ScheduleInput{
             
             if(hide)
             {
+                document.getElementById("selectPlanBtn").innerHTML = "Selected Plan: " + plan.value
                 plan.value = ""
                 var subDiv = document.getElementById(this.submissionDiv)
                 subDiv.style.display = "none"
@@ -138,11 +139,6 @@ class ScheduleInput{
                 addBtn.style.display = "block"   
             }
             
-            
-            var saved_classes = get_plan_IDs();
-            for(var i = 0; i < saved_classes.length; ++i){
-                console.log(saved_classes[i])
-    }
         })
 
         const divElement = document.createElement("div")
@@ -218,16 +214,10 @@ class planDropDown extends daysDropDown{
         aElement.addEventListener("click", (e) =>
         {
             schedule.selectedPlan = data
-            document.getElementById(this.input).value = "Meeting Day(s) :" + data
-            // this.isClicked = !this.isClicked
-            this.inputVal = data
+            document.getElementById(this.input).innerHTML = "Selected Plan: " + data
             if (data == "(None)")
-            {
-                 this.inputVal = ""  
-                 document.getElementById(this.input).value = "Meeting Day(s)"
-            }else
-                document.getElementById(this.input).value = "Meeting Day(s) :" + data
-                
+                 document.getElementById(this.input).innerHTML = "Select Plan"
+                           
 
             //makes dropdown update after it is clicked on
             this.updateDropDown()
