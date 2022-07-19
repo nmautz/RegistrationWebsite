@@ -118,9 +118,10 @@ class ScheduleInput{
 }
 
 class planDropDown extends daysDropDown{
-    constructor(input)
+    constructor(input,deletePlanBtn)
     {
         super(input,"PlanDropDown")
+        this.deletePlanBtn = deletePlanBtn
     }
 
 
@@ -176,7 +177,9 @@ class planDropDown extends daysDropDown{
             document.getElementById(this.input).innerHTML = "Selected Plan: " + data
             if (data == "(None)")
                  document.getElementById(this.input).innerHTML = "Select Plan"
-                           
+            
+            console.log(this.deletePlanBtn.planID)
+            
 
             //makes dropdown update after it is clicked on
             this.updateDropDown()
@@ -186,13 +189,40 @@ class planDropDown extends daysDropDown{
     }
 }
 
+class deletePlanBtn {
+    constructor(insertPoint)
+    {
+        this.insertPoint = insertPoint
+        this.btnName = "deletePlanBtn"
+        this.planID = "bob"
+        this.createButton()
+    }
+
+    createButton()
+    {
+        const btnElement = document.createElement("input")
+        btnElement.setAttribute("type", "button")
+        btnElement.value = "Create"
+        btnElement.id = this.btnName
+        btnElement.addEventListener("click", (e)=>
+        {
+            console.log(this.planID)
+        })
+            
+        var insertDiv = document.getElementById(this.insertPoint)
+        insertDiv.appendChild(btnElement)
+    }
+}
+
 
 const schedule = new Schedule("scheduleInput")
 
 document.addEventListener("DOMContentLoaded", function()
 {
+    const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")
+    deletePlanBtn.planID = "johgn"
     const scheduleInput = new ScheduleInput("plan_Input_Container")
-    const planDrpDwn = new planDropDown("selectPlanBtn","selectPlan",requirement,-1)
+    const planDrpDwn = new planDropDown("selectPlanBtn",deletePlanBtn)
 
     
 })

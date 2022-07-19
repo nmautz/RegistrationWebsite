@@ -23,7 +23,6 @@ function delete_plan(planID){
 }
 
 function get_plan_IDs(){
-  console.log(1)
   var keys = Object.keys(localStorage)
 
   var ids = []
