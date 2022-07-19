@@ -7,47 +7,6 @@ class Schedule {
         this.selectedPlan = ""
     }
 
-    createBlankSchedule()
-    {
-        this.createEmptyTimeContainer()
-    
-    }
-
-    createEmptyTimeContainer()
-    {
-        this.createContainer(this.insertPoint,this.timeContainer,"N/A")
-        var weekDayTitles = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-        for (var i = 0; i < 7; i++)
-        {
-            
-            this.createContainer(this.timeContainer,weekDayTitles[i],"N/A")
-            for(var j = 0; j < 96; j++)
-            {
-                this.createContainer(weekDayTitles[i],j*30,"N/A")
-            }
-            console.log("***********")
-        }
-    }
-    
-    createContainer(instPnt,id,css)
-    {
-        const dropdownUI = document.getElementById(instPnt)
-        const element = document.createElement("div")
-        element.id = id
-        //css class that the dropdown follows**************************
-        element.classList.add(css)
-        dropdownUI.appendChild(element)
-    }
-    loadSchedule(planID)
-    {
-        var classes = load_classes(planID)
-        console.log("*********")
-        for (var i = 0; i < classes.length; ++i)
-        {
-            console.log(classes[i])
-        }
-        console.log("*********")
-    }
 }
 
 class ScheduleInput{
