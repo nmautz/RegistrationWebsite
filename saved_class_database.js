@@ -1,28 +1,14 @@
 function create_plan(planID){
 
-  plans = get_plan_IDs()
-  
-  if(plans == null){
-    plans = []
-  }
-
-  if(!Array.isArray(plans))
-  {
-    plans = [plans]
-  }
-
-  plans.push(planID)
-  localStorage.setItem("planIDs", plans)
-
+  localStorage.setItem(planID, "planID")
+ 
 
 }
 
+
 function delete_plan(planID){
   //remove plan from plans list
-  planIDs = get_plan_IDs()
-  if(Array.isArray(planIDs)){
-    planIDs.removeItem(planID)
-  }
+  localStorage.removeItem(planID)
 
 
   //remove all classes with matching planID
@@ -37,8 +23,22 @@ function delete_plan(planID){
 }
 
 function get_plan_IDs(){
-  return localStorage.getItem("planIDs")
+  console.log(1)
+  var keys = Object.keys(localStorage)
+
+  var ids = []
+
+  for(var i = 0; i < keys.length; ++i){
+    value = localStorage.getItem(keys[i])
+    if(value == "planID"){
+      ids.push(keys[i])
+    }
+
+  }
+
+  return ids
 }
+
 
 
 
@@ -71,7 +71,7 @@ function load_classes(planID){
       
     }catch{
       //Delete unwanted key
-      localStorage.removeItem(keys[i])
+
 
     }
 
@@ -89,6 +89,20 @@ function is_class_saved(section){
       return true
     }
 
+  }
+  return false
+}
+
+function is_plan_saved(planID)
+{
+  const ids = get_plan_IDs()
+  if(ids == null){
+    return false
+  }
+  for (var i = 0; i < ids.length; ++i)
+  {
+      if (ids[i] == planID)
+        return true
   }
   return false
 }
@@ -111,7 +125,11 @@ function load_planIDs(){
 
 
 document.addEventListener("DOMContentLoaded", function(){
-  const ids = load_planIDs()
+  
 
+
+
+
+  
 
 })

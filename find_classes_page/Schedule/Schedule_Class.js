@@ -95,32 +95,50 @@ class ScheduleInput{
         btnElement.addEventListener("click", (e)=>
         {
             var plan = document.getElementById(this.planIdInput)
+            var hide = true
             if(plan.value == "")
             {
                 var charCode = 65
                 var planName = "A"
-                const ids = load_planIDs()
-                for (var i = 0; i < ids.length; ++i)
+                const ids = get_plan_IDs()
+                if(ids == null)
                 {
-                    if (ids[i] == planName)
+                    create_plan("A")
+                    schedule.selectedPlan = "A"
+                }
+                else{
+                    while(is_plan_saved(planName))
                     {
                         charCode++
-                        planName = planName.fromCharCode(charCode)
+                        planName = String.fromCharCode(charCode)
                     }
-                    console.log(planName)
+                    create_plan(planName)
+                    schedule.selectedPlan = planName
                 }
-                schedule.selectedPlan = planName
+                
             }else
             {
-                schedule.selectedPlan = plan.value
+                if (is_plan_saved(plan.value))
+                {
+                    alert("Plan Already Created")
+                    hide = false
+                }else
+                {  
+                    create_plan(plan.value)
+                    schedule.selectedPlan = plan.value
+                }                
+            }
+            
+            if(hide)
+            {
+                document.getElementById("selectPlanBtn").innerHTML = "Selected Plan: " + plan.value
                 plan.value = ""
-                console.log(schedule.selectedPlan)
                 var subDiv = document.getElementById(this.submissionDiv)
                 subDiv.style.display = "none"
                 var addBtn = document.getElementById(this.addPlanBtn)
-                addBtn.style.display = "block"  
+                addBtn.style.display = "block"   
             }
-
+            
         })
 
         const divElement = document.createElement("div")
@@ -165,7 +183,13 @@ class planDropDown extends daysDropDown{
         //var userInput = document.getElementById(this.input).value
         var userInput = this.inputVal
         userInput = String(userInput).toUpperCase()
-        var planIDs = load_planIDs()
+        var planIDs = get_plan_IDs()
+        if (planIDs == null)
+        {
+            this.addDropdown("(None)")
+            return
+        }
+         
         var dropDownArr = []
         for(var i = 0; i < planIDs.length; ++i)
         {
@@ -190,16 +214,10 @@ class planDropDown extends daysDropDown{
         aElement.addEventListener("click", (e) =>
         {
             schedule.selectedPlan = data
-            document.getElementById(this.input).value = "Meeting Day(s) :" + data
-            // this.isClicked = !this.isClicked
-            this.inputVal = data
+            document.getElementById(this.input).innerHTML = "Selected Plan: " + data
             if (data == "(None)")
-            {
-                 this.inputVal = ""  
-                 document.getElementById(this.input).value = "Meeting Day(s)"
-            }else
-                document.getElementById(this.input).value = "Meeting Day(s) :" + data
-                
+                 document.getElementById(this.input).innerHTML = "Select Plan"
+                           
 
             //makes dropdown update after it is clicked on
             this.updateDropDown()
