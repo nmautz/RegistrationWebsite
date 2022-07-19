@@ -6,18 +6,36 @@
     .dropdown {
         position: relative;
         display: inline-block;
+        padding: 1.5%;
+        
     }
-    
+    .clearBtn {
+        margin-right: 1%;
+    }
+
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
         /* display: none; */
         position: absolute;
+        /* needs to adapt rather than just translate */
+        transform: translate(-31.5vh,7.5vh);
         background-color: #f1f1f1;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
+        z-index: 12;
+        overflow-y: scroll;
+        max-height: 50vh;
+    }
+
+    .button-dropdown {
+        transform: translate(-15.73vh,7.5vh);
     }
     
+    .plan{
+         transform: translate(-11vh,5.5vh);
+    }
+    
+
     /* Links inside the dropdown */
     .dropdown-content a {
         color: black;
@@ -29,7 +47,4 @@
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {background-color: #ddd;}
     
-    
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {background-color: #3e8e41;}
-    End of Dropdown CSS 
+

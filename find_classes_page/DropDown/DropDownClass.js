@@ -4,52 +4,48 @@ fetch("../classes.json").then(response => response.json()).then( function(jsonDa
 
 
 
-
-var subjectArr = []
-var subjectDescriptionArr = []
-var courseNumber = []
-var courseTitle = []
-
-var keyArray = [subjectArr,subjectDescriptionArr,courseNumber,courseTitle]
-//called in dropDown class setListener()
-function setKeys()
-{
-    if (subjectArr.length == 0)
-    {
-        for (var i = 0; i < classesList.length; ++i)
-        {
-            if (!subjectArr.includes(classesList[i].subject))
-                subjectArr.push(classesList[i].subject)
-                
-            if (!subjectDescriptionArr.includes(classesList[i].subjectDescription))
-                subjectDescriptionArr.push(classesList[i].subjectDescription)
-
-            if (!courseNumber.includes(classesList[i].courseNumber))
-                courseNumber.push(classesList[i].courseNumber)
-
-            if (!courseTitle.includes(classesList[i].courseTitle))
-                courseTitle.push(classesList[i].courseTitle)
-        }
-
-        for (var i = 0; i < keyArray.length; ++i)
-            keyArray[i].sort()
-    }
-    
-}
-
-
-
 class dropDown {
-    constructor(input,array,elementName)
+    constructor(input,elementName,requirementsObj,requirementNum)
     {
         this.input = input
-        this.array = array
         this.elementName = elementName
         this.divName = String(elementName + "DropdownDiv")
+        this.requirementsObj = requirementsObj
+        this.requirementNum = requirementNum
+        this.setInputCSS()
         this.addDropdownDiv()
+        this.addClearButton()
         this.setListeners()
     }
 
+    setInputCSS()
+    {
+        //css class that the input follows**************************
+        const dropdownUI = document.getElementById(this.input)
+        dropdownUI.classList.add("dropdown")
+    }
+    
+    addClearButton()
+    {
+        const dropdownUI = document.getElementById(this.input)
+        const element = document.createElement("INPUT")
+        element.setAttribute("type", "button")
+        element.value = "x"
+        element.id = String(this.elementName + "Button")
+        //css class that the button follows**************************
+        element.classList.add("dropdown")
+        element.classList.add("clearBtn")
+        element.addEventListener("click", (e) =>
+        {
+            if(!requirement.isEmpty())
+            {
+                dropdownUI.value = ""
+                this.updateDropDown()
+                update_section_display()
+            }
+        })
+        dropdownUI.insertAdjacentElement("afterend",element)
+    }
 
     addDropdownDiv()
     {
@@ -59,7 +55,6 @@ class dropDown {
         //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
         dropdownUI.insertAdjacentElement("afterend",element)
-        
     }
 
 
@@ -68,17 +63,24 @@ class dropDown {
         const inputElement = document.getElementById(this.input)
         inputElement.addEventListener('keyup', (e) =>
         {
-            setKeys()
-            var userInput = document.getElementById(this.input).value
-            userInput = String(userInput).toUpperCase()
             this.checkHideDropdown()
-            this.updateDropDown(userInput)
+            this.updateDropDown()
         })
 
         inputElement.addEventListener("click", (e) =>
         {
             this.checkHideDropdown()
+            this.updateDropDown()  
         })
+        
+        const dropdownUI = document.getElementById(this.divName)
+        window.addEventListener('click', (e) =>
+        {   
+            if (document.getElementById(this.input).contains(e.target))
+                dropdownUI.style.display = "inline-block"
+            else
+                dropdownUI.style.display = "none"
+        });
     }
 
 
@@ -90,40 +92,45 @@ class dropDown {
             dropdownUI.style.display = "inline-block"
         else
             dropdownUI.style.display = "none"
-        window.addEventListener('click', (e) =>
-        {   
-            if (document.getElementById(this.input).contains(e.target)){
-            // Clicked in box
-                if (document.getElementById(this.input).value != "")                     
-                    dropdownUI.style.display = "inline-block"
-                else
-                    dropdownUI.style.display = "none"
-            }else{
-                dropdownUI.style.display = "none"
-            }
-        });
-
     }
 
 
-    updateDropDown(userInput)
+    updateDropDown()
     {
         this.clearChildren()
-        this.addChildren(userInput)
-        
+        this.addChildren()
     }
 
-    addChildren(userInput)
+    addChildren()
     {
-        for(var i = 0; i < this.array.length; ++i)
+        var userInput = document.getElementById(this.input).value
+        userInput = String(userInput).toUpperCase()
+
+        //checks the json
+        this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
+        var dropDownArr = []
+        for(var i = 0; i < classesList.length; ++i)
         {
-            var index = String(this.array[i]).toUpperCase()
-            if (index.includes(userInput))
-            {
-                this.addDropdown(this.array[i])
-            }
+            if(this.requirementsObj.meetsRequirements(classesList[i]))
+            {            
+                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+                for (var j = 0; j < text.length; ++j)
+                {
+                    if (!dropDownArr.includes(String(text[j])) && text[j] != '')
+                        dropDownArr.push(String(text[j]))
+                
+
+                }
+            }            
         }
+
+        //adds the drop downs
+        dropDownArr.sort()
+        for (var i = 0; i < dropDownArr.length; ++i)
+            this.addDropdown(dropDownArr[i])
     }
+
+    
 
     addDropdown(data)
     {
@@ -133,11 +140,15 @@ class dropDown {
         aElement.data = data
         const text = document.createTextNode(data)
         aElement.appendChild(text)
-        // aElement.addEventListener("click", function(){
-        //     selection(aElement.data,aElement.text)
+        aElement.addEventListener("click", (e) =>
+        {
 
-
-        // })
+            document.getElementById(this.input).value = data
+            this.requirementsObj.addQueryRequirement(data,this.requirementNum)
+            //makes dropdown update after it is clicked on
+            this.updateDropDown()
+            update_section_display()
+        })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
 
@@ -151,8 +162,166 @@ class dropDown {
 
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-    const drop = new dropDown("courseNumber-input",courseNumber,"courseNumber")
-    const drop2 = new dropDown("courseTitle-input",courseTitle,"courseTitle")
+class daysDropDown extends dropDown {
+    constructor(input,elementName,requirementsObj,requirementNum)
+    {
+        super(input,elementName,requirementsObj,requirementNum)
+        this.inputVal = ""
+        //used for hiding the dropdown
+        this.isClicked = false
+    }
+
+    //clicking on button will clear the restrictions on the dropdown
+    //restrictions are only added when dropdown is clicked
+    setListeners() 
+    {
+        const inputElement = document.getElementById(this.input)
+        inputElement.addEventListener('keyup', (e) =>
+        {
+            this.checkHideDropdown()
+            this.updateDropDown()
+        })
+
+        inputElement.addEventListener("click", (e) =>
+        {
+            this.inputVal = ""
+            this.checkHideDropdown()
+            this.updateDropDown()  
+        })
+    }
+
+    addDropdownDiv()
+    {
+        const dropdownUI = document.getElementById(this.input)
+        const element = document.createElement("div")
+        element.id = this.divName
+        //css class that the dropdown follows**************************
+        element.classList.add("dropdown-content")
+        element.classList.add("button-dropdown")
+        dropdownUI.insertAdjacentElement("afterend",element)
+    }
+
+    addClearButton()
+    {
+    }
+
+    addChildren()
+    {
+        //var userInput = document.getElementById(this.input).value
+        var userInput = this.inputVal
+        userInput = String(userInput).toUpperCase()
+
+        //checks the json
+        this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
+        var dropDownArr = []
+        for(var i = 0; i < classesList.length; ++i)
+        {
+            if(this.requirementsObj.meetsRequirements(classesList[i]))
+            {            
+                var text = this.requirementsObj.getClassesListString(classesList[i],this.requirementNum)
+                for (var j = 0; j < text.length; ++j)
+                {
+                    if (!dropDownArr.includes(String(text[j])) && text[j] != '')
+                        dropDownArr.push(String(text[j]))
+                
+
+                }
+            }            
+        }
+
+        //adds the drop downs
+        this.addDropdown("(None)")
+        dropDownArr.sort()
+        for (var i = 0; i < dropDownArr.length; ++i)
+            this.addDropdown(dropDownArr[i])
+    }
+
+    addDropdown(data)
+    {
+        const dropdownUI = document.getElementById(this.divName)
+        const aElement = document.createElement("a")
+        aElement.id = this.elementName
+        aElement.data = data
+        const text = document.createTextNode(data)
+        aElement.appendChild(text)
+        aElement.addEventListener("click", (e) =>
+        {
+            document.getElementById(this.input).value = "Meeting Day(s) :" + data
+            // this.isClicked = !this.isClicked
+            this.inputVal = data
+            if (data == "(None)")
+            {
+                 this.inputVal = ""  
+                 document.getElementById(this.input).value = "Meeting Day(s)"
+            }else
+                document.getElementById(this.input).value = "Meeting Day(s) :" + data
+                
+
+            //makes dropdown update after it is clicked on
+            this.updateDropDown()
+            update_section_display()
+        })
+        dropdownUI.insertAdjacentElement("beforeend",aElement)
+    }
+
+    setListeners() 
+    {
+        const inputElement = document.getElementById(this.input)
+        inputElement.addEventListener('keyup', (e) =>
+        {
+            this.checkHideDropdown()
+            this.updateDropDown()
+        })
+
+        const dropdownUI = document.getElementById(this.divName)
+        inputElement.addEventListener("click", (e) =>
+        {
+
+            this.inputVal = ""
+            this.checkHideDropdown()
+            this.updateDropDown()  
+           
+        })
+
+        window.addEventListener('click', (e) =>
+        {   
+            if (document.getElementById(this.input).contains(e.target))
+            {
+                this.isClicked = !this.isClicked
+                if(this.isClicked)
+                    dropdownUI.style.display = "inline-block"
+                else
+                    dropdownUI.style.display = "none"
+            }else
+            {
+                this.isClicked = false
+                dropdownUI.style.display = "none"
+            }
+        });
+    }
+
+    checkHideDropdown()
+    {
+        const dropdownUI = document.getElementById(this.divName)
+        if (this.inputVal != "")                     
+            dropdownUI.style.display = "inline-block"
+        else
+            dropdownUI.style.display = "none"
+    }
+}
+
+const requirement = new class_search_query()
+
+document.addEventListener("DOMContentLoaded", function()
+{
+    
+    //creating drop downs
+    const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
+    const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
+    const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
+    const drop5 = new dropDown("professorName-input","professorName",requirement,4)
+    const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
+    const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
+
 })
 

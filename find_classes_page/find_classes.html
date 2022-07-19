@@ -3,46 +3,88 @@
 
     <head>
         <title>Find Classes</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="find_classes.css">
         <link rel="stylesheet" href="DropDown/dropDown.css">
+        <link rel="stylesheet" href="Slider/TimeSlider.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <script src="../load_queue.js"></script>
         <script src="add_class_section.js"></script>
         <script src="../saved_class_database.js"></script>
-        <script src="../class_section_search.js"></script>
         <script src="find_classes.js"></script>
-        <script src="DropDown/hideDropDown.js"></script>
-        <script src="DropDown/dropDown.js"></script>
+        <script src="../class_section_search.js"></script>
+        <script src="CheckBoxClass.js"></script>
+        <script src="Slider/TimeSliderClass.js"></script>
+        <script src="DropDown/DropDownClass.js"></script>
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
-        <script src="DropDown/DropDownClass"></script>
+        <script src="Schedule/Schedule_Class.js"></script>
+   
+        <!-- jquery schedule -->
+        <link rel="stylesheet" href="jquery.skeduler.css">
+        <!-- <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script> -->
+        <script src="jquery.skeduler.js"></script>
+        
+        <script src="Schedule/Schedule_JQuery.js"></script>
+
     </head>
 
 
     <body>
+        <!-- style="padding:20px;background-color:#decddd;float:left" -->
 
+       
         <div class="content">
 
-            <div class="search-parameters-container">
-                <input id="subject-input" class="text-input" data= "a" type="text" placeholder="Subject">
-                <div id="dropDownSubject" class="dropdown-content"></div>
+           <div class="search-parameters-container">
+                <input id="subjectDescription-input" class="text-input"  type="text" placeholder="Subject Description">
+                <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
+                <input id="courseTitle-input" class="text-input"  type="text" placeholder="Course Title">
+                <input id="professorName-input" class="text-input"  type="text" placeholder="Professor Name">         
+                <input id="courseAttributes-input" class="text-input"  type="text" placeholder="Attributes">
+
+                <br><br>
+                <div>Meeting days and times:</div>
+                <br>
+                <input type ="button" value ="Meeting Day(s) " id="meetingDays-input" class="text-input"  type="text" placeholder="Meeting Days">
+
+
+                <div id="slider-range", class="time-slider">
+                    <div id="lower_knob_element" class="ui-slider-handle">
+                        <p class="handle-text" id="lower_text"></p>
+                    </div>
+                    <div id="upper_knob_element" class="ui-slider-handle">
+                        <p class="handle-text" id="upper_text"></p>
+                    </div>
+                </div>
+
+                <div id="daysForm"></div>
+               
+               
+
+
 
                 
+                <div id="plan_Input_Container">
+                    <button id="selectPlanBtn" > Select Plan </button>
+                </div>
+                
+
             </div>
+
 
             <div id="content-main" class="content-main">
 
                 <div id="classes-list-container" class="classes-list-containter">
-            <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
-            <input id="courseTitle-input" class="text-input" type="text" placeholder="Course Title">
                 
                 </div>
 
-                <div id="details-display" class="details-display">
-                    superman
 
-                </div>
 
             </div>
 
-
+            
+            <div id="scheduleInput"></div>
 
 
             
