@@ -1,6 +1,6 @@
 function create_plan(planID){
 
-  localStorage.setItem(planID, true)
+  localStorage.setItem(planID, "planID")
  
 
 }
@@ -23,19 +23,20 @@ function delete_plan(planID){
 }
 
 function get_plan_IDs(){
+  console.log(1)
   var keys = Object.keys(localStorage)
 
   var ids = []
 
   for(var i = 0; i < keys.length; ++i){
     value = localStorage.getItem(keys[i])
-    if(value == true){
+    if(value == "planID"){
       ids.push(keys[i])
     }
 
   }
 
-  return keys
+  return ids
 }
 
 
