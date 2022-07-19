@@ -1,28 +1,14 @@
 function create_plan(planID){
 
-  plans = localStorage.getItem("planIDs")
-  
-  if(plans == null){
-    plans = JSON.parse('{}')
-    plans["ids"] = []
-    plans = JSON.stringify(plans)
-  }
-
-  plans = JSON.parse(plans)
-  plans["ids"].push(planID)
-
-  plans = JSON.stringify(plans)
-  localStorage.setItem("planIDs", plans)
+  localStorage.setItem(planID, true)
  
 
 }
 
+
 function delete_plan(planID){
   //remove plan from plans list
-  planIDs = get_plan_IDs()
-  if(Array.isArray(planIDs)){
-    planIDs.removeItem(planID)
-  }
+  localStorage.removeItem(planID)
 
 
   //remove all classes with matching planID
@@ -37,13 +23,21 @@ function delete_plan(planID){
 }
 
 function get_plan_IDs(){
-  planIDs = localStorage.getItem("planIDs")
-  if(planIDs != null){
-    planIDs = JSON.parse(planIDs)
-    return planIDs["ids"]
+  var keys = Object.keys(localStorage)
+
+  var ids = []
+
+  for(var i = 0; i < keys.length; ++i){
+    value = localStorage.getItem(keys[i])
+    if(value == true){
+      ids.push(keys[i])
+    }
+
   }
-  return null
+
+  return keys
 }
+
 
 
 
