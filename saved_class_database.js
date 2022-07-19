@@ -71,7 +71,7 @@ function load_classes(planID){
       
     }catch{
       //Delete unwanted key
-      localStorage.removeItem(keys[i])
+
 
     }
 
