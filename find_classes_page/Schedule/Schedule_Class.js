@@ -193,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function()
 {
     const scheduleInput = new ScheduleInput("plan_Input_Container")
     const planDrpDwn = new planDropDown("selectPlanBtn","selectPlan",requirement,-1)
-    schedule.createBlankSchedule()
 
     
 })
