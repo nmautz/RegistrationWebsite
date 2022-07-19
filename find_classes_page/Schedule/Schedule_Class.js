@@ -4,7 +4,7 @@ class Schedule {
     {
         this.insertPoint = insertPoint
         this.timeContainer = "timeContainer"
-        this.selectedPlan = ""
+        this.selectedPlan = "(None)"
     }
 
 }
