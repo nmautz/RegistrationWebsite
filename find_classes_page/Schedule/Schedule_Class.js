@@ -16,6 +16,7 @@ class ScheduleInput{
         this.submissionDiv = "submitPlanContainer"
         this.addPlanBtn = "addPlanBtn"
         this.planIdInput = "planID-Input"
+        this.submitPlanBtn = "submitNewPlanBtn"
         this.createButton()
         this.addListener()
         this.createHidElements()
@@ -24,13 +25,18 @@ class ScheduleInput{
 
     addListener()
     {
-        const divElement = document.getElementById(this.submissionDiv)
         window.addEventListener('click', (e) =>
         {   
-            if (document.getElementById(this.planIdInput).contains(e.target) || document.getElementById(this.addPlanBtn).contains(e.target))
+            const divElement = document.getElementById(this.submissionDiv)
+            const addPlanBtn = document.getElementById(this.addPlanBtn)
+            if (document.getElementById(this.planIdInput).contains(e.target) || document.getElementById(this.submitPlanBtn).contains(e.target))
                 divElement.style.display = "inline-block"
-            else
+            else if (!addPlanBtn.contains(e.target))
+            {
                 divElement.style.display = "none"
+                addPlanBtn.style.display = "block"
+            }
+                
         });
     }
 
@@ -63,7 +69,7 @@ class ScheduleInput{
         const btnElement = document.createElement("input")
         btnElement.setAttribute("type", "button")
         btnElement.value = "Create"
-        btnElement.id = "submitNewPlanBtn"
+        btnElement.id = this.submitPlanBtn
         btnElement.addEventListener("click", (e)=>
         {
             var plan = document.getElementById(this.planIdInput)
