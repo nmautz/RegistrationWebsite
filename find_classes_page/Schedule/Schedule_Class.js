@@ -10,9 +10,10 @@ class Schedule {
 }
 
 class ScheduleInput{
-    constructor(insertPoint)
+    constructor(insertPoint, deletePlnBtn)
     {
         this.insertPoint = insertPoint
+        this.deletePlnBtn = deletePlnBtn
         this.submissionDiv = "submitPlanContainer"
         this.addPlanBtn = "addPlanBtn"
         this.planIdInput = "planID-Input"
@@ -29,7 +30,7 @@ class ScheduleInput{
         {   
             const divElement = document.getElementById(this.submissionDiv)
             const addPlanBtn = document.getElementById(this.addPlanBtn)
-            if (document.getElementById(this.planIdInput).contains(e.target) || document.getElementById(this.submitPlanBtn).contains(e.target))
+            if (document.getElementById(this.planIdInput).contains(e.target))
                 divElement.style.display = "inline-block"
             else if (!addPlanBtn.contains(e.target))
             {
@@ -109,12 +110,14 @@ class ScheduleInput{
             
             if(hide)
             {
-                document.getElementById("selectPlanBtn").innerHTML = "Selected Plan: " + plan.value
+                document.getElementById("selectPlanBtn").innerHTML = "Selected Plan: " + schedule.selectedPlan
                 plan.value = ""
                 var subDiv = document.getElementById(this.submissionDiv)
                 subDiv.style.display = "none"
                 var addBtn = document.getElementById(this.addPlanBtn)
-                addBtn.style.display = "block"   
+                addBtn.style.display = "block"
+                this.deletePlnBtn.unhide()  
+                update_section_display() 
             }
             
         })
@@ -241,6 +244,7 @@ class deletePlanBtn {
            schedule.selectedPlan = "(None)"
            this.planID = "(None)"
            document.getElementById("selectPlanBtn").innerHTML = "Select Plan"
+           document.getElementById(this.btnName).style.display = "none"
            update_section_display()
         })
             
@@ -268,7 +272,7 @@ const schedule = new Schedule("scheduleInput")
 document.addEventListener("DOMContentLoaded", function()
 {
     const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")    
-    const scheduleInput = new ScheduleInput("plan_Input_Container")
+    const scheduleInput = new ScheduleInput("plan_Input_Container",deletePlnBtn)
     const planDrpDwn = new planDropDown("selectPlanBtn",deletePlnBtn) 
 })
 
