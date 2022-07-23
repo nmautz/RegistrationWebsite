@@ -17,8 +17,21 @@ class ScheduleInput{
         this.addPlanBtn = "addPlanBtn"
         this.planIdInput = "planID-Input"
         this.createButton()
+        this.addListener()
         this.createHidElements()
 
+    }
+
+    addListener()
+    {
+        const divElement = document.getElementById(this.submissionDiv)
+        window.addEventListener('click', (e) =>
+        {   
+            if (document.getElementById(this.planIdInput).contains(e.target) || document.getElementById(this.addPlanBtn).contains(e.target))
+                divElement.style.display = "inline-block"
+            else
+                divElement.style.display = "none"
+        });
     }
 
     createButton()
@@ -118,10 +131,10 @@ class ScheduleInput{
 }
 
 class planDropDown extends daysDropDown{
-    constructor(input,deletePlanBtn)
+    constructor(input,deletePlnBtn)
     {
         super(input,"PlanDropDown")
-        this.deletePlanBtn = deletePlanBtn
+        this.deletePlnBtn = deletePlnBtn
     }
 
 
@@ -174,11 +187,17 @@ class planDropDown extends daysDropDown{
         aElement.addEventListener("click", (e) =>
         {
             schedule.selectedPlan = data
+            this.deletePlnBtn.planID = data
+
             document.getElementById(this.input).innerHTML = "Selected Plan: " + data
             if (data == "(None)")
-                 document.getElementById(this.input).innerHTML = "Select Plan"
-            
-            console.log(this.deletePlanBtn.planID)
+            {
+                document.getElementById(this.input).innerHTML = "Select Plan"
+                this.deletePlnBtn.hide()
+            }else
+            {
+                this.deletePlnBtn.unhide()
+            }        
             
 
             //makes dropdown update after it is clicked on
@@ -187,6 +206,11 @@ class planDropDown extends daysDropDown{
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
     }
+
+    resetInnerHTML()
+    {
+        document.getElementById(this.input).innerHTML = "Select Plan"
+    }
 }
 
 class deletePlanBtn {
@@ -194,24 +218,42 @@ class deletePlanBtn {
     {
         this.insertPoint = insertPoint
         this.btnName = "deletePlanBtn"
-        this.planID = "bob"
+        this.planID = "(None)"
         this.createButton()
+        this.hide()
     }
 
     createButton()
     {
         const btnElement = document.createElement("input")
         btnElement.setAttribute("type", "button")
-        btnElement.value = "Create"
+        btnElement.value = "Delete"
         btnElement.id = this.btnName
         btnElement.addEventListener("click", (e)=>
         {
-            console.log(this.planID)
+           delete_plan(this.planID)
+           schedule.selectedPlan = "(None)"
+           this.planID = "(None)"
+           document.getElementById("selectPlanBtn").innerHTML = "Select Plan"
+           update_section_display()
         })
             
         var insertDiv = document.getElementById(this.insertPoint)
         insertDiv.appendChild(btnElement)
     }
+
+    hide()
+    {
+        var btn = document.getElementById(this.btnName)
+        btn.style.display = "none"
+    }
+
+    unhide()
+    {
+        var btn = document.getElementById(this.btnName)
+        btn.style.display = "block"
+    }
+
 }
 
 
@@ -219,12 +261,9 @@ const schedule = new Schedule("scheduleInput")
 
 document.addEventListener("DOMContentLoaded", function()
 {
-    const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")
-    deletePlanBtn.planID = "johgn"
+    const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")    
     const scheduleInput = new ScheduleInput("plan_Input_Container")
-    const planDrpDwn = new planDropDown("selectPlanBtn",deletePlanBtn)
-
-    
+    const planDrpDwn = new planDropDown("selectPlanBtn",deletePlnBtn) 
 })
 
 
