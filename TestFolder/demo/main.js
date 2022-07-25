@@ -1,39 +1,32 @@
 function generate() {
-  var tasks = [];
-  for (var i = 0; i < 20; i++) {
-    var startTime = -1;
-    var duration = 0.5;
-    for (var j = 0; j < 10; j++) {
-      if (Math.random() * 10 > 5) {
-        startTime += 0.5 + duration;
-      } else {
-        startTime += 1 + duration;
-      }
-
-      if (startTime > 23) {
-        break;
-      }
-
-      duration = Math.ceil(Math.random() * 2) + (Math.random() * 10 > 5 ? 0 : 0.5);
-
-      duration -= startTime + duration > 24 ? (startTime + duration) - 24 : 0;
-
-      var task = {
-        startTime: startTime,
-        duration: duration,
-        column: i,
-        id: Math.ceil(Math.random() * 100000),
-        title: 'Service ' + i + ' ' + j
-      };
-
-      tasks.push(task);
+  var tasks = [
+    {
+      startTime: 0,
+      duration: 0.1,
+      column: 1,
+      id: Math.ceil(Math.random() * 100000),
+      title: 'HHHHHHHHHHHH'
+    },
+    {
+      startTime: 1.5,
+      duration: 1,
+      column: 0,
+      id: Math.ceil(Math.random() * 100000),
+      title: 'HHHHHHHHHHHH'
+    },
+    {
+      startTime: 1.5,
+      duration: 1,
+      column: 2,
+      id: Math.ceil(Math.random() * 100000),
+      title: 'HHHHHHHHHHHH'
     }
-  }
+  ];
 
   console.log("tasks count: " + tasks.length);
 
   $("#skeduler-container").skeduler({
-    headers: ["Specialist 1", "Specialist 2", "Specialist 3", "Specialist 4", "Specialist 5",  "Specialist 6", "Specialist 7", "Specialist 8", "Specialist 9", "Specialist 10"],
+    headers: ["Specialist 1", "Specialist 2", "Specialist 3"],
     tasks: tasks,
     cardTemplate: '<div>${id}</div><div>${title}</div>',
     onClick: function (e, t) { console.log(e, t); }
