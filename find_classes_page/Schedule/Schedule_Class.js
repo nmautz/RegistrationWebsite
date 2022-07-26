@@ -20,24 +20,38 @@ class Schedule {
         var tasks = []
         for (var i = 0; i < classes.length; ++i)
         {
-            var task = this.convertToTask(classes[i])
-            tasks.push(task)
+            tasks = this.convertToTasks(classes[i],tasks)
+            // tasks.push(task)
         }
         
         generate(tasks)
     }
 
-    convertToTask(section)
+    convertToTasks(section,tasks)
     {
-        var task = 
+        
+        var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
+        var meetingDays = []
+        for (var i = 0; i < week_days.length; ++i)
         {
-            startTime: 0,
-            duration: 0.1,
-            column: 1,
-            id: Math.ceil(Math.random() * 100000),
-            title: 'Hello'             
-        };
-        return task
+            if (week_days[i][0])
+                meetingDays.push(i)
+        }
+
+        for (var i = 0; i < meetingDays.length; ++i)
+        {
+            var task = 
+            {
+                startTime: 0,
+                duration: 1,
+                column: meetingDays[i],
+                id: Math.ceil(Math.random() * 100000),
+                title: section.courseTitle          
+            }
+            tasks.push(task)
+        }
+  
+        return tasks
     }
 }
 
