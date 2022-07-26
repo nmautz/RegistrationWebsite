@@ -115,9 +115,11 @@
         findCoefficients()
       );
 
-    for (var i = 0; i < args.args.length; i++) {
+    console.log("For loop modified to include < ... - 1")
+    //see console log
+    for (var i = 0; i < args.args.length - 1; i++) {
       var width = 194 / (args.args[i] || 1);
-
+     
       tasks[i].width = width;
       tasks[i].left = (args.indexes[i] * width) || 4;
     }
