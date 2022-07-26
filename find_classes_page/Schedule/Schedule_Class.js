@@ -10,32 +10,35 @@ class Schedule {
     //can only be called once page is loaded
     createSchedule()
     {
-        var tasks = [
-            {
-              startTime: 0,
-              duration: 0.1,
-              column: 1,
-              id: Math.ceil(Math.random() * 100000),
-              title: 'Hello'
-            },
-            {
-              startTime: 1.5,
-              duration: 1,
-              column: 0,
-              id: Math.ceil(Math.random() * 100000),
-              title: 'Nathan'
-            },
-            {
-              startTime: 1.5,
-              duration: 1,
-              column: 2,
-              id: Math.ceil(Math.random() * 100000),
-              title: ':)'
-            }
-          ];
+        var tasks = [];
         generate(tasks)
     }
 
+    updateSchedule()
+    {
+        var classes = load_classes(this.selectedPlan)
+        var tasks = []
+        for (var i = 0; i < classes.length; ++i)
+        {
+            var task = this.convertToTask(classes[i])
+            tasks.push(task)
+        }
+        
+        generate(tasks)
+    }
+
+    convertToTask(section)
+    {
+        var task = 
+        {
+            startTime: 0,
+            duration: 0.1,
+            column: 1,
+            id: Math.ceil(Math.random() * 100000),
+            title: 'Hello'             
+        };
+        return task
+    }
 }
 
 class ScheduleInput{
@@ -240,6 +243,7 @@ class planDropDown extends daysDropDown{
 
             //makes dropdown update after it is clicked on
             this.updateDropDown()
+            schedule.updateSchedule()
             update_section_display()
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
