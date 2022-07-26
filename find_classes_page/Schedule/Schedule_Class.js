@@ -7,6 +7,35 @@ class Schedule {
         this.selectedPlan = "(None)"
     }
 
+    //can only be called once page is loaded
+    createSchedule()
+    {
+        var tasks = [
+            {
+              startTime: 0,
+              duration: 0.1,
+              column: 1,
+              id: Math.ceil(Math.random() * 100000),
+              title: 'Hello'
+            },
+            {
+              startTime: 1.5,
+              duration: 1,
+              column: 0,
+              id: Math.ceil(Math.random() * 100000),
+              title: 'Nathan'
+            },
+            {
+              startTime: 1.5,
+              duration: 1,
+              column: 2,
+              id: Math.ceil(Math.random() * 100000),
+              title: ':)'
+            }
+          ];
+        generate(tasks)
+    }
+
 }
 
 class ScheduleInput{
@@ -274,6 +303,7 @@ document.addEventListener("DOMContentLoaded", function()
     const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")    
     const scheduleInput = new ScheduleInput("plan_Input_Container",deletePlnBtn)
     const planDrpDwn = new planDropDown("selectPlanBtn",deletePlnBtn) 
+    schedule.createSchedule()
 })
 
 

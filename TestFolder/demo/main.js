@@ -26,7 +26,7 @@ function generate() {
   console.log("tasks count: " + tasks.length);
 
   $("#skeduler-container").skeduler({
-    headers: ["Specialist 1", "Specialist 2", "Specialist 3"],
+    headers: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     tasks: tasks,
     cardTemplate: '<div>${id}</div><div>${title}</div>',
     onClick: function (e, t) { console.log(e, t); }
