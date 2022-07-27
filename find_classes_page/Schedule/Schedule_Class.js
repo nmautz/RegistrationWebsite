@@ -40,19 +40,43 @@ class Schedule {
 
         for (var i = 0; i < meetingDays.length; ++i)
         {
+            var duration = (section.endTime[0] - section.beginTime[0]) /100
+            // console.log(section.beginTime[0])
+            // console.log(this.getTime(section.beginTime[0]))
+            // console.log(duration)
             var task = 
             {
-                startTime: 0,
-                duration: 1,
+                // startTime: section.beginTime[0] / 100,
+                startTime: this.getStartTime(section.beginTime[0]),
+                duration: duration,
                 column: meetingDays[i],
-                id: Math.ceil(Math.random() * 100000),
-                title: section.courseTitle          
+                id: section.courseTitle,
+                // id: Math.ceil(Math.random() * 100000),
+                title: section.beginTime[0]      
             }
             tasks.push(task)
         }
   
         return tasks
     }
+
+    getStartTime(time)
+    {
+        var hours = time[0] + time[1]
+        var minutes = time[2] + time[3]
+
+        if (minutes != "00")
+        {
+            console.log(time)
+            minutes = minutes * 10 / 6
+            if (minutes.length < 2)
+                minutes = "0" + minutes
+        }
+        time = hours + minutes
+        time /= 100
+        return time
+    }
+
 }
 
 class ScheduleInput{
