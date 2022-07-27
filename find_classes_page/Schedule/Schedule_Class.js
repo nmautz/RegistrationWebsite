@@ -40,19 +40,22 @@ class Schedule {
 
         for (var i = 0; i < meetingDays.length; ++i)
         {
-            var duration = (section.endTime[0] - section.beginTime[0]) /100
+            // var duration = (section.endTime[0] - section.beginTime[0]) /100
+            var duration = (this.getTime(section.endTime[0])  - this.getTime(section.beginTime[0])) /100
             // console.log(section.beginTime[0])
             // console.log(this.getTime(section.beginTime[0]))
             // console.log(duration)
             var task = 
             {
                 // startTime: section.beginTime[0] / 100,
-                startTime: this.getStartTime(section.beginTime[0]),
+                startTime: this.getTime(section.beginTime[0]),
+                endTime: this.getTime(section.endTime[0]),
                 duration: duration,
                 column: meetingDays[i],
                 id: section.courseTitle,
                 // id: Math.ceil(Math.random() * 100000),
-                title: section.beginTime[0]      
+                title: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),    
+                courseID: section.id
             }
             tasks.push(task)
         }
@@ -60,14 +63,13 @@ class Schedule {
         return tasks
     }
 
-    getStartTime(time)
+    getTime(time)
     {
         var hours = time[0] + time[1]
         var minutes = time[2] + time[3]
 
         if (minutes != "00")
         {
-            console.log(time)
             minutes = minutes * 10 / 6
             if (minutes.length < 2)
                 minutes = "0" + minutes
