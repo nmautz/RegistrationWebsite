@@ -76,6 +76,7 @@ class Schedule {
         }
         time = hours + minutes
         time /= 100
+        time -= 0.06
         return time
     }
 
