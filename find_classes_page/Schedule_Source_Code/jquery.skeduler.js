@@ -126,7 +126,7 @@
 
     tasks.forEach(function (task, index) {
       var innerContent = renderInnerCardContent(task);
-      var top = getCardTopPosition(task.startTime);
+      var top = getCardTopPosition(task.startTime) - 370 ;
       var height = getCardHeight(task.duration);
       // var height = getCardHeight(task.duration);
       // console.log(getCardHeight(task.duration))
@@ -185,7 +185,7 @@
     var gridColumnElement = div.clone();
 
     //6 am to 10 pm
-    for (var i = 0; i < 24; i++) {
+    for (var i = 6; i < 22; i++) {
       // Populate timeline
       div.clone()
         .text(toTwelveHourTime(i))
