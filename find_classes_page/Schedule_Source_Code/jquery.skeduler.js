@@ -136,7 +136,7 @@
       var card = $('<div></div>')
         .attr({
           //height modified from - 4 to + 5
-          style: 'top: ' + top + 'px; height: ' + (height + 4) + 'px; ' + 'width: ' + (width - 8) + 'px; left: ' + left + 'px',
+          style: 'top: ' + top + 'px; height: ' + (height + 0.1) + 'px; ' + 'width: ' + (width - 8) + 'px; left: ' + left + 'px',
           title: parse_time(task.startTimeUnMod) + ' - ' + parse_time(task.endTimeUnMod)
         });
       card.on('click', function (e) { settings.onClick && settings.onClick(e, task) });
