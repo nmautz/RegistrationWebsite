@@ -184,10 +184,12 @@
 
     var gridColumnElement = div.clone();
 
+    //6 am to 10 pm
     for (var i = 0; i < 24; i++) {
       // Populate timeline
       div.clone()
-        .text(toTimeString(i))
+        .text(toTwelveHourTime(i))
+        // .text(toTimeString(i))
         .appendTo(scheduleTimelineEl);
       div.clone().appendTo(scheduleTimelineEl);
 

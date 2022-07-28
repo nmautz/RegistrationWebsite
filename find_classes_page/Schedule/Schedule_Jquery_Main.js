@@ -1,4 +1,4 @@
-function generate(tasks) {
+    function generate(tasks) {
     // var tasks = [
     //   {
     //     startTime: 0,
@@ -22,13 +22,14 @@ function generate(tasks) {
     //     title: ':)'
     //   }
     // ];
-  
+
     console.log("tasks count: " + tasks.length);
-  
+
     $("#skeduler-container").skeduler({
-      headers: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      tasks: tasks,
-      cardTemplate: '<div>${id}</div><div>${title}</div>',
-      onClick: function (e, t) { console.log(e, t); }
+        headers: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        tasks: tasks,
+        cardTemplate: '<div>${id}</div><div>${title}</div>',
+        onClick: function (e, t) { console.log(e, t); }
     });
-  }
+    }
+
