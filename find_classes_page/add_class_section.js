@@ -339,7 +339,7 @@ function createSaveButton(section_display, section){
 
     }
 
-
+    schedule.updateSchedule()
     e.stopPropagation()
 
 
