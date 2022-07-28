@@ -126,7 +126,7 @@
 
     tasks.forEach(function (task, index) {
       var innerContent = renderInnerCardContent(task);
-      var top = getCardTopPosition(task.startTime) - 370 ;
+      var top = getCardTopPosition(task.startTime) - 371 ;
       var height = getCardHeight(task.duration);
       // var height = getCardHeight(task.duration);
       // console.log(getCardHeight(task.duration))
