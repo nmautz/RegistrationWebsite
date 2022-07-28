@@ -126,15 +126,18 @@
 
     tasks.forEach(function (task, index) {
       var innerContent = renderInnerCardContent(task);
-      var top = getCardTopPosition(task.startTime) + 2;
+      var top = getCardTopPosition(task.startTime);
       var height = getCardHeight(task.duration);
+      // var height = getCardHeight(task.duration);
+      // console.log(getCardHeight(task.duration))
       var width = task.width || 194;
       var left = task.left || 4;
 
       var card = $('<div></div>')
         .attr({
-          style: 'top: ' + top + 'px; height: ' + (height - 4) + 'px; ' + 'width: ' + (width - 8) + 'px; left: ' + left + 'px',
-          title: toTimeString(task.startTime) + ' - ' + toTimeString(task.startTime + task.duration)
+          //height modified from - 4 to + 5
+          style: 'top: ' + top + 'px; height: ' + (height + 4) + 'px; ' + 'width: ' + (width - 8) + 'px; left: ' + left + 'px',
+          title: parse_time(task.startTimeUnMod) + ' - ' + parse_time(task.endTimeUnMod)
         });
       card.on('click', function (e) { settings.onClick && settings.onClick(e, task) });
       card.append(innerContent)
