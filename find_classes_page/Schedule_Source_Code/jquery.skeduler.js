@@ -55,7 +55,7 @@
   function renderInnerCardContent(task) {
    
     // var result = settings.cardTemplate;
-    var result = "<div>${title}</div><div class='hiddenText'>${professor}</div><div class='hiddenText'>${timeString}</div>"
+    var result = "<div class='toBold'>${title}</div><div class='hiddenText'>${professor}</div><div class='hiddenText'>${timeString}</div>"
     for (var key in task) {
       //// modified code to add card content regardless of if its a property
       // if (task.hasOwnProperty(key)) {
@@ -128,6 +128,8 @@
       tasks[i].left = (args.indexes[i] * width) || 4;
     }
 
+
+
     tasks.forEach(function (task, index) {
       var innerContent = renderInnerCardContent(task);
       var top = getCardTopPosition(task.startTime) - 371 ;
@@ -137,15 +139,17 @@
       var width = task.width || 194;
       var left = task.left || 4;
 
-      var card = $('<div></div>')
+      var card = $("<div></div>")
         .attr({
           //height modified from - 4 to + 5
           style: 'top: ' + top + 'px; height: ' + (height + 0.1) + 'px; ' + 'width: ' + (width - 8) + 'px; left: ' + left + 'px',
-          title: parse_time(task.startTimeUnMod) + ' - ' + parse_time(task.endTimeUnMod)
+          title: parse_time(task.startTimeUnMod) + ' - ' + parse_time(task.endTimeUnMod),
         });
       card.on('click', function (e) { settings.onClick && settings.onClick(e, task) });
       card.append(innerContent)
         .appendTo(placeholder);
+      card.css('background-color', task.backgroundColor)
+      // schedule.colorInd++
     }, this);
   }
 

@@ -5,6 +5,8 @@ class Schedule {
         this.insertPoint = insertPoint
         this.timeContainer = "timeContainer"
         this.selectedPlan = "(None)"
+        this.taskBackgroundColor = ["#8d0d99", "#99470d", "#19990d", "#0d5f99","#971212","#559712", "#129797", "#551297","#4b9712", "#128e97", "#5e1297", "#971b12"]
+        this.colorInd = 0
     }
 
     //can only be called once page is loaded
@@ -16,12 +18,12 @@ class Schedule {
 
     updateSchedule()
     {
+        this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         var tasks = []
         for (var i = 0; i < classes.length; ++i)
         {
             tasks = this.convertToTasks(classes[i],tasks)
-            // tasks.push(task)
         }
         
         generate(tasks)
@@ -42,12 +44,7 @@ class Schedule {
         {
             // var duration = (section.endTime[0] - section.beginTime[0]) /100
             var duration = (this.getTime(section.endTime[0])  - this.getTime(section.beginTime[0]))
-            // console.log(section.beginTime[0])
-            // console.log(this.getTime(section.beginTime[0]))
-            // console.log(section.courseTitle,duration)
-            // console.log(this.getTime(section.endTime[0]),this.getTime(section.beginTime[0]))
-            // console.log(section.endTime[0],section.beginTime[0])
-            // console.log("----------------")
+           
             var task = 
             {
                 // startTime: section.beginTime[0] / 100,
@@ -59,12 +56,13 @@ class Schedule {
                 id: section.id,
                 timeString: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),
                 professor: section.professorName,
-                title: section.courseTitle ,    
-                
+                title: section.courseTitle,    
+                // backgroundColor: "red"
+                backgroundColor: String(this.taskBackgroundColor[this.colorInd])
             }
             tasks.push(task)
         }
-  
+        this.colorInd++
         return tasks
     }
 
@@ -199,7 +197,7 @@ class ScheduleInput{
                 subDiv.style.display = "none"
                 var addBtn = document.getElementById(this.addPlanBtn)
                 addBtn.style.display = "block"
-                this.deletePlnBtn.unhide()  
+                this.deletePlnBtn.unhide()
                 update_section_display() 
             }
             
@@ -311,7 +309,6 @@ class deletePlanBtn {
     {
         this.insertPoint = insertPoint
         this.btnName = "deletePlanBtn"
-        this.planID = "(None)"
         this.createButton()
         this.hide()
     }
@@ -324,12 +321,12 @@ class deletePlanBtn {
         btnElement.id = this.btnName
         btnElement.addEventListener("click", (e)=>
         {
-           delete_plan(this.planID)
+           delete_plan(schedule.selectedPlan)
            schedule.selectedPlan = "(None)"
-           this.planID = "(None)"
            document.getElementById("selectPlanBtn").innerHTML = "Select Plan"
            document.getElementById(this.btnName).style.display = "none"
            update_section_display()
+           schedule.updateSchedule()
         })
             
         var insertDiv = document.getElementById(this.insertPoint)

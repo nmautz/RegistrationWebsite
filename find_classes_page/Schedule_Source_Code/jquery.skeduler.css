@@ -107,8 +107,12 @@
   background-color: #0f75a5;
   min-height: 150px;
   min-width: 200px;
-  opacity: 0.8;
+  opacity: 0.95;
   z-index: 9999;
+}
+
+.hiddenText{
+  color: transparent;
 }
 
 .skeduler-main-body > div > .skeduler-task-placeholder > div:hover .hiddenText{
@@ -116,12 +120,14 @@
   animation: fadeIn 0.5s;
 }
 
+.skeduler-main-body > div > .skeduler-task-placeholder > div:hover .toBold{
+  font-weight: bold;
+  /* animation: fadeIn .5s; */
+}
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-.hiddenText{
-  color: transparent;
-}
+
 
