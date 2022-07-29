@@ -174,6 +174,7 @@ class ScheduleInput{
                     }
                     create_plan(planName)
                     schedule.selectedPlan = planName
+                    schedule.updateSchedule()
                 }
                 
             }else
@@ -186,6 +187,7 @@ class ScheduleInput{
                 {  
                     create_plan(plan.value)
                     schedule.selectedPlan = plan.value
+                    schedule.updateSchedule()
                 }                
             }
             
@@ -277,7 +279,6 @@ class planDropDown extends daysDropDown{
         aElement.addEventListener("click", (e) =>
         {
             schedule.selectedPlan = data
-            this.deletePlnBtn.planID = data
 
             document.getElementById(this.input).innerHTML = "Selected Plan: " + data
             if (data == "(None)")
