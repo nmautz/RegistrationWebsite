@@ -56,10 +56,11 @@ class Schedule {
                 endTimeUnMod: section.endTime[0],
                 duration: duration,
                 column: meetingDays[i],
-                id: section.courseTitle,
-                // id: Math.ceil(Math.random() * 100000),
-                title: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]) + "\n",    
-                courseID: section.id
+                id: section.id,
+                timeString: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),
+                professor: section.professorName,
+                title: section.courseTitle ,    
+                
             }
             tasks.push(task)
         }

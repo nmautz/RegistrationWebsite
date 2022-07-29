@@ -53,12 +53,16 @@
   * Render card template
   */
   function renderInnerCardContent(task) {
-    var result = settings.cardTemplate;
+   
+    // var result = settings.cardTemplate;
+    var result = "<div>${title}</div><div class='hiddenText'>${professor}</div><div class='hiddenText'>${timeString}</div>"
     for (var key in task) {
-      if (task.hasOwnProperty(key)) {
-        // TODO: replace all
-        result = result.replace('${' + key + '}', task[key]);
-      }
+      //// modified code to add card content regardless of if its a property
+      // if (task.hasOwnProperty(key)) {
+      //   // TODO: replace all
+      //   result = result.replace('${' + key + '}', task[key]);
+      // }
+      result = result.replace('${' + key + '}', task[key]);
     }
 
     return $(result);

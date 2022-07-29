@@ -110,3 +110,18 @@
   opacity: 0.8;
   z-index: 9999;
 }
+
+.skeduler-main-body > div > .skeduler-task-placeholder > div:hover .hiddenText{
+  color: white;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.hiddenText{
+  color: transparent;
+}
+
