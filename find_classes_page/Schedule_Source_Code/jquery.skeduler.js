@@ -55,7 +55,7 @@
   function renderInnerCardContent(task) {
    
     // var result = settings.cardTemplate;
-    var result = "<div class='toBold'>${title}</div><div class='hiddenText'>${professor}</div><div class='hiddenText'>${timeString}</div>"
+    var result = "<div class='toBold'>${title}</div><div class='hiddenText'>${professor}</div><div class='hiddenText'>${timeString}</div><div class='clickForMore'>(Click for More)</div>"
     for (var key in task) {
       //// modified code to add card content regardless of if its a property
       // if (task.hasOwnProperty(key)) {

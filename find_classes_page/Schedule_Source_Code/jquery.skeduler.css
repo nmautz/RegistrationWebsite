@@ -16,7 +16,6 @@
   /* position: relative; */
   position: fixed;
   /* added */
-  top: inherit;
   z-index:100;
 
 }
@@ -123,10 +122,22 @@
   color: transparent;
 }
 
+.clickForMore{
+  color: transparent;
+  opacity: .7;
+}
+
 .skeduler-main-body > div > .skeduler-task-placeholder > div:hover .hiddenText{
   color: white;
   animation: fadeIn 0.5s;
 }
+
+.skeduler-main-body > div > .skeduler-task-placeholder > div:hover .clickForMore{
+  color: white;
+  padding-left: 17%;
+  padding-top: 10%;
+}
+
 
 .skeduler-main-body > div > .skeduler-task-placeholder > div:hover .toBold{
   font-weight: bold;
