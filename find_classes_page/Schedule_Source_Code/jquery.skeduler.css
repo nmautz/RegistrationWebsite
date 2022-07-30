@@ -14,7 +14,7 @@
   background-color: white;
   /* border-bottom: 1px solid #B0CEE9; */
   /* position: relative; */
-  position: fixed;
+  position: relative;
   /* added */
   z-index:100;
 
