@@ -18,6 +18,12 @@ class Schedule {
 
     updateSchedule()
     {
+        this.generateTasks()
+        this.generateClasses("classList-container")
+    }
+
+    generateTasks()
+    {
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         var tasks = []
@@ -26,8 +32,9 @@ class Schedule {
             tasks = this.convertToTasks(classes[i],tasks)
         }
         
-        generate(tasks)
+        generate(tasks) 
     }
+
 
     convertToTasks(section,tasks)
     {
@@ -88,6 +95,39 @@ class Schedule {
         return time
     }
 
+    generateClasses(container)
+    {
+        this.colorInd = 0
+        var classes = load_classes(this.selectedPlan)
+        for (var i = 0; i < classes.length; ++i)
+        {
+            this.addClass(container,classes[i])
+        }
+    }
+
+    addClass(container,section)
+    {
+        var insertPoint = document.getElementById(container)
+        const divElement = document.createElement("div")
+        const headerElement = document.createElement("h3")
+        headerElement.innerHTML = section.courseTitle
+        const professor = document.createElement("div")
+        professor.innerHTML = section.professorName
+        const time = document.createElement("div")
+        time.innerHTML = parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0])
+        const colorCode = document.createElement("div")
+        colorCode.innerHTML = "**"
+        colorCode.style.backgroundColor = this.taskBackgroundColor[this.colorInd]
+        console.log(this.taskBackgroundColor[this.colorInd])
+        this.colorInd++
+
+        divElement.appendChild(headerElement)
+        divElement.appendChild(professor)
+        divElement.appendChild(time)
+        divElement.appendChild(colorCode)
+
+        insertPoint.appendChild(divElement)
+    }
 }
 
 class ScheduleInput{
