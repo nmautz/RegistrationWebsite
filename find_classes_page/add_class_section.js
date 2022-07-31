@@ -1,6 +1,6 @@
 
 function parse_time(str){
-  var hours = str.substring(0,2)
+  var hours = String(str).substring(0,2)
 
   if(parseInt(hours) < 12){
 
@@ -19,12 +19,22 @@ function parse_time(str){
 
     
   }
-  str = hours + ":" + str.substring(2,4) + am_pm
+  str = hours + ":" + String(str).substring(2,4) + am_pm
   return str
 
 }
 
-
+  function toTwelveHourTime(time)
+  {
+    if(time == 0)
+      return String("12:00 AM")
+    else if(time < 12)
+        return String(time + ":00 AM")
+    else if (time == 12)
+        return "12:00 PM"
+    else
+        return String(time - 12 + ":00 PM")
+  }
 
 function createDivElement(parent, class_string){
   const divElement = document.createElement("div")
@@ -329,7 +339,7 @@ function createSaveButton(section_display, section){
 
     }
 
-
+    schedule.updateSchedule()
     e.stopPropagation()
 
 

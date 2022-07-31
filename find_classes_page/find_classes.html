@@ -20,8 +20,14 @@
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
 
         <script src="Schedule/Schedule_Class.js"></script>
-   
-        
+
+        <!-- Jquery Scheduler -->
+        <link rel="stylesheet" href="./Schedule_Source_Code/jquery.skeduler.css" type="text/css">
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+            <!-- <script src="http://code.jquery.com/jquery-3.1.0.slim.min.js"></script> -->
+            <script src="./Schedule_Source_Code/jquery.skeduler.js"></script>
+            <script src="./Schedule/Schedule_Jquery_Main.js"></script>
+            <link rel="stylesheet" href="./Schedule/schedule.css">
 
     </head>
 
@@ -60,10 +66,12 @@
 
 
 
-                
-                <div id="plan_Input_Container">
+                <div id="planBtnDiv">
                     <button id="selectPlanBtn" > Select Plan </button>
+                    <div id="delete_Plan_Container"></div>
                 </div>
+                
+                <div id="plan_Input_Container"></div>
                 
 
             </div>
@@ -74,17 +82,18 @@
                 <div id="classes-list-container" class="classes-list-containter">
                 
                 </div>
-
-
-
             </div>
 
-            
-            <div id="scheduleInput"></div>
+         
+            <div id="schedule-container" class="schedContainer">
+                <button id="revealSchedBtn" class="revealSchedBtn">Open Schedule</button>
+                <div id="classList-container"></div>  
+                <div id="skeduler-container"></div>
+            </div>
+           
 
-
-            
-
+        
+        </script>
 
         </div>
 
