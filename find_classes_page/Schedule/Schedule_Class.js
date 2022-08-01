@@ -118,13 +118,15 @@ class Schedule {
         const colorCode = document.createElement("div")
         colorCode.innerHTML = "**"
         colorCode.style.backgroundColor = this.taskBackgroundColor[this.colorInd]
-        console.log(this.taskBackgroundColor[this.colorInd])
         this.colorInd++
+        var deleteBtn = document.createElement("button")
+        deleteBtn.innerHTML = "Remove"
 
         divElement.appendChild(headerElement)
         divElement.appendChild(professor)
         divElement.appendChild(time)
         divElement.appendChild(colorCode)
+        divElement.appendChild(deleteBtn)
 
         insertPoint.appendChild(divElement)
     }
