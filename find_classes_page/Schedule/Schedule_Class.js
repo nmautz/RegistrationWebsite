@@ -97,6 +97,7 @@ class Schedule {
 
     generateClasses(container)
     {
+        // $('classList-container').empty();
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         for (var i = 0; i < classes.length; ++i)
@@ -121,6 +122,12 @@ class Schedule {
         this.colorInd++
         var deleteBtn = document.createElement("button")
         deleteBtn.innerHTML = "Remove"
+        deleteBtn.data = section.id
+        deleteBtn.addEventListener("click", (e)=>
+        {
+            remove_class_by_ID(schedule.selectedPlan,deleteBtn.data)
+            schedule.updateSchedule()
+        })
 
         divElement.appendChild(headerElement)
         divElement.appendChild(professor)
