@@ -6,6 +6,8 @@ class Schedule {
         this.timeContainer = "timeContainer"
         this.selectedPlan = "(None)"
         this.taskBackgroundColor = ["#8d0d99", "#99470d", "#19990d", "#0d5f99","#971212","#559712", "#129797", "#551297","#4b9712", "#128e97", "#5e1297", "#971b12"]
+        this.curClasses = []
+        this.curColors = []
         this.colorInd = 0
     }
 
@@ -27,11 +29,23 @@ class Schedule {
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         var tasks = []
+        var newClasses = load_classes(this.selectedPlan)
+
+        for(var i = 0; i < newClasses.length; ++i)
+        {
+            if (!this.newClasses.includes(this.curClasses[i]))
+            {
+                this.curClasses.splice(i)
+                this.curColors.splice(i)
+            }
+        }
+
         for (var i = 0; i < classes.length; ++i)
         {
+            newClasses.push(classes[i].id)
             tasks = this.convertToTasks(classes[i],tasks)
         }
-        
+
         generate(tasks) 
     }
 
@@ -51,7 +65,9 @@ class Schedule {
         {
             // var duration = (section.endTime[0] - section.beginTime[0]) /100
             var duration = (this.getTime(section.endTime[0])  - this.getTime(section.beginTime[0]))
-           
+        
+            if (this.curClasses.includes(section.id))
+                var backgroundColor = "red"
             var task = 
             {
                 // startTime: section.beginTime[0] / 100,
@@ -64,11 +80,11 @@ class Schedule {
                 timeString: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),
                 professor: section.professorName,
                 title: section.courseTitle,    
-                // backgroundColor: "red"
                 backgroundColor: String(this.taskBackgroundColor[this.colorInd])
             }
             tasks.push(task)
         }
+        this.curClasses.push(section.id)
         this.colorInd++
         return tasks
     }
@@ -97,7 +113,11 @@ class Schedule {
 
     generateClasses(container)
     {
-        // $('classList-container').empty();
+        var divElement = document.getElementById(container)
+        while(divElement.firstChild){
+            divElement.removeChild(divElement.firstChild)
+            this.colorInd--
+        }
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         for (var i = 0; i < classes.length; ++i)

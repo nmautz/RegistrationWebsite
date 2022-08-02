@@ -13,8 +13,8 @@
   padding-left: 90px;
   background-color: white;
   /* border-bottom: 1px solid #B0CEE9; */
-  /* position: relative; */
   position: relative;
+  /* position:fixed; */
   /* added */
   z-index:100;
 
