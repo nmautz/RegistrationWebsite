@@ -1,6 +1,11 @@
+
+
+.skeduler-container-main{
+  margin-left: 5vw;
+}
+
 .skeduler-container {
     /* margin: 50px 0 0 100px; */
-    margin: 50px 0 0 100px;
     width: 1400px;
     height: 700px;
 
@@ -11,7 +16,7 @@
     overflow: scroll;
     margin: auto;
     width: 100%;
-    padding-left: 4vw;
+    /*padding-left: 4vw;
     /* padding-left: 13vw;
     padding-right: 13vw; */
     background-color: white;

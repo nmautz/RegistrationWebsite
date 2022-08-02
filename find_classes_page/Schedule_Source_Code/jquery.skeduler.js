@@ -183,7 +183,10 @@
     settings.headers.forEach(function (element) {
       div.clone().text(element).appendTo(headerContainer);
     }, this);
-    skedulerEl.append(headerContainer);
+
+    div.clone().insertBefore($("#skeduler-container"))
+    headerContainer.insertBefore($("#skeduler-container"))
+
 
     // Add schedule
     var scheduleEl = div.clone().addClass(settings.schedulerContainerCssClass);
