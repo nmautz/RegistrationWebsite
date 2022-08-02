@@ -81,6 +81,9 @@ function time_to_min(time)
   totalMin += minutes
   if (time.includes("PM") && hours != 12)
     totalMin += 60 * 12
+  else if (time.includes("AM") && hours == 12)
+    totalMin -= 12 * 60    
+  
   return totalMin
 
 }
