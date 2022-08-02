@@ -20,8 +20,27 @@ class Schedule {
 
     updateSchedule()
     {
+        this.updateColors()
         this.generateTasks()
         this.generateClasses("classList-container")
+    }
+
+    updateColors()
+    {
+        // var newClasses = load_classes(this.selectedPlan)
+        // if (newClasses.length > 0 && this.curClasses.length > 0)
+        // {
+        //     for(var i = 0; i < newClasses.length; ++i)
+        //     {
+        //         console.log(newClasses[i])
+        //         if (!this.newClasses.includes(this.curClasses[i]))
+        //         {
+        //             this.curClasses.splice(i)
+        //             this.curColors.splice(i)
+        //         }
+        //     }
+        // }
+        
     }
 
     generateTasks()
@@ -29,20 +48,10 @@ class Schedule {
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         var tasks = []
-        var newClasses = load_classes(this.selectedPlan)
-
-        for(var i = 0; i < newClasses.length; ++i)
-        {
-            if (!this.newClasses.includes(this.curClasses[i]))
-            {
-                this.curClasses.splice(i)
-                this.curColors.splice(i)
-            }
-        }
+  
 
         for (var i = 0; i < classes.length; ++i)
         {
-            newClasses.push(classes[i].id)
             tasks = this.convertToTasks(classes[i],tasks)
         }
 
@@ -66,8 +75,7 @@ class Schedule {
             // var duration = (section.endTime[0] - section.beginTime[0]) /100
             var duration = (this.getTime(section.endTime[0])  - this.getTime(section.beginTime[0]))
         
-            if (this.curClasses.includes(section.id))
-                var backgroundColor = "red"
+        
             var task = 
             {
                 // startTime: section.beginTime[0] / 100,
@@ -84,7 +92,8 @@ class Schedule {
             }
             tasks.push(task)
         }
-        this.curClasses.push(section.id)
+        if(!this.curClasses.includes(section.id))
+            this.curClasses.push(section.id)
         this.colorInd++
         return tasks
     }
