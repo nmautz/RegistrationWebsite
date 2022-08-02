@@ -35,3 +35,9 @@
     position: absolute;
     border: 2vh red; */
   }
+
+  .classInfo{
+    position: relative;
+    width: 25vw;
+    border: .02vw solid black;
+  }

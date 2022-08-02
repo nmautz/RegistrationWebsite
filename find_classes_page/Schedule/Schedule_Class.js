@@ -4,6 +4,7 @@ class Schedule {
     {
         this.insertPoint = insertPoint
         this.timeContainer = "timeContainer"
+        this.classListContainer = "classList-container"
         this.selectedPlan = "(None)"
         this.taskBackgroundColor = ["#8d0d99", "#99470d", "#19990d", "#0d5f99","#971212","#559712", "#129797", "#551297","#4b9712", "#128e97", "#5e1297", "#971b12"]
         this.curClasses = []
@@ -20,31 +21,57 @@ class Schedule {
 
     updateSchedule()
     {
-        this.updateColors()
+        this.clearSchedule()
         this.generateTasks()
-        this.generateClasses("classList-container")
+        this.generateClasses()
     }
 
-    updateColors()
+    //contains code for the saving of a classes color (until refreshed)
+    clearSchedule()
     {
-        // var newClasses = load_classes(this.selectedPlan)
-        // if (newClasses.length > 0 && this.curClasses.length > 0)
+
+        // var loadedClasses = load_classes(this.selectedPlan)
+
+        // var newClassIds = []
+        // for (var i = 0; i < loadedClasses.length; ++i)
+        //     newClassIds.push(loadedClasses[i].id)
+
+       
+        // // if (newClassIds.length > 0 && this.curClasses.length > 0)
+        // // {
+
+        // //adds new classes
+        // for(var i = 0; i < newClassIds.length; ++i)
         // {
-        //     for(var i = 0; i < newClasses.length; ++i)
+        //     if (!this.curClasses.includes(newClassIds[i]))
         //     {
-        //         console.log(newClasses[i])
-        //         if (!this.newClasses.includes(this.curClasses[i]))
-        //         {
-        //             this.curClasses.splice(i)
-        //             this.curColors.splice(i)
-        //         }
+        //         this.curClasses.push(newClassIds[i])
+        //         this.curColors.push(this.taskBackgroundColor[this.colorInd])
+        //         this.colorInd++
         //     }
         // }
+
+        // //deletes old ones
+        // for (var i = 0; i < this.curClasses.length; ++i)
+        // {
+        //     // console.log(this.curClasses[i])
+        //     if (!newClassIds.includes(this.curClasses[i]))
+        //     {
+        //         this.curClasses.splice(i)
+        //         this.curColors.splice(i)
+        //     }
+        //     console.log(this.curClasses[i])
+        // }
+
+ 
+
+        // // }
         
     }
 
     generateTasks()
     {
+        
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         var tasks = []
@@ -75,7 +102,6 @@ class Schedule {
             // var duration = (section.endTime[0] - section.beginTime[0]) /100
             var duration = (this.getTime(section.endTime[0])  - this.getTime(section.beginTime[0]))
         
-        
             var task = 
             {
                 // startTime: section.beginTime[0] / 100,
@@ -92,8 +118,6 @@ class Schedule {
             }
             tasks.push(task)
         }
-        if(!this.curClasses.includes(section.id))
-            this.curClasses.push(section.id)
         this.colorInd++
         return tasks
     }
@@ -120,18 +144,20 @@ class Schedule {
         return time
     }
 
-    generateClasses(container)
+    generateClasses()
     {
-        var divElement = document.getElementById(container)
+        //clears container div
+        var divElement = document.getElementById(this.classListContainer)
         while(divElement.firstChild){
             divElement.removeChild(divElement.firstChild)
             this.colorInd--
         }
+
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         for (var i = 0; i < classes.length; ++i)
         {
-            this.addClass(container,classes[i])
+            this.addClass(this.classListContainer,classes[i])
         }
     }
 
@@ -139,6 +165,7 @@ class Schedule {
     {
         var insertPoint = document.getElementById(container)
         const divElement = document.createElement("div")
+        divElement.className += "classInfo"
         const headerElement = document.createElement("h3")
         headerElement.innerHTML = section.courseTitle
         const professor = document.createElement("div")
@@ -146,7 +173,8 @@ class Schedule {
         const time = document.createElement("div")
         time.innerHTML = parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0])
         const colorCode = document.createElement("div")
-        colorCode.innerHTML = "**"
+        colorCode.innerHTML = "*"
+        colorCode.style.color = this.taskBackgroundColor[this.colorInd]
         colorCode.style.backgroundColor = this.taskBackgroundColor[this.colorInd]
         this.colorInd++
         var deleteBtn = document.createElement("button")
@@ -157,14 +185,16 @@ class Schedule {
             remove_class_by_ID(schedule.selectedPlan,deleteBtn.data)
             schedule.updateSchedule()
         })
-
+        divElement.appendChild(colorCode)
         divElement.appendChild(headerElement)
         divElement.appendChild(professor)
         divElement.appendChild(time)
-        divElement.appendChild(colorCode)
+      
         divElement.appendChild(deleteBtn)
 
         insertPoint.appendChild(divElement)
+        var br = document.createElement("br")
+        insertPoint.appendChild(br)
     }
 }
 
