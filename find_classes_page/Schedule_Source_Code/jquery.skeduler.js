@@ -173,6 +173,7 @@
 
     var skedulerEl = $(this);
 
+    $("#header-container").remove()
     skedulerEl.empty();
     skedulerEl.addClass(settings.containerCssClass);
 
@@ -184,7 +185,7 @@
       div.clone().text(element).appendTo(headerContainer);
     }, this);
 
-    div.clone().insertBefore($("#skeduler-container"))
+    headerContainer.attr("id", "header-container")
     headerContainer.insertBefore($("#skeduler-container"))
 
 
