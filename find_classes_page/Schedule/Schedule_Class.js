@@ -131,7 +131,8 @@ class Schedule {
         colorCode.innerHTML = "*"
         colorCode.style.color = section.color
         colorCode.style.backgroundColor = section.color
-        // this.colorInd++
+        const meetingDays = document.createElement("div")
+        meetingDays.innerHTML = requirement.getWeekString(section)
         var deleteBtn = document.createElement("button")
         deleteBtn.innerHTML = "Remove"
         deleteBtn.data = section.id
@@ -140,9 +141,11 @@ class Schedule {
             remove_class_by_ID(schedule.selectedPlan,deleteBtn.data)
             schedule.updateSchedule()
         })
+
         divElement.appendChild(colorCode)
         divElement.appendChild(headerElement)
         divElement.appendChild(professor)
+        divElement.appendChild(meetingDays)
         divElement.appendChild(time)
       
         divElement.appendChild(deleteBtn)
