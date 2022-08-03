@@ -41,15 +41,47 @@ function get_plan_IDs(){
 
 
 var classColor = ["#8d0d99", "#99470d", "#19990d", "#0d5f99","#971212","#559712", "#129797", "#551297","#4b9712", "#128e97", "#5e1297", "#971b12"]
+
 var colorInd = 0
 
-function getNewColor()
+function getNewColor(planID)
 {
+  var classes = load_classes(planID)
   var color = classColor[colorInd % classColor.length]
+  var foundColor = true
+  for (var i = 0; i < classColor.length; ++i)
+  {
+    if(is_color_taken(classes,color))
+    {
+      colorInd++
+      color = classColor[colorInd % classColor.length]
+      foundColor = false
+    }else
+    {
+      foundColor = true
+      break
+    }
+  }
+  if (!foundColor)
+  {
+    colorInd++
+    return classColor[colorInd % classColor.length]
+  }
+    
   colorInd++
   return color
 }
 
+function is_color_taken(classes,color)
+{
+  for (var i = 0; i < classes.length; ++i)
+  {
+    console.log(classes[i])
+    if (classes[i].color == color)
+      return true
+  }
+  return false
+}
 
 function save_class(planID, section){
 

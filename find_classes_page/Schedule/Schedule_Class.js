@@ -140,6 +140,7 @@ class Schedule {
         {
             remove_class_by_ID(schedule.selectedPlan,deleteBtn.data)
             schedule.updateSchedule()
+            update_section_display()
         })
 
         divElement.appendChild(colorCode)
