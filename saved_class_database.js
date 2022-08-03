@@ -40,14 +40,25 @@ function get_plan_IDs(){
 
 
 
+var classColor = ["#8d0d99", "#99470d", "#19990d", "#0d5f99","#971212","#559712", "#129797", "#551297","#4b9712", "#128e97", "#5e1297", "#971b12"]
+var colorInd = 0
+
+function getNewColor()
+{
+  var color = classColor[colorInd % classColor.length]
+  colorInd++
+  return color
+}
 
 
 function save_class(planID, section){
 
+  section.color = getNewColor();
   section.planID = planID;
   section.uniqueID = planID+section.id;
   localStorage.setItem(section.uniqueID, JSON.stringify(section))
 }
+
 
 function remove_class_by_ID(planID, id){
   const uniqueID = planID + id;

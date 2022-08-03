@@ -5,10 +5,6 @@ class Schedule {
         this.insertPoint = insertPoint
         this.timeContainer = "timeContainer"
         this.classListContainer = "classList-container"
-        this.selectedPlan = "(None)"
-        this.taskBackgroundColor = ["#8d0d99", "#99470d", "#19990d", "#0d5f99","#971212","#559712", "#129797", "#551297","#4b9712", "#128e97", "#5e1297", "#971b12"]
-        this.curClasses = []
-        this.curColors = []
         this.colorInd = 0
     }
 
@@ -21,53 +17,12 @@ class Schedule {
 
     updateSchedule()
     {
-        this.clearSchedule()
+
         this.generateTasks()
         this.generateClasses()
     }
 
-    //contains code for the saving of a classes color (until refreshed)
-    clearSchedule()
-    {
 
-        // var loadedClasses = load_classes(this.selectedPlan)
-
-        // var newClassIds = []
-        // for (var i = 0; i < loadedClasses.length; ++i)
-        //     newClassIds.push(loadedClasses[i].id)
-
-       
-        // // if (newClassIds.length > 0 && this.curClasses.length > 0)
-        // // {
-
-        // //adds new classes
-        // for(var i = 0; i < newClassIds.length; ++i)
-        // {
-        //     if (!this.curClasses.includes(newClassIds[i]))
-        //     {
-        //         this.curClasses.push(newClassIds[i])
-        //         this.curColors.push(this.taskBackgroundColor[this.colorInd])
-        //         this.colorInd++
-        //     }
-        // }
-
-        // //deletes old ones
-        // for (var i = 0; i < this.curClasses.length; ++i)
-        // {
-        //     // console.log(this.curClasses[i])
-        //     if (!newClassIds.includes(this.curClasses[i]))
-        //     {
-        //         this.curClasses.splice(i)
-        //         this.curColors.splice(i)
-        //     }
-        //     console.log(this.curClasses[i])
-        // }
-
- 
-
-        // // }
-        
-    }
 
     generateTasks()
     {
@@ -114,11 +69,11 @@ class Schedule {
                 timeString: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),
                 professor: section.professorName,
                 title: section.courseTitle,    
-                backgroundColor: String(this.taskBackgroundColor[this.colorInd])
+                backgroundColor: section.color 
+                // backgroundColor: String(this.taskBackgroundColor[this.colorInd])
             }
             tasks.push(task)
         }
-        this.colorInd++
         return tasks
     }
 
@@ -174,9 +129,9 @@ class Schedule {
         time.innerHTML = parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0])
         const colorCode = document.createElement("div")
         colorCode.innerHTML = "*"
-        colorCode.style.color = this.taskBackgroundColor[this.colorInd]
-        colorCode.style.backgroundColor = this.taskBackgroundColor[this.colorInd]
-        this.colorInd++
+        colorCode.style.color = section.color
+        colorCode.style.backgroundColor = section.color
+        // this.colorInd++
         var deleteBtn = document.createElement("button")
         deleteBtn.innerHTML = "Remove"
         deleteBtn.data = section.id
