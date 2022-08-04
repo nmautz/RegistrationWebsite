@@ -41,7 +41,6 @@ function get_plan_IDs(){
 
 
 var classColor = ["#8d0d99", "#99470d", "#19990d", "#0d5f99","#971212","#559712", "#129797", "#551297","#4b9712", "#128e97", "#5e1297", "#971b12"]
-
 var colorInd = 0
 
 function getNewColor(planID)
@@ -76,16 +75,47 @@ function is_color_taken(classes,color)
 {
   for (var i = 0; i < classes.length; ++i)
   {
-    console.log(classes[i])
     if (classes[i].color == color)
       return true
   }
   return false
 }
 
+function check_for_contradictions(planID, section)
+{
+  var classes = load_classes(planID)
+  var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
+  for (var i = 0; i < classes.length; ++i)
+  {
+    var weekDays =  [classes[i].sunday, classes[i].monday, classes[i].tuesday, classes[i].wednesday, classes[i].thursday, classes[i].friday, classes[i].saturday]
+    for (var j = 0; j < week_days.length; ++j)
+    {
+      if (week_days[j] && weekDays[j])
+      {
+        console.log(classes[i].beginTime,section.beginTime)
+        if (do_classes_overlap(section,classes[i]))
+        {
+          section.color="red"
+          classes[i].color="red"
+        }
+      }
+    }
+  }
+}
+
+function do_classes_overlap(section1,section2)
+{
+  if (section1.beginTime[0] < section2.endTime[0] && section1.endTime[0] > section2.endTime[0])
+    return true
+  if (section2.beginTime[0] < section1.endTime[0] && section2.endTime[0] > section1.endTime[0])
+    return true
+  return false
+}
+
 function save_class(planID, section){
 
   section.color = getNewColor();
+  // check_for_contradictions(planID,section)
   section.planID = planID;
   section.uniqueID = planID+section.id;
   localStorage.setItem(section.uniqueID, JSON.stringify(section))
