@@ -83,16 +83,16 @@ function is_color_taken(classes,color)
 
 function check_for_contradictions(planID, section)
 {
+  var week_days = [section.sunday[0], section.monday[0], section.tuesday[0], section.wednesday[0], section.thursday[0], section.friday[0], section.saturday[0]]
   var classes = load_classes(planID)
-  var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
   for (var i = 0; i < classes.length; ++i)
   {
-    var weekDays =  [classes[i].sunday, classes[i].monday, classes[i].tuesday, classes[i].wednesday, classes[i].thursday, classes[i].friday, classes[i].saturday]
+    var weekDays =  [classes[i].sunday[0], classes[i].monday[0], classes[i].tuesday[0], classes[i].wednesday[0], classes[i].thursday[0], classes[i].friday[0], classes[i].saturday[0]]
     for (var j = 0; j < week_days.length; ++j)
     {
       if (week_days[j] && weekDays[j])
       {
-        console.log(classes[i].beginTime,section.beginTime)
+        // console.log(classes[i].beginTime,section.beginTime)
         if (do_classes_overlap(section,classes[i]))
         {
           section.color="red"
@@ -105,9 +105,9 @@ function check_for_contradictions(planID, section)
 
 function do_classes_overlap(section1,section2)
 {
-  if (section1.beginTime[0] < section2.endTime[0] && section1.endTime[0] > section2.endTime[0])
+  if (section1.beginTime[0] <= section2.endTime[0] && section1.endTime[0] >= section2.endTime[0])
     return true
-  if (section2.beginTime[0] < section1.endTime[0] && section2.endTime[0] > section1.endTime[0])
+  if (section2.beginTime[0] <= section1.endTime[0] && section2.endTime[0] >= section1.endTime[0])
     return true
   return false
 }
@@ -115,7 +115,7 @@ function do_classes_overlap(section1,section2)
 function save_class(planID, section){
 
   section.color = getNewColor();
-  // check_for_contradictions(planID,section)
+  check_for_contradictions(planID,section)
   section.planID = planID;
   section.uniqueID = planID+section.id;
   localStorage.setItem(section.uniqueID, JSON.stringify(section))

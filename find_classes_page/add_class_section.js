@@ -328,7 +328,6 @@ function createSaveButton(section_display, section){
       // schedule.loadSchedule(planID_input.value)
 
 
-
     }else{
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
@@ -336,9 +335,9 @@ function createSaveButton(section_display, section){
       const planID_input = document.getElementById("planID-input");
       save_class(schedule.selectedPlan,section)
       // schedule.loadSchedule(planID_input.value)
-
     }
 
+    update_section_display()
     schedule.updateSchedule()
     e.stopPropagation()
 
