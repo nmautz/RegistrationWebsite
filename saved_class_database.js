@@ -97,10 +97,12 @@ function check_for_contradictions(planID, section)
         {
           section.color="red"
           classes[i].color="red"
+          return
         }
       }
     }
   }
+  section.color = getNewColor()
 }
 
 function do_classes_overlap(section1,section2)
@@ -114,7 +116,6 @@ function do_classes_overlap(section1,section2)
 
 function save_class(planID, section){
 
-  section.color = getNewColor();
   check_for_contradictions(planID,section)
   section.planID = planID;
   section.uniqueID = planID+section.id;
@@ -123,8 +124,20 @@ function save_class(planID, section){
 
 
 function remove_class_by_ID(planID, id){
-  const uniqueID = planID + id;
+  var uniqueID = planID + id;
   localStorage.removeItem(uniqueID)
+  var classes = load_classes(planID)
+  for (var i = 0; i < classes.length; ++i)
+  {
+    if (classes[i].color == "red")
+    {
+      uniqueID = planID + classes[i].id
+      localStorage.removeItem(uniqueID)
+      save_class(planID,classes[i])
+      console.log(classes[i].color)
+    }
+
+  }
 }
 
 function load_classes(planID){
