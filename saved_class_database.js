@@ -96,13 +96,14 @@ function check_for_contradictions(planID, section)
         if (do_classes_overlap(section,classes[i]))
         {
           section.color="red"
-          classes[i].color="red"
+          section.overlaps = true
           return
         }
       }
     }
   }
   section.color = getNewColor()
+  section.overlaps = false
 }
 
 function do_classes_overlap(section1,section2)

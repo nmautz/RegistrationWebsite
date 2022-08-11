@@ -53,7 +53,6 @@
   * Render card template
   */
   function renderInnerCardContent(task) {
-   
     // var result = settings.cardTemplate;
     var result = "<div class='toBold'>${title}</div><div class='hiddenText'>${professor}</div><div class='hiddenText'>${timeString}</div><div class='clickForMore'>(Click for More)</div>"
     for (var key in task) {
@@ -131,18 +130,24 @@
 
 
     tasks.forEach(function (task, index) {
+
+    
+
       var innerContent = renderInnerCardContent(task);
       var top = getCardTopPosition(task.startTime) - 371 ;
       var height = getCardHeight(task.duration);
       // var height = getCardHeight(task.duration);
       // console.log(getCardHeight(task.duration))
       var width = task.width || 194;
-      var left = task.left || 4;
-
+      var left = task.left || 0;
+      if (task.overlaps)
+        var opacity = "0.5"
+      else 
+        var opacity = "0.95"
       var card = $("<div></div>")
         .attr({
           //height modified from - 4 to + 5
-          style: 'top: ' + top + 'px; height: ' + (height + 0.1) + 'px; ' + 'width: ' + (width - 8) + 'px; left: ' + left + 'px',
+          style: 'top: ' + top + 'px; height: ' + (height + 0.1) + 'px; ' + 'width: ' + (width + 2) + 'px; left: ' + left + 'px;' + "opacity:" + opacity,
           title: parse_time(task.startTimeUnMod) + ' - ' + parse_time(task.endTimeUnMod),
         });
       card.on('click', function (e) { settings.onClick && settings.onClick(e, task) });

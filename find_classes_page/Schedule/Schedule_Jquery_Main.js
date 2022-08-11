@@ -1,7 +1,7 @@
     function generate(tasks) {
 
 
-    console.log("tasks count: " + tasks.length);
+    // console.log("tasks count: " + tasks.length);
 
     $("#skeduler-container").skeduler({
         headers: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

@@ -69,7 +69,8 @@ class Schedule {
                 timeString: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),
                 professor: section.professorName,
                 title: section.courseTitle,    
-                backgroundColor: section.color 
+                backgroundColor: section.color, 
+                overlaps: section.overlaps
                 // backgroundColor: String(this.taskBackgroundColor[this.colorInd])
             }
             tasks.push(task)
