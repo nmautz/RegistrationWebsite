@@ -127,17 +127,19 @@ function remove_class_by_ID(planID, id){
   var uniqueID = planID + id;
   localStorage.removeItem(uniqueID)
   var classes = load_classes(planID)
+  var tempStack = []
   for (var i = 0; i < classes.length; ++i)
   {
     if (classes[i].color == "red")
     {
+      tempStack.push(classes[i])
       uniqueID = planID + classes[i].id
       localStorage.removeItem(uniqueID)
-      save_class(planID,classes[i])
-      console.log(classes[i].color)
-    }
-
+    }    
   }
+  for (var i = 0; i < tempStack.length; ++i)
+    save_class(planID,tempStack[i])
+
 }
 
 function load_classes(planID){
