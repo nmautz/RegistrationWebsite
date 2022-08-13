@@ -1,6 +1,6 @@
 
 function parse_time(str){
-  var hours = str.substring(0,2)
+  var hours = String(str).substring(0,2)
 
   if(parseInt(hours) < 12){
 
@@ -19,12 +19,22 @@ function parse_time(str){
 
     
   }
-  str = hours + ":" + str.substring(2,4) + am_pm
+  str = hours + ":" + String(str).substring(2,4) + am_pm
   return str
 
 }
 
-
+  function toTwelveHourTime(time)
+  {
+    if(time == 0)
+      return String("12:00 AM")
+    else if(time < 12)
+        return String(time + ":00 AM")
+    else if (time == 12)
+        return "12:00 PM"
+    else
+        return String(time - 12 + ":00 PM")
+  }
 
 function createDivElement(parent, class_string){
   const divElement = document.createElement("div")
@@ -318,7 +328,6 @@ function createSaveButton(section_display, section){
       // schedule.loadSchedule(planID_input.value)
 
 
-
     }else{
       save_button.style.borderColor ="gold"
       save_button.style.borderBottomColor = "transparent"
@@ -326,10 +335,10 @@ function createSaveButton(section_display, section){
       const planID_input = document.getElementById("planID-input");
       save_class(schedule.selectedPlan,section)
       // schedule.loadSchedule(planID_input.value)
-
     }
 
-
+    update_section_display()
+    schedule.updateSchedule()
     e.stopPropagation()
 
 

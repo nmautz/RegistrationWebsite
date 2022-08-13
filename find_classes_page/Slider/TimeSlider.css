@@ -80,3 +80,15 @@ section.range-slider input:last-of-type::-moz-range-track {
   section.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
+
+.clearTimeBtn {
+    position: relative;
+    left: 25.5vw;
+    bottom: 0.4vw;
+}
+
+.sliderContainer{
+    position: relative;
+    bottom: 5.2vw;
+    right: 23vw;
+}
