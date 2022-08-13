@@ -1,0 +1,43 @@
+
+
+.skeduler-container-main{
+  margin-left: 5vw;
+}
+
+.skeduler-container {
+    /* margin: 50px 0 0 100px; */
+    width: 1400px;
+    height: 700px;
+
+    /* top: 35vw; */
+    left: 0;
+    right: 0;
+    position: relative;
+    overflow: scroll;
+    margin: auto;
+    width: 100%;
+    /*padding-left: 4vw;
+    /* padding-left: 13vw;
+    padding-right: 13vw; */
+    background-color: white;
+    /* transform:scale(0.7); */
+  }
+
+
+ 
+  .revealSchedBtn{
+    position: relative;
+    /* top: 33.71vw; */
+    width: 100%;
+  }
+  .schedContainer{
+    /* top: 30vw;
+    position: absolute;
+    border: 2vh red; */
+  }
+
+  .classInfo{
+    position: relative;
+    width: 25vw;
+    border: .02vw solid black;
+  }

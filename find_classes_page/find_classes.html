@@ -19,6 +19,16 @@
         <script src="DropDown/DropDownClass.js"></script>
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
 
+        <script src="Schedule/Schedule_Class.js"></script>
+
+        <!-- Jquery Scheduler -->
+        <link rel="stylesheet" href="./Schedule_Source_Code/jquery.skeduler.css" type="text/css">
+        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+            <!-- <script src="http://code.jquery.com/jquery-3.1.0.slim.min.js"></script> -->
+            <script src="./Schedule_Source_Code/jquery.skeduler.js"></script>
+            <script src="./Schedule/Schedule_Jquery_Main.js"></script>
+            <link rel="stylesheet" href="./Schedule/schedule.css">
+
     </head>
 
 
@@ -29,38 +39,35 @@
         <div class="content">
 
            <div class="search-parameters-container">
-                <input id="subjectDescription-input" class="text-input"  type="text" placeholder="Subject Description">
-                <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
-                <input id="courseTitle-input" class="text-input"  type="text" placeholder="Course Title">
-                <input id="professorName-input" class="text-input"  type="text" placeholder="Professor Name">         
-                <input id="courseAttributes-input" class="text-input"  type="text" placeholder="Attributes">
-
+                <div id="dropdown_container">
+                    <input id="subjectDescription-input" class="text-input"  type="text" placeholder="Subject Description">
+                    <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
+                    <input id="courseTitle-input" class="text-input"  type="text" placeholder="Course Title">
+                    <input id="professorName-input" class="text-input"  type="text" placeholder="Professor Name">         
+                    <input id="courseAttributes-input" class="text-input"  type="text" placeholder="Attributes">
+                </div>
+          
                 <br><br>
-                <div>Meeting days and times:</div>
-                <br>
-                <input type ="button" value ="Meeting Day(s) " id="meetingDays-input" class="text-input"  type="text" placeholder="Meeting Days">
+                <div id="days_times_container">Meeting days and times:
+                    <br><br>
 
+                    <input type ="button" value ="Meeting Day(s) " id="meetingDays-input" class="text-input meetingDays"  type="text" placeholder="Meeting Days">
 
-                <div id="slider-range", class="time-slider">
-                    <div id="lower_knob_element" class="ui-slider-handle">
-                        <p class="handle-text" id="lower_text"></p>
+                    <div id="slider_container" class="sliderContainer">
+                        <div id="slider-range", class="time-slider">
+                        <div id="lower_knob_element" class="ui-slider-handle">
+                            <p class="handle-text" id="lower_text"></p>
+                        </div>
+                        <div id="upper_knob_element" class="ui-slider-handle">
+                            <p class="handle-text" id="upper_text"></p>
+                        </div>
+                        
+                        <button onclick=clearSlider(1) class="clearTimeBtn">Clear</button> 
                     </div>
-                    <div id="upper_knob_element" class="ui-slider-handle">
-                        <p class="handle-text" id="upper_text"></p>
-                    </div>
+                    <button id="clear_All_Btn" class="clearAllBtn" onclick=clearReq(2)>Clear All</button>
+
                 </div>
-
-                <div id="daysForm"></div>
-               
-               
-
-
-
-                
-                <div id="plan_Input_Container">
-                    <button id="selectPlanBtn" > Select Plan </button>
-                </div>
-                
+           
 
             </div>
 
@@ -70,20 +77,28 @@
                 <div id="classes-list-container" class="classes-list-containter">
                 
                 </div>
-
-
-
             </div>
-
-            
-            <div id="scheduleInput"></div>
-
-
-            
-
 
         </div>
 
+        <div id="plan_container">
+
+            <div id="planBtnDiv">
+                <button id="selectPlanBtn" > Select Plan </button>
+                <div id="delete_Plan_Container"></div>
+            </div>
+            
+            <div id="plan_Input_Container"></div>
+
+            <div id="schedule-container" class="schedContainer">
+                <div id="classList-container"></div>  
+                <div id="skeduler-container-main" class = "skeduler-container-main">
+                    <div id="skeduler-container"></div>
+                </div>
+            </div>
+        </div>
+      
+                
 
 
 

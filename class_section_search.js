@@ -62,7 +62,6 @@ class class_search_query{
   {
     var beginTime = parse_time(String(section.beginTime[0]))
     var finishTime = parse_time(String(section.endTime[0]))
-
     if(this.startTime == "" && this.endTime == "")
       return true
     if(time_to_min(this.startTime) <= time_to_min(beginTime) && time_to_min(this.endTime) >= time_to_min(finishTime))
@@ -193,11 +192,19 @@ class class_search_query{
     } 
     if (this.days != "")
       return false
-    if(this.startTime != '')
+    if(this.startTime != "")
       return false
 
     return true
   }
-}
 
+  clearReq()
+  {
+    for (var i = 0; i < this.requirementArr.length; ++i)
+      this.requirementArr[i] = ""
+    this.days = ""
+    this.startTime = ""
+    this.endTime = ""
+  }
+}
 
