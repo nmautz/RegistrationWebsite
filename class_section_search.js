@@ -192,7 +192,7 @@ class class_search_query{
     } 
     if (this.days != "")
       return false
-    if(this.startTime != '')
+    if(this.startTime != "")
       return false
 
     return true

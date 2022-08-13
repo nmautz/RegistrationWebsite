@@ -324,28 +324,12 @@ class daysDropDown extends dropDown {
 var inputArray = []
 function clearReq()
 {   
+    console.log(requirement.endTime)
     for (var i = 0; i < inputArray.length; ++i)
         inputArray[i].clearInput()
     
     //clears time interval
-    const TIME_INTERVAL = 48
-    var values= [ 16, 36 ]
-    var handle = $("#lower_text")
-    var handle2 = $("#upper_text")
-    handle.text( minToTime(values[0], TIME_INTERVAL) );
-    handle2.text( minToTime(values[1], TIME_INTERVAL) );
-    $( "#slider-range" ).slider({
-
-        create: function() {
-            handle.text( minToTime($( this ).slider( "values" )[0], TIME_INTERVAL) );
-            handle2.text( minToTime($( this ).slider( "values" )[1], TIME_INTERVAL) );
-        },
-        range: true,
-        min: 0,
-        max: TIME_INTERVAL,
-        values: [ 16, 36 ],
-    });
-
+    clearSlider(2)
     requirement.clearReq()
     update_section_display()
 }

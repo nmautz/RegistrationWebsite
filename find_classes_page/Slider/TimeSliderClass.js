@@ -45,6 +45,29 @@ $( function() {
 
 })
 
+function clearSlider(use)
+{
+  const TIME_INTERVAL = 48
+  var values= [ 16, 36 ]
+  var handle = $("#lower_text")
+  var handle2 = $("#upper_text")
+  handle.text( minToTime(values[0], TIME_INTERVAL) );
+  handle2.text( minToTime(values[1], TIME_INTERVAL) );
+  $( "#slider-range" ).slider({
+
+      create: function() {
+          handle.text( minToTime($( this ).slider( "values" )[0], TIME_INTERVAL) );
+          handle2.text( minToTime($( this ).slider( "values" )[1], TIME_INTERVAL) );
+      },
+      range: true,
+      min: 0,
+      max: TIME_INTERVAL,
+      values: [ 16, 36 ],
+  });
+  requirement.addTimeRequirement('','')
+  if (use == 1)
+     update_section_display()
+}
 
 function minToTime(min, time_interval)
 {

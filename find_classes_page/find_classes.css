@@ -1,5 +1,6 @@
 body {
   font-family: Arial;
+  /* padding-left: 3vw; */
 }
 
 
@@ -8,8 +9,16 @@ body {
   flex-direction: column;
   row-gap: 0px;
   justify-content: space-between;
-
+  
 }
+
+.clearAllBtn{
+  position: relative;
+  left: 100vw;
+  top: -5vw;
+  padding: 30px 50px;
+}
+
 .content-main {
   margin-top: 25px;
   display: flex;
