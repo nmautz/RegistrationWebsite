@@ -18,6 +18,11 @@ class dropDown {
         this.setListeners()
     }
 
+    clearInput()
+    {
+        var input = document.getElementById(this.input)
+        input.value = ""
+    }
     setInputCSS()
     {
         //css class that the input follows**************************
@@ -310,9 +315,17 @@ class daysDropDown extends dropDown {
     }
 }
 
+var inputArray = []
 function clearReq()
-{
-    console.log("here")
+{   
+    for (var i = 0; i < inputArray.length; ++i)
+    {
+        inputArray[i].clearInput()
+    }
+
+
+    requirement.clearReq()
+    update_section_display()
 }
 const requirement = new class_search_query()
 
@@ -326,6 +339,8 @@ document.addEventListener("DOMContentLoaded", function()
     const drop5 = new dropDown("professorName-input","professorName",requirement,4)
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
     const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
+
+    inputArray = [drop2,drop3,drop4,drop5,drop6]
 
 })
 
