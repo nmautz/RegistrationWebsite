@@ -310,6 +310,10 @@ class daysDropDown extends dropDown {
     }
 }
 
+function clearReq()
+{
+    console.log("here")
+}
 const requirement = new class_search_query()
 
 document.addEventListener("DOMContentLoaded", function()

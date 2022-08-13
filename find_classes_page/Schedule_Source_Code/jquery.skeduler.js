@@ -140,8 +140,8 @@
       // console.log(getCardHeight(task.duration))
       var width = task.width || 194;
       var left = task.left || 0;
-      if (task.overlaps)
-        var opacity = "0.5"
+      if (task.backgroundColor == "red")
+        var opacity = ".9"
       else 
         var opacity = "0.95"
       var card = $("<div></div>")

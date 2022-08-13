@@ -197,6 +197,10 @@ class class_search_query{
 
     return true
   }
-}
 
+  clearReq()
+  {
+    
+  }
+}
 

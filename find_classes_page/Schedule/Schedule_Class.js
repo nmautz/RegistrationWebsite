@@ -30,14 +30,21 @@ class Schedule {
         this.colorInd = 0
         var classes = load_classes(this.selectedPlan)
         var tasks = []
-  
+        var temp = []
+
 
         for (var i = 0; i < classes.length; ++i)
         {
-            tasks = this.convertToTasks(classes[i],tasks)
+            temp = this.convertToTasks(classes[i],tasks)
         }
 
-        generate(tasks) 
+        // for (var i = 0; i < temp.length; ++i)
+        // {
+        //     console.log(temp[i])
+        //     // if(temp[i].backgroundColor != "red")
+        //     //     tasks.push(temp[i])
+        // }
+        generate(temp) 
     }
 
 
@@ -53,29 +60,39 @@ class Schedule {
         }
 
         for (var i = 0; i < meetingDays.length; ++i)
-        {
-            // var duration = (section.endTime[0] - section.beginTime[0]) /100
-            var duration = (this.getTime(section.endTime[0])  - this.getTime(section.beginTime[0]))
-        
-            var task = 
-            {
-                // startTime: section.beginTime[0] / 100,
-                startTime: this.getTime(section.beginTime[0]),
-                startTimeUnMod: section.beginTime[0],
-                endTimeUnMod: section.endTime[0],
-                duration: duration,
-                column: meetingDays[i],
-                id: section.id,
-                timeString: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),
-                professor: section.professorName,
-                title: section.courseTitle,    
-                backgroundColor: section.color, 
-                overlaps: section.overlaps
-                // backgroundColor: String(this.taskBackgroundColor[this.colorInd])
-            }
-            tasks.push(task)
+        {   
+            var temp = this.toTask(section,meetingDays[i])
+            if (temp.backgroundColor != "red")
+                tasks.unshift(temp)
+            else
+                tasks.push(temp)
         }
         return tasks
+    }
+
+    toTask(section,column)
+    {
+        var duration = (this.getTime(section.endTime[0])  - this.getTime(section.beginTime[0]))
+        var overlapText = ""
+        if (section.color == "red")
+            overlapText = " (OVERLAPS)"
+        var task = 
+        {
+            // startTime: section.beginTime[0] / 100,
+            startTime: this.getTime(section.beginTime[0]),
+            startTimeUnMod: section.beginTime[0],
+            endTimeUnMod: section.endTime[0],
+            duration: duration,
+            column: column,
+            id: section.id,
+            timeString: parse_time(section.beginTime[0])  + "-" + parse_time(section.endTime[0]),
+            professor: section.professorName,
+            title: section.courseTitle + overlapText,    
+            backgroundColor: section.color, 
+            overlaps: section.overlaps
+            // backgroundColor: String(this.taskBackgroundColor[this.colorInd])
+        }
+        return task
     }
 
     getTime(time)
@@ -124,6 +141,10 @@ class Schedule {
         divElement.className += "classInfo"
         const headerElement = document.createElement("h3")
         headerElement.innerHTML = section.courseTitle
+        if (section.color == "red")
+        {
+            headerElement.innerHTML += " (**OVERLAPS**)"
+        }
         const professor = document.createElement("div")
         professor.innerHTML = section.professorName
         const time = document.createElement("div")
