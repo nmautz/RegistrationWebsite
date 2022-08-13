@@ -176,6 +176,11 @@ class daysDropDown extends dropDown {
         this.isClicked = false
     }
 
+    clearInput()
+    {
+        document.getElementById(this.input).value = "Meeting Day(s)"
+    }
+
     //clicking on button will clear the restrictions on the dropdown
     //restrictions are only added when dropdown is clicked
     setListeners() 
@@ -315,15 +320,12 @@ class daysDropDown extends dropDown {
     }
 }
 
+//gets filled when dropdowns are dynamically created at DOMContentLoaded
 var inputArray = []
 function clearReq()
 {   
     for (var i = 0; i < inputArray.length; ++i)
-    {
         inputArray[i].clearInput()
-    }
-
-
     requirement.clearReq()
     update_section_display()
 }
@@ -340,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function()
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
     const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
 
-    inputArray = [drop2,drop3,drop4,drop5,drop6]
+    inputArray = [drop2,drop3,drop4,drop5,drop6,drop7]
 
 })
 
