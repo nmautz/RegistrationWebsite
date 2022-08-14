@@ -33,17 +33,11 @@ class Schedule {
         var temp = []
 
 
-        for (var i = 0; i < classes.length; ++i)
-        {
+        for (var i = 0; i < classes.length; ++i)        
             temp = this.convertToTasks(classes[i],tasks)
-        }
+        
 
-        // for (var i = 0; i < temp.length; ++i)
-        // {
-        //     console.log(temp[i])
-        //     // if(temp[i].backgroundColor != "red")
-        //     //     tasks.push(temp[i])
-        // }
+
         generate(temp) 
     }
 

@@ -65,7 +65,16 @@ function createPTextElementBefore(ref_elem, class_string, text_string){
 
 }
 
-
+function createLinkElement(parent, class_string, text_string)
+{
+  const linkElement = document.createElement("a")
+  linkElement.classList.add(class_string)
+  // pElement.appendChild(document.createTextNode(text_string))
+  linkElement.href = text_string
+  linkElement.innerHTML = "Click Here"
+  parent.appendChild(linkElement);
+  return linkElement
+}
 
 function createDisplayContentBasic(section_display, section){
   //Left display
@@ -152,15 +161,15 @@ function createDisplayContentExtended(section_display, section){
 function createExtendedLeftContent(left_display, section){
   const restrictionsDiv = createDivElement(left_display, "section-display-side-div");
   createPTextElement(restrictionsDiv, "section-display-side-title", "Restrictions")
-  createPTextElement(restrictionsDiv, "section-display-side-text", "TODO PULL RESTRICTIONS");
+  createPTextElement(restrictionsDiv, "section-display-side-text", section.restrictions);
 
   const prereqDiv = createDivElement(left_display, "section-display-side-div");
   createPTextElement(prereqDiv, "section-display-side-title", "Prerequisites");
-  createPTextElement(prereqDiv, "section-display-side-text", "TODO PULL PREREQS");
+  createPTextElement(prereqDiv, "section-display-side-text", section.prereqs);
 
   const coreqDiv = createDivElement(left_display, "section-display-side-div");
   createPTextElement(coreqDiv, "section-display-side-title", "Corequisites");
-  createPTextElement(coreqDiv, "section-display-side-text", "TODO PULL COREQS");
+  createPTextElement(coreqDiv, "section-display-side-text", section.coreqs);
 
 
 
@@ -200,9 +209,11 @@ function createExtendedRightContent(right_display,section){
   createPTextElement(feesDiv, "section-display-side-text", "TODO PULL FEES");
 
   const bookstoreDiv = createDivElement(right_display, "section-display-side-div");
-  createPTextElement(bookstoreDiv, "section-display-side-title", "Bookstore Link");
-  createPTextElement(bookstoreDiv, "section-display-side-text", "TODO PULL Bookstore Link");
-
+  createPTextElement(bookstoreDiv, "section-display-side-title","Bookstore Link");
+  // createLinkElementBefore(bookstoreDiv, "section-display-side-title", section.bookstoreLink);
+  
+  createLinkElement(bookstoreDiv, "section-display-side-text", section.bookstoreLink);
+  
 
   const attributesDiv = createDivElement(right_display, "section-display-side-div");
   createPTextElement(attributesDiv, "section-display-side-title", "Attributes")
