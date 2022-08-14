@@ -139,6 +139,12 @@ class Schedule {
         {
             headerElement.innerHTML += " (**OVERLAPS**)"
         }
+        const prereqs = document.createElement("div")
+
+        if (!String(section.prereqs).includes("No prerequisite information available."))
+            prereqs.innerHTML = "**Contains Prerequisites**"
+
+      
         const professor = document.createElement("div")
         professor.innerHTML = section.professorName
         const time = document.createElement("div")
@@ -161,6 +167,7 @@ class Schedule {
 
         divElement.appendChild(colorCode)
         divElement.appendChild(headerElement)
+        divElement.appendChild(prereqs)
         divElement.appendChild(professor)
         divElement.appendChild(meetingDays)
         divElement.appendChild(time)

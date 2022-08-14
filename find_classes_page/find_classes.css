@@ -14,8 +14,9 @@ body {
 
 .clearAllBtn{
   position: relative;
-  left: 100vw;
-  top: -5vw;
+  /* left: 100vw; */
+  left: 75vw;
+  bottom: 9vw;
   padding: 30px 50px;
 }
 
