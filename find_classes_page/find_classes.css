@@ -1,8 +1,22 @@
+html {
+  height: 100vh;
+  overflow: visible;
+}
+
 body {
   font-family: Arial;
   /* padding-left: 3vw; */
 }
 
+#plan_container {
+
+  position: absolute;
+  bottom: 0px;
+  height: 10vh;
+  overflow: scroll;
+
+
+}
 
 .content {
   display: flex;
