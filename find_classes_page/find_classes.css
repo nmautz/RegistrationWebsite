@@ -13,11 +13,16 @@ body {
   position: absolute;
   bottom: 0px;
   height: 10vh;
-  overflow: scroll;
   z-index: 100;
 
 
 }
+
+#plan-scroll-container {
+  overflow: scroll;
+  height: 5vh;
+}
+
 
 .content {
   display: flex;
