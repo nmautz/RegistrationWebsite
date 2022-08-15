@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="find_classes.css">
         <link rel="stylesheet" href="DropDown/dropDown.css">
         <link rel="stylesheet" href="Slider/TimeSlider.css">
+        <link rel="stylesheet" href="Pop_Up/Pop_Up.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="../load_queue.js"></script>
@@ -19,7 +20,8 @@
         <script src="DropDown/DropDownClass.js"></script>
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
         <script src="Schedule/Schedule_Class.js"></script>
-
+        <script src="Pop_Up/Pop_Up.js"></script>
+       
         <!-- Jquery Scheduler -->
         <link rel="stylesheet" href="./Schedule_Source_Code/jquery.skeduler.css" type="text/css">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -51,20 +53,22 @@
                     <br><br>
 
                     <input type ="button" value ="Meeting Day(s) " id="meetingDays-input" class="text-input meetingDays"  type="text" placeholder="Meeting Days">
-
-                    <div id="slider_container" class="sliderContainer">
-                        <div id="slider-range", class="time-slider">
-                        <div id="lower_knob_element" class="ui-slider-handle">
-                            <p class="handle-text" id="lower_text"></p>
+                    <br><br>
+                    <div id="slider&button_container">
+                        <div id="slider_container" class="sliderContainer">
+                            <div id="slider-range", class="time-slider">
+                            <div id="lower_knob_element" class="ui-slider-handle">
+                                <p class="handle-text" id="lower_text"></p>
+                            </div>
+                            <div id="upper_knob_element" class="ui-slider-handle">
+                                <p class="handle-text" id="upper_text"></p>
+                            </div>
                         </div>
-                        <div id="upper_knob_element" class="ui-slider-handle">
-                            <p class="handle-text" id="upper_text"></p>
-                        </div>
-                        
-                        <button onclick=clearSlider(1) class="clearTimeBtn">Clear</button> 
+                       
                     </div>
-
                 </div>
+                <button onclick=clearSlider(1) class="clearTimeBtn">Clear</button> 
+                <!-- css found in find_classes.css file -->
                 <button id="clear_All_Btn" class="clearAllBtn" onclick=clearReq(2)>Clear All</button>
 
             </div>
@@ -101,6 +105,16 @@
 
 
     </body>
-
+    <button>Open Pop Up</button>
+    <div class="popUp" id="pop_up_window">
+        <div class="popUp-header">
+            <div class="title">Example</div>
+            <button class="close-button">&times;</button>
+        </div>
+        <div class="popUp-Body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam ipsa voluptates nobis sint ut, omnis ea dolore magni optio quaerat aliquam rem impedit eligendi recusandae totam officiis minus pariatur dolorem quidem exercitationem, suscipit corrupti? Amet sapiente eveniet placeat voluptates, neque aliquid magni tenetur alias, repellat mollitia ipsam, in dolores quibusdam est. Nesciunt veniam ipsa voluptatum cum eius reprehenderit, commodi earum hic. Earum dolores expedita itaque explicabo laboriosam cum nam quia ipsam temporibus commodi error, incidunt delectus doloremque minus. Quibusdam, reiciendis?
+        </div>
+    </div>
+    <div id="overlay"></div>
 
 </html>

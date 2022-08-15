@@ -324,6 +324,7 @@ class daysDropDown extends dropDown {
 var inputArray = []
 function clearReq()
 {   
+
     for (var i = 0; i < inputArray.length; ++i)
         inputArray[i].clearInput()
     

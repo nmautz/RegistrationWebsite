@@ -166,7 +166,6 @@ function createExtendedLeftContent(left_display, section){
   const prereqDiv = createDivElement(left_display, "section-display-side-div");
   createPTextElement(prereqDiv, "section-display-side-title", "Prerequisites");
   createPTextElement(prereqDiv, "section-display-side-text", section.prereqs);
-  console.log(section.prereqs)
   const coreqDiv = createDivElement(left_display, "section-display-side-div");
   createPTextElement(coreqDiv, "section-display-side-title", "Corequisites");
   createPTextElement(coreqDiv, "section-display-side-text", section.coreqs);

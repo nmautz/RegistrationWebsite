@@ -5,19 +5,24 @@ body {
 
 
 .content {
+  /* position: fixed; */
   display: flex;
   flex-direction: column;
   row-gap: 0px;
   justify-content: space-between;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%,-40%); */
   
 }
 
 .clearAllBtn{
   position: relative;
   /* left: 100vw; */
-  left: 75vw;
-  bottom: 9vw;
-  padding: 30px 50px;
+  left: 75%;
+  right: 3vw;
+  bottom: 6vw;
+  padding: 1.5vw 2.5vw;
 }
 
 .content-main {
