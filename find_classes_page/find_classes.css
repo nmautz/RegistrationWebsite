@@ -64,7 +64,7 @@ body {
   margin-left: auto;
 
   overflow-y: scroll;
-  max-height: 85vh;
+  max-height: 40vh;
 
   transition: all 200ms ease-in-out;
 
