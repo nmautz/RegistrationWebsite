@@ -175,7 +175,8 @@
 
     $( "#plan_container" ).resizable({
       handles:'n',
-      alsoResize: "#plan-scroll-container"
+      alsoResize: "#plan-scroll-container",
+      maxHeight: 700 
     });
 
   
