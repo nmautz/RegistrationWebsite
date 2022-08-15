@@ -1,6 +1,6 @@
 html {
-  height: 100vh;
-  overflow: visible;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
