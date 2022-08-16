@@ -11,8 +11,12 @@ function open_pop_up(section)
     var meetingDays = requirement.getWeekString(section)
     document.getElementById("popUp-Meeting-Days").innerHTML = meetingDays
     document.getElementById("popUp-Location").innerHTML = section.campusDescription + " Campus | " + section.buildingDescription
-    document.getElementById("popUp-Enrolment").innerHTML = section.enrollment + "/" + section.maximumEnrollment
-    
+    document.getElementById("popUp-Enrolment").innerHTML = section.enrollment + "/" + section.maximumEnrollment + " | Seats Available: " + section.seatsAvailable
+    document.getElementById("popUp-Hours").innerHTML = section.hoursWeek
+    document.getElementById("popUp-Attributes").innerHTML = getAttributes(section.attributeDesc)
+    document.getElementById("popUp-Prereqs").innerHTML = getPrereqs(section.prereqs)
+    document.getElementById("popUp-Coreqs").innerHTML = getPrereqs(section.coreqs)
+    document.getElementById("popUp-Restrictions").innerHTML = getPrereqs(section.restrictions)
     
     if (popUp == null)
         return
@@ -35,3 +39,24 @@ window.addEventListener("click", function(event){
     if (popUp.contains(event.target))
         close_pop_up()
   });
+
+
+function getAttributes(attributes)
+{
+    var text = ""
+    for (var i = 0; i < attributes.length; ++i)
+    {
+        text += attributes[i]
+        if (i < attributes.length - 1)
+            text += ", "       
+    }
+    return text
+}
+
+function getPrereqs(prereqs)
+{
+    if (String(prereqs).includes("No prerequisite information available."))
+        return "N/A"
+    else
+        return prereqs
+}
