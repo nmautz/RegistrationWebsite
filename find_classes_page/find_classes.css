@@ -1,6 +1,26 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: Arial;
   /* padding-left: 3vw; */
+}
+
+#plan_container {
+
+  position: absolute;
+  bottom: 0px;
+  height: 10vh;
+  z-index: 100;
+
+
+}
+
+#plan-scroll-container {
+  overflow: scroll;
+  height: 5vh;
 }
 
 
@@ -50,7 +70,7 @@ body {
   margin-left: auto;
 
   overflow-y: scroll;
-  max-height: 85vh;
+  max-height: 40vh;
 
   transition: all 200ms ease-in-out;
 

@@ -3,7 +3,7 @@
 
     <head>
         <title>Find Classes</title>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"/>
         <link rel="stylesheet" href="find_classes.css">
         <link rel="stylesheet" href="DropDown/dropDown.css">
         <link rel="stylesheet" href="Slider/TimeSlider.css">
@@ -19,6 +19,7 @@
         <script src="Slider/TimeSliderClass.js"></script>
         <script src="DropDown/DropDownClass.js"></script>
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
+
         <script src="Schedule/Schedule_Class.js"></script>
         <script src="Pop_Up/Pop_Up.js"></script>
        
@@ -83,22 +84,26 @@
 
         </div>
 
-        <div id="plan_container">
+        <div id="plan_container" class="ui-widget-content">
+            <div id="plan-scroll-container" class="plan-scroll-container">
+                <div id="planBtnDiv">
+                    <button id="selectPlanBtn" > Select Plan </button>
+                    <div id="delete_Plan_Container"></div>
+                </div>
+                
+                <div id="plan_Input_Container"></div>
 
-            <div id="planBtnDiv">
-                <button id="selectPlanBtn" > Select Plan </button>
-                <div id="delete_Plan_Container"></div>
-            </div>
-            
-            <div id="plan_Input_Container"></div>
-
-            <div id="schedule-container" class="schedContainer">
-                <div id="classList-container"></div>  
-                <div id="skeduler-container-main" class = "skeduler-container-main">
-                    <div id="skeduler-container"></div>
+                <div id="schedule-container" class="schedContainer">
+                    <div id="classList-container"></div>  
+                    <div id="skeduler-container-main" class = "skeduler-container-main">
+                        <div id="skeduler-container"></div>
+                    </div>
                 </div>
             </div>
+       
         </div>
+        <br>
+        <br>
       
                 
 
