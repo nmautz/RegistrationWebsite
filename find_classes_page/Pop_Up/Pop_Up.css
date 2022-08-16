@@ -38,8 +38,13 @@
     font-weight: bold;
 }
 
-.modal-body {
+.popUp-Body {
     padding: 10px 15px;
+    
+}
+
+.popUp-Body-Title {
+    font-weight: bold;
 }
 
 #overlay {
