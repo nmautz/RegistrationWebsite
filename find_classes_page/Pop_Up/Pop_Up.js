@@ -17,6 +17,10 @@ function open_pop_up(section)
     document.getElementById("popUp-Prereqs").innerHTML = getPrereqs(section.prereqs)
     document.getElementById("popUp-Coreqs").innerHTML = getPrereqs(section.coreqs)
     document.getElementById("popUp-Restrictions").innerHTML = getPrereqs(section.restrictions)
+    document.getElementById("popUp-Fees").innerHTML = section.fees
+    document.getElementById("popUp-Bookstore").href = section.bookstoreLink
+
+    
     
     if (popUp == null)
         return
