@@ -36,8 +36,6 @@ class Schedule {
         for (var i = 0; i < classes.length; ++i)        
             temp = this.convertToTasks(classes[i],tasks)
         
-
-
         generate(temp) 
     }
 
@@ -142,9 +140,13 @@ class Schedule {
         const prereqs = document.createElement("div")
 
         if (!String(section.prereqs).includes("No prerequisite information available."))
-            prereqs.innerHTML = "**Contains Prerequisites**"
+        {
+            prereqs.style.color = "red";
+            prereqs.innerHTML = "**Contains Prerequisites**"  
+          
+        }    
+        
 
-      
         const professor = document.createElement("div")
         professor.innerHTML = section.professorName
         const time = document.createElement("div")
