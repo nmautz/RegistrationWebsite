@@ -159,6 +159,13 @@ class Schedule {
         meetingDays.innerHTML = requirement.getWeekString(section)
         var deleteBtn = document.createElement("button")
         deleteBtn.innerHTML = "Remove"
+        var infoBtn = document.createElement("button")
+        infoBtn.innerHTML = "More Info"
+        infoBtn.data = section.courseTitle
+        infoBtn.addEventListener("click", (e)=>
+        {
+            open_pop_up(section)
+        })
         deleteBtn.data = section.id
         deleteBtn.addEventListener("click", (e)=>
         {
@@ -173,7 +180,7 @@ class Schedule {
         divElement.appendChild(professor)
         divElement.appendChild(meetingDays)
         divElement.appendChild(time)
-      
+        divElement.appendChild(infoBtn)
         divElement.appendChild(deleteBtn)
 
         insertPoint.appendChild(divElement)

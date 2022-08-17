@@ -50,6 +50,7 @@ class campusForm{
 }
 
 
+
 document.addEventListener("DOMContentLoaded", function()
 {
     var campusArr = ["Main","Florence"]

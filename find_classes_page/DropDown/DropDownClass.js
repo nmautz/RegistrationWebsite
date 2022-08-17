@@ -330,6 +330,7 @@ function clearReq()
     
     //clears time interval
     clearSlider(2)
+
     requirement.clearReq()
     update_section_display()
 }
