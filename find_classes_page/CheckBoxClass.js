@@ -1,10 +1,9 @@
 //Not in use
-class dayForm{
+class campusForm{
 
-    constructor(text,dayNum,container,requirementObj)
+    constructor(campus,container,requirementObj)
     {
-        this.text = text
-        this.dayNum = dayNum
+        this.campus = campus
         this.container = container
         this.requirementObj = requirementObj
         this.createCheckBox()
@@ -13,17 +12,18 @@ class dayForm{
 
     createCheckBox()
     {
+        //campusDescription
         var checkbox = document.createElement('input')
         checkbox.type = 'checkbox'
-        checkbox.id = this.text
-        checkbox.value = this.text
+        checkbox.id = this.campus
+        checkbox.value = this.campus
         this.addEventListener(checkbox)
 
 
  
         var label = document.createElement('label')
         label.htmlFor = checkbox.id
-        label.appendChild(document.createTextNode(this.text))
+        label.appendChild(document.createTextNode(this.campus))
         
         // var br = document.createElement('br')
 
@@ -37,16 +37,24 @@ class dayForm{
     {
         element.addEventListener("click", (e) =>
         {
-            this.requirementObj.addQueryRequirementDays(this.dayNum)
-            update_section_display()
+            console.log(this.campus)
+            // this.requirementObj.addQueryRequirementDays(this.dayNum)
+            // update_section_display()
         })
     }
 }
 
-function addWeekForm(insertElement,requirement)
+
+document.addEventListener("DOMContentLoaded", function()
 {
-    var weekArr = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-    var weekCB = []
-    for(var i = 0; i < weekArr.length; ++i)
-        weekCB.push(new dayForm(weekArr[i],i,insertElement,requirement))
-}
+    var campusArr = ["Main","Florence"]
+    var campusMemAdr = []
+    for (var i = 0; i < campusArr.length; ++i)
+    {
+        var campus = new campusForm(campusArr[i],"campus_checkbox_container",requirement)
+        campusMemAdr.push(campus)
+    }
+        
+    //     console.log("ja")
+    // }    
+})
