@@ -6,6 +6,7 @@ class campusForm{
         this.campus = campus
         this.container = container
         this.requirementObj = requirementObj
+        this.isClicked = false
         this.createCheckBox()
     }
 
@@ -37,9 +38,13 @@ class campusForm{
     {
         element.addEventListener("click", (e) =>
         {
-            console.log(this.campus)
+            this.isClicked = !this.isClicked
+            if (this.isClicked)
+                this.requirementObj.addCampusReq(this.campus)
+            if (!this.isClicked)
+                this.requirementObj.removeCampusReq(this.campus)
             // this.requirementObj.addQueryRequirementDays(this.dayNum)
-            // update_section_display()
+            update_section_display()
         })
     }
 }

@@ -14,6 +14,8 @@ class class_search_query{
     this.days = ""
     this.startTime = ""
     this.endTime = ""
+    this.campusMain = false
+    this.campusFlorence = false
     this.requirementArr = [this.subject, this.subjectDescription, this.courseNumber, this.courseTitle,this.professorName,this.attributeDesc,this.subject]
     //sets vars
     for (var i = 0; i < this.requirementArr.length; ++i)
@@ -38,9 +40,29 @@ class class_search_query{
     else
       this.endTime = endTime
   }
+
+  addCampusReq(campus)
+  {
+    if (campus == "Main")
+      this.campusMain = true
+    else if (campus == "Florence")
+      this.campusFlorence = true
+  }
+
+  removeCampusReq(campus)
+  {
+    if (campus == "Main")
+      this.campusMain = false
+    else if (campus == "Florence")
+      this.campusFlorence = false
+  }
+
   meetsRequirements(classList)
   {
     var classListArr = [classList.subject,classList.subjectDescription,classList.courseNumber,classList.courseTitle,classList.professorName,classList.attributeDesc]
+    if(!this.meetsCampusReq(classList))
+      return false
+
     if(!this.meetsTimeReq(classList))
       return false
       
@@ -56,6 +78,26 @@ class class_search_query{
     }
 
     return true
+  }
+
+  meetsCampusReq(section)
+  {
+    if (!this.campusMain && !this.campusFlorence)
+      return true
+    if (this.campusMain && this.campusFlorence)
+      return true
+    if (this.campusMain && !this.campusFlorence)
+    {
+      if (!String(section.restrictions).includes("Florence"))
+        return true
+    }else if (!this.campusMain && this.campusFlorence)
+    {
+      if (String(section.restrictions).includes("Florence"))
+        return true
+    }
+    return false
+      
+  
   }
 
   meetsTimeReq(section)
@@ -194,7 +236,8 @@ class class_search_query{
       return false
     if(this.startTime != "")
       return false
-
+    // if (this.campusMain || this.campusFlorence)
+    //   return false
     return true
   }
 
