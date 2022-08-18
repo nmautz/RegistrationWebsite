@@ -26,6 +26,7 @@ body {
 #plan-scroll-container {
   overflow: scroll;
   height: 5vh;
+  zoom: 0.7;
 }
 
 .plan-select-options {
