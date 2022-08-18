@@ -321,14 +321,7 @@ class daysDropDown extends dropDown {
 }
 
 
-class mainSearch extends dropDown{
-    constructor(input,elementName,requirementsObj,requirementNum)
-    {
-        super(input,elementName,requirementsObj,requirementNum)
-        this.inputVal = ""
-      
-    }
-}
+
 //gets filled when dropdowns are dynamically created at DOMContentLoaded
 var inputArray = []
 function clearReq()
