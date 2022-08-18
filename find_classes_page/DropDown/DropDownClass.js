@@ -320,6 +320,15 @@ class daysDropDown extends dropDown {
     }
 }
 
+
+class mainSearch extends dropDown{
+    constructor(input,elementName,requirementsObj,requirementNum)
+    {
+        super(input,elementName,requirementsObj,requirementNum)
+        this.inputVal = ""
+      
+    }
+}
 //gets filled when dropdowns are dynamically created at DOMContentLoaded
 var inputArray = []
 function clearReq()
@@ -340,6 +349,7 @@ document.addEventListener("DOMContentLoaded", function()
 {
     
     //creating drop downs
+    const mainSearchDrpDwn = new mainSearch("main_search_input","mainSearch",requirement,1)
     const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
     const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
