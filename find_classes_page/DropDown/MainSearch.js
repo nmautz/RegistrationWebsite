@@ -28,7 +28,20 @@ class mainSearch extends dropDown{
             {
                 var text = String(elements[j]).toUpperCase()
                 
-                if (text.includes(userInput))
+                if(elementNames[j] == "Attributes")
+                {
+                    // console.log(elementContainer[i][j])
+                    var tempArr = text.split(',')
+                    for (var x = 0; x < tempArr.length; ++x)
+                    {   
+                        if (tempArr[x].includes(userInput))
+                        {
+                            if (!elementContainer[j].includes(tempArr[x]))
+                                elementContainer[j].push(tempArr[x]) 
+                        }     
+                    }
+                       
+                }else if (text.includes(userInput))
                 {
                     if (!elementContainer[j].includes(text))
                         elementContainer[j].push(text)
@@ -38,19 +51,18 @@ class mainSearch extends dropDown{
         
         for (var i = 0; i < elementContainer.length; ++i)
         {
-            if (elementContainer[i] > 0)
-            {}
-            elementContainer[i].sort()
-            this.addDropdown("****" + elementNames[i] + "****")
-            for (var j = 0; j < elementContainer[i].length; ++j)
-                this.addDropdown(elementContainer[i][j])
-        }
+            if (elementContainer[i].length > 0)
+            {
+                elementContainer[i].sort()
+                this.addDropdown("****" + elementNames[i] + "****")
+                for (var j = 0; j < elementContainer[i].length; ++j)
+                {
+                    this.addDropdown(elementContainer[i][j])  
+                }
+                    
+            }
             
-        
+        }
 
-        // adds the drop downs
-        dropDownArr.sort()
-        for (var i = 0; i < dropDownArr.length; ++i)
-            this.addDropdown(dropDownArr[i])
     }
 }
