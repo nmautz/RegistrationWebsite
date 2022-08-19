@@ -23,7 +23,7 @@ class mainSearch extends dropDown{
 
         for(var i = 0; i < classesList.length; ++i)
         {
-            var elements = [classesList[i].courseTitle,classesList[i].professorName,classesList[i].attributeDesc,classesList[i].subjectDescription]
+            var elements = [classesList[i].subject + " " + classesList[i].courseNumber + " - " + classesList[i].courseTitle,classesList[i].professorName,classesList[i].attributeDesc,classesList[i].subjectDescription]
             for (var j = 0; j < elements.length; ++j)
             {
                 
