@@ -26,15 +26,17 @@ class mainSearch extends dropDown{
             var elements = [classesList[i].courseTitle,classesList[i].professorName,classesList[i].attributeDesc,classesList[i].subjectDescription]
             for (var j = 0; j < elements.length; ++j)
             {
-                var text = String(elements[j]).toUpperCase()
                 
+                var text = String(elements[j]).toUpperCase()
                 if(elementNames[j] == "Attributes")
                 {
+                    var textArr = String(elements[j])
                     // console.log(elementContainer[i][j])
-                    var tempArr = text.split(',')
+                    var tempArr = textArr.split(',')
                     for (var x = 0; x < tempArr.length; ++x)
                     {   
-                        if (tempArr[x].includes(userInput))
+                        var indexVal = String(tempArr[x]).toUpperCase()
+                        if (indexVal.includes(userInput))
                         {
                             if (!elementContainer[j].includes(tempArr[x]))
                                 elementContainer[j].push(tempArr[x]) 
@@ -43,8 +45,9 @@ class mainSearch extends dropDown{
                        
                 }else if (text.includes(userInput))
                 {
-                    if (!elementContainer[j].includes(text))
-                        elementContainer[j].push(text)
+                    var checkVal = String(elementContainer[j]).toUpperCase()
+                    if (!checkVal.includes(text))
+                        elementContainer[j].push(elements[j])
                 }
             }      
         }
