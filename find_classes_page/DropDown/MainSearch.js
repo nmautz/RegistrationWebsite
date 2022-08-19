@@ -12,10 +12,11 @@ class mainSearch extends dropDown{
         userInput = String(userInput).toUpperCase()
 
         //checks the json
-        this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
+        // this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
         var dropDownArr = []
 
         var elementNames = ["Course Titles","Professors","Attributes","Subject Descriptions"]
+        var requirements = [3,4,5,1]
         var elementContainer = new Array(elementNames.length)
         for (var i = 0; i < elementContainer.length; ++i)
             elementContainer[i] = new Array
@@ -57,15 +58,47 @@ class mainSearch extends dropDown{
             if (elementContainer[i].length > 0)
             {
                 elementContainer[i].sort()
-                this.addDropdown("****" + elementNames[i] + "****")
+                this.addTitleDropDown(elementNames[i])
                 for (var j = 0; j < elementContainer[i].length; ++j)
                 {
-                    this.addDropdown(elementContainer[i][j])  
+                    this.addDropdown(elementContainer[i][j],requirements[i])  
                 }
                     
             }
             
         }
 
+    }
+
+    addDropdown(data,key)
+    {
+        const dropdownUI = document.getElementById(this.divName)
+        const aElement = document.createElement("a")
+        aElement.id = this.elementName
+        aElement.data = data
+        const text = document.createTextNode(data)
+        aElement.appendChild(text)
+        aElement.addEventListener("click", (e) =>
+        {
+            this.requirementNum = key
+            document.getElementById(this.input).value = data
+            this.requirementsObj.addQueryRequirement(data,this.requirementNum)
+            //makes dropdown update after it is clicked on
+            this.updateDropDown()
+            update_section_display()
+        })
+        dropdownUI.insertAdjacentElement("beforeend",aElement)
+    }
+
+    addTitleDropDown(title)
+    {
+        const dropdownUI = document.getElementById(this.divName)
+        const element = document.createElement("div")
+        element.id = this.elementName
+        element.classList.add("dropdown-content-title")
+        // aElement.data = data
+        const text = document.createTextNode(title)
+        element.appendChild(text)
+        dropdownUI.insertAdjacentElement("beforeend",element)
     }
 }

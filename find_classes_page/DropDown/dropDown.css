@@ -27,6 +27,13 @@
         max-height: 50vh;
     }
 
+    .dropdown-content-title {
+        /* text-align: center; */
+        color: gray;
+        padding: 10px;
+    }
+
+    .dropdown-content
     .button-dropdown {
         transform: translate(-15.73vh,7.5vh);
     }
