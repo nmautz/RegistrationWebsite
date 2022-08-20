@@ -27,6 +27,10 @@
         max-height: 50vh;
     }
 
+    .days-drop-down {
+        transform: translate(-15vh,7.15vh);
+    }
+
     .dropdown-content-title {
         color: gray;
         padding: 10px;

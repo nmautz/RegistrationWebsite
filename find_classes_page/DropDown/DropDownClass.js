@@ -208,6 +208,7 @@ class daysDropDown extends dropDown {
         //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
         element.classList.add("button-dropdown")
+        element.classList.add("days-drop-down")
         dropdownUI.insertAdjacentElement("afterend",element)
     }
 
