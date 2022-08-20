@@ -101,4 +101,27 @@ class mainSearch extends dropDown{
         element.appendChild(text)
         dropdownUI.insertAdjacentElement("beforeend",element)
     }
+
+    addClearButton()
+    {
+        const dropdownUI = document.getElementById(this.input)
+        const element = document.createElement("INPUT")
+        element.setAttribute("type", "button")
+        element.value = "x"
+        element.id = String(this.elementName + "Button")
+        //css class that the button follows**************************
+        element.classList.add("dropdown")
+        element.classList.add("clearBtn")
+        element.addEventListener("click", (e) =>
+        {
+            if(!requirement.isEmpty())
+            {
+                dropdownUI.value = ""
+                clearDropDowns()
+                this.updateDropDown()
+                update_section_display()
+            }
+        })
+        dropdownUI.insertAdjacentElement("afterend",element)
+    }
 }

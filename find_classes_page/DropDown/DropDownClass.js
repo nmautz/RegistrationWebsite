@@ -336,6 +336,16 @@ function clearReq()
     requirement.clearReq()
     update_section_display()
 }
+
+dropDownArr = []
+function clearDropDowns()
+{
+    for (var i = 0; i < inputArray.length; ++i)
+        inputArray[i].clearInput()
+
+    requirement.clearReq()
+}
+
 const requirement = new class_search_query()
 
 document.addEventListener("DOMContentLoaded", function()
@@ -351,6 +361,6 @@ document.addEventListener("DOMContentLoaded", function()
     const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
 
     inputArray = [drop2,drop3,drop4,drop5,drop6,drop7]
-
+    dropDownArr = [drop2,drop3,drop4,drop5,drop6]
 })
 
