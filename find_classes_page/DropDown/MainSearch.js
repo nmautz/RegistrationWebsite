@@ -1,3 +1,12 @@
+class searchElement{
+    constructor(name, requirementNum)
+    {
+        this.name = name
+        this.requirementNum = requirementNum
+        this.container = []
+    }
+}
+
 class mainSearch extends dropDown{
     constructor(input,elementName,requirementsObj,requirementNum)
     {
@@ -17,6 +26,11 @@ class mainSearch extends dropDown{
 
         var elementNames = ["Course Titles","Professors","Attributes","Subject Descriptions"]
         var requirements = [3,4,5,1]
+
+        // var elementContainer = new Array(elementNames.length)
+        // for (var i = 0; i < elementContainer.length; ++i)
+        //     elementContainer[i] = new Array
+
         var elementContainer = new Array(elementNames.length)
         for (var i = 0; i < elementContainer.length; ++i)
             elementContainer[i] = new Array
@@ -82,9 +96,9 @@ class mainSearch extends dropDown{
         {
             this.requirementNum = key
             document.getElementById(this.input).value = data
-            this.requirementsObj.addQueryRequirement(data,this.requirementNum)
+            this.requirementsObj.addQueryRequirement(String(data).toUpperCase(),this.requirementNum)
             //makes dropdown update after it is clicked on
-            this.updateDropDown()
+            // this.updateDropDown()
             update_section_display()
         })
         dropdownUI.insertAdjacentElement("beforeend",aElement)
@@ -117,7 +131,7 @@ class mainSearch extends dropDown{
             if(!requirement.isEmpty())
             {
                 dropdownUI.value = ""
-                clearDropDowns()
+                clearReq()
                 this.updateDropDown()
                 update_section_display()
             }

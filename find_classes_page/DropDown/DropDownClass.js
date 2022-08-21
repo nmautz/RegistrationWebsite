@@ -344,7 +344,7 @@ function clearDropDowns()
     for (var i = 0; i < inputArray.length; ++i)
         inputArray[i].clearInput()
 
-    requirement.clearReq()
+    requirement.clearBasicReq()
 }
 
 const requirement = new class_search_query()

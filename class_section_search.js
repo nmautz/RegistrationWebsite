@@ -245,11 +245,16 @@ class class_search_query{
 
   clearReq()
   {
-    for (var i = 0; i < this.requirementArr.length; ++i)
-      this.requirementArr[i] = ""
+    this.clearBasicReq()
     this.days = ""
     this.startTime = ""
     this.endTime = ""
+  }
+
+  clearBasicReq()
+  {
+    for (var i = 0; i < this.requirementArr.length; ++i)
+        this.requirementArr[i] = ""
   }
 }
 
