@@ -30,8 +30,6 @@ class class_search_query{
       this.days = data
     else
       this.requirementArr[elementNum] = data
-
-      console.log(this.requirementArr)
   }
 
   addTimeRequirement(startTime,endTime)

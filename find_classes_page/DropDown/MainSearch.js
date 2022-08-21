@@ -4,6 +4,7 @@ class searchElement{
         this.name = name
         this.requirementNum = requirementNum
         this.container = []
+        this.secondContainer = []
     }
 }
 
@@ -21,19 +22,13 @@ class mainSearch extends dropDown{
         userInput = String(userInput).toUpperCase()
 
         //checks the json
-        // this.requirementsObj.addQueryRequirement(userInput,this.requirementNum)
-        var dropDownArr = []
-
+   
         var elementNames = ["Course Titles","Professors","Attributes","Subject Descriptions"]
         var requirements = [3,4,5,1]
 
-        // var elementContainer = new Array(elementNames.length)
-        // for (var i = 0; i < elementContainer.length; ++i)
-        //     elementContainer[i] = new Array
-
-        var elementContainer = new Array(elementNames.length)
-        for (var i = 0; i < elementContainer.length; ++i)
-            elementContainer[i] = new Array
+        var searchElements = []
+        for (var i = 0; i < elementNames.length; ++i)
+            searchElements.push(new searchElement(elementNames[i],requirements[i]))
         
 
         for(var i = 0; i < classesList.length; ++i)
@@ -53,38 +48,39 @@ class mainSearch extends dropDown{
                         var indexVal = String(tempArr[x]).toUpperCase()
                         if (indexVal.includes(userInput))
                         {
-                            if (!elementContainer[j].includes(tempArr[x]))
-                                elementContainer[j].push(tempArr[x]) 
+                            if (!searchElements[j].container.includes(tempArr[x]))
+                                searchElements[j].container.push(tempArr[x]) 
                         }     
                     }
-                       
+                        
                 }else if (text.includes(userInput))
                 {
-                    var checkVal = String(elementContainer[j]).toUpperCase()
+                    var checkVal = String(searchElements[j].container).toUpperCase()
                     if (!checkVal.includes(text))
-                        elementContainer[j].push(elements[j])
+                        searchElements[j].container.push(elements[j])
+                    
+                        
                 }
             }      
         }
         
-        for (var i = 0; i < elementContainer.length; ++i)
+        for (var i = 0; i < searchElements.length; ++i)
         {
-            if (elementContainer[i].length > 0)
+            if (searchElements[i].container.length > 0)
             {
-                elementContainer[i].sort()
-                this.addTitleDropDown(elementNames[i])
-                for (var j = 0; j < elementContainer[i].length; ++j)
+                searchElements[i].container.sort()
+                this.addTitleDropDown(searchElements[i].name)
+                for (var j = 0; j < searchElements[i].container.length; ++j)
                 {
-                    this.addDropdown(elementContainer[i][j],requirements[i])  
+                    this.addDropdown(searchElements[i].container[j],searchElements[i].requirementNum,searchElements[i].name)
                 }
                     
             }
-            
-        }
 
+        }
     }
 
-    addDropdown(data,key)
+    addDropdown(data,key,elementName)
     {
         const dropdownUI = document.getElementById(this.divName)
         const aElement = document.createElement("a")
@@ -96,6 +92,8 @@ class mainSearch extends dropDown{
         {
             this.requirementNum = key
             document.getElementById(this.input).value = data
+            if (elementName == "Course Titles")
+                data = this.parseCourseTitle(data," - ")
             this.requirementsObj.addQueryRequirement(String(data).toUpperCase(),this.requirementNum)
             //makes dropdown update after it is clicked on
             // this.updateDropDown()
@@ -137,5 +135,14 @@ class mainSearch extends dropDown{
             }
         })
         dropdownUI.insertAdjacentElement("afterend",element)
+    }
+
+    parseCourseTitle(data,cutOfVal)
+    {
+        var courseTitle = ""
+        var startIndex = data.indexOf(cutOfVal)
+        for (var i = startIndex + cutOfVal.length; i < data.length; ++i)
+            courseTitle += data[i]
+        return String(courseTitle)
     }
 }
