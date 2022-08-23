@@ -43,18 +43,20 @@
         <div class="content">
 
            <div class="search-parameters-container">
-                <div id="main_search_container">
+                <div id="campus_checkbox_container">Campus: </div>
+            <!-- css class for main_search_container amd dropdown_container found in dropDown.css -->
+                <div id="main_search_container" class="main_search_container">
                     <input id="main_search_input" class="text-input"  type="text" placeholder="Course Title, Course Number ect.">
                 </div>
-                <div id="campus_checkbox_container">Campus: </div>
-                <div id="dropdown_container">
+                <div id="dropdown_container" class="dropdown_container">
                     <input id="subjectDescription-input" class="text-input"  type="text" placeholder="Subject Description">
                     <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
                     <input id="courseTitle-input" class="text-input"  type="text" placeholder="Course Title">
                     <input id="professorName-input" class="text-input"  type="text" placeholder="Professor Name">         
                     <input id="courseAttributes-input" class="text-input"  type="text" placeholder="Attributes">
                 </div>
-          
+                <!-- css for chooseDropdown() found in dropdownClass.css -->
+                <button onclick=chooseDropdown()>More</button>
                 <br><br>
                 <div id="days_times_container">Meeting days and times:
                     <br><br>

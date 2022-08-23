@@ -365,3 +365,12 @@ document.addEventListener("DOMContentLoaded", function()
     dropDownArr = [drop2,drop3,drop4,drop5,drop6]
 })
 
+
+
+// function to hide the dropdown 
+
+function chooseDropdown()
+{
+    var mainDropdownCont = document.getElementById("main_search_input")
+
+}
