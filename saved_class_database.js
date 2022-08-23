@@ -123,6 +123,17 @@ function save_class(planID, section){
   localStorage.setItem(section.uniqueID, JSON.stringify(section))
 }
 
+function get_class(planID, courseID)
+{
+  var classes = load_classes(planID)
+  for (var i = 0; i < classes.length; ++i)
+  {
+    if (classes[i].id == courseID)
+      return classes[i]
+  }
+  console.log("error: no class found")
+  return null
+}
 
 function remove_class_by_ID(planID, id){
   var uniqueID = planID + id;

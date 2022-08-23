@@ -208,6 +208,7 @@ class daysDropDown extends dropDown {
         //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
         element.classList.add("button-dropdown")
+        element.classList.add("days-drop-down")
         dropdownUI.insertAdjacentElement("afterend",element)
     }
 
@@ -320,25 +321,39 @@ class daysDropDown extends dropDown {
     }
 }
 
+
+
 //gets filled when dropdowns are dynamically created at DOMContentLoaded
 var inputArray = []
 function clearReq()
 {   
-    console.log(requirement.endTime)
+
     for (var i = 0; i < inputArray.length; ++i)
         inputArray[i].clearInput()
     
     //clears time interval
     clearSlider(2)
+
     requirement.clearReq()
     update_section_display()
 }
+
+dropDownArr = []
+function clearDropDowns()
+{
+    for (var i = 0; i < inputArray.length; ++i)
+        inputArray[i].clearInput()
+
+    requirement.clearBasicReq()
+}
+
 const requirement = new class_search_query()
 
 document.addEventListener("DOMContentLoaded", function()
 {
     
     //creating drop downs
+    const mainSearchDrpDwn = new mainSearch("main_search_input","mainSearch",requirement,1)
     const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
     const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
     const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
@@ -346,7 +361,29 @@ document.addEventListener("DOMContentLoaded", function()
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
     const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
 
-    inputArray = [drop2,drop3,drop4,drop5,drop6,drop7]
-
+    inputArray = [drop2,drop3,drop4,drop5,drop6,drop7,mainSearchDrpDwn]
+    // dropDownArr = [drop2,drop3,drop4,drop5,drop6]
 })
 
+
+
+// function to hide the dropdown 
+
+function chooseDropdown()
+{
+    var containers = ["main_search_container","dropdown_container"]
+    for (var i = 0; i < containers.length; ++i)
+    {
+        var mainDropdownCont = document.getElementById(containers[i])
+        if (mainDropdownCont.classList.contains("inactive_dropdown_container"))
+            mainDropdownCont.classList.remove("inactive_dropdown_container")
+        else
+            mainDropdownCont.classList.add("inactive_dropdown_container")
+    }
+    var btn = document.getElementById("chooseDropdownBtn")
+    if (btn.innerHTML == "More Options")
+        btn.innerHTML = "Less Options"
+    else
+        btn.innerHTML = "More Options"
+    clearReq()
+}

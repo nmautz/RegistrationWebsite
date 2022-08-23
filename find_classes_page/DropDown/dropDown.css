@@ -27,6 +27,16 @@
         max-height: 50vh;
     }
 
+    .days-drop-down {
+        transform: translate(-15vh,7.15vh);
+    }
+
+    .dropdown-content-title {
+        color: gray;
+        padding: 10px;
+    }
+
+    .dropdown-content
     .button-dropdown {
         transform: translate(-15.73vh,7.5vh);
     }
@@ -48,5 +58,18 @@
     .dropdown-content a:hover {background-color: #ddd;}
     
     .meetingDays{
-        /* position: relative;; */
+        /* position: fixed;; */
+        z-index: 1;
+    }
+
+    .inactive_dropdown_container{
+        display: none;
+    }
+
+    .main-Dropdown{
+        padding: 20px 200px;
+    }
+    
+    .main-Dropdown-btn{
+        padding: 20px 10px;
     }

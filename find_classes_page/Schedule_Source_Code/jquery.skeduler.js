@@ -177,7 +177,8 @@
       handles:'n',
       alsoResize: "#plan-scroll-container",
       maxHeight: 700, 
-      minHeight: 80
+      minHeight: 80,
+      minWidth: 150
     });
 
   
