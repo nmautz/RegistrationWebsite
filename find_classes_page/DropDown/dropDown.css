@@ -66,4 +66,10 @@
         display: none;
     }
 
+    .main-Dropdown{
+        padding: 20px 200px;
+    }
     
+    .main-Dropdown-btn{
+        padding: 20px 10px;
+    }

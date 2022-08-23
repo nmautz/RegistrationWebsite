@@ -361,8 +361,8 @@ document.addEventListener("DOMContentLoaded", function()
     const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
     const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
 
-    inputArray = [drop2,drop3,drop4,drop5,drop6,drop7]
-    dropDownArr = [drop2,drop3,drop4,drop5,drop6]
+    inputArray = [drop2,drop3,drop4,drop5,drop6,drop7,mainSearchDrpDwn]
+    // dropDownArr = [drop2,drop3,drop4,drop5,drop6]
 })
 
 
@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function()
 
 function chooseDropdown()
 {
-    var containers = ["main_search_input","dropdown_container"]
+    var containers = ["main_search_container","dropdown_container"]
     for (var i = 0; i < containers.length; ++i)
     {
         var mainDropdownCont = document.getElementById(containers[i])
@@ -381,9 +381,9 @@ function chooseDropdown()
             mainDropdownCont.classList.add("inactive_dropdown_container")
     }
     var btn = document.getElementById("chooseDropdownBtn")
-    if (btn.innerHTML == "More")
-        btn.innerHTML = "Less"
+    if (btn.innerHTML == "More Options")
+        btn.innerHTML = "Less Options"
     else
-        btn.innerHTML = "More"
-
+        btn.innerHTML = "More Options"
+    clearReq()
 }

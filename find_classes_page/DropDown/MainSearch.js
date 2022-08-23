@@ -124,6 +124,8 @@ class mainSearch extends dropDown{
         //css class that the button follows**************************
         element.classList.add("dropdown")
         element.classList.add("clearBtn")
+        // aElement.classList.remove("clearBtn")
+        element.classList.add("main-Dropdown-btn")
         element.addEventListener("click", (e) =>
         {
             if(!requirement.isEmpty())
