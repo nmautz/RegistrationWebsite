@@ -14,13 +14,25 @@ body {
   bottom: 0px;
   height: 10vh;
   z-index: 100;
+  width: 100vw;
+
+}
+
+.plan-btn-div {
+  display: inline-block;
 }
 
 #plan-scroll-container {
   overflow: scroll;
   height: 5vh;
+  zoom: 0.7;
 }
 
+.plan-select-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .content {
   /* position: fixed; */
