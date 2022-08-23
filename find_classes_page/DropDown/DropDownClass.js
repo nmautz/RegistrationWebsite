@@ -371,6 +371,19 @@ document.addEventListener("DOMContentLoaded", function()
 
 function chooseDropdown()
 {
-    var mainDropdownCont = document.getElementById("main_search_input")
+    var containers = ["main_search_input","dropdown_container"]
+    for (var i = 0; i < containers.length; ++i)
+    {
+        var mainDropdownCont = document.getElementById(containers[i])
+        if (mainDropdownCont.classList.contains("inactive_dropdown_container"))
+            mainDropdownCont.classList.remove("inactive_dropdown_container")
+        else
+            mainDropdownCont.classList.add("inactive_dropdown_container")
+    }
+    var btn = document.getElementById("chooseDropdownBtn")
+    if (btn.innerHTML == "More")
+        btn.innerHTML = "Less"
+    else
+        btn.innerHTML = "More"
 
 }
