@@ -16,6 +16,7 @@ body {
   z-index: 100;
   width: 100vw;
 
+
 }
 
 .plan-btn-div {
@@ -24,7 +25,7 @@ body {
 
 #plan-scroll-container {
   overflow: scroll;
-  height: 5vh;
+  height: 100vh;
   zoom: 0.7;
 }
 
@@ -35,24 +36,18 @@ body {
 }
 
 .content {
-  /* position: fixed; */
   display: flex;
   flex-direction: column;
   row-gap: 0px;
   justify-content: space-between;
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%,-40%); */
   
 }
 
 .clearAllBtn{
   position: relative;
-  /* left: 100vw; */
-  left: 75%;
-  right: 3vw;
-  bottom: 6vw;
-  padding: 1.5vw 2.5vw;
+  left: 100vw;
+  top: -5vw;
+  padding: 30px 50px;
 }
 
 .content-main {
