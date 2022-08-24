@@ -33,16 +33,17 @@
     width: 100%;
   }
   .schedContainer{
-    /* top: 30vw;
-    position: absolute;
-    border: 2vh red; */
+
+    display: flex;
+    flex-direction:row;
   }
+
 
   .classInfo{
     left: 0;
     width: 20%;
     min-width: 20%;
-    max-width: 20%;
+    max-width: 90%;
     position: relative;
     width: 25vw;
     border: .02vw solid black;
