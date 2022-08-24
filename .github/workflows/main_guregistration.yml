@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'GURegistration'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_29D81851FDAA4034A276EAE685C9730C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4464AFDB338D4FB5B1D7950B90E1C22D }}
           package: .
