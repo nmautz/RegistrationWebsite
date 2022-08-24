@@ -91,6 +91,8 @@ class mainSearch extends dropDown{
         aElement.id = this.elementName
         aElement.data = data
         const text = document.createTextNode(data)
+        // aElement.classList.remove("dropdown-content a ")
+        aElement.classList.add("main-search-dropdown")
         aElement.appendChild(text)
         aElement.addEventListener("click", (e) =>
         {
@@ -150,5 +152,16 @@ class mainSearch extends dropDown{
         for (var i = startIndex + cutOfVal.length; i < data.length; ++i)
             courseTitle += data[i]
         return String(courseTitle)
+    }
+
+    addDropdownDiv()
+    {
+        const dropdownUI = document.getElementById(this.input)
+        const element = document.createElement("div")
+        element.id = this.divName
+        //css class that the dropdown follows**************************
+        element.classList.add("dropdown-content")
+        element.classList.add("main-search-dropdown-container")
+        dropdownUI.insertAdjacentElement("afterend",element)
     }
 }

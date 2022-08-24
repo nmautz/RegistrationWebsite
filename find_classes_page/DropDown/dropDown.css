@@ -34,6 +34,7 @@
     .dropdown-content-title {
         color: gray;
         padding: 10px;
+        /* font-weight: bold; */
     }
 
     .dropdown-content
@@ -72,4 +73,8 @@
     
     .main-Dropdown-btn{
         padding: 20px 10px;
+    }
+
+    .main-search-dropdown{
+        
     }
