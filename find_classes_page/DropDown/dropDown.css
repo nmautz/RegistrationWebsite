@@ -38,6 +38,9 @@
     }
 
     .dropdown-content
+    {
+        /* padding: 10px 200px; */
+    }
     .button-dropdown {
         transform: translate(-15.73vh,7.5vh);
     }
@@ -68,13 +71,19 @@
     }
 
     .main-Dropdown{
-        padding: 20px 200px;
+        /* padding: 20px 200px; */
+        height: 1.6vh;
+        width: 20vw;
     }
     
     .main-Dropdown-btn{
-        padding: 20px 10px;
+        /* height: 7.5vh;
+        width: 1vh; */
     }
 
     .main-search-dropdown{
-        
+    }
+
+    .main-search-dropdown-container{
+        transform: translate(-27.6vw,7.2vh);
     }
