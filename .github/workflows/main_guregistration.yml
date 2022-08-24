@@ -26,12 +26,12 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/find_classes_page/find_classes.html
+        run: dotnet publish -c Release -o find_classes_page/find_classes.html
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/find_classes_page/find_classes.html
+          path: find_classes_page/find_classes.html
 
 
