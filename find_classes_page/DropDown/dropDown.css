@@ -18,7 +18,7 @@
         /* display: none; */
         position: absolute;
         /* needs to adapt rather than just translate */
-        transform: translate(-17.5vw,7.5vh);
+        /* transform: translate(-17.5vw,7.5vh); */
         background-color: #f1f1f1;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -28,7 +28,7 @@
     }
 
     .days-drop-down {
-        transform: translate(-15vh,7.15vh);
+        transform: translate(-8.5vw,7.15vh);
     }
 
     .dropdown-content-title {
@@ -37,12 +37,9 @@
         /* font-weight: bold; */
     }
 
-    .dropdown-content
-    {
-        /* padding: 10px 200px; */
-    }
+
     .button-dropdown {
-        transform: translate(-15.73vh,7.5vh);
+        /* transform: translate(-15.73vh,7.5vh); */
     }
     
     .plan{
@@ -56,6 +53,7 @@
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        float: none;
     }
     
     /* Change color of dropdown links on hover */
@@ -69,6 +67,10 @@
     .inactive_dropdown_container{
         display: none;
     }
+    
+    .active_dropdown_container{
+        
+    }
 
     .main-Dropdown{
         /* padding: 20px 200px; */
@@ -81,9 +83,13 @@
         width: 1vh; */
     }
 
-    .main-search-dropdown{
-    }
 
     .main-search-dropdown-container{
-        transform: translate(-27.6vw,7.2vh);
+        left: .5vw;
+        top: 10vh;
+        /* transform: translate(-27.6vw,7.2vh); */
+    }
+
+    .content-container-dropdown {
+        margin-right: 1%;
     }
