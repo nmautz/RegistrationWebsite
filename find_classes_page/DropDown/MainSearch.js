@@ -133,11 +133,11 @@ class mainSearch extends dropDown{
         element.classList.add("main-Dropdown-btn")
         element.addEventListener("click", (e) =>
         {
+            document.getElementById(this.input).value = ""
             if(!requirement.isEmpty())
             {
                 dropdownUI.value = ""
                 clearReq()
-                this.updateDropDown()
                 update_section_display()
             }
         })
