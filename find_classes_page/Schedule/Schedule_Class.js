@@ -33,17 +33,9 @@ class Schedule {
         var temp = []
 
 
-        for (var i = 0; i < classes.length; ++i)
-        {
+        for (var i = 0; i < classes.length; ++i)        
             temp = this.convertToTasks(classes[i],tasks)
-        }
-
-        // for (var i = 0; i < temp.length; ++i)
-        // {
-        //     console.log(temp[i])
-        //     // if(temp[i].backgroundColor != "red")
-        //     //     tasks.push(temp[i])
-        // }
+        
         generate(temp) 
     }
 
@@ -145,6 +137,16 @@ class Schedule {
         {
             headerElement.innerHTML += " (**OVERLAPS**)"
         }
+        const prereqs = document.createElement("div")
+
+        if (!String(section.prereqs).includes("No prerequisite information available."))
+        {
+            prereqs.style.color = "red";
+            prereqs.innerHTML = "**Contains Prerequisites**"  
+          
+        }    
+        
+
         const professor = document.createElement("div")
         professor.innerHTML = section.professorName
         const time = document.createElement("div")
@@ -157,6 +159,13 @@ class Schedule {
         meetingDays.innerHTML = requirement.getWeekString(section)
         var deleteBtn = document.createElement("button")
         deleteBtn.innerHTML = "Remove"
+        var infoBtn = document.createElement("button")
+        infoBtn.innerHTML = "More Info"
+        infoBtn.data = section.courseTitle
+        infoBtn.addEventListener("click", (e)=>
+        {
+            open_pop_up(section)
+        })
         deleteBtn.data = section.id
         deleteBtn.addEventListener("click", (e)=>
         {
@@ -167,10 +176,11 @@ class Schedule {
 
         divElement.appendChild(colorCode)
         divElement.appendChild(headerElement)
+        divElement.appendChild(prereqs)
         divElement.appendChild(professor)
         divElement.appendChild(meetingDays)
         divElement.appendChild(time)
-      
+        divElement.appendChild(infoBtn)
         divElement.appendChild(deleteBtn)
 
         insertPoint.appendChild(divElement)

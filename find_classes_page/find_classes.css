@@ -1,21 +1,51 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: Arial;
   /* padding-left: 3vw; */
 }
 
+#plan_container {
+
+  position: absolute;
+  bottom: 0px;
+  height: 10vh;
+  z-index: 100;
+  width: 100vw;
+
+
+}
+
+.plan-btn-div {
+  display: inline-block;
+}
+
+#plan-scroll-container {
+  overflow: scroll;
+  height: 100vh;
+  zoom: 0.7;
+}
+
+.plan-select-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .content {
   display: flex;
   flex-direction: column;
   row-gap: 0px;
   justify-content: space-between;
-  
 }
 
 .clearAllBtn{
   position: relative;
-  left: 100vw;
-  top: -5vw;
+  left: 65vw;
+  top: -10vh;
   padding: 30px 50px;
 }
 
@@ -32,8 +62,9 @@ body {
 
 .search-parameters-container {
   flex:1;
-  /* margin-left: auto;
-  margin-right: auto; */
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1vw;
 }
 
 .classes-list-containter {
@@ -44,7 +75,7 @@ body {
   margin-left: auto;
 
   overflow-y: scroll;
-  max-height: 85vh;
+  max-height: 40vh;
 
   transition: all 200ms ease-in-out;
 

@@ -3,10 +3,12 @@
 
     <head>
         <title>Find Classes</title>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"/>
         <link rel="stylesheet" href="find_classes.css">
         <link rel="stylesheet" href="DropDown/dropDown.css">
         <link rel="stylesheet" href="Slider/TimeSlider.css">
+        <link rel="stylesheet" href="Pop_Up/Pop_Up.css">
+        <link rel="stylesheet" href="../TestFolder/funCSS.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
         <script src="../load_queue.js"></script>
@@ -18,9 +20,12 @@
         <script src="Slider/TimeSliderClass.js"></script>
         <script src="DropDown/DropDownClass.js"></script>
         <script src="DropDown/dropDownFieldOfStudy.js"></script>
+        <script src="DropDown/MainSearch.js"></script>
+
 
         <script src="Schedule/Schedule_Class.js"></script>
-
+        <script src="Pop_Up/Pop_Up.js"></script>
+       
         <!-- Jquery Scheduler -->
         <link rel="stylesheet" href="./Schedule_Source_Code/jquery.skeduler.css" type="text/css">
         <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -39,35 +44,43 @@
         <div class="content">
 
            <div class="search-parameters-container">
-                <div id="dropdown_container">
+                <div id="campus_checkbox_container">Campus: </div>
+            <!-- css class for main_search_container amd dropdown_container found in dropDown.css -->
+                <div id="main_search_container" class="main_search_container">
+                    <input id="main_search_input" class="text-input main-Dropdown"  type="text" placeholder="e.g. Math 124, ENGLISH, Global Studies">
+                </div>
+                <div id="dropdown_container" class="inactive_dropdown_container">
                     <input id="subjectDescription-input" class="text-input"  type="text" placeholder="Subject Description">
                     <input id="courseNumber-input" class="text-input" type="text" placeholder="Course Number">
                     <input id="courseTitle-input" class="text-input"  type="text" placeholder="Course Title">
                     <input id="professorName-input" class="text-input"  type="text" placeholder="Professor Name">         
                     <input id="courseAttributes-input" class="text-input"  type="text" placeholder="Attributes">
                 </div>
-          
+                <!-- css for chooseDropdown() found in dropdownClass.css -->
+                <div id="dropdown-content-container"></div>
+                <button id="chooseDropdownBtn" onclick=chooseDropdown()>More Options</button>
                 <br><br>
                 <div id="days_times_container">Meeting days and times:
                     <br><br>
 
                     <input type ="button" value ="Meeting Day(s) " id="meetingDays-input" class="text-input meetingDays"  type="text" placeholder="Meeting Days">
-
-                    <div id="slider_container" class="sliderContainer">
-                        <div id="slider-range", class="time-slider">
-                        <div id="lower_knob_element" class="ui-slider-handle">
-                            <p class="handle-text" id="lower_text"></p>
+                    <br><br>
+                    <div id="slider&button_container">
+                        <div id="slider_container" class="sliderContainer">
+                            <div id="slider-range", class="time-slider">
+                            <div id="lower_knob_element" class="ui-slider-handle">
+                                <p class="handle-text" id="lower_text"></p>
+                            </div>
+                            <div id="upper_knob_element" class="ui-slider-handle">
+                                <p class="handle-text" id="upper_text"></p>
+                            </div>
                         </div>
-                        <div id="upper_knob_element" class="ui-slider-handle">
-                            <p class="handle-text" id="upper_text"></p>
-                        </div>
-                        
-                        <button onclick=clearSlider(1) class="clearTimeBtn">Clear</button> 
+                       
                     </div>
-                    <button id="clear_All_Btn" class="clearAllBtn" onclick=clearReq(2)>Clear All</button>
-
                 </div>
-           
+                <button onclick=clearSlider(1) class="clearTimeBtn">Clear</button> 
+                <!-- css found in find_classes.css file -->
+                <button id="clear_All_Btn" class="clearAllBtn" onclick=clearReq(2)>Clear All</button>
 
             </div>
 
@@ -80,29 +93,71 @@
             </div>
 
         </div>
+        
+        <div id="plan_container" class="ui-widget-content">
+            <div id="plan-scroll-container" class="plan-scroll-container">
 
-        <div id="plan_container">
+                <div class="plan-select-options">
 
-            <div id="planBtnDiv">
-                <button id="selectPlanBtn" > Select Plan </button>
-                <div id="delete_Plan_Container"></div>
-            </div>
-            
-            <div id="plan_Input_Container"></div>
-
-            <div id="schedule-container" class="schedContainer">
-                <div id="classList-container"></div>  
-                <div id="skeduler-container-main" class = "skeduler-container-main">
-                    <div id="skeduler-container"></div>
+                    <div id="planBtnDiv" class="plan-btn-div">
+                        <button id="selectPlanBtn" > Select Plan </button>
+                        <div id="delete_Plan_Container"></div>
+                    </div>
+                    
+                    <div id="plan_Input_Container"></div>
+                </div>
+                <div id="schedule-container" class="schedContainer">
+                    <div id="classList-container"></div>  
+                    <div id="skeduler-container-main" class = "skeduler-container-main">
+                        <div id="skeduler-container"></div>
+                    </div>
                 </div>
             </div>
+       
         </div>
+        <br>
+        <br>
       
                 
 
 
 
     </body>
-
+    <div class="popUp" id="pop_up_window">
+        <div class="popUp-header">
+            <div id="popUp-title" class="title">Example</div>
+            <button id="closePopUpBtn" onclick=close_pop_up() class="close-button">&times;</button>
+        </div>
+        <div class="popUp-Body">
+            <!-- use lorem to add fake text -->
+            <div class="popUp-Body-Title">Description: </div>
+            <div id="popUp-Description" class="popUp-Description"></div>
+            <div class="popUp-Body-Title">Professor: </div>
+            <div id="popUp-Professor" class="popUp-Professor"></div>
+            <div class="popUp-Body-Title">Meeting Times: </div>
+            <div id="popUp-Meeting-Times" class="popUp-Meeting-Times"></div>
+            <div class="popUp-Body-Title">Meeting Days: </div>
+            <div id="popUp-Meeting-Days" class="popUp-Meeting-Days"></div>
+            <div class="popUp-Body-Title">Location: </div>
+            <div id="popUp-Location" class="popUp-Location"></div>
+            <div class="popUp-Body-Title">Enrolment: </div>
+            <div id="popUp-Enrolment" class="popUp-Enrolment"></div>
+            <div class="popUp-Body-Title">Hours Per Week: </div>
+            <div id="popUp-Hours" class="popUp-Enrolment"></div>
+            <div class="popUp-Body-Title">Attributes: </div>
+            <div id="popUp-Attributes" class="popUp-Attributes"></div>
+            <div class="popUp-Body-Title">Prerequisites: </div>
+            <div id="popUp-Prereqs" class="popUp-Prereqs"></div>
+            <div class="popUp-Body-Title">Corequisites: </div>
+            <div id="popUp-Coreqs" class="popUp-Coreqs"></div>
+            <div class="popUp-Body-Title">Restrictions: </div>
+            <div id="popUp-Restrictions" class="popUp-Restrictions"></div>
+            <div class="popUp-Body-Title">Fees: </div>
+            <div id="popUp-Fees" class="popUp-Fees"></div>
+            <div class="popUp-Body-Title">Bookstore Link: </div>
+            <div><a id="popUp-Bookstore" class="popUp-Bookstore" href="nike.com">Bookstore</a></div>
+        </div>
+    </div>
+    <div  id="overlay"></div>
 
 </html>

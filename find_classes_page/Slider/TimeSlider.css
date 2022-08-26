@@ -1,6 +1,6 @@
 .time-slider {
 
-    margin-top: 6vh;
+    /* margin-top: 6vh; */
 }
 
 .handle-text {
@@ -26,8 +26,8 @@
     overflow-x: hidden;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    /* margin-left: 10vw; */
+    /* margin-right: 10vw; */
 }
 
 section.range-slider {
@@ -46,7 +46,7 @@ section.range-slider input {
     width: 200px;
     outline: none;
     height: 18px;
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
 }
 
@@ -83,12 +83,15 @@ section.range-slider input:last-of-type::-moz-range-track {
 
 .clearTimeBtn {
     position: relative;
-    left: 25.5vw;
-    bottom: 0.4vw;
+    left: 42.4vw;
+    bottom: 9.23vh;
+    padding: 0.7vw 0.7vh;
 }
 
 .sliderContainer{
+    z-index: 0;
     position: relative;
-    bottom: 5.2vw;
-    right: 23vw;
+    bottom: 4.5vh;
+    left: -16vw;
+    /* right:0vw; */
 }

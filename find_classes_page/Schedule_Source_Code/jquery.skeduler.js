@@ -170,6 +170,25 @@
   * - borderWidth - width of border of cell in grid
   */
   $.fn.skeduler = function (options) {
+
+
+
+    $( "#plan_container" ).resizable({
+      handles:'n',
+
+      minHeight: 80,
+      minWidth: 150
+    });
+
+    $("#plan_container").on("resize", function(){
+
+      var outerH = $("#plan_container").height()
+      $("#plan-scroll-container").height(Math.pow(outerH, 1.05))
+
+    })
+  
+
+
     settings = $.extend(defaultSettings, options);
 
     if (settings.debug) {
