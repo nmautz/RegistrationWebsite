@@ -59,6 +59,7 @@ class dropDown {
         element.id = this.divName
         //css class that the dropdown follows**************************
         element.classList.add("dropdown-content")
+        
         dropdownUI.insertAdjacentElement("afterend",element)
     }
 
@@ -376,9 +377,13 @@ function chooseDropdown()
     {
         var mainDropdownCont = document.getElementById(containers[i])
         if (mainDropdownCont.classList.contains("inactive_dropdown_container"))
+        {
             mainDropdownCont.classList.remove("inactive_dropdown_container")
-        else
+        }else
+        {
             mainDropdownCont.classList.add("inactive_dropdown_container")
+        }
+            
     }
     var btn = document.getElementById("chooseDropdownBtn")
     if (btn.innerHTML == "More Options")

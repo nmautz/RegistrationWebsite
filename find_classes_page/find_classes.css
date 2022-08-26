@@ -40,13 +40,12 @@ body {
   flex-direction: column;
   row-gap: 0px;
   justify-content: space-between;
-  
 }
 
 .clearAllBtn{
   position: relative;
-  left: 100vw;
-  top: -5vw;
+  left: 65vw;
+  top: -10vh;
   padding: 30px 50px;
 }
 
@@ -63,8 +62,9 @@ body {
 
 .search-parameters-container {
   flex:1;
-  /* margin-left: auto;
-  margin-right: auto; */
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 1vw;
 }
 
 .classes-list-containter {

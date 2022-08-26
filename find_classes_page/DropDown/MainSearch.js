@@ -91,7 +91,6 @@ class mainSearch extends dropDown{
         aElement.id = this.elementName
         aElement.data = data
         const text = document.createTextNode(data)
-        // aElement.classList.remove("dropdown-content a ")
         aElement.classList.add("main-search-dropdown")
         aElement.appendChild(text)
         aElement.addEventListener("click", (e) =>
@@ -134,11 +133,11 @@ class mainSearch extends dropDown{
         element.classList.add("main-Dropdown-btn")
         element.addEventListener("click", (e) =>
         {
+            document.getElementById(this.input).value = ""
             if(!requirement.isEmpty())
             {
                 dropdownUI.value = ""
                 clearReq()
-                this.updateDropDown()
                 update_section_display()
             }
         })
@@ -163,5 +162,31 @@ class mainSearch extends dropDown{
         element.classList.add("dropdown-content")
         element.classList.add("main-search-dropdown-container")
         dropdownUI.insertAdjacentElement("afterend",element)
+    }
+
+    setListeners() 
+    {
+        const inputElement = document.getElementById(this.input)
+        inputElement.addEventListener('keyup', (e) =>
+        {
+            this.checkHideDropdown()
+            this.updateDropDown()
+        })
+
+        inputElement.addEventListener("click", (e) =>
+        {
+            this.checkHideDropdown()
+            this.updateDropDown()  
+        })
+        
+        const dropdownUI = document.getElementById(this.divName)
+        window.addEventListener('click', (e) =>
+        {   
+            var val = document.getElementById(this.input).value
+            if (document.getElementById(this.input).contains(e.target) && val != "")
+                dropdownUI.style.display = "inline-block"
+            else
+                dropdownUI.style.display = "none"
+        });
     }
 }
