@@ -223,8 +223,13 @@ function load_planIDs(){
 }
 
 
+function clearEmptySchedule()
+{
+
+}
+
 document.addEventListener("DOMContentLoaded", function(){
-  
+  delete_plan("(None)")
 
 
 
