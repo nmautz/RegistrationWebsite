@@ -14,7 +14,7 @@ class dropDown {
         this.requirementNum = requirementNum
         this.setInputCSS()
         this.addDropdownDiv()
-        this.addClearButton()
+        //this.addClearButton()
         this.setListeners()
     }
 
