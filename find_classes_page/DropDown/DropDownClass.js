@@ -1,4 +1,4 @@
-fetch("../classes.json").then(response => response.json()).then( function(jsonData){
+fetch("classes.json").then(response => response.json()).then( function(jsonData){
     classesList = jsonData["data"]
   })
 
@@ -355,14 +355,9 @@ document.addEventListener("DOMContentLoaded", function()
     
     //creating drop downs
     const mainSearchDrpDwn = new mainSearch("main_search_input","mainSearch",requirement,1)
-    const drop2 = new dropDown("subjectDescription-input","courseSubjectDescription",requirement,1)
-    const drop3 = new dropDown("courseNumber-input","courseNumber",requirement,2)
-    const drop4 = new dropDown("courseTitle-input","courseTitle",requirement,3)
-    const drop5 = new dropDown("professorName-input","professorName",requirement,4)
-    const drop6 = new dropDown("courseAttributes-input","courseAttributes",requirement,5)
-    const drop7 = new daysDropDown("meetingDays-input","meetingDays",requirement,-1)
 
-    inputArray = [drop2,drop3,drop4,drop5,drop6,drop7,mainSearchDrpDwn]
+
+    inputArray = [mainSearchDrpDwn]
     // dropDownArr = [drop2,drop3,drop4,drop5,drop6]
 })
 
