@@ -74,7 +74,7 @@ body{
 
 
 #calendar-display{
-  height: 0px;
+  height: 100%;
   width: 100%;
 
   background-color: red;
@@ -86,12 +86,13 @@ body{
   position: absolute;
   bottom: 0px;
   left: 0px;
-  height: 10px;
+  height: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all ease-in-out 300ms;
 }
 
 #resize-handle {
@@ -105,6 +106,7 @@ body{
   border-right: 1px solid black;
   width: 8%;
   cursor:pointer;
+  background-color: white;
   
 
 
