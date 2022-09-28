@@ -71,3 +71,41 @@ body{
 
   padding: 5px;
 }
+
+
+#calendar-display{
+  height: 0px;
+  width: 100%;
+
+  background-color: red;
+
+}
+
+#calendar-container{
+
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#resize-handle {
+
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  font-weight: bold;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  width: 8%;
+  cursor:pointer;
+  
+
+
+}
