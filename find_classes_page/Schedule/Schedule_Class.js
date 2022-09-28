@@ -452,10 +452,10 @@ const schedule = new Schedule("scheduleInput")
 
 document.addEventListener("DOMContentLoaded", function()
 {
-    const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")    
-    const scheduleInput = new ScheduleInput("plan_Input_Container",deletePlnBtn)
-    const planDrpDwn = new planDropDown("selectPlanBtn",deletePlnBtn) 
-    schedule.createSchedule()
+    //const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")    
+    //const scheduleInput = new ScheduleInput("plan_Input_Container",deletePlnBtn)
+    //const planDrpDwn = new planDropDown("selectPlanBtn",deletePlnBtn) 
+    //schedule.createSchedule()
 })
 
 
