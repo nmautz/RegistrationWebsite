@@ -25,7 +25,7 @@ body{
 #time-select{
   display: flex;
   flex-direction: row;
-  width: 100%;
+  flex: 1;
   justify-content: center;
   align-items: center;
 
@@ -56,4 +56,18 @@ body{
 .time-select p {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+#day-select{
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.day-box{
+  margin: 5px;
+  border: 1px solid black;
+
+  padding: 5px;
 }
