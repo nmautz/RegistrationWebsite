@@ -9,9 +9,9 @@ class searchElement{
 }
 
 class mainSearch extends dropDown{
-    constructor(input,elementName,requirementsObj,requirementNum)
+    constructor(input,elementName,requirementsObj,requirementNum, clearBtn)
     {
-        super(input,elementName,requirementsObj,requirementNum)
+        super(input,elementName,requirementsObj,requirementNum, clearBtn)
         this.inputVal = ""
       
     }
@@ -119,30 +119,6 @@ class mainSearch extends dropDown{
         dropdownUI.insertAdjacentElement("beforeend",element)
     }
 
-    addClearButton()
-    {
-        const dropdownUI = document.getElementById(this.input)
-        const element = document.createElement("INPUT")
-        element.setAttribute("type", "button")
-        element.value = "x"
-        element.id = String(this.elementName + "Button")
-        //css class that the button follows**************************
-        element.classList.add("dropdown")
-        element.classList.add("clearBtn")
-        // aElement.classList.remove("clearBtn")
-        element.classList.add("main-Dropdown-btn")
-        element.addEventListener("click", (e) =>
-        {
-            document.getElementById(this.input).value = ""
-            if(!requirement.isEmpty())
-            {
-                dropdownUI.value = ""
-                clearReq()
-                update_section_display()
-            }
-        })
-        dropdownUI.insertAdjacentElement("afterend",element)
-    }
 
     parseCourseTitle(data,cutOfVal)
     {
