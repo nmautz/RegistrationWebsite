@@ -19,6 +19,9 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
+  transition: all ease-in-out 300ms;
+  z-index: 100;
 }
 
 #search-options,#adv-search-options{
@@ -40,11 +43,15 @@ body{
 }
 
 
-#search-options:hover ~ #adv-search-options{
+#search-options:hover ~ #adv-search-options, #adv-search-options:hover{
 
   height: 100%;
 
 }
+
+
+
+
 
 
 #search-bar:hover{
