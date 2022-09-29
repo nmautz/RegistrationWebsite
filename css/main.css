@@ -15,7 +15,7 @@ body{
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 20%;
+  height: 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -29,10 +29,30 @@ body{
   justify-content: space-evenly;
   align-items: center;
 
+  transition: all ease-in-out 300ms;
   
 
 }
 #adv-search-options{
+  height: 0;
+  background-color: rgb(199, 199, 199);
+
+}
+
+
+#search-options:hover ~ #adv-search-options{
+
+  height: 100%;
+
+}
+
+
+#search-bar:hover{
+
+  height: 20%;
+
+
+
 }
 
 
