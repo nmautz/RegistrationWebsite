@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Search</title>
+
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./find_classes_page/DropDown/dropDown.css">
+  <link rel="stylesheet" href="./find_classes_page/find_classes.css">
+
+
+  <script src="./class_section_search.js"></script>
+
+  <script src="./find_classes_page/DropDown/DropDownClass.js"></script>
+
+  <script src="./find_classes_page/DropDown/MainSearch.js"></script>  
+
+
+  <script src="./find_classes_page/Schedule/Schedule_Class.js"></script>
+  <script src="./saved_class_database.js"></script>
+  <script src="./find_classes_page/add_class_section.js"></script>
+  <script src="./find_classes_page/find_classes.js"></script>
+  <script src="./calendar-resize.js"></script>
+
+
+
+
+
+</head>
+<body>
+  <div id="search-bar">
+    <div id="search-options">
+
+      <div id="main_search_container" class="main_search_container">
+        <input id="main_search_input" class="text-input main-Dropdown"  type="text" placeholder="e.g. Math 124, ENGLISH, Global Studies">
+      </div>
+
+      
+        <div id="day-select">
+          <div class="day-box">
+            S
+          </div>
+          <div class="day-box">
+            M
+          </div>
+          <div class="day-box">
+            T
+          </div>
+          <div class="day-box">
+            W
+          </div>
+          <div class="day-box">
+            T
+          </div>
+          <div class="day-box">
+            F
+          </div>
+          <div class="day-box">
+            S
+          </div>
+        
+
+    
+        </div>
+
+
+
+
+      <div id="time-container">
+        <caption>No Classes</caption>
+        <div id="time-select">
+          <div id="early-select" class="time-select">
+            <p>Before</p>
+            <input id="before-time" type="time">
+          </div>
+    
+          <div id="late-select" class="time-select">
+            <p>After</p>
+            <input id="after-time" type="time">
+          </div>
+    
+    
+        </div>
+      </div>
+
+
+
+    </div>
+    <div id="adv-search-options">
+      
+    </div>
+  </div> 
+
+  <div id="class-display">
+    <div id="classes-list-container" class="classes-list-containter">
+                
+    </div>
+  </div>
+
+
+
+  <div id="calendar-container">
+
+    <div id="resize-handle">Expand</div>
+    <div id="calendar-display">
+
+
+
+
+    </div>
+  </div>
+  
+
+
+
+</body>
+</html>
