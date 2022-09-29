@@ -20,7 +20,7 @@ body{
   flex-direction: column;
   justify-content: space-evenly;
 
-  transition: all ease-in-out 300ms;
+  transition: all ease-in-out 150ms;
   z-index: 100;
 }
 
@@ -32,7 +32,7 @@ body{
   justify-content: space-evenly;
   align-items: center;
 
-  transition: all ease-in-out 300ms;
+  transition: all ease-in-out 150ms;
   
 
 }
