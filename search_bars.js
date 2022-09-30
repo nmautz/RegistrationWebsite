@@ -25,30 +25,7 @@ function register_div_as_search(div, class_str, func, dropdown_id){
   div.appendChild(dropdown);
 
 
-  input.addEventListener("input", ()=>{
-
-    clearDropdown("main-search-input");
-    if(input.value != ""){
-      SearchManager.getInstance().updateRequirement("prof_name", input.value)
-  
-      const classes = SearchManager.getInstance().getClassesByReq("prof_name")
-  
-      var prof_names = [];
-  
-      for(var class_section in classes){
-        if(!prof_names.includes(classes[class_section].professorName)){
-          prof_names.push(classes[class_section].professorName)
-        }
-      }
-  
-      for(var name in prof_names){
-        addListingToDropdown("main-search-input", prof_names[name]);
-      }
-    }
-
-
-
-  })
+  input.addEventListener("input", func)
 
 
 

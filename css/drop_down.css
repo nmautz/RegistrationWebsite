@@ -69,7 +69,7 @@
         display: flex;
     }
 
-    .dropdown-item{
+    .dropdown-item, .dropdown-header{
 
         border-bottom: 1px solid black;
         text-align: center;
@@ -78,6 +78,16 @@
 
 
         width: 100%;
+    }
+
+    .dropdown-item{
+        color: rgb(40, 40, 40)
+    }
+
+    .dropdown-header{
+        color: black;
+        font-weight: bold;
+        font-size: large;
     }
 
     .dropdown-item:hover{
