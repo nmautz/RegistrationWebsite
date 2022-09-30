@@ -22,8 +22,3 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 })
 
-document.addEventListener("click", ()=>{
-  var searchManager = SearchManager.getInstance();
-
-  console.log(searchManager.getClasses())
-})

@@ -13,7 +13,6 @@ function register_div_as_search(div, class_str, func, dropdown_id){
 
   const dropdown = document.createElement("div");
   dropdown.classList.add("dropdown");
-  dropdown.innerHTML = "jwnf"
   if(dropdown_id != null){
     dropdown.id = dropdown_id
   }
@@ -28,9 +27,26 @@ function register_div_as_search(div, class_str, func, dropdown_id){
 
   input.addEventListener("input", ()=>{
 
-    SearchManager.getInstance().updateRequirement("prof_name", input.value)
+    clearDropdown("main-search-input");
+    if(input.value != ""){
+      SearchManager.getInstance().updateRequirement("prof_name", input.value)
   
-    console.log(SearchManager.getInstance().getClassesByReq("prof_name"));
+      const classes = SearchManager.getInstance().getClassesByReq("prof_name")
+  
+      var prof_names = [];
+  
+      for(var class_section in classes){
+        if(!prof_names.includes(classes[class_section].professorName)){
+          prof_names.push(classes[class_section].professorName)
+        }
+      }
+  
+      for(var name in prof_names){
+        addListingToDropdown("main-search-input", prof_names[name]);
+      }
+    }
+
+
 
   })
 
@@ -38,8 +54,32 @@ function register_div_as_search(div, class_str, func, dropdown_id){
 
 }
 
+function addListingToDropdown(dropdown_id, str, css_class){
+  if(css_class == null){
+    css_class = "dropdown-item"
+  }
+  dropdown_id = document.getElementById(dropdown_id);
 
-document.addEventListener("DOMContentLoaded", ()=>{
+  const listing = document.createElement("div");
+  listing.classList.add(css_class);
+  listing.innerHTML = str;
+
+  dropdown_id.appendChild(listing);
 
 
+
+}
+
+function clearDropdown(dropdown_id){
+  var dropdown = document.getElementById(dropdown_id);
+
+  while(dropdown.firstChild){
+    dropdown.removeChild(dropdown.lastChild);
+  }
+
+}
+
+document.addEventListener("click", ()=>{
+
+  const searchbar = document.getElementById("main-search-input");
 })

@@ -29,6 +29,7 @@
 
     }
 
+
     .search-bar{
         height: 100%;
         width: 100%;
@@ -60,5 +61,26 @@
         height: 900%;
         overflow-y: scroll;
         display: none;
+        flex-direction: column;
 
+    }
+
+    .search_container:hover  .dropdown{
+        display: flex;
+    }
+
+    .dropdown-item{
+
+        border-bottom: 1px solid black;
+        text-align: center;
+        padding-top: 5%;
+        padding-bottom: 5%;
+
+
+        width: 100%;
+    }
+
+    .dropdown-item:hover{
+        background-color: rgb(182, 180, 180);
+        cursor: pointer;
     }
