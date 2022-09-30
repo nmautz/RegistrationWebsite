@@ -20,7 +20,7 @@ class SearchManager{
   }
 
   constructor(){
-    this.requirements = [];
+    this.requirements = {};
     this.isModified = false; //Tracks if search params have changed to save from unneeded search 
   }
 
@@ -29,7 +29,7 @@ class SearchManager{
     this.isModified = true;
   }
 
-  _addRequirement(id_str, func, arg){ // func should take (arg, class) as parameter
+  addRequirement(id_str, arg, func){ // func should take (arg, class_section) as parameter
     this.requirements[id_str] = {
       func: func,
       arg: arg
@@ -41,13 +41,19 @@ class SearchManager{
 
   getClasses(){
     var classes = []
-    var reqKeys = this.requirements.keys;
     for(var i = 0; i < classesList.length; ++i){
-      var valid = true;
-      for(var c = 0; c < reqKeys.length; ++c){
 
-        var req = this.requirements[reqKeys]
-    
+      var valid = true;
+
+
+      for(var key in this.requirements){
+
+          
+
+        var req = this.requirements[key]
+
+
+
         if(!req.func(req.arg, classesList[i])){
           valid = false;
         }
