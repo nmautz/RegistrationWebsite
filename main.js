@@ -81,7 +81,17 @@ function setDropdownTitle(input ){
     }
   
     for (var title in titles) {
-      addListingToDropdown("main-search-input", titles[title]);
+      addListingToDropdown("main-search-input", titles[title], null, (str)=>{
+        var sm = SearchManager.getInstance();
+
+        sm.clearAllRestrictionsArg();
+
+        sm.updateRequirement("course_title", str)
+
+        update_section_display();
+
+
+      });
     }
   }
 
@@ -105,7 +115,19 @@ function setDropdownProf( input) {
     }
   
     for (var name in prof_names) {
-      addListingToDropdown("main-search-input", prof_names[name]);
+      addListingToDropdown("main-search-input", prof_names[name], null, (str)=>{
+
+        var sm = SearchManager.getInstance();
+
+        sm.clearAllRestrictionsArg();
+
+        sm.updateRequirement("prof_name", str)
+
+        update_section_display();
+
+
+
+      });
     }
   }
 

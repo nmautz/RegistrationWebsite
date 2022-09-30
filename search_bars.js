@@ -57,7 +57,7 @@ function register_div_as_search(div, class_str, func, dropdown_id){
 
 }
 
-function addListingToDropdown(dropdown_id, str, css_class){
+function addListingToDropdown(dropdown_id, str, css_class, func){
   if(css_class == null){
     css_class = "dropdown-item"
   }
@@ -68,6 +68,11 @@ function addListingToDropdown(dropdown_id, str, css_class){
   listing.innerHTML = str;
 
   dropdown_id.appendChild(listing);
+
+  if(func != null)
+    listing.addEventListener("click", ()=>{
+      func(str);
+    })
 
 
 
