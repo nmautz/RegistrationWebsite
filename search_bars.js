@@ -40,7 +40,6 @@ function register_div_as_search(div, class_str, func, dropdown_id){
       var dropdownScrollTop = dropdown.scrollTop+40;
 
 
-      console.log(headers[i].offsetTop)
       if (dropdownScrollTop = headerOffset.top) {
         headers[i].classList.add("sticky");
       } else {
