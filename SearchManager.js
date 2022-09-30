@@ -39,11 +39,11 @@ class SearchManager{
   }
 
 
-  getClasses(){
-    const limit = 50;
+  getClasses(limit){
+
 
     var classes = []
-    for(var i = 0; i < classesList.length && classes.length < limit; ++i){
+    for(var i = 0; i < classesList.length && (limit == null || classes.length < limit); ++i){
 
       var valid = true;
 
@@ -82,7 +82,7 @@ function search_class()
 {
   
 
-  return SearchManager.getInstance().getClasses()
+  return SearchManager.getInstance().getClasses(50)
     
 }
 
