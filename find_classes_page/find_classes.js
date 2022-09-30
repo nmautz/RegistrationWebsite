@@ -25,12 +25,7 @@ function search_class_by_query(query)
     }
 }
 
-function search_class()
-{
 
-  return search_class_by_query(requirement)
-    
-}
 
 function add_sections_from_array(sections){
 

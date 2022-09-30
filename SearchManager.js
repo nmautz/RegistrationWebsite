@@ -74,3 +74,12 @@ class SearchManager{
 
 
 }
+
+
+function search_class()
+{
+  
+
+  return SearchManager.getInstance().getClasses()
+    
+}

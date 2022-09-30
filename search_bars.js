@@ -26,6 +26,14 @@ function register_div_as_search(div, class_str, func, dropdown_id){
   div.appendChild(dropdown);
 
 
+  input.addEventListener("input", ()=>{
+
+    SearchManager.getInstance().updateRequirement("prof_name", input.value)
+    update_section_display();
+
+  })
+
+
 
 }
 

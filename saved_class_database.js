@@ -181,14 +181,19 @@ function load_classes(planID){
 }
 
 function is_class_saved(section){
-  classes = load_classes(schedule.selectedPlan)
-  for(var i = 0; i < classes.length; ++i){
-    if(classes[i].id == section.id)
-    {
-      return true
+  try{
+    classes = load_classes(schedule.selectedPlan)
+    for(var i = 0; i < classes.length; ++i){
+      if(classes[i].id == section.id)
+      {
+        return true
+      }
+  
     }
-
+  }catch(e){
+    console.error(e)
   }
+
   return false
 }
 
