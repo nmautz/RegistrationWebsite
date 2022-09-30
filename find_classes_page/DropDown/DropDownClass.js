@@ -5,16 +5,17 @@ fetch("classes.json").then(response => response.json()).then( function(jsonData)
 
 
 class dropDown {
-    constructor(input,elementName,requirementsObj,requirementNum)
+    constructor(input,elementName,requirementsObj,requirementNum, clearBtn)
     {
         this.input = input
         this.elementName = elementName
         this.divName = String(elementName + "DropdownDiv")
         this.requirementsObj = requirementsObj
         this.requirementNum = requirementNum
+        this.clearBtn = clearBtn;
         this.setInputCSS()
         this.addDropdownDiv()
-        //this.addClearButton()
+        this.addClearButton()
         this.setListeners()
     }
 
@@ -33,23 +34,16 @@ class dropDown {
     addClearButton()
     {
         const dropdownUI = document.getElementById(this.input)
-        const element = document.createElement("INPUT")
-        element.setAttribute("type", "button")
-        element.value = "x"
-        element.id = String(this.elementName + "Button")
-        //css class that the button follows**************************
-        element.classList.add("dropdown")
-        element.classList.add("clearBtn")
-        element.addEventListener("click", (e) =>
+
+        this.clearBtn = document.getElementById(this.clearBtn)
+
+        this.clearBtn.addEventListener("click", (e) =>
         {
-            if(!requirement.isEmpty())
-            {
-                dropdownUI.value = ""
-                this.updateDropDown()
-                update_section_display()
-            }
+
+            dropdownUI.value = ""
+            this.updateDropDown()
+            update_section_display()
         })
-        dropdownUI.insertAdjacentElement("afterend",element)
     }
 
     addDropdownDiv()
@@ -354,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function()
 {
     
     //creating drop downs
-    const mainSearchDrpDwn = new mainSearch("main_search_input","mainSearch",requirement,1)
+    const mainSearchDrpDwn = new mainSearch("main_search_input","mainSearch",requirement,1, "clear-main-search")
 
 
     inputArray = [mainSearchDrpDwn]
