@@ -41,7 +41,7 @@ function add_sections_from_array(sections){
 
 }
 
-function update_section_display(){
+async function update_section_display(){
 
     const classContainter = document.getElementById("classes-list-container")
     while(classContainter.firstChild){

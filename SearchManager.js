@@ -40,8 +40,10 @@ class SearchManager{
 
 
   getClasses(){
+    const limit = 50;
+
     var classes = []
-    for(var i = 0; i < classesList.length; ++i){
+    for(var i = 0; i < classesList.length && classes.length < limit; ++i){
 
       var valid = true;
 
@@ -83,3 +85,4 @@ function search_class()
   return SearchManager.getInstance().getClasses()
     
 }
+
