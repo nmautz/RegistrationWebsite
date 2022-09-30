@@ -1,15 +1,22 @@
 
 
-function register_div_as_search(div, class_str, func){
+
+
+function register_div_as_search(div, class_str, func, dropdown_id){
 
   if(class_str == null){
     class_str = "search-bar"
   }
 
 
+
+
   const dropdown = document.createElement("div");
   dropdown.classList.add("dropdown");
   dropdown.innerHTML = "jwnf"
+  if(dropdown_id != null){
+    dropdown.id = dropdown_id
+  }
 
 
 
