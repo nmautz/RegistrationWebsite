@@ -30,7 +30,7 @@ function register_div_as_search(div, class_str, func, dropdown_id){
 
     SearchManager.getInstance().updateRequirement("prof_name", input.value)
   
-    console.log(SearchManager.getInstance().getClasses())
+    console.log(SearchManager.getInstance().getClassesByReq("prof_name"));
 
   })
 

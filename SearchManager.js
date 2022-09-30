@@ -72,6 +72,32 @@ class SearchManager{
   }
 
 
+  getClassesByReq(req_str){
+
+    var classes = []
+
+    for(var i = 0; i < classesList.length; ++i){
+
+      var valid = true;
+
+      var req = this.requirements[req_str]
+
+
+
+      if(!req.func(req.arg, classesList[i])){
+        valid = false;
+      }
+
+      if(valid){
+        classes.push(classesList[i]);
+      }
+    }
+
+    return classes;
+
+  }
+
+
 
 
 
