@@ -71,6 +71,13 @@ class SearchManager{
     return classes;
   }
 
+  clearAllRestrictionsArg(){
+
+    for(var id in this.requirements){
+      this.requirements[id].arg = ""
+    }
+  }
+
 
   getClassesByReq(req_str){
 
