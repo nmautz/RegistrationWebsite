@@ -28,6 +28,33 @@ function register_div_as_search(div, class_str, func, dropdown_id){
   input.addEventListener("input", func)
 
 
+  dropdown.onscroll = ()=>{
+
+    var headers = dropdown.getElementsByClassName("dropdown-header");
+
+
+
+    for(var i = 0; i < headers.length; ++i){
+
+      var headerOffset = findOffset(headers[i]);
+      var dropdownScrollTop = dropdown.scrollTop;
+
+
+      console.log(headers[i].offsetTop)
+      if (dropdownScrollTop > headerOffset.top) {
+        headers[i].classList.add("sticky");
+      } else {
+        headers[i].classList.remove("sticky");
+      }
+
+    }
+
+
+
+
+  }
+
+
 
 }
 
@@ -60,3 +87,18 @@ document.addEventListener("click", ()=>{
 
   const searchbar = document.getElementById("main-search-input");
 })
+
+function findOffset(element) {
+  var top = 0, left = 0;
+
+  do {
+    top += element.offsetTop  || 0;
+    left += element.offsetLeft || 0;
+    element = element.offsetParent;
+  } while(element);
+
+  return {
+    top: top,
+    left: left
+  };
+}

@@ -94,3 +94,9 @@
         background-color: rgb(182, 180, 180);
         cursor: pointer;
     }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
