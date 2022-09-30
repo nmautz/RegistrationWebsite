@@ -37,7 +37,7 @@ function register_div_as_search(div, class_str, func, dropdown_id){
     for(var i = 0; i < headers.length; ++i){
 
       var headerOffset = findOffset(headers[i]);
-      var dropdownScrollTop = dropdown.scrollTop;
+      var dropdownScrollTop = dropdown.scrollTop+40;
 
 
       console.log(headers[i].offsetTop)
