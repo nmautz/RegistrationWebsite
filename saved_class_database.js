@@ -81,29 +81,27 @@ function is_color_taken(classes,color)
   return false
 }
 
+//checks if a section overlaps with a current section in plan
 function check_for_contradictions(planID, section)
 {
-  // var week_days = [section.sunday[0], section.monday[0], section.tuesday[0], section.wednesday[0], section.thursday[0], section.friday[0], section.saturday[0]]
-  // var classes = load_classes(planID)
-  // for (var i = 0; i < classes.length; ++i)
-  // {
-  //   var weekDays =  [classes[i].sunday[0], classes[i].monday[0], classes[i].tuesday[0], classes[i].wednesday[0], classes[i].thursday[0], classes[i].friday[0], classes[i].saturday[0]]
-  //   for (var j = 0; j < week_days.length; ++j)
-  //   {
-  //     if (week_days[j] && weekDays[j])
-  //     {
-  //       // console.log(classes[i].beginTime,section.beginTime)
-  //       if (do_classes_overlap(section,classes[i]))
-  //       {
-  //         section.color="red"
-  //         section.overlaps = true
-  //         return
-  //       }
-  //     }
-  //   }
-  // }
-  section.color = getNewColor()
-  section.overlaps = false
+  var week_days = [section.sunday[0], section.monday[0], section.tuesday[0], section.wednesday[0], section.thursday[0], section.friday[0], section.saturday[0]]
+  var classes = load_classes(planID)
+  for (var i = 0; i < classes.length; ++i)
+  {
+    var weekDays =  [classes[i].sunday[0], classes[i].monday[0], classes[i].tuesday[0], classes[i].wednesday[0], classes[i].thursday[0], classes[i].friday[0], classes[i].saturday[0]]
+    for (var j = 0; j < week_days.length; ++j)
+    {
+      if (week_days[j] && weekDays[j])
+      {
+        // console.log(classes[i].beginTime,section.beginTime)
+        if (do_classes_overlap(section,classes[i]))
+        {
+          return true
+        }
+      }
+    }
+  }
+  return false
 }
 
 function do_classes_overlap(section1,section2)
@@ -117,7 +115,7 @@ function do_classes_overlap(section1,section2)
 
 function save_class(planID, section){
 
-  check_for_contradictions(planID,section)
+  section.color = getNewColor()
   section.planID = planID;
   section.uniqueID = planID+section.id;
   localStorage.setItem(section.uniqueID, JSON.stringify(section))
