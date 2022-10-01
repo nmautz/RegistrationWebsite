@@ -182,7 +182,7 @@ function load_classes(planID){
 
 function is_class_saved(section){
   try{
-    classes = load_classes(schedule.selectedPlan)
+    classes = load_classes("1")
     for(var i = 0; i < classes.length; ++i){
       if(classes[i].id == section.id)
       {
@@ -231,7 +231,7 @@ function load_planIDs(){
 document.addEventListener("DOMContentLoaded", function(){
   
 
-
+  create_plan("1");
 
 
   

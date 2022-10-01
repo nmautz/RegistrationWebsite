@@ -1,8 +1,6 @@
 fetch("/classes.json").then(response => response.json()).then( function(jsonData){
     
   classesList = jsonData["data"]
-  SearchManager.getInstance().getClasses()
-
 
 
 
@@ -69,6 +67,13 @@ class SearchManager{
     }
 
     return classes;
+  }
+
+  clearAllRestrictionsArg(){
+
+    for(var id in this.requirements){
+      this.requirements[id].arg = ""
+    }
   }
 
 
