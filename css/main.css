@@ -111,6 +111,13 @@ body{
   border: 1px solid black;
 
   padding: 5px;
+  cursor: pointer;
+  transition: all ease-in-out 100ms;
+}
+
+.day-box:hover {
+  background-color: green;
+  scale: 1.2;
 }
 
 
