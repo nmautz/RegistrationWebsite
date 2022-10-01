@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   //Calendar setup (calendar.js)
 
-  Calendar.getInstance();
+  Calendar.getInstance().update_calendar();
 
 
 

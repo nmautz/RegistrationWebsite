@@ -100,13 +100,22 @@ class Calendar{
     this.refs["Sunday"][round_stime].appendChild(td);
 
     console.log(min_to_str_time(round_etime))
-    
+  }
 
 
 
+  update_calendar(){
+    var class_sections = load_classes("1") //TODO Unhardcode plan_id
 
+    for(var id in class_sections){
+
+      this.addClassSectionToDisplay(class_sections[id]);
+
+
+    }
 
   }
+
 
   round_time_to_interval(time){
     return Math.ceil(time/this.time_increment)*this.time_increment;
