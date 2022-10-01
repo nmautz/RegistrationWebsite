@@ -78,6 +78,18 @@ class Calendar{
   }
 
 
+  addClassSectionToDisplay(class_section){
+    var start_time_str = class_section.beginTime[0]
+    var end_time_str = class_section.endTime[0]
+
+    var start_time = (parseInt(start_time_str[0] + start_time_str[1])*60) + parseInt(start_time_str[2] + start_time_str[3])
+    var end_time = (parseInt(end_time_str[0] + end_time_str[1])*60) + parseInt(end_time_str[2] + end_time_str[3])
+
+    
+
+  }
+
+
 }
 
 
