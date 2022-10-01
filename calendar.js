@@ -102,11 +102,19 @@ class Calendar{
 
         this.refs[dayNames[i]][round_stime].style.backgroundColor = class_section.color
 
-
         this.refs[dayNames[i]][round_stime].addEventListener("click", function()
         {
           open_pop_up(class_section)
         })
+
+        var timeI = round_stime
+        var spanI = span;
+        while(spanI-1 > 0){
+          timeI+=this.time_increment
+          this.refs[dayNames[i]][timeI].style.display = "none"
+          spanI--;
+
+        }
   
       }
     }
