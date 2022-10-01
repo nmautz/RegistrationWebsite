@@ -44,9 +44,13 @@
 }
 
 .popUp-header .close-button:hover{
-    transition: 200ms ease-in-out;
     color: rgb(255, 89, 0);
+    scale: 1.5;
     size: 100;
+}
+
+.close-button{
+    transition: all ease-in-out 200ms;
 }
 
 .popUp-Body {

@@ -68,10 +68,7 @@ class Calendar{
       row.appendChild(td);
 
 
-      this.refs[id][time] = td;
-
-
-      
+      this.refs[id][time] = td;     
   
     }
 
@@ -90,15 +87,26 @@ class Calendar{
 
     var span = ((round_etime - this.start_time) - (round_stime - this.start_time))/this.time_increment
 
+    var activeDays = [class_section.sunday[0],class_section.monday[0],class_section.tuesday[0],class_section.wednesday[0],class_section.thursday[0],class_section.friday[0],class_section.saturday[0]]
+    var dayNames = ["Sunday","Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
-    this.refs["Sunday"][round_stime].innerHTML = class_section.courseTitle;
+    for (var i = 0; i < activeDays.length; ++i)
+    {
+      if (activeDays[i])
+      {
+        this.refs[dayNames[i]][round_stime].innerHTML = class_section.courseTitle;
 
-    this.refs["Sunday"][round_stime].rowSpan = span;
+        this.refs[dayNames[i]][round_stime].rowSpan = span;
 
-    this.refs["Sunday"][round_stime].classList.add("calendar-item")
+        this.refs[dayNames[i]][round_stime].classList.add("calendar-item")
 
-
-
+        this.refs[dayNames[i]][round_stime].addEventListener("click", function()
+        {
+          open_pop_up(class_section)
+        })
+  
+      }
+    }
     console.log(min_to_str_time(round_etime))
   }
 
