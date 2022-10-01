@@ -6,7 +6,8 @@ function open_pop_up(section)
     document.getElementById("popUp-Professor").innerHTML = section.professorName + " | " + section.professorEmail
     var meetingTimes = parse_time(section.beginTime) + "-" + parse_time(section.endTime)
     document.getElementById("popUp-Meeting-Times").innerHTML = meetingTimes
-    var meetingDays = "use the getWeekString function from 'requirement' object"
+    var req = SearchManager.getInstance();
+    var meetingDays = req.getWeekString(section)
     document.getElementById("popUp-Meeting-Days").innerHTML = meetingDays
     document.getElementById("popUp-Location").innerHTML = section.campusDescription + " Campus | " + section.buildingDescription
     document.getElementById("popUp-Enrolment").innerHTML = section.enrollment + "/" + section.maximumEnrollment + " | Seats Available: " + section.seatsAvailable

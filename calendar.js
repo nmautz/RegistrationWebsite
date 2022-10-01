@@ -100,6 +100,9 @@ class Calendar{
 
         this.refs[dayNames[i]][round_stime].classList.add("calendar-item")
 
+        this.refs[dayNames[i]][round_stime].style.backgroundColor = class_section.color
+
+
         this.refs[dayNames[i]][round_stime].addEventListener("click", function()
         {
           open_pop_up(class_section)

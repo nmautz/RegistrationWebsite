@@ -102,8 +102,51 @@ class SearchManager{
 
   }
 
+  //returns the string form of the sections meeting days
+  getWeekString(section)
+  {
+    var week_days = [section.sunday, section.monday, section.tuesday, section.wednesday, section.thursday, section.friday, section.saturday]
+    var meetDays = ""
+    var key = []
+    for (var i = 0; i < week_days.length; ++i)
+    {
+      if(week_days[i][0])
+        key.push(i)
+      else
+        meetDays = this.clearStack(key,meetDays)
+    }
+    meetDays = this.clearStack(key,meetDays)
+        
+    return meetDays
+  }
 
-
+  clearStack(key,meetDays)
+  {
+    var weekDayTitles = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    var sWeekDayTitles = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+    if(key.length > 2)
+        {
+          //reversing stack
+          var last = sWeekDayTitles[key.pop()]
+          while(key.length > 1)
+            key.pop()
+          var first = sWeekDayTitles[key.pop()]
+          if(meetDays != "")
+            meetDays += ","
+          meetDays = String(meetDays + " " + first + "-" + last)
+        }else if(key.length > 0)
+        {
+          key.reverse()
+          while(key.length > 0)
+          {
+            if(meetDays != "")
+              meetDays += ","
+            meetDays = String(meetDays + " " + weekDayTitles[key.pop()])
+          }
+            
+        }
+    return meetDays
+  }
 
 
 }
