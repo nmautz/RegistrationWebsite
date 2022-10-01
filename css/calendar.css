@@ -3,6 +3,8 @@
 
 #calendar-display{
   display: none;
+  overflow: scroll;
+  position: relative;
 }
 
 .calendar-time{

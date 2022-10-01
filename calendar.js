@@ -94,7 +94,7 @@ class Calendar{
 
     td.innerHTML = class_section.courseTitle;
 
-    td.rowSpan = span
+    td.rowSpan = span;
 
 
     this.refs["Sunday"][round_stime].appendChild(td);
