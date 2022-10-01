@@ -3,12 +3,6 @@ fetch("/classes.json").then(response => response.json()).then( function(jsonData
   classesList = jsonData["data"]
 
 
-  Calendar.getInstance().addClassSectionToDisplay(classesList[1]);//TODO delete
-
-
-
-
-
 })
 
 class SearchManager{

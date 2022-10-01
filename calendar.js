@@ -85,10 +85,32 @@ class Calendar{
     var start_time = (parseInt(start_time_str[0] + start_time_str[1])*60) + parseInt(start_time_str[2] + start_time_str[3])
     var end_time = (parseInt(end_time_str[0] + end_time_str[1])*60) + parseInt(end_time_str[2] + end_time_str[3])
 
+    var round_stime = this.round_time_to_interval(start_time);
+    var round_etime = this.round_time_to_interval(end_time);
+
+    var span = (round_etime - this.start_time) - (round_stime - this.start_time)
+
+    var td = document.createElement("td");
+
+    td.innerHTML = class_section.courseTitle;
+
+    td.rowSpan = span
+
+
+    this.refs["Sunday"][round_stime].appendChild(td);
+
+    console.log(min_to_str_time(round_etime))
     
+
+
+
+
 
   }
 
+  round_time_to_interval(time){
+    return Math.ceil(time/this.time_increment)*this.time_increment;
+  }
 
 }
 

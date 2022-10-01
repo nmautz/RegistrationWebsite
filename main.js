@@ -84,7 +84,6 @@ function setDropdownTitle(input ){
 
         update_section_display();
 
-
       });
     }
   }
