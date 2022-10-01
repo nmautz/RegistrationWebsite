@@ -17,7 +17,21 @@ class Calendar{
     this.time_increment = 60 //minutes
     this.start_time = 360 // 360 min aka 6am
     this.end_time = 1439 // 11:59 pm
+
+    this.refs = {
+      Sunday: {},
+      Monday: {},
+      Tuesday: {},
+      Wednesday: {},
+      Thursday: {},
+      Friday: {},
+      Saturday: {}
+    } 
+
+
     this.create_table();
+
+
 
   }
 
@@ -47,6 +61,20 @@ class Calendar{
 
     time_td.innerHTML = min_to_str_time(time);
     time_td.classList.add = "calendar-time";
+
+
+    for(var id in this.refs){
+      var td = document.createElement("td");
+      row.appendChild(td);
+
+
+      this.refs[id][time] = td;
+
+
+      
+  
+    }
+
   }
 
 
