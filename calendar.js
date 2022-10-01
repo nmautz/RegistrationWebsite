@@ -14,7 +14,7 @@ class Calendar{
   constructor(){
 
     this.tableDiv = document.getElementById("calendar-table");
-    this.time_increment = 60 //minutes
+    this.time_increment = 30 //minutes
     this.start_time = 360 // 360 min aka 6am
     this.end_time = 1439 // 11:59 pm
 
@@ -88,16 +88,16 @@ class Calendar{
     var round_stime = this.round_time_to_interval(start_time);
     var round_etime = this.round_time_to_interval(end_time);
 
-    var span = (round_etime - this.start_time) - (round_stime - this.start_time)
-
-    var td = document.createElement("td");
-
-    td.innerHTML = class_section.courseTitle;
-
-    td.rowSpan = span;
+    var span = ((round_etime - this.start_time) - (round_stime - this.start_time))/this.time_increment
 
 
-    this.refs["Sunday"][round_stime].appendChild(td);
+    this.refs["Sunday"][round_stime].innerHTML = class_section.courseTitle;
+
+    this.refs["Sunday"][round_stime].rowSpan = span;
+
+    this.refs["Sunday"][round_stime].classList.add("calendar-item")
+
+
 
     console.log(min_to_str_time(round_etime))
   }
