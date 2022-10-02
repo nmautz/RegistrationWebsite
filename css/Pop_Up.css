@@ -8,7 +8,7 @@
     border-radius: 10px;
     z-index: 999;
     width: 1000px;
-    height: 700px;
+    height: 800px;
     max-width: 80%;
     background-color: white;
 }
@@ -17,6 +17,10 @@
     transform: translate(-50%,-50%) scale(1)
 }
 .popUp-header{
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+
+    background-color: rgb(199, 199, 199);
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
@@ -36,6 +40,17 @@
     background: none;
     font-size: 1.25rem;
     font-weight: bold;
+
+}
+
+.popUp-header .close-button:hover{
+    color: rgb(255, 89, 0);
+    scale: 1.5;
+    size: 100;
+}
+
+.close-button{
+    transition: all ease-in-out 200ms;
 }
 
 .popUp-Body {

@@ -81,6 +81,7 @@ function is_color_taken(classes,color)
   return false
 }
 
+//checks if a section overlaps with a current section in plan
 function check_for_contradictions(planID, section)
 {
   var week_days = [section.sunday[0], section.monday[0], section.tuesday[0], section.wednesday[0], section.thursday[0], section.friday[0], section.saturday[0]]
@@ -95,15 +96,12 @@ function check_for_contradictions(planID, section)
         // console.log(classes[i].beginTime,section.beginTime)
         if (do_classes_overlap(section,classes[i]))
         {
-          section.color="red"
-          section.overlaps = true
-          return
+          return true
         }
       }
     }
   }
-  section.color = getNewColor()
-  section.overlaps = false
+  return false
 }
 
 function do_classes_overlap(section1,section2)
@@ -117,7 +115,7 @@ function do_classes_overlap(section1,section2)
 
 function save_class(planID, section){
 
-  check_for_contradictions(planID,section)
+  section.color = getNewColor()
   section.planID = planID;
   section.uniqueID = planID+section.id;
   localStorage.setItem(section.uniqueID, JSON.stringify(section))
@@ -181,14 +179,19 @@ function load_classes(planID){
 }
 
 function is_class_saved(section){
-  classes = load_classes(schedule.selectedPlan)
-  for(var i = 0; i < classes.length; ++i){
-    if(classes[i].id == section.id)
-    {
-      return true
+  try{
+    classes = load_classes("1")
+    for(var i = 0; i < classes.length; ++i){
+      if(classes[i].id == section.id)
+      {
+        return true
+      }
+  
     }
-
+  }catch(e){
+    console.error(e)
   }
+
   return false
 }
 
@@ -223,10 +226,15 @@ function load_planIDs(){
 }
 
 
+function clearEmptySchedule()
+{
+
+}
+
 document.addEventListener("DOMContentLoaded", function(){
-  
+  delete_plan("(None)")
 
-
+  create_plan("1");
 
 
   

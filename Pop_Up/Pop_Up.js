@@ -1,14 +1,26 @@
 function open_pop_up(section)
 {
-    const popUp = document.getElementById("pop_up_window")
+
+   
+    if (section.color == null)
+    {
+        document.getElementById("popUp-header").style.backgroundColor = "rgb(199, 199, 199)"
+        document.getElementById("popUp-title").style.color = "black"
+    }else
+    {
+        document.getElementById("popUp-header").style.backgroundColor = section.color
+        document.getElementById("popUp-title").style.color = "white"
+    }
+        
+    
     const overlay = document.getElementById("overlay")
-    // console.log(sectionID.courseTitle)
     document.getElementById("popUp-title").innerHTML = section.courseTitle + "<span style='font-weight:normal'> | </span>" + section.subject + section.courseNumber + "<span style='font-weight:normal'> | </span>" + section.creditHourSession + " credit hours"
     document.getElementById("popUp-Description").innerHTML = section.description
     document.getElementById("popUp-Professor").innerHTML = section.professorName + " | " + section.professorEmail
     var meetingTimes = parse_time(section.beginTime) + "-" + parse_time(section.endTime)
     document.getElementById("popUp-Meeting-Times").innerHTML = meetingTimes
-    var meetingDays = requirement.getWeekString(section)
+    var req = SearchManager.getInstance();
+    var meetingDays = req.getWeekString(section)
     document.getElementById("popUp-Meeting-Days").innerHTML = meetingDays
     document.getElementById("popUp-Location").innerHTML = section.campusDescription + " Campus | " + section.buildingDescription
     document.getElementById("popUp-Enrolment").innerHTML = section.enrollment + "/" + section.maximumEnrollment + " | Seats Available: " + section.seatsAvailable
@@ -21,7 +33,7 @@ function open_pop_up(section)
     document.getElementById("popUp-Bookstore").href = section.bookstoreLink
 
     
-    
+    const popUp = document.getElementById("pop_up_window")
     if (popUp == null)
         return
     popUp.classList.add("active")

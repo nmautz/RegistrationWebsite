@@ -6,6 +6,7 @@ class Schedule {
         this.timeContainer = "timeContainer"
         this.classListContainer = "classList-container"
         this.colorInd = 0
+        this.selectedPlan = "(None)"
     }
 
     //can only be called once page is loaded
@@ -20,6 +21,7 @@ class Schedule {
 
         this.generateTasks()
         this.generateClasses()
+        console.log("here")
     }
 
 
@@ -189,272 +191,273 @@ class Schedule {
     }
 }
 
-class ScheduleInput{
-    constructor(insertPoint, deletePlnBtn)
-    {
-        this.insertPoint = insertPoint
-        this.deletePlnBtn = deletePlnBtn
-        this.submissionDiv = "submitPlanContainer"
-        this.addPlanBtn = "addPlanBtn"
-        this.planIdInput = "planID-Input"
-        this.submitPlanBtn = "submitNewPlanBtn"
-        this.createButton()
-        this.addListener()
-        this.createHidElements()
+// class ScheduleInput{
+//     constructor(insertPoint, deletePlnBtn)
+//     {
+//         this.insertPoint = insertPoint
+//         this.deletePlnBtn = deletePlnBtn
+//         this.submissionDiv = "submitPlanContainer"
+//         this.addPlanBtn = "addPlanBtn"
+//         this.planIdInput = "planID-Input"
+//         this.submitPlanBtn = "submitNewPlanBtn"
+//         this.createButton()
+//         this.addListener()
+//         this.createHidElements()
 
-    }
+//     }
 
-    addListener()
-    {
-        window.addEventListener('click', (e) =>
-        {   
-            const divElement = document.getElementById(this.submissionDiv)
-            const addPlanBtn = document.getElementById(this.addPlanBtn)
-            if (document.getElementById(this.planIdInput).contains(e.target))
-                divElement.style.display = "inline-block"
-            else if (!addPlanBtn.contains(e.target))
-            {
-                divElement.style.display = "none"
-                addPlanBtn.style.display = "block"
-            }
+//     addListener()
+//     {
+//         window.addEventListener('click', (e) =>
+//         {   
+//             const divElement = document.getElementById(this.submissionDiv)
+//             const addPlanBtn = document.getElementById(this.addPlanBtn)
+//             if (document.getElementById(this.planIdInput).contains(e.target))
+//                 divElement.style.display = "inline-block"
+//             else if (!addPlanBtn.contains(e.target))
+//             {
+//                 divElement.style.display = "none"
+//                 addPlanBtn.style.display = "block"
+//             }
                 
-        });
-    }
+//         });
+//     }
 
-    createButton()
-    {
-        //creating button
-        const btnElement = document.createElement("input")
-        btnElement.setAttribute("type", "button")
-        btnElement.value = "Add Plan"
-        btnElement.id = this.addPlanBtn
-        btnElement.addEventListener("click", (e)=>
-        {
-            var subDiv = document.getElementById(this.submissionDiv)
-            e.target.style.display = "none"
-            subDiv.style.display = "block"   
+//     createButton()
+//     {
+//         //creating button
+//         const btnElement = document.createElement("input")
+//         btnElement.setAttribute("type", "button")
+//         btnElement.value = "Add Plan"
+//         btnElement.id = this.addPlanBtn
+//         btnElement.addEventListener("click", (e)=>
+//         {
+//             var subDiv = document.getElementById(this.submissionDiv)
+//             e.target.style.display = "none"
+//             subDiv.style.display = "block"   
         
-        })
-        const divElement = document.getElementById(this.insertPoint)
-        divElement.appendChild(btnElement)
-    }
+//         })
+//         const divElement = document.getElementById(this.insertPoint)
+//         divElement.appendChild(btnElement)
+//     }
 
-    createHidElements()
-    {  
-        //creating input
-        const inputElement = document.createElement("input")
-        inputElement.id = this.planIdInput
-        inputElement.placeholder = "Enter Plan Name"
+//     createHidElements()
+//     {  
+//         //creating input
+//         const inputElement = document.createElement("input")
+//         inputElement.id = this.planIdInput
+//         inputElement.placeholder = "Enter Plan Name"
 
-        //creating button
-        const btnElement = document.createElement("input")
-        btnElement.setAttribute("type", "button")
-        btnElement.value = "Create"
-        btnElement.id = this.submitPlanBtn
-        btnElement.addEventListener("click", (e)=>
-        {
-            var plan = document.getElementById(this.planIdInput)
-            var hide = true
-            if(plan.value == "")
-            {
-                var charCode = 65
-                var planName = "A"
-                const ids = get_plan_IDs()
-                if(ids == null)
-                {
-                    create_plan("A")
-                    schedule.selectedPlan = "A"
-                }
-                else{
-                    while(is_plan_saved(planName))
-                    {
-                        charCode++
-                        planName = String.fromCharCode(charCode)
-                    }
-                    create_plan(planName)
-                    schedule.selectedPlan = planName
-                    schedule.updateSchedule()
-                }
+//         //creating button
+//         const btnElement = document.createElement("input")
+//         btnElement.setAttribute("type", "button")
+//         btnElement.value = "Create"
+//         btnElement.id = this.submitPlanBtn
+//         btnElement.addEventListener("click", (e)=>
+//         {
+//             var plan = document.getElementById(this.planIdInput)
+//             var hide = true
+//             if(plan.value == "")
+//             {
+//                 var charCode = 65
+//                 var planName = "A"
+//                 const ids = get_plan_IDs()
+//                 if(ids == null)
+//                 {
+//                     create_plan("A")
+//                     schedule.selectedPlan = "A"
+//                 }
+//                 else{
+//                     while(is_plan_saved(planName))
+//                     {
+//                         charCode++
+//                         planName = String.fromCharCode(charCode)
+//                     }
+//                     create_plan(planName)
+//                     schedule.selectedPlan = planName
+//                     schedule.updateSchedule()
+//                 }
                 
-            }else
-            {
-                if (is_plan_saved(plan.value))
-                {
-                    alert("Plan Already Created")
-                    hide = false
-                }else
-                {  
-                    create_plan(plan.value)
-                    schedule.selectedPlan = plan.value
-                    schedule.updateSchedule()
-                }                
-            }
+//             }else
+//             {
+//                 if (is_plan_saved(plan.value))
+//                 {
+//                     alert("Plan Already Created")
+//                     hide = false
+//                 }else
+//                 {  
+//                     create_plan(plan.value)
+//                     schedule.selectedPlan = plan.value
+//                     schedule.updateSchedule()
+//                 }                
+//             }
             
-            if(hide)
-            {
-                document.getElementById("selectPlanBtn").innerHTML = "Selected Plan: " + schedule.selectedPlan
-                plan.value = ""
-                var subDiv = document.getElementById(this.submissionDiv)
-                subDiv.style.display = "none"
-                var addBtn = document.getElementById(this.addPlanBtn)
-                addBtn.style.display = "block"
-                this.deletePlnBtn.unhide()
-                update_section_display() 
-            }
+//             if(hide)
+//             {
+//                 document.getElementById("selectPlanBtn").innerHTML = "Selected Plan: " + schedule.selectedPlan
+//                 plan.value = ""
+//                 var subDiv = document.getElementById(this.submissionDiv)
+//                 subDiv.style.display = "none"
+//                 var addBtn = document.getElementById(this.addPlanBtn)
+//                 addBtn.style.display = "block"
+//                 this.deletePlnBtn.unhide()
+//                 update_section_display() 
+//             }
             
-        })
+//         })
 
-        const divElement = document.createElement("div")
-        divElement.id = this.submissionDiv
-        //hides div element
-        divElement.style.display = "none"
-        //css class that the dropdown follows**************************
-        // divElement.classList.add(css)
+//         const divElement = document.createElement("div")
+//         divElement.id = this.submissionDiv
+//         //hides div element
+//         divElement.style.display = "none"
+//         //css class that the dropdown follows**************************
+//         // divElement.classList.add(css)
 
-        //appending the button and input to the div container
-        divElement.appendChild(inputElement)
-        divElement.appendChild(btnElement)
+//         //appending the button and input to the div container
+//         divElement.appendChild(inputElement)
+//         divElement.appendChild(btnElement)
 
-        //appending div container to main div container
-        const mainContainer = document.getElementById(this.insertPoint)
-        mainContainer.appendChild(divElement)
-    }
-}
+//         //appending div container to main div container
+//         const mainContainer = document.getElementById(this.insertPoint)
+//         mainContainer.appendChild(divElement)
+//     }
+// }
 
-class planDropDown extends daysDropDown{
-    constructor(input,deletePlnBtn)
-    {
-        super(input,"PlanDropDown")
-        this.deletePlnBtn = deletePlnBtn
-    }
+// class planDropDown extends daysDropDown{
+//     constructor(input,deletePlnBtn)
+//     {
+//         super(input,"PlanDropDown")
+//         this.deletePlnBtn = deletePlnBtn
+//     }
 
 
-    addDropdownDiv()
-    {
-        const dropdownUI = document.getElementById(this.input)
-        const element = document.createElement("div")
-        element.id = this.divName
-        //css class that the dropdown follows**************************
-        element.classList.add("dropdown-content")
-        element.classList.add("button-dropdown")
-        element.classList.add("plan")
+//     addDropdownDiv()
+//     {
+//         const dropdownUI = document.getElementById(this.input)
+//         const element = document.createElement("div")
+//         element.id = this.divName
+//         //css class that the dropdown follows**************************
+//         element.classList.add("dropdown-content")
+//         element.classList.add("button-dropdown")
+//         element.classList.add("plan")
     
-        dropdownUI.insertAdjacentElement("afterend",element)
-    }
+//         dropdownUI.insertAdjacentElement("afterend",element)
+//     }
 
-    addChildren()
-    {
-        //var userInput = document.getElementById(this.input).value
-        var userInput = this.inputVal
-        userInput = String(userInput).toUpperCase()
-        var planIDs = get_plan_IDs()
-        if (planIDs == null)
-        {
-            this.addDropdown("(None)")
-            return
-        }
+//     addChildren()
+//     {
+//         //var userInput = document.getElementById(this.input).value
+//         var userInput = this.inputVal
+//         userInput = String(userInput).toUpperCase()
+//         var planIDs = get_plan_IDs()
+//         if (planIDs == null)
+//         {
+//             this.addDropdown("(None)")
+//             return
+//         }
          
-        var dropDownArr = []
-        for(var i = 0; i < planIDs.length; ++i)
-        {
-            dropDownArr.push(planIDs[i])    
-        }
+//         var dropDownArr = []
+//         for(var i = 0; i < planIDs.length; ++i)
+//         {
+//             dropDownArr.push(planIDs[i])    
+//         }
 
-        //adds the drop downs
-        this.addDropdown("(None)")
-        dropDownArr.sort()
-        for (var i = 0; i < dropDownArr.length; ++i)
-            this.addDropdown(dropDownArr[i])
-    }
+//         //adds the drop downs
+//         this.addDropdown("(None)")
+//         dropDownArr.sort()
+//         for (var i = 0; i < dropDownArr.length; ++i)
+//             this.addDropdown(dropDownArr[i])
+//     }
 
-    addDropdown(data)
-    {
-        const dropdownUI = document.getElementById(this.divName)
-        const aElement = document.createElement("a")
-        aElement.id = this.elementName
-        aElement.data = data
-        const text = document.createTextNode(data)
-        aElement.appendChild(text)
-        aElement.addEventListener("click", (e) =>
-        {
-            schedule.selectedPlan = data
+//     addDropdown(data)
+//     {
+//         const dropdownUI = document.getElementById(this.divName)
+//         const aElement = document.createElement("a")
+//         aElement.id = this.elementName
+//         aElement.data = data
+//         const text = document.createTextNode(data)
+//         aElement.appendChild(text)
+//         aElement.addEventListener("click", (e) =>
+//         {
+//             schedule.selectedPlan = data
 
-            document.getElementById(this.input).innerHTML = "Selected Plan: " + data
-            if (data == "(None)")
-            {
-                document.getElementById(this.input).innerHTML = "Select Plan"
-                this.deletePlnBtn.hide()
-            }else
-            {
-                this.deletePlnBtn.unhide()
-            }        
+//             document.getElementById(this.input).innerHTML = "Selected Plan: " + data
+//             if (data == "(None)")
+//             {
+//                 document.getElementById(this.input).innerHTML = "Select Plan"
+//                 this.deletePlnBtn.hide()
+//             }else
+//             {
+//                 this.deletePlnBtn.unhide()
+//             }        
             
 
-            //makes dropdown update after it is clicked on
-            this.updateDropDown()
-            schedule.updateSchedule()
-            update_section_display()
-        })
-        dropdownUI.insertAdjacentElement("beforeend",aElement)
-    }
+//             //makes dropdown update after it is clicked on
+//             this.updateDropDown()
+//             schedule.updateSchedule()
+//             update_section_display()
+//         })
+//         dropdownUI.insertAdjacentElement("beforeend",aElement)
+//     }
 
-    resetInnerHTML()
-    {
-        document.getElementById(this.input).innerHTML = "Select Plan"
-    }
-}
+//     resetInnerHTML()
+//     {
+//         document.getElementById(this.input).innerHTML = "Select Plan"
+//     }
+// }
 
-class deletePlanBtn {
-    constructor(insertPoint)
-    {
-        this.insertPoint = insertPoint
-        this.btnName = "deletePlanBtn"
-        this.createButton()
-        this.hide()
-    }
+// class deletePlanBtn {
+//     constructor(insertPoint)
+//     {
+//         this.insertPoint = insertPoint
+//         this.btnName = "deletePlanBtn"
+//         this.createButton()
+//         this.hide()
+//     }
 
-    createButton()
-    {
-        const btnElement = document.createElement("input")
-        btnElement.setAttribute("type", "button")
-        btnElement.value = "Delete"
-        btnElement.id = this.btnName
-        btnElement.addEventListener("click", (e)=>
-        {
-           delete_plan(schedule.selectedPlan)
-           schedule.selectedPlan = "(None)"
-           document.getElementById("selectPlanBtn").innerHTML = "Select Plan"
-           document.getElementById(this.btnName).style.display = "none"
-           update_section_display()
-           schedule.updateSchedule()
-        })
+//     createButton()
+//     {
+//         const btnElement = document.createElement("input")
+//         btnElement.setAttribute("type", "button")
+//         btnElement.value = "Delete"
+//         btnElement.id = this.btnName
+//         btnElement.addEventListener("click", (e)=>
+//         {
+//            delete_plan(schedule.selectedPlan)
+//            schedule.selectedPlan = "(None)"
+//            document.getElementById("selectPlanBtn").innerHTML = "Select Plan"
+//            document.getElementById(this.btnName).style.display = "none"
+//            update_section_display()
+//            schedule.updateSchedule()
+//         })
             
-        var insertDiv = document.getElementById(this.insertPoint)
-        insertDiv.appendChild(btnElement)
-    }
+//         var insertDiv = document.getElementById(this.insertPoint)
+//         insertDiv.appendChild(btnElement)
+//     }
 
-    hide()
-    {
-        var btn = document.getElementById(this.btnName)
-        btn.style.display = "none"
-    }
+//     hide()
+//     {
+//         var btn = document.getElementById(this.btnName)
+//         btn.style.display = "none"
+//     }
 
-    unhide()
-    {
-        var btn = document.getElementById(this.btnName)
-        btn.style.display = "block"
-    }
+//     unhide()
+//     {
+//         var btn = document.getElementById(this.btnName)
+//         btn.style.display = "block"
+//     }
 
-}
+// }
 
 
 const schedule = new Schedule("scheduleInput")
 
 document.addEventListener("DOMContentLoaded", function()
 {
-    const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")    
-    const scheduleInput = new ScheduleInput("plan_Input_Container",deletePlnBtn)
-    const planDrpDwn = new planDropDown("selectPlanBtn",deletePlnBtn) 
+    schedule.
+    // const deletePlnBtn = new deletePlanBtn("delete_Plan_Container")    
+    // const scheduleInput = new ScheduleInput("plan_Input_Container",deletePlnBtn)
+    // const planDrpDwn = new planDropDown("selectPlanBtn",deletePlnBtn) 
     schedule.createSchedule()
 })
 
