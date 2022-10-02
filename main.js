@@ -17,16 +17,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 
-
-
-
-
-
-
-    
-
-
-
   }, "main-search-input");
   setDropdownTitle(main_search_div.firstChild);
     
@@ -57,6 +47,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
   });
 
 
+
+  //Calendar setup (calendar.js)
+
+  Calendar.getInstance().update_calendar();
+  
 
 
 
@@ -89,7 +84,6 @@ function setDropdownTitle(input ){
         sm.updateRequirement("course_title", str)
 
         update_section_display();
-
 
       });
     }

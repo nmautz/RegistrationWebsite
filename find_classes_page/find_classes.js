@@ -65,3 +65,4 @@ document.addEventListener("DOMContentLoaded", function(){
     const courseNumber_input = document.getElementById("courseNumber-input")
 
 })
+

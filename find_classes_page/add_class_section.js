@@ -334,7 +334,7 @@ function createSaveButton(section_display, section){
       save_button.style.borderBottomColor = "transparent"
 
       const planID_input = document.getElementById("planID-input");
-      remove_class_by_ID(schedule.selectedPlan,section.id)
+      remove_class_by_ID("1",section.id) //TODO unhardcode plan_id
       // schedule.loadSchedule(planID_input.value)
 
 
@@ -343,12 +343,11 @@ function createSaveButton(section_display, section){
       save_button.style.borderBottomColor = "transparent"
 
       const planID_input = document.getElementById("planID-input");
-      save_class(schedule.selectedPlan,section)
+      save_class("1",section)//TODO Unhardcode plan_id
       // schedule.loadSchedule(planID_input.value)
     }
 
     update_section_display()
-    schedule.updateSchedule()
     e.stopPropagation()
 
 
@@ -374,13 +373,12 @@ function addClassSection(section, parent){
 
   //Click listener on section
   section_display.addEventListener("click", function(){
-
-
-    toggleSectionDisplay(section_display, section)
+    //pop up should not have color if the class is not saved
+    section.color = null
+    open_pop_up(section)
+    // toggleSectionDisplay(section_display, section)
 
     
-
-
 
   })
 

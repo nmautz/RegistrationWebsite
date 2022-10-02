@@ -9,8 +9,15 @@
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/drop_down.css">
   <link rel="stylesheet" href="./find_classes_page/find_classes.css">
+  <link rel="stylesheet" href="./css/calendar.css">
 
+  <!-- The pop up html -->
+  <script src="/Pop_Up/Pop_Up.js"></script>      
+  <link rel="stylesheet" href="css/Pop_Up.css">
+  <!-- end -->
 
+  <script src="./saved_class_database.js"></script>
+  <script src="calendar.js"></script>
 
   <script src="./SearchManager.js"></script>
 
@@ -98,24 +105,75 @@
 
   <div id="class-display">
     <div id="classes-list-container" class="classes-list-containter">
-                
+          <br>
     </div>
   </div>
 
-
+  <div id="scheduleInput">
+    
+  </div>
 
   <div id="calendar-container">
 
     <div id="resize-handle">Expand</div>
     <div id="calendar-display">
 
+      <table id="calendar-table">
+        <tr>
+          <th></th>
+          <th>Sunday</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
 
+        </tr>
+
+      </table>
 
 
     </div>
   </div>
   
-
+  <!-- pop up html -->
+  <div class="popUp" id="pop_up_window">
+    <div class="popUp-header" id="popUp-header">
+        <div id="popUp-title" class="title">Example</div>
+        <button id="closePopUpBtn" onclick=close_pop_up() class="close-button">&times;</button>
+    </div>
+    <div class="popUp-Body">
+        <!-- use lorem to add fake text -->
+        <div class="popUp-Body-Title">Description:  </div>
+        <div id="popUp-Description" class="popUp-Description"></div>
+        <div class="popUp-Body-Title">Professor: </div>
+        <div id="popUp-Professor" class="popUp-Professor"></div>
+        <div class="popUp-Body-Title">Meeting Times: </div>
+        <div id="popUp-Meeting-Times" class="popUp-Meeting-Times"></div>
+        <div class="popUp-Body-Title">Meeting Days: </div>
+        <div id="popUp-Meeting-Days" class="popUp-Meeting-Days"></div>
+        <div class="popUp-Body-Title">Location: </div>
+        <div id="popUp-Location" class="popUp-Location"></div>
+        <div class="popUp-Body-Title">Enrolment: </div>
+        <div id="popUp-Enrolment" class="popUp-Enrolment"></div>
+        <div class="popUp-Body-Title">Hours Per Week: </div>
+        <div id="popUp-Hours" class="popUp-Enrolment"></div>
+        <div class="popUp-Body-Title">Attributes: </div>
+        <div id="popUp-Attributes" class="popUp-Attributes"></div>
+        <div class="popUp-Body-Title">Prerequisites: </div>
+        <div id="popUp-Prereqs" class="popUp-Prereqs"></div>
+        <div class="popUp-Body-Title">Corequisites: </div>
+        <div id="popUp-Coreqs" class="popUp-Coreqs"></div>
+        <div class="popUp-Body-Title">Restrictions: </div>
+        <div id="popUp-Restrictions" class="popUp-Restrictions"></div>
+        <div class="popUp-Body-Title">Fees: </div>
+        <div id="popUp-Fees" class="popUp-Fees"></div>
+        <div class="popUp-Body-Title">Bookstore Link: </div>
+        <div><a id="popUp-Bookstore" class="popUp-Bookstore" href="nike.com" target="_blank">Bookstore</a></div>
+    </div>
+  </div>
+  <div  id="overlay"></div>
 
 
 </body>
