@@ -33,7 +33,6 @@ function add_sections_from_array(sections){
         const classContainter = document.getElementById("classes-list-container")
         for(var i = 0; i < sections.length; ++i){
             addClassSection(sections[i], classContainter)
-            console.log("here")
         }
 
     }

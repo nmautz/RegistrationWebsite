@@ -125,13 +125,11 @@ class Calendar{
     for (var i = 0; i < addedBlocks.length; ++i)
     {
       addedBlocks[i].addEventListener("mouseover",function(){
-        console.log("here")
         for (var j = 0; j < addedBlocks.length; ++j)
           addedBlocks[j].classList.add("hover")
       })
 
       addedBlocks[i].addEventListener("mouseout",function(){
-        console.log("here")
         for (var j = 0; j < addedBlocks.length; ++j)
           addedBlocks[j].classList.remove("hover")
       })
