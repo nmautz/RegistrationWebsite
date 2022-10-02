@@ -121,7 +121,7 @@ class Calendar{
       }
     }
     
-    //if one class is hovered over, then all the rest also increase in scale ect
+    //if one class is hovered over, then all the rest act as if they were hovered over
     for (var i = 0; i < addedBlocks.length; ++i)
     {
       addedBlocks[i].addEventListener("mouseover",function(){

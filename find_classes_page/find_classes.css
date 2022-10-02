@@ -70,7 +70,7 @@ body {
 .classes-list-containter {
   display: grid;
   grid-template-columns: 90vw;
-  
+  padding-top: 1%;
   margin-right: auto;
   margin-left: auto;
 
@@ -112,7 +112,7 @@ body {
 
 .section-display:hover{
   cursor: pointer;
-  scale: 1.02;  
+  scale: 1.03;  
 }
 
 .section-display-side-div{
