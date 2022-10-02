@@ -1,10 +1,18 @@
 function open_pop_up(section)
 {
-    if (section.color != null)
+
+   
+    if (section.color == null)
+    {
+        document.getElementById("popUp-header").style.backgroundColor = "rgb(199, 199, 199)"
+        document.getElementById("popUp-title").style.color = "black"
+    }else
     {
         document.getElementById("popUp-header").style.backgroundColor = section.color
         document.getElementById("popUp-title").style.color = "white"
     }
+        
+    
     const overlay = document.getElementById("overlay")
     document.getElementById("popUp-title").innerHTML = section.courseTitle + "<span style='font-weight:normal'> | </span>" + section.subject + section.courseNumber + "<span style='font-weight:normal'> | </span>" + section.creditHourSession + " credit hours"
     document.getElementById("popUp-Description").innerHTML = section.description

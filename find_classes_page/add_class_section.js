@@ -373,13 +373,12 @@ function addClassSection(section, parent){
 
   //Click listener on section
   section_display.addEventListener("click", function(){
-
-
-    toggleSectionDisplay(section_display, section)
+    //pop up should not have color if the class is not saved
+    section.color = null
+    open_pop_up(section)
+    // toggleSectionDisplay(section_display, section)
 
     
-
-
 
   })
 
