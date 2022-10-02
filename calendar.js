@@ -90,6 +90,8 @@ class Calendar{
     var activeDays = [class_section.sunday[0],class_section.monday[0],class_section.tuesday[0],class_section.wednesday[0],class_section.thursday[0],class_section.friday[0],class_section.saturday[0]]
     var dayNames = ["Sunday","Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
+    var addedBlocks = []
+    //adding blocks to calendar
     for (var i = 0; i < activeDays.length; ++i)
     {
       if (activeDays[i])
@@ -115,10 +117,28 @@ class Calendar{
           spanI--;
 
         }
-  
+        addedBlocks.push(this.refs[dayNames[i]][round_stime])
       }
     }
-    console.log(min_to_str_time(round_etime))
+    
+    //if one class is hovered over, then all the rest also increase in scale ect
+    for (var i = 0; i < addedBlocks.length; ++i)
+    {
+      addedBlocks[i].addEventListener("mouseover",function(){
+        console.log("here")
+        for (var j = 0; j < addedBlocks.length; ++j)
+          addedBlocks[j].classList.add("hover")
+      })
+
+      addedBlocks[i].addEventListener("mouseout",function(){
+        console.log("here")
+        for (var j = 0; j < addedBlocks.length; ++j)
+          addedBlocks[j].classList.remove("hover")
+      })
+    }
+
+    
+    // console.log(min_to_str_time(round_etime))
   }
 
 

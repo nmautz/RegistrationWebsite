@@ -97,7 +97,7 @@ body {
   margin-right: auto;
   background-color: rgb(238, 238, 247);
   width: 60vw;
-  transition: all 200ms ease-in-out;
+  transition: all 100ms ease-in-out;
   height: 30vh;
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
@@ -112,6 +112,7 @@ body {
 
 .section-display:hover{
   cursor: pointer;
+  scale: 1.02;  
 }
 
 .section-display-side-div{
