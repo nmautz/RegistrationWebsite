@@ -14,9 +14,9 @@ class Calendar{
   constructor(){
 
     this.tableDiv = document.getElementById("calendar-table");
-    this.time_increment = 30 //minutes
-    this.start_time = 360 // 360 min aka 6am
-    this.end_time = 1439 // 11:59 pm
+    this.time_increment = 5 //minutes
+    this.start_time = 420 // 420 min aka 7am
+    this.end_time = 1280 // 9:00 pm
 
     this.refs = {
       Sunday: {},
@@ -37,6 +37,21 @@ class Calendar{
 
 
   create_table(){
+
+    var classes = load_classes("1") //TODO unhardcode
+
+    var earliest = classes[0]
+    for(var id in classes){
+      if(id!=0){
+        if(classes[id].beginTime < earliest.beginTime){
+          earliest = classes[id];
+        }
+      }
+      
+    }
+
+    this.start_time = earliest.beginTime-420;
+    console.log(earliest)
 
     var time = this.start_time;
 
@@ -96,6 +111,9 @@ class Calendar{
     {
       if (activeDays[i])
       {
+        console.log(round_stime);
+
+        console.log(this.refs[dayNames[i]]);
         this.refs[dayNames[i]][round_stime].innerHTML = class_section.courseTitle;
 
         this.refs[dayNames[i]][round_stime].rowSpan = span;
