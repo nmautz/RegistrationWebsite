@@ -7,8 +7,8 @@
     border: 1px solid black;
     border-radius: 10px;
     z-index: 999;
-    width: 1000px;
-    height: 800px;
+    width: 67.5%;
+    height: 90%;
     max-width: 80%;
     background-color: white;
 }
@@ -55,7 +55,7 @@
 .popUp-Body {
     padding: 10px 15px;
     overflow-y: scroll;
-    height: 720px;
+    height: 90%;
 }
 
 .popUp-Body-Title {
