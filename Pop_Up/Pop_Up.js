@@ -26,6 +26,7 @@ function open_pop_up(section)
     document.getElementById("popUp-Enrolment").innerHTML = section.enrollment + "/" + section.maximumEnrollment + " | Seats Available: " + section.seatsAvailable
     document.getElementById("popUp-Hours").innerHTML = section.hoursWeek
     document.getElementById("popUp-Attributes").innerHTML = getAttributes(section.attributeDesc)
+    document.getElementById("popUp-Attribute-Codes").innerHTML = getAttributes(section.attributeCodes)
     document.getElementById("popUp-Prereqs").innerHTML = getPrereqs(section.prereqs)
     document.getElementById("popUp-Coreqs").innerHTML = getPrereqs(section.coreqs)
     document.getElementById("popUp-Restrictions").innerHTML = getPrereqs(section.restrictions)
@@ -69,6 +70,7 @@ function getAttributes(attributes)
     return text
 }
 
+
 function getPrereqs(prereqs)
 {
     if (String(prereqs).includes("No prerequisite information available."))
@@ -76,3 +78,4 @@ function getPrereqs(prereqs)
     else
         return prereqs
 }
+

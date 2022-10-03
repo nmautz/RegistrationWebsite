@@ -96,12 +96,12 @@ function check_for_contradictions(planID, section)
         // console.log(classes[i].beginTime,section.beginTime)
         if (do_classes_overlap(section,classes[i]))
         {
-          return true
+          return classes[i]
         }
       }
     }
   }
-  return false
+  return null
 }
 
 function do_classes_overlap(section1,section2)
@@ -118,7 +118,11 @@ function save_class(planID, section){
   section.color = getNewColor()
   section.planID = planID;
   section.uniqueID = planID+section.id;
-  localStorage.setItem(section.uniqueID, JSON.stringify(section))
+  var overLappingClass = check_for_contradictions(planID,section)
+  if (overLappingClass == null)
+    localStorage.setItem(section.uniqueID, JSON.stringify(section))
+  else
+    alert("Error: section overlaps with '" + overLappingClass.courseTitle + "', ID: " + overLappingClass.id)
 }
 
 function get_class(planID, courseID)
