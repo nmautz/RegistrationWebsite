@@ -62,6 +62,10 @@
     font-weight: bold;
 }
 
+.popUp-item{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
 
 
 #overlay {
