@@ -54,8 +54,13 @@
 
 .popUp-Body {
     padding: 10px 15px;
+    height: 100%;
+}
+
+#pop_up_window{
     overflow-y: scroll;
-    height: 90%;
+
+
 }
 
 .popUp-Body-Title {
