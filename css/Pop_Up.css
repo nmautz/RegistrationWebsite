@@ -62,14 +62,7 @@
     font-weight: bold;
 }
 
-.popUp-item{
-    transition: all ease-in-out 150ms;
-}
-.popUp-item:hover{
-    scale: 1.02;
-    z-index: 100;
 
-}
 
 #overlay {
     position: fixed;
