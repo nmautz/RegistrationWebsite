@@ -9,14 +9,26 @@
 
 }
 
+thead th{
+
+  position: sticky;
+  top:0;
+  border: 1px solid black;
+  background-color: rgb(214, 214, 214);
+
+
+
+
+}
+
 .calendar-time{
   font-weight: bold;
 }
 
 table {
   font-family: arial, sans-serif;
-  border-collapse: collapse;
   width: 100%;
+  border-spacing: 0;
 }
 
 td, th {
