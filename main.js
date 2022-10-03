@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   searchManager.addRequirement("course_title", "", (arg, class_section)=>{
 
     var ctitle = class_section.subject.toLowerCase() + class_section.courseNumber + class_section.courseTitle.toLowerCase();
+    ctitle = ctitle.replace(/ /g, "");
     arg = arg.toLowerCase().replace(/ /g, "");
     if(ctitle.includes(arg)){
       return true;
