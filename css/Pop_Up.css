@@ -14,18 +14,17 @@
 }
 
 .popUp.active{
-    transform: translate(-50%,-50%) scale(1)
+    transform: translate(-50%,-50%) scale(1);
 }
 .popUp-header{
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
-
     background-color: rgb(199, 199, 199);
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1.5px solid black;
 }
 
 .popUp-header .title {
@@ -55,7 +54,8 @@
 
 .popUp-Body {
     padding: 10px 15px;
-    
+    overflow-y: scroll;
+    height: 720px;
 }
 
 .popUp-Body-Title {
