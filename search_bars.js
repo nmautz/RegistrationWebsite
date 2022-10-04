@@ -33,8 +33,12 @@ function register_div_as_search(div, class_str, onInput, dropdown_id, initialize
   div.appendChild(input);
   div.appendChild(dropdown);
 
+  if(search_type == 'text'){
+    input.addEventListener("input", onInput)
 
-  input.addEventListener("input", onInput)
+  }else{
+    input.addEventListener("click", onInput)
+  }
 
   if(search_type != 'text'){
     input.type = 'button';
