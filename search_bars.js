@@ -9,7 +9,12 @@ function register_div_as_search(div, class_str, onInput, dropdown_id, initialize
   }
 
   if(class_str == null){
-    class_str = "search-bar"
+    if(search_type == 'text'){
+      class_str = "search-bar"
+
+    }else{
+      class_str = "search-button"
+    }
   }
 
 

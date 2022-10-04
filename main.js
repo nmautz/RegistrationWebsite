@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     
 
-  }) 
+  }, 'button') 
 
 
   setDropdownTitle(main_search_div.firstChild);

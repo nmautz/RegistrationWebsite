@@ -102,3 +102,10 @@
         top: 0;
         width: 100%;
     }
+
+    .search-button{
+
+
+        width: 10vw;
+        height: 4vh;
+    }
