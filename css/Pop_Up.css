@@ -54,13 +54,13 @@
 
 .popUp-Body {
     padding: 10px 15px;
-    height: 100%;
+    max-height:calc(100% - 110px);
+    overflow-y: scroll;
 }
 
 #pop_up_window{
-    overflow-y: scroll;
-
-
+    /* adds scroll wheel to entire pop up */
+    /* overflow-y: scroll; */
 }
 
 .popUp-Body-Title {
