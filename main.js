@@ -30,17 +30,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
   register_div_as_search(plan_select_div, null, ()=>{
     const input = plan_select_div.firstChild; //input is available here
 
-    //This gets ran on input (aka when something is typed in the box)
+    //This gets ran on click 
 
-    //Use this to search and narrow down the results
 
-    //do search and get good results
-
-    //clear dropdown
-
-    //addresults with proper onclick listener. this will be the same as "func" on line 51. you should make a function above on line 1
-
-    
+    console.log("CLICKED PLANID BTN");
 
   }, "plan-id-input", ()=>{ //plan-id-input will be the id of the input if needed. it is the same as the above input
 
