@@ -39,6 +39,7 @@ body{
 #adv-search-options{
   height: 0;
   background-color: rgb(199, 199, 199);
+  overflow: hidden;
 
 }
 
