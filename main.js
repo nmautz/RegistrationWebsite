@@ -1,3 +1,8 @@
+//Write the func here
+
+//
+
+
 document.addEventListener("DOMContentLoaded", ()=>{
 
   const main_search_div = document.getElementById("main-search");
@@ -25,10 +30,36 @@ document.addEventListener("DOMContentLoaded", ()=>{
   register_div_as_search(plan_select_div, null, ()=>{
     const input = plan_select_div.firstChild; //input is available here
 
-    //
+    //This gets ran on input (aka when something is typed in the box)
+
+    //Use this to search and narrow down the results
+
+    //do search and get good results
+
+    //clear dropdown
+
+    //addresults with proper onclick listener. this will be the same as "func" on line 51. you should make a function above on line 1
+
     
 
-  }, "plan-id-input") //plan-id-input will be the id of the input if needed. it is the same as the above input
+  }, "plan-id-input", ()=>{ //plan-id-input will be the id of the input if needed. it is the same as the above input
+
+    //This gets ran when the box is initialized (aka right after this function is almost finished)
+    //use this box to load plans and add them to the lising
+    
+
+    //get plan-ids
+
+
+    //for loop
+
+
+    //call addListingToDropdown(dropdown_id, str, css_class, func) the function "func" will be called whenever the added item is called. onclick
+    //func will be passed str as an argument. you will also have access to any variables you have here
+
+
+
+  }) 
 
 
   setDropdownTitle(main_search_div.firstChild);
