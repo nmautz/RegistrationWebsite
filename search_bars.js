@@ -2,7 +2,11 @@
 
 
 
-function register_div_as_search(div, class_str, onInput, dropdown_id, initialize){
+function register_div_as_search(div, class_str, onInput, dropdown_id, initialize, search_type){
+
+  if(search_type == null){
+    search_type = 'text'
+  }
 
   if(class_str == null){
     class_str = "search-bar"
@@ -26,6 +30,10 @@ function register_div_as_search(div, class_str, onInput, dropdown_id, initialize
 
 
   input.addEventListener("input", onInput)
+
+  if(search_type != 'text'){
+    input.type = 'button';
+  }
 
 
   dropdown.onscroll = ()=>{
