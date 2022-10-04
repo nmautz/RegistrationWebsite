@@ -41,46 +41,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
     //use this box to load plans and add them to the lising
     
 
+
+
+
     //get plan-ids
-    const planIds = get_plan_IDs();
-
-    //option to add plan
-    addListingToDropdown("plan-id-input", "Add Plan", null, ()=>{
-          var newPlan = prompt("Enter Plan Name");
-          create_plan(newPlan);
-          Calendar.setCurrentPlanID(newPlan);
-        });
-
-
-    //for loop
-
-    for(var i in planIds){
-      console.log(i)
-
-      let ii =i;
-      
-      addListingToDropdown("plan-id-input", planIds[i], null, ()=>{
-
-        Calendar.setCurrentPlanID(planIds[ii]);
-        
-        //Ben add whatever code is needed here
-
-        //get input
-        const input = plan_select_div.childNodes[1];
-
-        //Update input text
-        input.value = planIds[ii];
-        console.log(ii)
-
-        //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
-        var calendar = Calendar.getInstance();
-        //etc....
-
-
-
-      });
-
-    }
+    updatePlanDropdown(plan_select_div);
 
     
 
@@ -128,6 +93,48 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 })
+
+function updatePlanDropdown(plan_select_div) {
+
+  clearDropdown("plan-id-input");
+
+
+
+  //option to add plan
+  addListingToDropdown("plan-id-input", "Add Plan", null, ()=>{
+    var newPlan = prompt("Enter Plan Name");
+    create_plan(newPlan);
+    Calendar.setCurrentPlanID(newPlan);
+    updatePlanDropdown(plan_select_div);
+
+
+  });
+
+  const planIds = get_plan_IDs();
+  //for loop
+  for (var i in planIds) {
+    console.log(i);
+
+    let ii = i;
+
+    addListingToDropdown("plan-id-input", planIds[i], null, () => {
+
+      Calendar.setCurrentPlanID(planIds[ii]);
+
+      //Ben add whatever code is needed here
+      //get input
+      const input = plan_select_div.childNodes[1];
+
+      //Update input text
+      input.value = planIds[ii];
+      console.log(ii);
+
+      //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
+      var calendar = Calendar.getInstance();
+    });
+
+  }
+}
 
 function setDropdownTitle(input ){
   addListingToDropdown("main-search-input", "Course Titles", "dropdown-header");
