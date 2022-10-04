@@ -45,7 +45,7 @@ class Calendar{
 
   create_table(){
 
-    var classes = load_classes("1") //TODO unhardcode
+    var classes = load_classes(Calendar.getCurrentPlanID()) //TODO unhardcode
 
     var earliest = classes[0]
     for(var id in classes){
