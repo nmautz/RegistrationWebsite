@@ -11,6 +11,13 @@ class Calendar{
     return this._instance;
   }
 
+  //the current plan (private)
+  static #currentPlanID;
+
+  static getCurrentPlanID() {return this.#currentPlanID;}
+ 
+  static setCurrentPlanID(planID) {this.#currentPlanID = planID;}
+
   constructor(){
 
     this.tableDiv = document.getElementById("calendar-table");

@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
       addListingToDropdown("plan-id-input", planIds[i], null, ()=>{
 
+        Calendar.setCurrentPlanID(planIds[i]);
         console.log("CLICKED " + planIds[i]);
 
         //Ben add whatever code is needed here
