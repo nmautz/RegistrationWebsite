@@ -49,9 +49,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
     
 
     //get plan-ids
+    const planIds = get_plan_IDs();
 
 
     //for loop
+
+    for(var i in planIds){
+
+      addListingToDropdown("plan-id-input", planIds[i], null, ()=>{
+
+        console.log("CLICKED " + planIds[i]);
+
+
+
+      });
+
+    }
 
 
     //call addListingToDropdown(dropdown_id, str, css_class, func) the function "func" will be called whenever the added item is called. onclick

@@ -51,7 +51,6 @@ class Calendar{
     }
 
     this.start_time = earliest.beginTime-420;
-    console.log(earliest)
 
     var time = this.start_time;
 
@@ -111,9 +110,7 @@ class Calendar{
     {
       if (activeDays[i])
       {
-        console.log(round_stime);
 
-        console.log(this.refs[dayNames[i]]);
         this.refs[dayNames[i]][round_stime].innerHTML = class_section.courseTitle;
 
         this.refs[dayNames[i]][round_stime].rowSpan = span;
@@ -154,7 +151,6 @@ class Calendar{
     }
 
     
-    // console.log(min_to_str_time(round_etime))
   }
 
 
