@@ -60,15 +60,23 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
         console.log("CLICKED " + planIds[i]);
 
+        //Ben add whatever code is needed here
+
+        //get input
+        const input = plan_select_div.firstChild;
+
+        //Update input text
+
+
+        //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
+
+        //etc....
+
 
 
       });
 
     }
-
-
-    //call addListingToDropdown(dropdown_id, str, css_class, func) the function "func" will be called whenever the added item is called. onclick
-    //func will be passed str as an argument. you will also have access to any variables you have here
 
 
 
