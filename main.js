@@ -55,18 +55,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
     //for loop
 
     for(var i in planIds){
+      console.log(i)
 
+      let ii =i;
+      
       addListingToDropdown("plan-id-input", planIds[i], null, ()=>{
 
-        Calendar.setCurrentPlanID(planIds[i]);
+        Calendar.setCurrentPlanID(planIds[ii]);
         
         //Ben add whatever code is needed here
 
         //get input
-        const input = plan_select_div.firstChild;
+        const input = plan_select_div.childNodes[1];
 
         //Update input text
-
+        input.value = planIds[ii];
+        console.log(ii)
 
         //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
         var calendar = Calendar.getInstance();
