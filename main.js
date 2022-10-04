@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=>{
 
   const main_search_div = document.getElementById("main-search");
-  const plan_select_div = document.getElementById("plan-select-container");
+  const plan_select_div = document.getElementById("plan-select");
 
 
   register_div_as_search(main_search_div, null, ()=>{
@@ -25,13 +25,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   register_div_as_search(plan_select_div, null, ()=>{
     const input = plan_select_div.firstChild; //input is available here
 
-    //This runs on click of dropdown items.
-
-    //Create or select current plan
-
-    //Update schedule (not ready yet)
-
-    //call screen update
+    //
     
 
   }, "plan-id-input") //plan-id-input will be the id of the input if needed. it is the same as the above input

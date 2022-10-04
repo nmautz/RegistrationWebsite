@@ -2,7 +2,7 @@
 
 
 
-function register_div_as_search(div, class_str, func, dropdown_id){
+function register_div_as_search(div, class_str, onInput, dropdown_id, initialize){
 
   if(class_str == null){
     class_str = "search-bar"
@@ -25,7 +25,7 @@ function register_div_as_search(div, class_str, func, dropdown_id){
   div.appendChild(dropdown);
 
 
-  input.addEventListener("input", func)
+  input.addEventListener("input", onInput)
 
 
   dropdown.onscroll = ()=>{
@@ -53,6 +53,10 @@ function register_div_as_search(div, class_str, func, dropdown_id){
 
   }
 
+
+  if(initialize != null){
+    initialize();
+  }
 
 
 }
