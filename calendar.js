@@ -179,7 +179,7 @@ class Calendar{
 
 
   update_calendar(){
-    var class_sections = load_classes("1") //TODO Unhardcode plan_id
+    var class_sections = load_classes(Calendar.getInstance().getCurrentPlanID()) //TODO Unhardcode plan_id
 
     for(var id in class_sections){
 
