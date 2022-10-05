@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     //This gets ran when the box is initialized (aka right after this function is almost finished)
     //use this box to load plans and add them to the lising
+    const input = plan_select_div.childNodes[1]; //input is available here
+
+    input.value = Calendar.getInstance().getCurrentPlanID();
     
 
 
@@ -104,7 +107,7 @@ function updatePlanDropdown(plan_select_div) {
   addListingToDropdown("plan-id-input", "Add Plan", null, ()=>{
     var newPlan = prompt("Enter Plan Name");
     create_plan(newPlan);
-    Calendar.setCurrentPlanID(newPlan);
+    Calendar.getInstance().setCurrentPlanID(newPlan);
     updatePlanDropdown(plan_select_div);
 
 
@@ -113,13 +116,12 @@ function updatePlanDropdown(plan_select_div) {
   const planIds = get_plan_IDs();
   //for loop
   for (var i in planIds) {
-    console.log(i);
 
     let ii = i;
 
     addListingToDropdown("plan-id-input", planIds[i], null, () => {
 
-      Calendar.setCurrentPlanID(planIds[ii]);
+      Calendar.getInstance().setCurrentPlanID(planIds[ii]);
 
       //Ben add whatever code is needed here
       //get input
