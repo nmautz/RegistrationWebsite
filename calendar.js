@@ -50,14 +50,14 @@ class Calendar{
     var earliest = classes[0]
     for(var id in classes){
       if(id!=0){
-        if(classes[id].beginTime < earliest.beginTime){
+        if(classes[id].beginTime[0] < earliest.beginTime){
           earliest = classes[id];
         }
       }
       
     }
 
-    this.start_time = earliest.beginTime-420;
+    this.start_time = earliest.beginTime[0]-420;
 
     var time = this.start_time;
 
