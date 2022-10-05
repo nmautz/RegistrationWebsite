@@ -45,6 +45,29 @@ class Calendar{
 
   create_table(){
 
+    let planID = Calendar.getCurrentPlanID();
+    const default_plan_name = "Plan A";
+
+    if(planID == undefined){
+
+      //Select First availible plan
+
+      let planIDs = get_plan_IDs();
+      if (planIDs.length > 0){
+        planID = planIDs[0];
+      }else{
+        //Create new plan if needed
+        create_plan(default_plan_name);
+        Calendar.setCurrentPlanID(default_plan_name);
+        planID = default_plan_name;
+
+
+      }
+
+
+      
+    }
+
     var classes = load_classes(Calendar.getCurrentPlanID()) //TODO unhardcode
 
     var earliest = classes[0]
@@ -57,7 +80,13 @@ class Calendar{
       
     }
 
-    this.start_time = earliest.beginTime[0]-420;
+    try{
+      this.start_time = earliest.beginTime[0]-420;
+
+    }catch(e){
+      console.error(e)
+      console.log(Calendar.getCurrentPlanID())
+    }
 
     var time = this.start_time;
 

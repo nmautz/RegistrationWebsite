@@ -214,7 +214,7 @@ function is_plan_saved(planID)
 }
 
 
-/** @deprecated */ 
+/** @deprecated */ // use get_plan_IDs()
 function load_planIDs(){
   var planIDs = [];
   var saved_classes = load_classes();
