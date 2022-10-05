@@ -27,10 +27,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
   register_div_as_search(plan_select_div, null, ()=>{
-    const input = plan_select_div.firstChild; //input is available here
-
+    const input = plan_select_div.childNodes[1]; //input is available here
     //This gets ran on click 
-
     
     console.log("CLICKED PLANID BTN");
 
@@ -38,19 +36,32 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     //This gets ran when the box is initialized (aka right after this function is almost finished)
     //use this box to load plans and add them to the lising
-    
-    
-    const input = plan_select_div.childNodes[1];
-    input.value = "Select Plan ";
-    //if the button is hovered over, then it turns into "Add Plan"
-    input.addEventListener("mouseover",(event) => {
-      input.value = "Select Plan \u25B2";
-    });
 
-    // if its not hovered over, then "Select Plan" or the current plan is displayed
-    input.addEventListener("mouseout",(event) => {
-      input.value = "Select Plan \u25BC" ;
-    });
+    //Original Value the Button has
+
+
+    const input = plan_select_div.childNodes[1];
+    input.value = "Select Plan \u25BC";
+    var planIdInput = document.getElementById("plan-id-input")
+
+    var items = [input,planIdInput]
+
+    for (var i = 0; i < items.length; ++i)
+    {
+      //if the dropdown is hovered over, then a upward carot is displayed
+      items[i].addEventListener("mouseover",(event) => {
+        input.value = "Select Plan \u25B2";
+      });
+
+      //if the dropdown is hovered over, then a downward carot is displayed
+      items[i].addEventListener("mouseout",(event) => {
+        input.value = "Select Plan \u25BC" ;
+      });
+    }
+    
+
+    
+    
 
     //get plan-ids
     updatePlanDropdown(plan_select_div);
