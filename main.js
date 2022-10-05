@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const main_search_div = document.getElementById("main-search");
   const plan_select_div = document.getElementById("plan-select");
 
-
   register_div_as_search(main_search_div, null, ()=>{
 
     const input = main_search_div.firstChild;
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     //This gets ran on click 
 
-
+    
     console.log("CLICKED PLANID BTN");
 
   }, "plan-id-input", ()=>{ //plan-id-input will be the id of the input if needed. it is the same as the above input
@@ -40,9 +39,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
     //This gets ran when the box is initialized (aka right after this function is almost finished)
     //use this box to load plans and add them to the lising
     
+    
+    const input = plan_select_div.childNodes[1];
+    input.value = "Select Plan ";
+    //if the button is hovered over, then it turns into "Add Plan"
+    input.addEventListener("mouseover",(event) => {
+      input.value = "Select Plan \u25B2";
+    });
 
-
-
+    // if its not hovered over, then "Select Plan" or the current plan is displayed
+    input.addEventListener("mouseout",(event) => {
+      input.value = "Select Plan \u25BC" ;
+    });
 
     //get plan-ids
     updatePlanDropdown(plan_select_div);
@@ -124,10 +132,8 @@ function updatePlanDropdown(plan_select_div) {
       //Ben add whatever code is needed here
       //get input
       const input = plan_select_div.childNodes[1];
-
       //Update input text
-      input.value = planIds[ii];
-      console.log(ii);
+      input.value = "Plan: " + planIds[ii];
 
       //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
       var calendar = Calendar.getInstance();

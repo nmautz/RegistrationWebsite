@@ -12,7 +12,7 @@ class Calendar{
   }
 
   //the current plan (private)
-  static #currentPlanID;
+  static #currentPlanID = "";
 
   static getCurrentPlanID() {return this.#currentPlanID;}
  
