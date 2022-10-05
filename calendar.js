@@ -54,11 +54,8 @@ class Calendar{
   create_table(){
 
     let planID = this.getCurrentPlanID();
-    const default_plan_name = "Plan A";
 
-
-
-    var classes = load_classes(this.getCurrentPlanID()) //TODO unhardcode
+    var classes = load_classes(planID) //TODO unhardcode
 
     var earliest = classes[0]
     for(var id in classes){
