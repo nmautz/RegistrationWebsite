@@ -98,6 +98,21 @@
         cursor: pointer;
     }
 
+    .add-plan{
+        border-bottom: 1px solid black;
+        text-align: center;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        color: brown;
+
+        width: 100%;
+    }
+
+    .add-plan:hover{
+        background-color: rgb(189, 14, 14);
+        cursor: pointer;
+    }
+
     .sticky {
         position: sticky;
         top: 0;

@@ -44,8 +44,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     input.value = "Select Plan \u25BC";
     var planIdInput = document.getElementById("plan-id-input")
 
+    
     var items = [input,planIdInput]
-
+    //adds event listeners for the dropdown button
     for (var i = 0; i < items.length; ++i)
     {
       //if the dropdown is hovered over, then a upward carot is displayed
