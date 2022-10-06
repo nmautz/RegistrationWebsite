@@ -11,12 +11,11 @@ class Calendar{
     return this._instance;
   }
 
-  //the current plan (private)
-  static #currentPlanID;
-
-  static getCurrentPlanID() {return this.#currentPlanID;}
+  getCurrentPlanID() {
+    return this.currentPlanID;
+  }
  
-  static setCurrentPlanID(planID) {this.#currentPlanID = planID;}
+  setCurrentPlanID(planID) {this.currentPlanID = planID;}
 
   constructor(){
 
@@ -35,6 +34,15 @@ class Calendar{
       Saturday: {}
     } 
 
+    let planIDs = get_plan_IDs();
+    const default_plan_name = "Plan A";
+    if(planIDs.length > 0){
+      this.setCurrentPlanID(planIDs[0]);
+
+    }else{
+      create_plan(default_plan_name)
+      this.setCurrentPlanID(default_plan_name)
+    }
 
     this.create_table();
 
@@ -45,19 +53,27 @@ class Calendar{
 
   create_table(){
 
-    var classes = load_classes(Calendar.getCurrentPlanID()) //TODO unhardcode
+    let planID = this.getCurrentPlanID();
+
+    var classes = load_classes(planID) //TODO unhardcode
 
     var earliest = classes[0]
     for(var id in classes){
       if(id!=0){
-        if(classes[id].beginTime < earliest.beginTime){
+        if(classes[id].beginTime[0] < earliest.beginTime){
           earliest = classes[id];
         }
       }
       
     }
 
-    this.start_time = earliest.beginTime-420;
+    try{
+      this.start_time = earliest.beginTime[0]-420;
+
+    }catch(e){
+      console.error(e)
+      console.log(this.getCurrentPlanID())
+    }
 
     var time = this.start_time;
 
@@ -163,7 +179,7 @@ class Calendar{
 
 
   update_calendar(){
-    var class_sections = load_classes("1") //TODO Unhardcode plan_id
+    var class_sections = load_classes(Calendar.getInstance().getCurrentPlanID()) //TODO Unhardcode plan_id
 
     for(var id in class_sections){
 

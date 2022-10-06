@@ -184,7 +184,7 @@ function load_classes(planID){
 
 function is_class_saved(section){
   try{
-    classes = load_classes("1")
+    classes = load_classes(Calendar.getInstance().getCurrentPlanID())
     for(var i = 0; i < classes.length; ++i){
       if(classes[i].id == section.id)
       {
@@ -214,7 +214,7 @@ function is_plan_saved(planID)
 }
 
 
-/** @deprecated */ 
+/** @deprecated */ // use get_plan_IDs()
 function load_planIDs(){
   var planIDs = [];
   var saved_classes = load_classes();
@@ -233,7 +233,6 @@ function load_planIDs(){
 document.addEventListener("DOMContentLoaded", function(){
   
 
-  create_plan("1");
 
 
   
