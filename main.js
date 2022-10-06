@@ -133,7 +133,7 @@ function updatePlanDropdown(plan_select_div) {
   addListingToDropdown("plan-id-input", "Add Plan", "add-plan", ()=>{
     var newPlan = prompt("Enter Plan Name");
     create_plan(newPlan);
-    Calendar.setCurrentPlanID(newPlan);
+    Calendar.getInstance().setCurrentPlanID(newPlan);
     updatePlanDropdown(plan_select_div);
 
 
