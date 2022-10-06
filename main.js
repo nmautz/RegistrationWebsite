@@ -157,6 +157,7 @@ function updatePlanDropdown(plan_select_div) {
       input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25B2";
       // updating page
       update_section_display()
+
       //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
       console.log("Nathan how do I update the calendar with the new plan? Current Plan: " + calendar.getCurrentPlanID())
       calendar.create_table();

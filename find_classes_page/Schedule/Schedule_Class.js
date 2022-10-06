@@ -21,7 +21,6 @@ class Schedule {
 
         this.generateTasks()
         this.generateClasses()
-        console.log("here")
     }
 
 

@@ -57,22 +57,31 @@ class Calendar{
 
     var classes = load_classes(planID) //TODO unhardcode
 
-    var earliest = classes[0]
-    for(var id in classes){
-      if(id!=0){
-        if(classes[id].beginTime[0] < earliest.beginTime){
-          earliest = classes[id];
+
+/*
+    if(classes.length != 0){
+      for(var id in classes){
+        if(id!=0){
+          if(classes[id].beginTime[0] < earliest.beginTime){
+            earliest = classes[id];
+          }
         }
+        
       }
-      
+    }else{
+      earliest= {beginTime: [800]}; //default beginTime
     }
+    */ //idk why broken
+
+    earliest= {beginTime: [800]}; //default beginTime
+
+
 
     try{
       this.start_time = earliest.beginTime[0]-420;
 
     }catch(e){
       console.error(e)
-      console.log(this.getCurrentPlanID())
     }
 
     var time = this.start_time;
@@ -160,6 +169,7 @@ class Calendar{
     }
     
     //if one class is hovered over, then all the rest act as if they were hovered over
+    //adds close btn
     for (var i = 0; i < addedBlocks.length; ++i)
     {
       addedBlocks[i].addEventListener("mouseover",function(){
@@ -171,6 +181,29 @@ class Calendar{
         for (var j = 0; j < addedBlocks.length; ++j)
           addedBlocks[j].classList.remove("hover")
       })
+
+      //adding close btn
+      const closebtn = document.createElement("div");
+      closebtn.classList.add("close-button-cal")
+      closebtn.innerHTML = 'X';
+      addedBlocks[i].appendChild(closebtn);
+      closebtn.addEventListener("click", (e)=>{
+        //Unsave class
+        let planID = Calendar.getInstance().getCurrentPlanID();
+        let id = class_section.id;
+
+        remove_class_by_ID(planID, id);
+
+        Calendar.getInstance().update_calendar();
+        update_section_display();
+
+
+        e.stopPropagation();
+
+
+      })
+
+
     }
 
     
@@ -178,7 +211,51 @@ class Calendar{
 
 
 
+
   update_calendar(){
+
+
+
+    for(let rowID in this.tableDiv.childNodes){
+
+      rowID = parseInt(rowID);
+
+      if(rowID != 1){
+        if(Number.isInteger(rowID)){
+          let row = this.tableDiv.childNodes[rowID];
+  
+          for(let childID in row.childNodes){
+  
+            childID = parseInt(childID);
+            if(Number.isInteger(childID)){
+              if(childID != 0){
+  
+                let child = this.tableDiv.childNodes[rowID].childNodes[childID];
+  
+                child.rowSpan = '1';
+                child.display = 'table-cell'
+                child.classList = ""
+                child.removeChild[1];
+                child.style.backgroundColor = 'unset';
+                child.innerHTML = "";
+                child.style.display = "table-cell"
+  
+              }
+  
+            }
+  
+  
+  
+          }
+  
+  
+  
+        }
+      }
+
+    }
+
+
     var class_sections = load_classes(Calendar.getInstance().getCurrentPlanID()) //TODO Unhardcode plan_id
 
     for(var id in class_sections){
@@ -187,6 +264,7 @@ class Calendar{
 
 
     }
+    
 
   }
 
@@ -241,4 +319,3 @@ function min_to_str_time(min){
 
 
 }
-
