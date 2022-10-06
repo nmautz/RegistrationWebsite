@@ -185,26 +185,15 @@ class Calendar{
   update_calendar(){
 
 
-    for(let day in this.refs){
-      
-      for(let i in this.refs[day]){
+    for(let childID in this.tableDiv.childNodes){
 
-        let sec =  this.refs[day][i];
-
-        sec.style.display = 'table-cell'
-        sec.rowSpan = '1';
-        sec.style.classList = []
-        sec.style.backgroundColor = 'default'
-
-        
-
-
-
+      if(Number.isInteger(childID)){
+        this.tableDiv.removeChild(this.tableDiv.childNodes[childID]);
       }
-
-
-
     }
+
+    
+
 
 
     var class_sections = load_classes("1") //TODO Unhardcode plan_id
@@ -215,6 +204,7 @@ class Calendar{
 
 
     }
+    
 
   }
 
