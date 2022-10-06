@@ -37,14 +37,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
     //This gets ran when the box is initialized (aka right after this function is almost finished)
     //use this box to load plans and add them to the lising
 
-
     //Original Value the Button has
 
 
     const input = plan_select_div.childNodes[1];
     input.value = "Select Plan \u25BC";
     var planIdInput = document.getElementById("plan-id-input")
-
+  
     
     var items = [input,planIdInput]
     //adds event listeners for the dropdown button
@@ -52,18 +51,20 @@ document.addEventListener("DOMContentLoaded", ()=>{
     {
       //if the dropdown is hovered over, then a upward carot is displayed
       items[i].addEventListener("mouseover",(event) => {
-        if (Calendar.getCurrentPlanID() == null )
+        var currentPlan = Calendar.getInstance().getCurrentPlanID();
+        if (currentPlan == "null" )
           input.value = "Select Plan \u25B2";
         else
-          input.value = "Plan: " + Calendar.getCurrentPlanID() + " \u25B2";
+          input.value = "Plan: " + currentPlan + " \u25B2";
       });
 
       //if the dropdown is hovered over, then a downward carot is displayed
       items[i].addEventListener("mouseout",(event) => {
-        if (Calendar.getCurrentPlanID() == null )
+        var currentPlan = Calendar.getInstance().getCurrentPlanID();
+        if (currentPlan == "null" )
           input.value = "Select Plan \u25BC";
         else
-          input.value = "Plan: " + Calendar.getCurrentPlanID() + " \u25BC";
+          input.value = "Plan: " + currentPlan + " \u25BC";
 
       });
     }
@@ -132,30 +133,34 @@ function updatePlanDropdown(plan_select_div) {
   addListingToDropdown("plan-id-input", "Add Plan", "add-plan", ()=>{
     var newPlan = prompt("Enter Plan Name");
     create_plan(newPlan);
-    Calendar.getInstance().setCurrentPlanID(newPlan);
+    Calendar.setCurrentPlanID(newPlan);
     updatePlanDropdown(plan_select_div);
 
 
   });
 
-  const planIds = get_plan_IDs();
+  var planIds = get_plan_IDs();
+  planIds.sort();
   //for loop
   for (var i in planIds) {
+    console.log(i);
 
     let ii = i;
 
     addListingToDropdown("plan-id-input", planIds[i], null, () => {
-
-      Calendar.getInstance().setCurrentPlanID(planIds[ii]);
-
+      var calendar = Calendar.getInstance()
+      calendar.setCurrentPlanID(planIds[ii]);
       //Ben add whatever code is needed here
       //get input
       const input = plan_select_div.childNodes[1];
       //Update input text
-      input.value = "Plan: " + Calendar.getCurrentPlanID() + " \u25B2";
-
+      input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25B2";
+      // updating page
+      update_section_display()
       //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
-      var calendar = Calendar.getInstance();
+      console.log("Nathan how do I update the calendar with the new plan? Current Plan: " + calendar.getCurrentPlanID())
+      calendar.create_table();
+      
     });
 
   }
