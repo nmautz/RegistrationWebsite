@@ -50,6 +50,7 @@ body{
   background-color: rgb(199, 199, 199);
   overflow: hidden;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 
 }
 
@@ -89,7 +90,11 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  max-width: 100%;
+
+  border: 1px solid black;
+
+  overflow: hidden;
 
 }
 
