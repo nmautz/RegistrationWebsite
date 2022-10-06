@@ -51,12 +51,19 @@ document.addEventListener("DOMContentLoaded", ()=>{
     {
       //if the dropdown is hovered over, then a upward carot is displayed
       items[i].addEventListener("mouseover",(event) => {
-        input.value = "Select Plan \u25B2";
+        if (Calendar.getCurrentPlanID() == null )
+          input.value = "Select Plan \u25B2";
+        else
+          input.value = "Plan: " + Calendar.getCurrentPlanID() + " \u25B2";
       });
 
       //if the dropdown is hovered over, then a downward carot is displayed
       items[i].addEventListener("mouseout",(event) => {
-        input.value = "Select Plan \u25BC" ;
+        if (Calendar.getCurrentPlanID() == null )
+          input.value = "Select Plan \u25BC";
+        else
+          input.value = "Plan: " + Calendar.getCurrentPlanID() + " \u25BC";
+
       });
     }
     
@@ -145,7 +152,7 @@ function updatePlanDropdown(plan_select_div) {
       //get input
       const input = plan_select_div.childNodes[1];
       //Update input text
-      input.value = "Plan: " + planIds[ii];
+      input.value = "Plan: " + Calendar.getCurrentPlanID() + " \u25B2";
 
       //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
       var calendar = Calendar.getInstance();
