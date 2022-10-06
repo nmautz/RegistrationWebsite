@@ -181,7 +181,32 @@ class Calendar{
 
 
 
+
   update_calendar(){
+
+
+    for(let day in this.refs){
+      
+      for(let i in this.refs[day]){
+
+        let sec =  this.refs[day][i];
+
+        sec.style.display = 'table-cell'
+        sec.rowSpan = '1';
+        sec.style.classList = []
+        sec.style.backgroundColor = 'default'
+
+        
+
+
+
+      }
+
+
+
+    }
+
+
     var class_sections = load_classes("1") //TODO Unhardcode plan_id
 
     for(var id in class_sections){
@@ -245,3 +270,10 @@ function min_to_str_time(min){
 
 }
 
+
+document.addEventListener("click", ()=>{
+
+  Calendar.getInstance().update_calendar()
+
+    
+})
