@@ -5,22 +5,34 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const main_search_div = document.getElementById("main-search");
   const plan_select_div = document.getElementById("plan-select");
 
-  register_div_as_search(main_search_div, null, ()=>{
+  register_div_as_search(main_search_div, {
 
-    const input = main_search_div.firstChild;
+    onInput: ()=>{
 
-    clearDropdown("main-search-input");
-    
-
+      const input = main_search_div.firstChild;
   
-
-    setDropdownTitle(input);
+      clearDropdown("main-search-input");
+      
+  
     
-    setDropdownProf(input);
+  
+      setDropdownTitle(input);
+      
+      setDropdownProf(input);
+  
+  
+  
+    },
+
+    dropdown_id: "main-search-input",
 
 
 
-  }, "main-search-input");
+
+
+
+
+  })
 
 
   register_div_as_search(plan_select_div, null, ()=>{
