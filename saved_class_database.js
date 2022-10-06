@@ -119,10 +119,14 @@ function save_class(planID, section){
   section.planID = planID;
   section.uniqueID = planID+section.id;
   var overLappingClass = check_for_contradictions(planID,section)
-  if (overLappingClass == null)
+  if (overLappingClass == null){
     localStorage.setItem(section.uniqueID, JSON.stringify(section))
+    Calendar.getInstance().update_calendar();
+  }
   else
     alert("Error: section overlaps with '" + overLappingClass.courseTitle + "', ID: " + overLappingClass.id)
+
+
 }
 
 function get_class(planID, courseID)
@@ -153,6 +157,9 @@ function remove_class_by_ID(planID, id){
   }
   for (var i = 0; i < tempStack.length; ++i)
     save_class(planID,tempStack[i])
+
+  Calendar.getInstance().update_calendar();
+  
 
 }
 
