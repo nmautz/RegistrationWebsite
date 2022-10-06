@@ -43,6 +43,7 @@ td, th {
 
   text-align: center;
   transition: all ease-in-out 150ms;
+  position: relative;
 }
 
 /* .calendar-item:hover{
@@ -67,7 +68,27 @@ td, th {
 }
 
 .close-button{
+  scale: 0;
+
+  position: absolute;
+  top:0px;
+  right: 0px;
+  margin-top: 10%;
+  margin-right: 10%;
+  color: black;
 
 
-  
+
+  transition: all ease-in-out 150ms;
+}
+
+.calendar-item:hover .close-button {
+
+
+
+  scale: 2 ;
+}
+
+.close-button:hover{
+  scale: 3 !important;
 }
