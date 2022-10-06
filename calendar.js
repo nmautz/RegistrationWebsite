@@ -59,9 +59,10 @@ class Calendar{
 
 
     var classes = load_classes(this.getCurrentPlanID()) //TODO unhardcode
+    let earliest = classes[0]
+
 
     if(classes.length != 0){
-      var earliest = classes[0]
       for(var id in classes){
         if(id!=0){
           if(classes[id].beginTime[0] < earliest.beginTime){
@@ -77,7 +78,7 @@ class Calendar{
 
 
     try{
-      this.start_time = earliest.beginTime[0]-120;
+      this.start_time = earliest.beginTime[0]-420;
 
     }catch(e){
       console.error(e)
@@ -142,6 +143,9 @@ class Calendar{
     {
       if (activeDays[i])
       {
+        console.log(round_stime)
+        console.log(this.refs[dayNames[i]])
+
         this.refs[dayNames[i]][round_stime].innerHTML = class_section.courseTitle;
 
         this.refs[dayNames[i]][round_stime].rowSpan = span;
