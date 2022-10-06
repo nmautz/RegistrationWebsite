@@ -61,7 +61,7 @@ class Calendar{
     var classes = load_classes(this.getCurrentPlanID()) //TODO unhardcode
     let earliest = classes[0]
 
-
+/*
     if(classes.length != 0){
       for(var id in classes){
         if(id!=0){
@@ -74,6 +74,9 @@ class Calendar{
     }else{
       earliest= {beginTime: [800]}; //default beginTime
     }
+    */ //idk why broken
+
+    earliest= {beginTime: [800]}; //default beginTime
 
 
 
@@ -184,11 +187,17 @@ class Calendar{
 
       //adding close btn
       const closebtn = document.createElement("div");
-      closebtn.classList.add("close-button")
+      closebtn.classList.add("close-button-cal")
       closebtn.innerHTML = 'X';
       addedBlocks[i].appendChild(closebtn);
       closebtn.addEventListener("click", (e)=>{
         //Unsave class
+        let planID = Calendar.getInstance().getCurrentPlanID();
+        let id = class_section.id;
+
+        remove_class_by_ID(planID, id);
+
+        Calendar.getInstance().update_calendar();
 
 
         e.stopPropagation();
@@ -208,11 +217,44 @@ class Calendar{
   update_calendar(){
 
 
-    for(let childID in this.tableDiv.childNodes){
 
-      if(Number.isInteger(childID)){
-        this.tableDiv.removeChild(this.tableDiv.childNodes[childID]);
+    for(let rowID in this.tableDiv.childNodes){
+
+      rowID = parseInt(rowID);
+
+      if(rowID != 1){
+        if(Number.isInteger(rowID)){
+          let row = this.tableDiv.childNodes[rowID];
+  
+          for(let childID in row.childNodes){
+  
+            childID = parseInt(childID);
+            if(Number.isInteger(childID)){
+              if(childID != 0){
+  
+                let child = this.tableDiv.childNodes[rowID].childNodes[childID];
+  
+                child.rowSpan = '1';
+                child.display = 'table-cell'
+                child.classList = ""
+                child.removeChild[1];
+                child.style.backgroundColor = 'unset';
+                child.innerHTML = "";
+                child.style.display = "table-cell"
+  
+              }
+  
+            }
+  
+  
+  
+          }
+  
+  
+  
+        }
       }
+
     }
 
 

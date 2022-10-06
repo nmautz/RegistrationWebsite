@@ -67,7 +67,7 @@ td, th {
   cursor: pointer;
 }
 
-.close-button{
+.close-button-cal{
   scale: 0;
 
   position: absolute;
@@ -82,13 +82,13 @@ td, th {
   transition: all ease-in-out 150ms;
 }
 
-.calendar-item:hover .close-button {
+.calendar-item:hover .close-button-cal {
 
 
 
   scale: 2 ;
 }
 
-.close-button:hover{
+.close-button-cal:hover{
   scale: 3 !important;
 }
