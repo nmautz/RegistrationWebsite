@@ -84,7 +84,6 @@ class Calendar{
 
 
     }catch(e){
-      console.error(e)
     }
 
     var time = this.start_time;
