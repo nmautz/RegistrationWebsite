@@ -34,60 +34,74 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   })
 
-
-  register_div_as_search(plan_select_div, null, ()=>{
-    const input = plan_select_div.childNodes[1]; //input is available here
-    //This gets ran on click 
-    
-    console.log("CLICKED PLANID BTN");
-
-  }, "plan-id-input", ()=>{ //plan-id-input will be the id of the input if needed. it is the same as the above input
-
-    //This gets ran when the box is initialized (aka right after this function is almost finished)
-    //use this box to load plans and add them to the lising
-
-    //Original Value the Button has
+  register_div_as_search(plan_select_div, {
 
 
-    const input = plan_select_div.childNodes[1];
-    input.value = "Select Plan \u25BC";
-    var planIdInput = document.getElementById("plan-id-input")
+    onInput: ()=>{
+      const input = plan_select_div.childNodes[1]; //input is available here
+      //This gets ran on click 
+      
+      console.log("CLICKED PLANID BTN");
   
+    },
+
+    dropdown_id:"plan-id-input",
+
+
+    initialize: ()=>{ //plan-id-input will be the id of the input if needed. it is the same as the above input
+
+      //This gets ran when the box is initialized (aka right after this function is almost finished)
+      //use this box to load plans and add them to the lising
+  
+      //Original Value the Button has
+  
+  
+      const input = plan_select_div.childNodes[1];
+      input.value = "Select Plan \u25BC";
+      var planIdInput = document.getElementById("plan-id-input")
     
-    var items = [input,planIdInput]
-    //adds event listeners for the dropdown button
-    for (var i = 0; i < items.length; ++i)
-    {
-      //if the dropdown is hovered over, then a upward carot is displayed
-      items[i].addEventListener("mouseover",(event) => {
-        var currentPlan = Calendar.getInstance().getCurrentPlanID();
-        if (currentPlan == "null" )
-          input.value = "Select Plan \u25B2";
-        else
-          input.value = "Plan: " + currentPlan + " \u25B2";
-      });
+      
+      var items = [input,planIdInput]
+      //adds event listeners for the dropdown button
+      for (var i = 0; i < items.length; ++i)
+      {
+        //if the dropdown is hovered over, then a upward carot is displayed
+        items[i].addEventListener("mouseover",(event) => {
+          var currentPlan = Calendar.getInstance().getCurrentPlanID();
+          if (currentPlan == "null" )
+            input.value = "Select Plan \u25B2";
+          else
+            input.value = "Plan: " + currentPlan + " \u25B2";
+        });
+  
+        //if the dropdown is hovered over, then a downward carot is displayed
+        items[i].addEventListener("mouseout",(event) => {
+          var currentPlan = Calendar.getInstance().getCurrentPlanID();
+          if (currentPlan == "null" )
+            input.value = "Select Plan \u25BC";
+          else
+            input.value = "Plan: " + currentPlan + " \u25BC";
+  
+        });
+      }
+      
+  
+      
+      
+  
+      //get plan-ids
+      updatePlanDropdown(plan_select_div);
+  
+      
+  
+    },
 
-      //if the dropdown is hovered over, then a downward carot is displayed
-      items[i].addEventListener("mouseout",(event) => {
-        var currentPlan = Calendar.getInstance().getCurrentPlanID();
-        if (currentPlan == "null" )
-          input.value = "Select Plan \u25BC";
-        else
-          input.value = "Plan: " + currentPlan + " \u25BC";
+    search_type: 'button'
 
-      });
-    }
     
 
-    
-    
 
-    //get plan-ids
-    updatePlanDropdown(plan_select_div);
-
-    
-
-  }, 'button') 
+  })
 
 
   setDropdownTitle(main_search_div.firstChild);
