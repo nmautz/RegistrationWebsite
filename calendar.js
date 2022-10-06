@@ -82,7 +82,6 @@ class Calendar{
 
     }catch(e){
       console.error(e)
-      console.log(this.getCurrentPlanID())
     }
 
     var time = this.start_time;
@@ -143,8 +142,6 @@ class Calendar{
     {
       if (activeDays[i])
       {
-        console.log(round_stime)
-        console.log(this.refs[dayNames[i]])
 
         this.refs[dayNames[i]][round_stime].innerHTML = class_section.courseTitle;
 

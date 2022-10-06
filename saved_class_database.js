@@ -137,7 +137,7 @@ function get_class(planID, courseID)
     if (classes[i].id == courseID)
       return classes[i]
   }
-  console.log("error: no class found")
+  console.error("error: no class found")
   return null
 }
 

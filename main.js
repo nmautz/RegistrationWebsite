@@ -129,7 +129,6 @@ function updatePlanDropdown(plan_select_div) {
 
       //Update input text
       input.value = planIds[ii];
-      console.log(ii);
 
       //update calendar (function might have unexpected results however page refresh may fix it, bug fix is coming)
       var calendar = Calendar.getInstance();
