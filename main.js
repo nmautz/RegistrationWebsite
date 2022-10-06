@@ -1,6 +1,3 @@
-//Write the func here
-
-//
 
 
 document.addEventListener("DOMContentLoaded", ()=>{

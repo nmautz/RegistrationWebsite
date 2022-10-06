@@ -25,7 +25,7 @@ class Calendar{
     this.end_time = 1280 // 9:00 pm
 
     let planIDs = get_plan_IDs();
-    const default_plan_name = "Plan A";
+    const default_plan_name = "A";
     if(planIDs.length > 0){
       this.setCurrentPlanID(planIDs[0]);
 
