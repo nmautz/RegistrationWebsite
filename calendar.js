@@ -60,18 +60,24 @@ class Calendar{
 
     var classes = load_classes(this.getCurrentPlanID()) //TODO unhardcode
 
-    var earliest = classes[0]
-    for(var id in classes){
-      if(id!=0){
-        if(classes[id].beginTime[0] < earliest.beginTime){
-          earliest = classes[id];
+    if(classes.length != 0){
+      var earliest = classes[0]
+      for(var id in classes){
+        if(id!=0){
+          if(classes[id].beginTime[0] < earliest.beginTime){
+            earliest = classes[id];
+          }
         }
+        
       }
-      
+    }else{
+      earliest= {beginTime: [800]}; //default beginTime
     }
 
+
+
     try{
-      this.start_time = earliest.beginTime[0]-420;
+      this.start_time = earliest.beginTime[0]-120;
 
     }catch(e){
       console.error(e)
@@ -136,7 +142,6 @@ class Calendar{
     {
       if (activeDays[i])
       {
-
         this.refs[dayNames[i]][round_stime].innerHTML = class_section.courseTitle;
 
         this.refs[dayNames[i]][round_stime].rowSpan = span;
@@ -163,6 +168,7 @@ class Calendar{
     }
     
     //if one class is hovered over, then all the rest act as if they were hovered over
+    //adds close btn
     for (var i = 0; i < addedBlocks.length; ++i)
     {
       addedBlocks[i].addEventListener("mouseover",function(){
@@ -174,6 +180,22 @@ class Calendar{
         for (var j = 0; j < addedBlocks.length; ++j)
           addedBlocks[j].classList.remove("hover")
       })
+
+      //adding close btn
+      const closebtn = document.createElement("div");
+      closebtn.classList.add("close-button")
+      closebtn.innerHTML = 'X';
+      addedBlocks[i].appendChild(closebtn);
+      closebtn.addEventListener("click", (e)=>{
+        //Unsave class
+
+
+        e.stopPropagation();
+
+
+      })
+
+
     }
 
     
@@ -192,11 +214,8 @@ class Calendar{
       }
     }
 
-    
 
-
-
-    var class_sections = load_classes("1") //TODO Unhardcode plan_id
+    var class_sections = load_classes(Calendar.getInstance().getCurrentPlanID()) //TODO Unhardcode plan_id
 
     for(var id in class_sections){
 
