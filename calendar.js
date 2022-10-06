@@ -24,16 +24,6 @@ class Calendar{
     this.start_time = 420 // 420 min aka 7am
     this.end_time = 1280 // 9:00 pm
 
-    this.refs = {
-      Sunday: {},
-      Monday: {},
-      Tuesday: {},
-      Wednesday: {},
-      Thursday: {},
-      Friday: {},
-      Saturday: {}
-    } 
-
     let planIDs = get_plan_IDs();
     const default_plan_name = "Plan A";
     if(planIDs.length > 0){
@@ -57,9 +47,21 @@ class Calendar{
 
     var classes = load_classes(planID) //TODO unhardcode
 
+    this.refs = { //Resets refs array
+      Sunday: {},
+      Monday: {},
+      Tuesday: {},
+      Wednesday: {},
+      Thursday: {},
+      Friday: {},
+      Saturday: {}
+    } 
 
-/*
+    let earliest = null;
+
+
     if(classes.length != 0){
+      earliest = classes[0];
       for(var id in classes){
         if(id!=0){
           if(classes[id].beginTime[0] < earliest.beginTime){
@@ -71,14 +73,10 @@ class Calendar{
     }else{
       earliest= {beginTime: [800]}; //default beginTime
     }
-    */ //idk why broken
-
-    let earliest= {beginTime: [800]}; //default beginTime
-
 
 
     try{
-      this.start_time = earliest.beginTime[0]-420;
+      this.start_time = earliest.beginTime[0]-600;
 
     }catch(e){
       console.error(e)
@@ -216,44 +214,26 @@ class Calendar{
 
 
 
-    for(let rowID in this.tableDiv.childNodes){
+    let rowIDs = Object.keys(this.tableDiv.childNodes);
 
-      rowID = parseInt(rowID);
 
-      if(rowID != 1){
-        if(Number.isInteger(rowID)){
-          let row = this.tableDiv.childNodes[rowID];
-  
-          for(let childID in row.childNodes){
-  
-            childID = parseInt(childID);
-            if(Number.isInteger(childID)){
-              if(childID != 0){
-  
-                let child = this.tableDiv.childNodes[rowID].childNodes[childID];
-  
-                child.rowSpan = '1';
-                child.display = 'table-cell'
-                child.classList = ""
-                child.removeChild[1];
-                child.style.backgroundColor = 'unset';
-                child.innerHTML = "";
-                child.style.display = "table-cell"
-  
-              }
-  
-            }
+    for(let i = rowIDs.length; i > 2; --i){
+
+      let rowID = rowIDs[i];
+
+
+      let row = this.tableDiv.childNodes[rowID];
+      try{
+        this.tableDiv.removeChild(row);
+
+
+      }catch(e){}
   
   
-  
-          }
-  
-  
-  
-        }
-      }
 
     }
+
+    this.create_table();
 
 
     var class_sections = load_classes(Calendar.getInstance().getCurrentPlanID()) //TODO Unhardcode plan_id
