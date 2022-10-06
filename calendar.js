@@ -198,6 +198,7 @@ class Calendar{
         remove_class_by_ID(planID, id);
 
         Calendar.getInstance().update_calendar();
+        update_section_display();
 
 
         e.stopPropagation();
