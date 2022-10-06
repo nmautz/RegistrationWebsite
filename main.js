@@ -143,7 +143,6 @@ function updatePlanDropdown(plan_select_div) {
   planIds.sort();
   //for loop
   for (var i in planIds) {
-    console.log(i);
 
     let ii = i;
 

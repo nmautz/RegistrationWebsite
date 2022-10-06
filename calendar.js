@@ -73,7 +73,7 @@ class Calendar{
     }
     */ //idk why broken
 
-    earliest= {beginTime: [800]}; //default beginTime
+    let earliest= {beginTime: [800]}; //default beginTime
 
 
 
