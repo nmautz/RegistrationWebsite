@@ -269,11 +269,3 @@ function min_to_str_time(min){
 
 
 }
-
-
-document.addEventListener("click", ()=>{
-
-  Calendar.getInstance().update_calendar()
-
-    
-})
