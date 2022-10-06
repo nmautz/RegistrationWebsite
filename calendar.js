@@ -76,7 +76,12 @@ class Calendar{
 
 
     try{
-      this.start_time = earliest.beginTime[0]-600;
+
+
+
+      this.start_time = parseTime(earliest) -60;
+
+
 
     }catch(e){
       console.error(e)
@@ -255,6 +260,13 @@ class Calendar{
 
 }
 
+
+function parseTime(earliest) {
+  let hour = earliest.beginTime[0].substring(0, 2);
+  let min = earliest.beginTime[0].substring(2);
+
+  return ((hour * 60) + parseInt(min));
+}
 
 function min_to_str_time(min){
 
