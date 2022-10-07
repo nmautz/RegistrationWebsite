@@ -26,15 +26,7 @@ class Calendar{
     this.start_time = 420 // 420 min aka 7am
     this.end_time = 1280 // 9:00 pm
 
-    let planIDs = get_plan_IDs();
-    const default_plan_name = "A";
-    if(planIDs.length > 0){
-      this.setCurrentPlanID(planIDs[0]);
 
-    }else{
-      create_plan(default_plan_name)
-      this.setCurrentPlanID(default_plan_name)
-    }
 
     this.create_table();
 
