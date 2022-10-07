@@ -1,6 +1,6 @@
 #class-display{
 
-  margin-top: 7%;
+  margin-top: 13vh;
   height:85vh;
   display: flex;
   justify-content: center;
@@ -50,6 +50,7 @@ body{
   background-color: rgb(199, 199, 199);
   overflow: hidden;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 
 }
 
@@ -89,7 +90,11 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  max-width: 100%;
+
+  border: 1px solid black;
+
+  overflow: hidden;
 
 }
 
@@ -163,7 +168,7 @@ body{
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  width: 8%;
+  min-width: 8%;
   cursor:pointer;
   background-color: white;
   
