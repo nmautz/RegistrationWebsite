@@ -1,9 +1,30 @@
 function create_plan(planID){
-
   localStorage.setItem(planID, "planID")
- 
-
 }
+
+function getAvailablePlan(planID)
+{
+  if(planID == "")
+  {
+      var charCode = 65
+      var planName = "A"
+      while(is_plan_saved(planName))
+      {
+        charCode++
+        planName = String.fromCharCode(charCode)
+      }
+      return planName;
+  }else
+  {
+    if (is_plan_saved(planID))
+    {
+      alert("Plan Already Created")
+      return null;
+    }else
+      return planID;
+  }
+}
+
 
 
 function delete_plan(planID){

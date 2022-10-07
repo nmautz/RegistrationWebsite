@@ -12,10 +12,12 @@ class Calendar{
   }
 
   getCurrentPlanID() {
-    return this.currentPlanID;
+    return document.cookie;
   }
  
-  setCurrentPlanID(planID) {this.currentPlanID = planID;}
+  setCurrentPlanID(planID) {
+    document.cookie = planID;
+  }
 
   constructor(){
 

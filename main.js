@@ -57,7 +57,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
   
   
       const input = plan_select_div.childNodes[1];
-      input.value = "Select Plan \u25BC";
+      //initialize with plan A
+  
+      if(!get_plan_IDs().includes("A"))
+      {
+        create_plan("A")
+        document.cookie = "A"
+      }
+    
+      input.value = "Plan: " + document.cookie + " \u25BC";
       var planIdInput = document.getElementById("plan-id-input")
     
       
@@ -155,9 +163,16 @@ function updatePlanDropdown(plan_select_div) {
   //option to add plan
   addListingToDropdown("plan-id-input", "Add Plan", "add-plan", ()=>{
     var newPlan = prompt("Enter Plan Name");
-    create_plan(newPlan);
-    Calendar.getInstance().setCurrentPlanID(newPlan);
-    updatePlanDropdown(plan_select_div);
+    let planString = getAvailablePlan(newPlan);
+    if (planString != null)
+    {
+      create_plan(planString);
+      Calendar.getInstance().setCurrentPlanID(planString);
+      document.cookie = planString;
+      updatePlanDropdown(plan_select_div);
+    }else
+      console.log("works")
+   
 
 
   });
