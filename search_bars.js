@@ -52,6 +52,11 @@ function register_div_as_search(div, options){ //search_type, class_str, onInput
   }
 
 
+  if(options.placeholder_str != null){
+    input.placeholder = options.placeholder_str;
+  }
+
+
   dropdown.onscroll = ()=>{
 
     var headers = dropdown.getElementsByClassName("dropdown-header");

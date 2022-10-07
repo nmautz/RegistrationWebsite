@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     dropdown_id: "main-search-input",
 
 
+    placeholder_str: "Search for Class Name or Professor"
+
+
 
 
 
