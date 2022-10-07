@@ -64,9 +64,9 @@
         overflow-x: hidden;
         display: none;
         flex-direction: column;
-
+       
     }
-
+  
     .search_container:hover  .dropdown{
         display: flex;
     }
