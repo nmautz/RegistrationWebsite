@@ -39,7 +39,7 @@ body{
 
 #search-options{
 
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   padding-left: 5%;
   padding-right: 5%;
