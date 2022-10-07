@@ -64,11 +64,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
         create_plan("A")
         document.cookie = "A"
       }
-    
+
       input.value = "Plan: " + document.cookie + " \u25BC";
       var planIdInput = document.getElementById("plan-id-input")
     
-      
+      console.log(document.cookie)
+      console.log(Calendar.getInstance().getCurrentPlanID())
       var items = [input,planIdInput]
       //adds event listeners for the dropdown button
       for (var i = 0; i < items.length; ++i)
@@ -91,6 +92,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             input.value = "Plan: " + currentPlan + " \u25BC";
   
         });
+
       }
       
   
@@ -168,7 +170,6 @@ function updatePlanDropdown(plan_select_div) {
     {
       create_plan(planString);
       Calendar.getInstance().setCurrentPlanID(planString);
-      document.cookie = planString;
       updatePlanDropdown(plan_select_div);
     }else
       console.log("works")
