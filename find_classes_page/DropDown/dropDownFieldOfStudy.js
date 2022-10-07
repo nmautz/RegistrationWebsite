@@ -60,7 +60,7 @@
 
 var majorsArr = []
 //stores text document with majors for dropdown in majorsArray[]
-fetch("DropDown/listOfMajors.txt").then(response => response.text()).then(function(listOfMajorsData){
+fetch("./DropDown/listOfMajors.txt").then(response => response.text()).then(function(listOfMajorsData){
     if(majorsArr.length == 0)
     {
         var major = ""

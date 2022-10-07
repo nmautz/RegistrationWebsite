@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
     const input = plan_select_div.childNodes[1];
-    // document.cookie = 
     input.value = "Select Plan \u25BC";
     var planIdInput = document.getElementById("plan-id-input")
   

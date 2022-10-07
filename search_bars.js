@@ -2,18 +2,22 @@
 
 
 
-function register_div_as_search(div, class_str, onInput, dropdown_id, initialize, search_type){
+function register_div_as_search(div, options){ //search_type, class_str, onInput, initialize, dropdown_id
 
-  if(search_type == null){
-    search_type = 'text'
+  if(options == null){
+    options = {}
   }
 
-  if(class_str == null){
-    if(search_type == 'text'){
-      class_str = "search-bar"
+  if(options.search_type == null){
+    options.search_type = 'text'
+  }
+
+  if(options.class_str == null){
+    if(options.search_type == 'text'){
+      options.class_str = "search-bar"
 
     }else{
-      class_str = "search-button"
+      options.class_str = "search-button"
     }
   }
 
@@ -22,25 +26,28 @@ function register_div_as_search(div, class_str, onInput, dropdown_id, initialize
 
   const dropdown = document.createElement("div");
   dropdown.classList.add("dropdown");
-  if(dropdown_id != null){
-    dropdown.id = dropdown_id
+  if(options.dropdown_id != null){
+    dropdown.id = options.dropdown_id
   }
 
 
 
   const input = document.createElement("input");
-  input.classList.add(class_str)
+  input.classList.add(options.class_str)
   div.appendChild(input);
   div.appendChild(dropdown);
 
-  if(search_type == 'text'){
-    input.addEventListener("input", onInput)
-
-  }else{
-    input.addEventListener("click", onInput)
+  if(options.onInput != null){
+    if(options.search_type == 'text'){
+      input.addEventListener("input", options.onInput)
+  
+    }else{
+      input.addEventListener("click", options.onInput)
+    }
   }
 
-  if(search_type != 'text'){
+
+  if(options.search_type != 'text'){
     input.type = 'button';
   }
 
@@ -71,8 +78,8 @@ function register_div_as_search(div, class_str, onInput, dropdown_id, initialize
   }
 
 
-  if(initialize != null){
-    initialize();
+  if(options.initialize != null){
+    options.initialize();
   }
 
 
