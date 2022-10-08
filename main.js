@@ -60,10 +60,20 @@ document.addEventListener("DOMContentLoaded", ()=>{
   
   
       const input = plan_select_div.childNodes[1];
-      input.value = "Select Plan \u25BC";
-      var planIdInput = document.getElementById("plan-id-input")
-    
+      //initialize with default plan
       
+      let calendar = Calendar.getInstance()
+      let defaultPlan = calendar.getDefaultPlan();
+      if(!get_plan_IDs().includes(defaultPlan))
+      {
+        create_plan(defaultPlan)
+        calendar.setCurrentPlanID(defaultPlan)
+      }
+
+      input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
+      var planIdInput = document.getElementById("plan-id-input")
+
+
       var items = [input,planIdInput]
       //adds event listeners for the dropdown button
       for (var i = 0; i < items.length; ++i)
@@ -86,6 +96,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             input.value = "Plan: " + currentPlan + " \u25BC";
   
         });
+
       }
       
   
@@ -158,9 +169,18 @@ function updatePlanDropdown(plan_select_div) {
   //option to add plan
   addListingToDropdown("plan-id-input", "Add Plan", "add-plan", ()=>{
     var newPlan = prompt("Enter Plan Name");
-    create_plan(newPlan);
-    Calendar.getInstance().setCurrentPlanID(newPlan);
-    updatePlanDropdown(plan_select_div);
+    let planString = getAvailablePlan(newPlan);
+    if (planString != null)
+    {
+      create_plan(planString);
+      Calendar.getInstance().setCurrentPlanID(planString);
+      const plan_select_div = document.getElementById("plan-select");
+      updatePlanDropdown(plan_select_div);
+      update_section_display()
+      const input = plan_select_div.childNodes[1];
+      input.value = "Plan: " + Calendar.getInstance().getCurrentPlanID() + " \u25BC";
+    }
+   
 
 
   });
@@ -169,23 +189,26 @@ function updatePlanDropdown(plan_select_div) {
   planIds.sort();
   //for loop
   for (var i in planIds) {
+    if(planIds[i] != Calendar.getInstance().getCurrentPlanID())
+    {
+      let ii = i;
 
-    let ii = i;
-
-    addListingToDropdown("plan-id-input", planIds[i], null, () => {
-      var calendar = Calendar.getInstance()
-      calendar.setCurrentPlanID(planIds[ii]);
-      //Ben add whatever code is needed here
-      //get input
-      const input = plan_select_div.childNodes[1];
-      //Update input text
-      input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25B2";
-      // updating page
-      update_section_display()
-      Calendar.getInstance().update_calendar();
-
-      
-    });
+      addListingToDropdown("plan-id-input", planIds[i], null, () => {
+        var calendar = Calendar.getInstance()
+        calendar.setCurrentPlanID(planIds[ii]);
+        //Ben add whatever code is needed here
+        //get input
+        const input = plan_select_div.childNodes[1];
+        // have to update dropdown since plan is excluded
+        updatePlanDropdown(plan_select_div);
+        //Update input text
+        input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25B2";
+        // updating page
+        Calendar.getInstance().update_calendar();
+        update_section_display()
+      });
+    }
+    
 
   }
 }
