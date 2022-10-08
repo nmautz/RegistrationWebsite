@@ -159,6 +159,7 @@ class Calendar{
           open_pop_up(class_section)
         })
 
+        //set display of td that would be in the way
         var timeI = round_stime
         var spanI = span;
         while(spanI-1 > 0){
