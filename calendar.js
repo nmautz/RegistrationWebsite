@@ -19,6 +19,12 @@ class Calendar{
     document.cookie = planID;
   }
 
+  getDefaultPlan(){
+    return this.#defaultPlan;
+  }
+  
+  #defaultPlan = "Spring 2023"
+
   constructor(){
 
     this.tableDiv = document.getElementById("calendar-table");
@@ -26,6 +32,7 @@ class Calendar{
     this.start_time = 420 // 420 min aka 7am
     this.end_time = 1280 // 9:00 pm
 
+    
 
 
     this.create_table();

@@ -57,19 +57,20 @@ document.addEventListener("DOMContentLoaded", ()=>{
   
   
       const input = plan_select_div.childNodes[1];
-      //initialize with plan A
-  
-      if(!get_plan_IDs().includes("A"))
+      //initialize with default plan
+      
+      let calendar = Calendar.getInstance()
+      let defaultPlan = calendar.getDefaultPlan();
+      if(!get_plan_IDs().includes(defaultPlan))
       {
-        create_plan("A")
-        document.cookie = "A"
+        create_plan(defaultPlan)
+        calendar.setCurrentPlanID(defaultPlan)
       }
 
-      input.value = "Plan: " + document.cookie + " \u25BC";
+      input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
       var planIdInput = document.getElementById("plan-id-input")
     
-      console.log(document.cookie)
-      console.log(Calendar.getInstance().getCurrentPlanID())
+
       var items = [input,planIdInput]
       //adds event listeners for the dropdown button
       for (var i = 0; i < items.length; ++i)

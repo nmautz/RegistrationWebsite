@@ -43,6 +43,36 @@ function delete_plan(planID){
 
 }
 
+function delete_plan_wrapper()
+{
+  let calendar = Calendar.getInstance();
+  let planID = calendar.getCurrentPlanID()
+  let enteredVal = prompt("Enter '" + planID + "' to delete plan: " + planID)
+  if (enteredVal == planID)
+  {
+    delete_plan(planID)
+    let calendar = Calendar.getInstance()
+    //setting current plan to default plan
+    let defaultPlan = calendar.getDefaultPlan()
+    if(!get_plan_IDs().includes(defaultPlan))
+    {
+      create_plan(defaultPlan)
+      calendar.setCurrentPlanID(defaultPlan)
+    }
+    //setting current plan
+    calendar.setCurrentPlanID(defaultPlan)
+    // setting plan dropdown
+    const plan_select_div = document.getElementById("plan-select");
+    updatePlanDropdown(plan_select_div);
+    const input = plan_select_div.childNodes[1];
+    input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
+
+  }else
+    alert("Error: Input does not match Plan Name");
+   
+
+}
+
 function get_plan_IDs(){
   var keys = Object.keys(localStorage)
 
