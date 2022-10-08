@@ -28,7 +28,7 @@ class Calendar{
   constructor(){
 
     this.tableDiv = document.getElementById("calendar-table");
-    this.time_increment = 5 //minutes
+    this.time_increment = 15 //minutes
     this.start_time = 420 // 420 min aka 7am
     this.end_time = 1280 // 9:00 pm
 
@@ -134,6 +134,8 @@ class Calendar{
     var round_stime = this.round_time_to_interval(start_time);
     var round_etime = this.round_time_to_interval(end_time);
 
+    let topAmount = (round_stime - start_time)/this.time_increment;
+
     var span = ((round_etime - this.start_time) - (round_stime - this.start_time))/this.time_increment
 
     var activeDays = [class_section.sunday[0],class_section.monday[0],class_section.tuesday[0],class_section.wednesday[0],class_section.thursday[0],class_section.friday[0],class_section.saturday[0]]
@@ -145,6 +147,8 @@ class Calendar{
     {
       if (activeDays[i])
       {
+
+        this.refs[dayNames[i]][round_stime].style.top = toString( 100/topAmount);
 
         this.refs[dayNames[i]][round_stime].innerHTML = class_section.courseTitle;
 
@@ -256,7 +260,11 @@ class Calendar{
 
 
   round_time_to_interval(time){
-    return Math.ceil(time/this.time_increment)*this.time_increment;
+
+
+    let offset = (this.start_time % this.time_increment)/2;
+
+    return (Math.ceil(time/this.time_increment)*this.time_increment)-offset;
   }
 
 }
