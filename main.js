@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
       input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
       var planIdInput = document.getElementById("plan-id-input")
-    
+
 
       var items = [input,planIdInput]
       //adds event listeners for the dropdown button
@@ -171,9 +171,10 @@ function updatePlanDropdown(plan_select_div) {
     {
       create_plan(planString);
       Calendar.getInstance().setCurrentPlanID(planString);
+      const input = plan_select_div.childNodes[1];
+      input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
       updatePlanDropdown(plan_select_div);
-    }else
-      console.log("works")
+    }
    
 
 

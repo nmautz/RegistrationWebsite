@@ -66,7 +66,7 @@ function delete_plan_wrapper()
     updatePlanDropdown(plan_select_div);
     const input = plan_select_div.childNodes[1];
     input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
-
+    update_section_display()
   }else
     alert("Error: Input does not match Plan Name");
    
