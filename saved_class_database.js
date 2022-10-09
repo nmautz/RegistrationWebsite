@@ -15,9 +15,9 @@ function create_plan_wrapper()
     update_section_display()
     const input = plan_select_div.childNodes[1];
     input.value = "Plan: " + Calendar.getInstance().getCurrentPlanID() + " \u25BC";
+    close_plan_popUp()
   }else
     alert("Plan Already Created")
-
 }
 
 function getAvailablePlan(planID)
