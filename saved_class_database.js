@@ -67,6 +67,7 @@ function delete_plan_wrapper()
     const input = plan_select_div.childNodes[1];
     input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
     update_section_display()
+    calendar.update_calendar()
   }else
     alert("Error: Input does not match Plan Name");
    
