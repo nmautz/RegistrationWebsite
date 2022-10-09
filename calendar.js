@@ -164,7 +164,7 @@ class Calendar{
         })
 
         //set display of td that would be in the way
-        var timeI = round_stime
+        var timeI = parseInt(round_stime)
         var spanI = span;
         while(spanI-1 > 0){
           timeI+=this.time_increment
@@ -261,10 +261,18 @@ class Calendar{
 
   round_time_to_interval(time){
 
+    let keys = Object.keys(this.refs.Saturday);
 
-    let offset = (this.start_time % this.time_increment)/2;
+    var closest = keys.reduce(function(prev, curr) {
+      return (Math.abs(curr - time) < Math.abs(prev - time) ? curr : prev);
+    });
 
-    return (Math.ceil(time/this.time_increment)*this.time_increment)-offset;
+    console.log(closest + "\n" + keys)
+
+    return closest
+
+
+    
   }
 
 }
