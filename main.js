@@ -168,19 +168,9 @@ function updatePlanDropdown(plan_select_div) {
 
   //option to add plan
   addListingToDropdown("plan-id-input", "Add Plan", "add-plan", ()=>{
-    var newPlan = prompt("Enter Plan Name");
-    let planString = getAvailablePlan(newPlan);
-    if (planString != null)
-    {
-      create_plan(planString);
-      Calendar.getInstance().setCurrentPlanID(planString);
-      const plan_select_div = document.getElementById("plan-select");
-      updatePlanDropdown(plan_select_div);
-      update_section_display()
-      const input = plan_select_div.childNodes[1];
-      input.value = "Plan: " + Calendar.getInstance().getCurrentPlanID() + " \u25BC";
-    }
-   
+    // var newPlan = prompt("Enter Plan Name");
+    // create_plan_wrapper(newPlan)
+    open_plan_pop_up("Add Plan","Plan Name","Add",create_plan_wrapper)
 
 
   });
