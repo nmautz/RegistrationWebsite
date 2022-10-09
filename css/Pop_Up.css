@@ -13,6 +13,11 @@
     background-color: white;
 }
 
+.plan-popUp{
+    height: 15%;
+    top: 20%;
+}
+
 .popUp.active{
     transform: translate(-50%,-50%) scale(1);
 }
@@ -25,6 +30,10 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1.5px solid black;
+}
+
+.plan-popUp-header{
+    padding: .5%;
 }
 
 .popUp-header .title {
