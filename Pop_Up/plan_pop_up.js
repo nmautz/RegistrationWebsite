@@ -2,7 +2,7 @@ function open_plan_pop_up(title, text, btnName, btnOnClick)
 {
     const overlay = document.getElementById("overlay")
     document.getElementById("plan_popUp_title").innerHTML = title;
-    document.getElementById("input_plan_popUp").ariaPlaceholder = text;
+    document.getElementById("input_plan_popUp").placeholder = text;
     let btn = document.getElementById("btn_plan_popIp")
     btn.innerHTML = btnName
     btn.onclick = btnOnClick
@@ -22,4 +22,5 @@ function close_plan_popUp()
         return
     popUp.classList.remove("active")
     overlay.classList.remove("active")
+    document.getElementById("input_plan_popUp").value = ""
 }

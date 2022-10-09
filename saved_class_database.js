@@ -59,12 +59,19 @@ function delete_plan(planID){
 
 }
 
+function delete_plan_prompt()
+{
+  let planID = Calendar.getInstance().getCurrentPlanID();
+  let placeHolder = "Enter '" + planID + "' to Delete"
+  open_plan_pop_up("Delete Plan: " + planID,placeHolder,"Delete",delete_plan_wrapper)
+}
+
 //deletes the current plan, sets plan to default plan
 function delete_plan_wrapper()
 {
   let calendar = Calendar.getInstance();
   let planID = calendar.getCurrentPlanID()
-  let enteredVal = prompt("Enter '" + planID + "' to delete plan: " + planID)
+  let enteredVal = document.getElementById("input_plan_popUp").value
   if (enteredVal == planID)
   {
     delete_plan(planID)
@@ -85,6 +92,7 @@ function delete_plan_wrapper()
     input.value = "Plan: " + calendar.getCurrentPlanID() + " \u25BC";
     update_section_display()
     calendar.update_calendar()
+    close_plan_popUp()
   }else
     alert("Error: Input does not match Plan Name");
    
