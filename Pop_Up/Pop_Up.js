@@ -55,7 +55,10 @@ function close_pop_up()
 window.addEventListener("click", function(event){
     var popUp = this.document.getElementById("overlay")
     if (popUp.contains(event.target))
-        close_pop_up()
+    {
+         close_pop_up()
+         close_plan_popUp()
+    }
   });
 
 
