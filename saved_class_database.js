@@ -2,6 +2,21 @@ function create_plan(planID){
   localStorage.setItem(planID, "planID")
 }
 
+function create_plan_wrapper(planID)
+{
+  let planString = getAvailablePlan(planID);
+  if (planString != null)
+  {
+    create_plan(planString);
+    Calendar.getInstance().setCurrentPlanID(planString);
+    const plan_select_div = document.getElementById("plan-select");
+    updatePlanDropdown(plan_select_div);
+    update_section_display()
+    const input = plan_select_div.childNodes[1];
+    input.value = "Plan: " + Calendar.getInstance().getCurrentPlanID() + " \u25BC";
+  }
+}
+
 function getAvailablePlan(planID)
 {
   if(planID == "")
@@ -43,6 +58,7 @@ function delete_plan(planID){
 
 }
 
+//deletes the current plan, sets plan to default plan
 function delete_plan_wrapper()
 {
   let calendar = Calendar.getInstance();
