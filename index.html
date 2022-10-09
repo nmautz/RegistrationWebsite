@@ -13,6 +13,7 @@
 
   <!-- The pop up html -->
   <script src="./Pop_Up/Pop_Up.js"></script>      
+  <script src="./Pop_Up/plan_pop_up.js"></script>      
   <link rel="stylesheet" href="./css/Pop_Up.css">
   <!-- end -->
 
@@ -55,7 +56,7 @@
 
         </div>
         <div>
-          <button id="delete_plan_btn" class="search-button" onclick="delete_plan_wrapper()">Delete</button>
+          <button id="delete_plan_btn" class="search-button" onclick="delete_plan_prompt()">Delete</button>
           
         </div>
       </div>
@@ -235,7 +236,22 @@
 
     </div>
   </div>
+
+  <div class="popUp plan-popUp" id="plan_popUp_window">
+    <div class="popUp-header plan-popUp-header" id="plan_popUp_header">
+      <div id="plan_popUp_title" class="title">Add New Plan</div>
+      <button id="closePopUpBtn" onclick="close_plan_popUp()" class="close-button">&times;</button>
+    </div>
+
+    <div class="plan-popUp-Body">
+
+      <input id="input_plan_popUp" type="text" placeholder="Enter Plan Name" class="plan-input">
+      <button id="btn_plan_popIp" class="plan-btn">Add</button>
+    </div>
+  </div>
+
   <div  id="overlay"></div>
+
 
 
 </body>

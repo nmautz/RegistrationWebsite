@@ -13,6 +13,16 @@
     background-color: white;
 }
 
+.plan-popUp{
+    height: 50px;
+    width: 300px;
+    padding: auto;
+    top: 20%;
+    min-height: 70px;
+    min-width: 250px;
+
+}
+
 .popUp.active{
     transform: translate(-50%,-50%) scale(1);
 }
@@ -25,6 +35,12 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1.5px solid black;
+}
+
+.plan-popUp-header{
+    padding: .5%;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
 .popUp-header .title {
@@ -58,6 +74,10 @@
     overflow-y: scroll;
 }
 
+.plan-popUp-Body{
+    
+}
+
 #pop_up_window{
     /* adds scroll wheel to entire pop up */
     /* overflow-y: scroll; */
@@ -89,4 +109,19 @@
 #overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+.plan-input{
+    float: left;
+    width: 70%;
+    padding: 3%;
+    height: 1%;
+}
+
+.plan-btn{
+    float: left;
+
+    height: auto;
+    width: 22%;
+    padding: 3%
 }
