@@ -2,8 +2,9 @@ function create_plan(planID){
   localStorage.setItem(planID, "planID")
 }
 
-function create_plan_wrapper(planID)
+function create_plan_wrapper()
 {
+  let planID = document.getElementById("input_plan_popUp").value
   let planString = getAvailablePlan(planID);
   if (planString != null)
   {
@@ -14,7 +15,9 @@ function create_plan_wrapper(planID)
     update_section_display()
     const input = plan_select_div.childNodes[1];
     input.value = "Plan: " + Calendar.getInstance().getCurrentPlanID() + " \u25BC";
-  }
+  }else
+    alert("Plan Already Created")
+
 }
 
 function getAvailablePlan(planID)
@@ -32,10 +35,8 @@ function getAvailablePlan(planID)
   }else
   {
     if (is_plan_saved(planID))
-    {
-      alert("Plan Already Created")
       return null;
-    }else
+    else
       return planID;
   }
 }

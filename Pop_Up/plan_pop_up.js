@@ -1,11 +1,11 @@
 function open_plan_pop_up(title, text, btnName, btnOnClick)
 {
     const overlay = document.getElementById("overlay")
-    document.getElementById("plan_popUp_header").innerHTML = title;
+    document.getElementById("plan_popUp_title").innerHTML = title;
     document.getElementById("input_plan_popUp").ariaPlaceholder = text;
     let btn = document.getElementById("btn_plan_popIp")
     btn.innerHTML = btnName
-    // btn.onclick = btnOnClick();
+    btn.onclick = btnOnClick
 
     const popUp = document.getElementById("plan_popUp_window")
     if (popUp == null)

@@ -170,7 +170,7 @@ function updatePlanDropdown(plan_select_div) {
   addListingToDropdown("plan-id-input", "Add Plan", "add-plan", ()=>{
     // var newPlan = prompt("Enter Plan Name");
     // create_plan_wrapper(newPlan)
-    open_plan_pop_up("Add Plan","Plan Name","Add",)
+    open_plan_pop_up("Add Plan","Plan Name","Add",create_plan_wrapper)
 
 
   });
