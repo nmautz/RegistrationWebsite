@@ -109,14 +109,18 @@
         text-align: center;
         padding-top: 5%;
         padding-bottom: 5%;
-        color: brown;
+        color: black;
         width: 100%;
+        font-weight: bolder;
+        text-decoration: underline;
+
     }
 
     .add-plan:hover{
-        background-color: rgb(189, 14, 14);
+        background-color: rgb(141, 141, 141);
         cursor: pointer;
         transition: 200ms;
+
     }
 
     .sticky {
