@@ -17,6 +17,8 @@ thead th{
   z-index: 50;
 }
 
+
+
 th{
   width: 10%;
 }
@@ -30,6 +32,7 @@ table {
   width: 100%;
   border-spacing: 0;
   font-size: xx-small;
+  height: 100%;
 }
 
 td, th {
@@ -38,6 +41,8 @@ td, th {
   padding: 3px;
 
 }
+
+
 
 
 .calendar-item {

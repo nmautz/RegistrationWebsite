@@ -28,7 +28,7 @@ class Calendar{
   constructor(){
 
     this.tableDiv = document.getElementById("calendar-table");
-    this.time_increment = 15 //minutes
+    this.time_increment = 120 //minutes
     this.start_time = 420 // 420 min aka 7am
     this.end_time = 1280 // 9:00 pm
 
