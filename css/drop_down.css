@@ -125,7 +125,16 @@
         width: 100%;
     }
 
+
+    #plan-select .search-button 
+    {
+        border-collapse: collapse;
+
+    }
+
     .search-button{
+
+        -webkit-appearance: none;
 
 
         width: 100%;
