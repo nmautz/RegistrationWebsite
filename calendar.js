@@ -18,7 +18,7 @@ class Calendar{
   setCurrentPlanID(planID) {
     setCurrentPlanIDDB(planID);
   }
-
+ 
   getDefaultPlan(){
     return this.#defaultPlan;
   }
