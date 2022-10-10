@@ -12,11 +12,11 @@ class Calendar{
   }
 
   getCurrentPlanID() {
-    return document.cookie;
+    return getCurrentPlanIDDB();
   }
  
   setCurrentPlanID(planID) {
-    document.cookie = planID;
+    setCurrentPlanIDDB(planID);
   }
 
   getDefaultPlan(){

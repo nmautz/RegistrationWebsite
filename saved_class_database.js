@@ -41,7 +41,13 @@ function getAvailablePlan(planID)
   }
 }
 
+function setCurrentPlanIDDB(planID){
+  localStorage.setItem("selected_plan", planID)
+}
 
+function getCurrentPlanIDDB(){
+  return localStorage.getItem("selected_plan");
+}
 
 function delete_plan(planID){
   //remove plan from plans list
