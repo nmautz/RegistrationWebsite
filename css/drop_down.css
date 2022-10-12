@@ -140,7 +140,10 @@
 
         -webkit-appearance: none;
 
-
         width: 100%;
         height: 4vh;
+    }
+
+    .addPointer{
+        cursor: pointer;
     }
